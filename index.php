@@ -6,6 +6,6 @@
 	<title>SelectSalv</title>
 </head>
 <body>
-	<h1>Tugfa xdxd</h1>
+	
 </body>
 </html>
