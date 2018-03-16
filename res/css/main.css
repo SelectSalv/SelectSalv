@@ -198,3 +198,10 @@ p.lead {
 .dropdown-item:active{
     background: rgba(0,0,0,0.125);
 }
+
+#hero-1{
+    background: url(../img/hero1.jpeg);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
