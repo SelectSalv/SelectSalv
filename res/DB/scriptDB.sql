@@ -22,6 +22,9 @@ create table Rol(
     descRol text
 );
 
+select * from Rol;
+
+insert into Rol values('mMun', 'Desarrollador');
 
 #LLAVES FORÁNEAS
 #-----------------------------------------------
@@ -43,5 +46,7 @@ begin
 	insert into Usuario(nomUsuario, pass, idRol) values(nom, pass, rol);
 end
 $$
+
+call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad', 'mMun');
 
 
