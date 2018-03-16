@@ -11,9 +11,12 @@
 	<script src="res/js/jquery.js"></script>
 	<script src="res/js/bootstrap.min.js"></script>
 <body>
-	<nav class="navbar"></nav>
-	<div id="hero-1">
-		
-	</div>
+	<nav class="navbar">
+		<a style="font-family: 'vape';" class="navbar-brand">
+			<img src="res/img/logo.svg" width="40px">
+			selectsalv
+		</a>
+		<a class="navbar-text">Iniciar Sesión</a>
+	</nav>
 </body>
 </html>
