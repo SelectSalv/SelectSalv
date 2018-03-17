@@ -11,6 +11,7 @@ body{
 	background: url(../img/hero2.jpg);
 	background-attachment:fixed;
     background-position: 0, -1;
+    background-origin: center;
     background-size:cover;
     -webkit-font-smoothing: antialiased
 }
@@ -20,14 +21,70 @@ body{
 	font-size: 22px;
 	font-weight: 200: 
 }
+
+.display-1{
+	font-family: 'vape';
+    color: #fff;
+}
+.display-2{
+	font-family: 'vape';
+    color: #fff;
+}
+.display-4{
+	font-family: 'vape';
+    color: #fff;
+    margin-bottom: .5em;
+}
+h6{
+		font-family: 'vape';
+    color: #fff;
+}
 nav{
-	background: rgba(0,0,0,0.4);
-	z-index: 1000000;
+	background: rgba(0,0,0,0.3);
+}
+.hr-titulo{
+	background:#2196f3;
+	height:5px;
 }
 .banner{
+	height: 100vh;
 	width: 100%;
-	background: rgba(0,0,0,0.2);
-	display: inline-grid;
+	display:flex;
+	justify-content: center;
 	align-items: center;
-	justify-content: space-between;
+	text-align: center;
+	background: rgba(0,0,0,0.2);
+}
+
+.contenedor-hero-flex{
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background: rgba(0,0,0,0.1);
+}
+.btn-centro{
+	width: 200px;
+
+}
+
+div.hero-2{
+	width: 100%;
+	margin: 0 auto;
+	background: url(../img/hero5.jpg);
+	background-attachment:fixed;
+    background-position: 0, -1;
+    background-origin: center;
+    background-size:cover;
+}
+div.hero-3{
+	width: 100%;
+	margin: 0 auto;
+	background: url(../img/hero6.jpg);
+	background-attachment:fixed;
+    background-position: 0, -1;
+    background-origin: center;
+    background-size:cover;
 }

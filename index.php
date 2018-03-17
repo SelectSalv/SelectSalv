@@ -13,34 +13,52 @@
   <script src="res/plugins/popper.js"></script>
   <script src="res/plugins/BootstrapMD/bootstrap-material-design.js"></script>
   <script src="res/plugins/BootstrapMD/materialize.js"></script>
+  <script src="res/js/fondo.js"></script>
   <script>
-    $(document).ready(function() {
-        var alt = $(window).height();
-        $('.banner').css('height', alt + 'px');
-        $('.footer').css('height', alt + 'px');
-        $(window).resize(function() {
-           var alt = $(window).height();
-        $('.banner').css('height', alt + 'px');
-        $('.footer').css('height', alt + 'px');
-        });
-    })
+    // $(document).ready(function() {
+    //     var alt = $(window).height();
+    //     $('.banner').css('height', alt + 'px');
+
+    //     $(window).resize(function() {
+    //        var alt = $(window).height();
+    //     $('.banner').css('height', alt + 'px');
+
+    //     });
+    // })
   </script>
 <body>
-<nav class="navbar fixed-top d-flex">
-  <a class="navbar-brand vape-header mr-auto p2 text-white">
-    <img src="res/img/logoblanco.svg" width="40" alt="">
-    selectsalv
-  </a>
-  <a class="waves-effect waves-light btn btn-raised btn-danger p-2">Iniciar Sesión</a>
-</nav>
+  <nav class="navbar fixed-top d-flex">
+    <a class="navbar-brand vape-header mr-auto p2 text-white">
+      <img src="res/img/logoblanco.svg" width="40" alt="">
+      selectsalv
+    </a>
+    <a style="font-family: 'neutra'; width: 100px;" class="waves-effect waves-light btn btn-raised btn-danger p-2">vota</a>
+  </nav>
 
-<div class="banner">
-  <h1 class="display-1" style="color: #fff;">Vota hoy</h1>
-  <a class="waves-effect waves-light btn btn-raised btn-danger btn-lg p-2" style="font-family: 'neutra';">Votar</a>
-</div>
-<div class="footer">
-  
-</div>
-	
+  <div class="banner">
+    <div class="contenedor-hero-1">
+      <h1 class="display-1 text-center">Vota hoy</h1>
+      <h2 class="display-4">jaja simon papu vota hoy y llevate una leshe shabo</h2>
+      <a class="btn-centro waves-effect waves-light btn btn-raised btn-danger btn-lg p-2" style="font-family: 'neutra';">Votar</a>
+    </div>
+  </div>
+
+  <div class="hero-2 parallax">
+      <div class="contenedor-hero-flex">
+         <div>
+           <h1 class="display-2 text-center">La importancia del voto:</h1>
+           <hr class="hr-titulo">
+         </div>
+      </div>
+  </div>
+  <div class="hero-3 parallax">
+      <div class="contenedor-hero-flex">
+         <div>
+           <h1 class="display-2 text-center">¿Qué es el voto?</h1>
+           <hr class="hr-titulo">
+           <!-- <h6>Manifestación de la opinión, del parecer o de la voluntad de cada una de las personas consultadas para aprobar o rechazar una medida o, en unas elecciones, para elegir a una persona o partido.</h6> -->
+         </div>
+      </div>
+  </div>
 </body>
 </html>
