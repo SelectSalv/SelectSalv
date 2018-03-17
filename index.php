@@ -14,6 +14,7 @@
   <script src="res/plugins/BootstrapMD/bootstrap-material-design.js"></script>
   <script src="res/plugins/BootstrapMD/materialize.js"></script>
   <script src="res/js/fondo.js"></script>
+  <script src="res/js/height2.js"></script>
   <script>
     // $(document).ready(function() {
     //     var alt = $(window).height();
@@ -32,7 +33,7 @@
       <img src="res/img/logoblanco.svg" width="40" alt="">
       selectsalv
     </a>
-    <a style="font-family: 'neutra'; width: 100px;" class="waves-effect waves-light btn btn-raised btn-danger p-2">vota</a>
+    <a class="waves-effect waves-light btn btn-raised btn-danger btn-header p-2">vota</a>
   </nav>
 
   <div class="banner">
@@ -54,11 +55,19 @@
   <div class="hero-3 parallax">
       <div class="contenedor-hero-flex">
          <div>
-           <h1 class="display-2 text-center">¿Qué es el voto?</h1>
+           <h1 class="display-2 text-center">Democracia</h1>
            <hr class="hr-titulo">
            <!-- <h6>Manifestación de la opinión, del parecer o de la voluntad de cada una de las personas consultadas para aprobar o rechazar una medida o, en unas elecciones, para elegir a una persona o partido.</h6> -->
          </div>
       </div>
+  </div>
+  <div class="footer">
+    <div class="contenedor-footer">
+      <div class="top"><p class="lead">Zeldas</p></div>
+      <div class="bottom">
+        <p class="copyright">© 2018 Equipo Dinamita</p>
+      </div>
+    </div>
   </div>
 </body>
 </html>
