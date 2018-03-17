@@ -3,7 +3,7 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>SelectSalv</title>
+	<title>Selectsalv</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="res/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="res/favicon/favicon-16x16.png">
   <link rel="stylesheet" href="res/plugins/BootstrapMD/BootstrapMD.css">
@@ -39,7 +39,7 @@
   <div class="banner">
     <div class="contenedor-hero-1">
       <h1 class="display-1 text-center">Vota hoy</h1>
-      <h2 class="display-4">jaja simon papu vota hoy y llevate una leshe shabo</h2>
+      <h2 class="display-4">yupi papu vota ya 7u7</h2>
       <a class="btn-centro waves-effect waves-light btn btn-raised btn-danger btn-lg p-2" style="font-family: 'neutra';">Votar</a>
     </div>
   </div>
@@ -63,7 +63,22 @@
   </div>
   <div class="footer">
     <div class="contenedor-footer">
-      <div class="top"><p class="lead">Zeldas</p></div>
+      <div class="top">
+        <div class="top-left">
+          <p class="lead footer-titulo-vape ">selectsalv</p>
+          <p class="text-light text-footer">Sistema de votación en línea, hecho por salvadoreños para salvadoreños</p>
+        </div>
+        <div class="top-right">
+          <p class="lead footer-titulo-neutra ">
+            Más
+          </p>
+          <ul class="">
+            <li><a class="footer-list" href="">Iniciar Sesión</a></li>
+            <li><a class="footer-list" href="">Preguntas Frecuentes</a></li>
+            <li><a class="footer-list" href="">ola ke ase</a></li>
+          </ul>
+        </div>
+      </div>
       <div class="bottom">
         <p class="copyright">© 2018 Equipo Dinamita</p>
       </div>
