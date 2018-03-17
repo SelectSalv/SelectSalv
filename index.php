@@ -15,32 +15,20 @@
   <script src="res/plugins/BootstrapMD/materialize.js"></script>
   <script src="res/js/fondo.js"></script>
   <script src="res/js/height2.js"></script>
-  <script>
-    // $(document).ready(function() {
-    //     var alt = $(window).height();
-    //     $('.banner').css('height', alt + 'px');
-
-    //     $(window).resize(function() {
-    //        var alt = $(window).height();
-    //     $('.banner').css('height', alt + 'px');
-
-    //     });
-    // })
-  </script>
 <body>
   <nav class="navbar fixed-top d-flex">
     <a class="navbar-brand vape-header mr-auto p2 text-white">
       <img src="res/img/logoblanco.svg" width="40" alt="">
       selectsalv
     </a>
-    <a class="waves-effect waves-light btn btn-raised btn-danger btn-header p-2">vota</a>
+    <a  href="res/php/votar.php"class="waves-effect waves-light btn btn-raised btn-danger btn-header p-2">vota</a>
   </nav>
 
   <div class="banner">
     <div class="contenedor-hero-1">
       <h1 class="display-1 text-center">Vota hoy</h1>
-      <h2 class="display-4">yupi papu vota ya 7u7</h2>
-      <a class="btn-centro waves-effect waves-light btn btn-raised btn-danger btn-lg p-2" style="font-family: 'neutra';">Votar</a>
+      <h2 class="display-4">haz valer tu opinión</h2>
+      <a href="res/php/votar.php" class="btn-centro waves-effect waves-light btn btn-raised btn-danger btn-lg p-2" style="font-family: 'neutra';">Votar</a>
     </div>
   </div>
 
@@ -57,7 +45,7 @@
          <div>
            <h1 class="display-2 text-center">Democracia</h1>
            <hr class="hr-titulo">
-           <!-- <h6>Manifestación de la opinión, del parecer o de la voluntad de cada una de las personas consultadas para aprobar o rechazar una medida o, en unas elecciones, para elegir a una persona o partido.</h6> -->
+         <!--   <h6>Manifestación de la opinión, del parecer o de la voluntad de cada una de las personas consultadas para aprobar o rechazar una medida o, en unas elecciones, para elegir a una persona o partido.</h6> -->
          </div>
       </div>
   </div>
@@ -73,7 +61,7 @@
             Más
           </p>
           <ul class="">
-            <li><a class="footer-list" href="">Iniciar Sesión</a></li>
+            <li><a class="footer-list" href="res/php/login.php">Iniciar Sesión</a></li>
             <li><a class="footer-list" href="">Preguntas Frecuentes</a></li>
             <li><a class="footer-list" href="">ola ke ase</a></li>
           </ul>

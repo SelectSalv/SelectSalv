@@ -96,7 +96,7 @@ p.lead {
 }
 
 .cuadro {
-    z-index: 50;
+    z-index:10000;
     background: #fff;
     left: 0;
     right: 0;
