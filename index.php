@@ -13,6 +13,18 @@
   <script src="res/plugins/popper.js"></script>
   <script src="res/plugins/BootstrapMD/bootstrap-material-design.js"></script>
   <script src="res/plugins/BootstrapMD/materialize.js"></script>
+  <script>
+    $(document).ready(function() {
+        var alt = $(window).height();
+        $('.banner').css('height', alt + 'px');
+        $('.footer').css('height', alt + 'px');
+        $(window).resize(function() {
+           var alt = $(window).height();
+        $('.banner').css('height', alt + 'px');
+        $('.footer').css('height', alt + 'px');
+        });
+    })
+  </script>
 <body>
 <nav class="navbar fixed-top d-flex">
   <a class="navbar-brand vape-header mr-auto p2 text-white">
@@ -22,12 +34,13 @@
   <a class="waves-effect waves-light btn btn-raised btn-danger p-2">Iniciar Sesión</a>
 </nav>
 
-<!-- <div class="banner">
-  <h1 class="left-align">Vota hoy</h1>
-  <p class="flow-text left-align"></p>
-  <a class="waves-effect btn yellow darken-1 left-align">Votar</a>
-</div> -->
-
+<div class="banner">
+  <h1 class="display-1" style="color: #fff;">Vota hoy</h1>
+  <a class="waves-effect waves-light btn btn-raised btn-danger btn-lg p-2" style="font-family: 'neutra';">Votar</a>
+</div>
+<div class="footer">
+  
+</div>
 	
 </body>
 </html>

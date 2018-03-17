@@ -22,4 +22,12 @@ body{
 }
 nav{
 	background: rgba(0,0,0,0.4);
+	z-index: 1000000;
+}
+.banner{
+	width: 100%;
+	background: rgba(0,0,0,0.2);
+	display: inline-grid;
+	align-items: center;
+	justify-content: space-between;
 }
