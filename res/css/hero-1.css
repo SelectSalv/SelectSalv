@@ -1,0 +1,25 @@
+*{
+	margin:0;
+	padding: 0;
+	-webkit-font-smoothing: antialiased;
+	 text-rendering: optimizeLegibility;
+}
+
+body{
+	width: 100%;
+	margin:auto;
+	background: url(../img/hero2.jpg);
+	background-attachment:fixed;
+    background-position: 0, -1;
+    background-size:cover;
+    -webkit-font-smoothing: antialiased
+}
+
+.vape-header{
+	font-family: 'neutra';
+	font-size: 22px;
+	font-weight: 200: 
+}
+nav{
+	background: rgba(0,0,0,0.4);
+}
