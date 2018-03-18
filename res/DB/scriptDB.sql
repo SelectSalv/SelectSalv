@@ -16,6 +16,8 @@ create table Usuario(
     primary key(idUsuario)
 );
 
+select * from Usuario
+
 #Tabla de Roles de Usuario
 create table Rol(
 	idRol varchar(256),
@@ -39,14 +41,36 @@ alter table Usuario add constraint fk_id_rol foreign key(idRol) references Rol(i
 delimiter $$
 create procedure p_RegUsuario(
 	in nom text,
-    in pass text,
+    in contra text,
     in rol text
 )
 begin
-	insert into Usuario(nomUsuario, pass, idRol) values(nom, pass, rol);
+	insert into Usuario(nomUsuario, pass, idRol) values(nom, contras, rol);
 end
 $$
 
 call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad', 'mMun');
 
+#Procedimiento almacenado para comparar datos de Logueo
+delimiter $$
+drop procedure p_loginUsuario(
+	in nom text,
+    in contra text
+)
+begin
+	select * from v_Usuarios where nomUsuario = nom and pass = contra;
+end
+$$
 
+
+
+#VISTAS
+#-----------------------------------------------
+
+drop view v_Usuarios as (
+	select u.idUsuario, u.nomUsuario, r.descRol
+    from Usuario u, Rol r
+    where u.idRol = r.idRol
+);
+
+select * from v_Usuarios

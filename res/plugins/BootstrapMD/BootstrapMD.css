@@ -10,7 +10,7 @@
  */
 :root {
   --blue: #2196f3;
-  --indigo: #3f51b5;
+  --indigo: rgba(63, 81, 181, 1);
   --purple: #9c27b0;
   --pink: #e91e63;
   --red: #f44336;
@@ -1273,7 +1273,7 @@ pre {
   .form-control:focus, .custom-file-control:focus {
     color: #495057;
     background-color: transparent;
-    border-color: #17ffe9;
+    border-color: #343a40;
     outline: 0;
     box-shadow: none, 0 0 0 0.2rem rgba(0, 150, 136, 0.25); }
   .form-control::placeholder, .custom-file-control::placeholder {
@@ -9335,7 +9335,7 @@ form {
 .form-control, .custom-file-control,
 .is-focused .form-control,
 .is-focused .custom-file-control {
-  background-image: linear-gradient(to top, #009688 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px); }
+  background-image: linear-gradient(to top, rgba(52, 58, 64, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px); }
 
 .form-control:invalid, .custom-file-control:invalid {
   background-image: linear-gradient(to top, #d50000 2px, rgba(213, 0, 0, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px); }
@@ -9506,7 +9506,7 @@ fieldset[disabled][disabled] .form-control, fieldset[disabled][disabled] .custom
 .is-focused [class*=' bmd-label'],
 .is-focused [class^='bmd-label'],
 .is-focused [class*=' bmd-label'] {
-  color: #009688; }
+  color: #343a40; }
 
 .is-focused .bmd-label-placeholder,
 .is-focused .bmd-label-placeholder {

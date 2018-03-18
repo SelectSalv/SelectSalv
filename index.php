@@ -21,7 +21,7 @@
       <img src="res/img/logoblanco.svg" width="40" alt="">
       selectsalv
     </a>
-    <a  href="res/php/votar.php"class="waves-effect waves-light btn btn-raised btn-danger btn-header p-2">vota</a>
+    <a  href="res/php/votar.php" class="waves-effect waves-light btn btn-raised btn-danger btn-header p-2">vota</a>
   </nav>
 
   <div class="banner">

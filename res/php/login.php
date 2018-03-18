@@ -1,5 +1,3 @@
-<?php  
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,24 +5,49 @@
 	<title>Ingresar | Selectsalv</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
-    <link rel="stylesheet" href="../plugins/BootstrapMD/BootstrapMD.css">
+	<link rel="stylesheet" href="../plugins/BootstrapMD/BootstrapMD.css">
 	<link rel="stylesheet" href="../css/main.css">
 	<script src="../plugins/JQuery/jquery.js"></script>
-    <script src="../plugins/popper.js"></script>
-    <script src="../plugins/BootstrapMD/bootstrap-material-design.js"></script>
-    <!-- <script src="../plugins/BootstrapMD/materialize.js"></script> -->
+	<script src="../plugins/popper.js"></script>
+    <script src="../plugins/BootstrapMD/BootstrapMD.min.js"></script>
+    <script src="../plugins/BootstrapMD/materialize.js"></script>
     <script src="../js/fondo.js"></script>
+    <script src="../js/animacion.js"></script>
+    <script src="../js/form-fix.js"></script>
+    <script src="../js/login.js"></script>
 </head>
-<body>
-	 <form>
-  <div class="form-group"> <!-- left unspecified, .bmd-form-group will be automatically added (inspect the code) -->
-    <label for="formGroupExampleInput" class="bmd-label-floating">Example label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput">
-  </div>
-  <div class="form-group bmd-form-group"> <!-- manually specified --> 
-    <label for="formGroupExampleInput2" class="bmd-label-floating">Another label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2">
-  </div>
-</form>
+<body id="body">
+	<div class="cuadro c-centro" id="c-login">
+		<div class="cuadro-ins bg-info" id="c-ins-login">
+			<p class="lead text-center" id="title-login">Ingresar</p>
+		</div>
+		<div class="wrap">
+			<form action="" id="frmLogin">
+				<div class="form-row">
+					<div class="form-column col-md-12">
+						<div class="form-group bmd-form-group">
+							<label for="user" class="bmd-label-floating">Usuario</label>
+							<input type="text" class="form-control" name="user" id="user">
+						</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-column col-md-12">
+						<div class="form-group bmd-form-group">
+							<label for="pass" class="bmd-label-floating">Contraseña</label>
+							<input type="password" class="form-control" name="pass" id="pass">
+						</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-column col-md-12">
+						<div class="form-group bmd-form-group">
+							<button type="button" class="waves-effect waves-light btn btn-raised btn-info btn-header" value="Ingresar" name="btnLogin" id="btnLogin">Ingresar</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
