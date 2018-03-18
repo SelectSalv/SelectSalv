@@ -1,5 +1,13 @@
 /*JorgeSidgoPimentel*/
 $(document).ready(function() {
+
+	if($(this).val() != "")
+		{
+			$(this).parent().addClass('is-filled');
+		} else{
+			
+		}
+
 	$('.form-control').focus(function(event) {
 			$(this).parent().addClass('is-focused');
 	});
