@@ -53,7 +53,7 @@ call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad'
 
 #Procedimiento almacenado para comparar datos de Logueo
 delimiter $$
-drop procedure p_loginUsuario(
+create procedure p_loginUsuario(
 	in nom text,
     in contra text
 )
@@ -62,13 +62,13 @@ begin
 end
 $$
 
-
+call p_loginUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad');
 
 #VISTAS
 #-----------------------------------------------
 
-drop view v_Usuarios as (
-	select u.idUsuario, u.nomUsuario, r.descRol
+create view v_Usuarios as (
+	select u.idUsuario, u.nomUsuario, u.pass, r.descRol
     from Usuario u, Rol r
     where u.idRol = r.idRol
 );
