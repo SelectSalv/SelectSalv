@@ -22,7 +22,7 @@
 			<p class="lead text-center" id="title-login">Ingresar</p>
 		</div>
 		<div class="wrap">
-			<form action="" id="frmLogin">
+			<form action="../proc/procLogin.php" method="POST" id="frmLogin">
 				<div class="form-row">
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">

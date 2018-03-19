@@ -1,7 +1,6 @@
 <?php
 	
 	include '../clases/Usuario.php';
-	include 'crypt.php';
 
 	$usuario = new Usuario();
 	$enc	 = new Enc();
@@ -15,19 +14,10 @@
 			$user = $_POST["user"];
 			$pass = $_POST["pass"];
 
-			$userEnc = $enc->s_Encrypt($user);
-			$passEnc = sha1($pass);
 
-			$consulta = $usuario->Login($userEnc, $passEnc);
+			$consulta = $usuario->Login($user, $pass);
 
-			if(!$consulta)
-			{
-				$respuesta = 2; 
-			}
-			else 
-			{
-				$respuesta = 1;
-			}
+			$respuesta = $consulta;
 		}
 		else
 		{

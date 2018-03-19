@@ -1,6 +1,7 @@
 <?php  
 
 include 'Conexion.php';
+include '../proc/crypt.php';
 
 class Usuario extends Conexion {
 	public $idUsuario;
@@ -10,16 +11,17 @@ class Usuario extends Conexion {
 
 	public function Login($nom, $pass)
 	{
-		$this->nomUsuario  = $nom;
-		$this->passUsuario = $pass;
+		$enc = new Enc();
+		$this->nomUsuario  = $enc->s_Encrypt($nom);
+		$this->passUsuario = sha1($pass);
 
-		$_query = "call p_loginUsuario(".$this->nomUsuario.", ".$this->passUsuario.")";
+		$_query = "call p_loginUsuario('".$this->nomUsuario."', '".$this->passUsuario."')";
 
 		$resultado = $this->Conectar()->query($_query);
 
 		if(!$resultado)
 		{
-			return 'nel';
+			return 2;
 		}
 		else
 		{
@@ -27,13 +29,12 @@ class Usuario extends Conexion {
 			if($n_filas == 1)
 			{
 				$fila = $resultado->fetch_assoc();
-
 				session_start();
 				$_SESSION["idUsuario"] = $fila["idUsuario"];
-				$_SESSION["nomUsuario"] = $fila["nomUsuario"];
+				$_SESSION["nomUsuario"] = $enc->s_Decrypt($fila["nomUsuario"]);
 				$_SESSION["rol"] = $fila["descRol"];
 
-				return fila;
+				return 1;
 			}
 		}
 	}

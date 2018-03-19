@@ -34,6 +34,7 @@ $(document).ready(function() {
                         break;
 
                     default:
+                        alert(r);
                         alert('error :\'v');
                         break;
 				}
