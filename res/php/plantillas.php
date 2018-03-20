@@ -20,7 +20,7 @@ class Plantilla{
 		}
 	}
 
-	public function HeaderBar()
+	public function HeaderBarUser()
 	{
 		echo '<nav class="navbar fixed-top navbar-dark bg-primary">
 				<button type="button" style="margin-right: 10px;" id="btn-menu-nav" class=" p2 waves-effect waves-ripple waves-light btn btn-primary bmd-btn-icon align-middle">
@@ -40,6 +40,37 @@ class Plantilla{
 				  </div>
 				</div>
 			</nav>';
+	}
+
+	public function HeaderBar()
+	{
+		
+	}
+
+	public function Menu()
+	{
+		echo '	<div class="menu">
+		<ul class="list-menu">
+			<a class="" href="">
+				<li class="list-item align-middle">
+					<i class="menu-it-icon material-icons text-purp align-middle">flag</i>
+					Registar Partido
+				</li>
+			</a>
+			<a class="" href="regPersona.php">
+				<li class="list-item align-middle">
+					<i class="menu-it-icon material-icons text-purp align-middle">account_box</i>
+					Registar Persona
+				</li>
+			</a>
+			<a class="" href="">
+				<li class="list-item align-middle">
+					<i class="menu-it-icon material-icons text-purp align-middle">poll</i>
+					Ver Estadística
+				</li>
+			</a>
+		</ul>
+	</div>';
 	}
 
 	public function Zeldas()

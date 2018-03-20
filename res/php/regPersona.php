@@ -12,7 +12,10 @@
 	<?php $plantilla->Zeldas() ?>
 </head>
 <body id="body">
-	<?php $plantilla->HeaderBar() ?>
+	<?php 
+		$plantilla->HeaderBarUser(); 
+		$plantilla->Menu();
+	?>
 	<div class="cuadro cuadro-centro" id="c-frm">
 		
 	</div>
