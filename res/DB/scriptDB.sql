@@ -14,9 +14,9 @@ create table Usuario(
     pass text,
     idRol varchar(256),
     primary key(idUsuario)
-);
+}
 
-
+select * from Usuario
 
 #Tabla de Roles de Usuario
 create table Rol(
@@ -24,7 +24,7 @@ create table Rol(
     descRol text
 );
 
-select * from Rol;
+
 
 insert into Rol values('mMun', 'Desarrollador');
 
@@ -38,6 +38,7 @@ alter table Usuario add constraint fk_id_rol foreign key(idRol) references Rol(i
 #-----------------------------------------------
 
 #Procedimiento almacenado para registrar Usuarios
+delimiter $$
 create procedure p_RegUsuario(
 	in nom text,
     in contra text,
@@ -48,7 +49,14 @@ begin
 end
 $$
 
-call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad', 'mMun');
+# Usuario LizaUrbina
+call p_RegUsuario('gM+ryobUlNihzw==', '9e1b9d0da915a9aaafd7524b5d4b667ecbe7abb3', 'mMun');
+
+# Usuario JorgeSidgo
+call p_RegUsuario('ftWj0Ja1m9Oa3Q==', '559a826f33138abb6584c512ea919df8421876fa', 'mMun');
+
+# Usuario CarlosCampos
+call p_RegUsuario('d8ej1aDVddCg3qTU', 'a1d3288715911c7ea5b85627de62c4aabcf233c7', 'mMun');
 
 #Procedimiento almacenado para comparar datos de Logueo
 delimiter $$
