@@ -29,30 +29,30 @@ nav {
 }
 #btn-menu-nav {
     color: #fff;
-    width: 60px;
-    text-align: center;
-    border: 2px solid rgba(255, 255, 255, 0.0);
+/*    width: 25px;*/
+/*    text-align: center;*/
+/*    border: 2px solid rgba(255, 255, 255, 0.0);
     -webkit-transition: all .3s ease;
     -o-transition: all .3s ease;
-    transition: all .3s ease;
+    transition: all .3s ease;*/
 }
 
 #btn-menu-nav:hover {
     cursor: pointer;
-    border: 2px solid rgba(255, 255, 255, 0.125);
+/*    border: 2px solid rgba(255, 255, 255, 0.125);
     border-radius: 0.25rem;
     -webkit-transition: all .3s ease;
     -o-transition: all .3s ease;
-    transition: all .3s ease;
+    transition: all .3s ease;*/
 }
 #btn-menu-nav:active {
     cursor: pointer;
-    border: 2px solid rgba(0, 0, 0, 0.1);
+   /* border: 2px solid rgba(0, 0, 0, 0.1);
     border-radius: 0.25rem;
     background: rgba(0, 0, 0, 0.125);
     -webkit-transition: all .3s ease;
     -o-transition: all .3s ease;
-    transition: all .3s ease;
+    transition: all .3s ease;*/
 }
 .navbar-brand {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05),

@@ -16,7 +16,7 @@ create table Usuario(
     primary key(idUsuario)
 );
 
-select * from Usuario
+
 
 #Tabla de Roles de Usuario
 create table Rol(
@@ -38,14 +38,13 @@ alter table Usuario add constraint fk_id_rol foreign key(idRol) references Rol(i
 #-----------------------------------------------
 
 #Procedimiento almacenado para registrar Usuarios
-delimiter $$
 create procedure p_RegUsuario(
 	in nom text,
     in contra text,
     in rol text
 )
 begin
-	insert into Usuario(nomUsuario, pass, idRol) values(nom, contras, rol);
+	insert into Usuario(nomUsuario, pass, idRol) values(nom, contra, rol);
 end
 $$
 
