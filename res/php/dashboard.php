@@ -45,7 +45,7 @@
 	<div class="contenedor">
 		<div class="barra-titulo">
 			<p class="texto-barra-titulo">
-				Estadísticas
+				Dashboard
 			</p>
 		</div>
 		<div class="graficos">
@@ -108,6 +108,14 @@
 				<div class="col-md-4">
 					<div class="tarjeta tarjeta-md"></div>
 				</div>
+				<div class="col-md-4">
+					<div class="tarjeta tarjeta-md"></div>
+				</div>
+				<div class="col-md-4">
+					<div class="tarjeta tarjeta-md"></div>
+				</div>
+			</div>
+			<div class="row" style="justify-content: center;">
 				<div class="col-md-4">
 					<div class="tarjeta tarjeta-md"></div>
 				</div>
