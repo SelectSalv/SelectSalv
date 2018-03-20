@@ -7,6 +7,7 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="res/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="res/favicon/favicon-16x16.png">
   <link rel="stylesheet" href="res/plugins/BootstrapMD/BootstrapMD.css">
+  <link rel="stylesheet" href="res/css/fuentes.css">
 	<link rel="stylesheet" href="res/css/main.css">
   <link rel="stylesheet" href="res/css/hero-1.css">
 	<script src="res/plugins/JQuery/jquery.js"></script>

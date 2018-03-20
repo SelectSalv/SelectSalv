@@ -7,6 +7,7 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
 	<link rel="stylesheet" href="../plugins/BootstrapMD/BootstrapMD.css">
 	<link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="../css/fuentes.css">
 	<script src="../plugins/JQuery/jquery.js"></script>
 	<script src="../plugins/popper.js"></script>
     <script src="../plugins/BootstrapMD/BootstrapMD.min.js"></script>

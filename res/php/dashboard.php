@@ -10,6 +10,7 @@
 	<meta charset="UTF-8">
 	<title><?php echo $nomUsuario; ?> | Dashboard</title>
 	<?php $plantilla->Zeldas() ?>
+	<link rel="stylesheet" href="../css/grid.css">
  <!--    <script>
     	$(document).ready(function() {
     		var alt = $('.navbar').height();
@@ -23,16 +24,44 @@
 		<ul class="list-menu">
 			<a class="" href="">
 				<li class="list-item align-middle">
-					<i class="menu-it-icon material-icons text-light align-middle">flag</i>Registar Partido</li>
+					<i class="menu-it-icon material-icons text-purp align-middle">flag</i>
+					Registar Partido
+				</li>
 			</a>
 			<a class="" href="regPersona.php">
-				<li class="list-item align-middle"><i class="menu-it-icon material-icons text-light align-middle">account_box</i>Registar Persona</li>
+				<li class="list-item align-middle">
+					<i class="menu-it-icon material-icons text-purp align-middle">account_box</i>
+					Registar Persona
+				</li>
 			</a>
 			<a class="" href="">
-				<li class="list-item align-middle"><i class="menu-it-icon material-icons text-light align-middle">poll</i>Ver Estadística</li>
+				<li class="list-item align-middle">
+					<i class="menu-it-icon material-icons text-purp align-middle">poll</i>
+					Ver Estadística
+				</li>
 			</a>
 		</ul>
 	</div>
-
+	<div class="contenedor">
+		<div class="barra-titulo">
+			<p class="texto-barra-titulo">
+				Estadísticas
+			</p>
+		</div>
+		<div class="graficos">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="tarjeta tarjeta-xl">
+						
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="tarjeta tarjeta-xl">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

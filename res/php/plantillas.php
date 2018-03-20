@@ -49,6 +49,7 @@ class Plantilla{
 	<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
 	<link rel="stylesheet" href="../plugins/BootstrapMD/BootstrapMD.css">
+	<link rel="stylesheet" href="../css/fuentes.css">
 	<link rel="stylesheet" href="../css/main.css">
 	<link rel="stylesheet" href="../css/menu.css">
 	<link rel="stylesheet" href="../css/hero-1.css">
