@@ -37,13 +37,11 @@
 			selectsalv
 		</a>
 		<div class="btn-group" style="margin:0;">
-		  <button class="btn btn-raised btn-success dropdown-toggle btn-sm" type="button" id="buttonMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		  <button class="waves-effect waves-light waves-block btn btn-raised btn-success dropdown-toggle btn-sm" type="button" id="dropUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		   <?php echo $nomUsuario ?>
 		  </button>
-		  <div class="dropdown-menu" aria-labelledby="buttonMenu1">
-		    <a class="dropdown-item" href="#">Action</a>
-		    <a class="dropdown-item" href="#">Another action</a>
-		    <a class="dropdown-item" href="#">Something else here</a>
+		  <div class="dropdown-menu" style="margin-left: -52px; " aria-labelledby="dropUsuario">
+		    <a class="dropdown-item" class="text-danger" style="color: red;" href="../proc/logout.php">Cerrar Sesión</a>
 		  </div>
 		</div>
 	</nav>
