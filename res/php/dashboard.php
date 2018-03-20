@@ -5,6 +5,7 @@
 	$plantilla->compInicioSesion();
 
 	$nomUsuario = $_SESSION["nomUsuario"];
+	$rolUsuario = $_SESSION["rol"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +26,7 @@
     <script src="../plugins/BootstrapMD/materialize.js"></script>
     <script src="../js/fondo.js"></script>
     <script src="../js/animacion.js"></script>
+    <script src="../js/menu.js"></script>
     
 </head>
 <body id="body">
@@ -41,7 +43,8 @@
 		   <?php echo $nomUsuario ?>
 		  </button>
 		  <div class="dropdown-menu" style="margin-left: -52px; " aria-labelledby="dropUsuario">
-		    <a class="dropdown-item" class="text-danger" style="color: red;" href="../proc/logout.php">Cerrar Sesión</a>
+		  	<a class="dropdown-item" class="waves-effect" style=""><?php echo $rolUsuario ?></a>
+		    <a class="dropdown-item" class="waves-effect" style="color: red;" href="../proc/logout.php">Cerrar Sesión</a>
 		  </div>
 		</div>
 	</nav>
