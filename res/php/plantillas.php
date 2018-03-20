@@ -22,7 +22,7 @@ class Plantilla{
 
 	public function HeaderBar()
 	{
-		echo '<nav class="navbar navbar-dark bg-primary">
+		echo '<nav class="navbar fixed-top navbar-dark bg-primary">
 				<button type="button" style="margin-right: 10px;" id="btn-menu-nav" class=" p2 waves-effect waves-ripple waves-light btn btn-primary bmd-btn-icon align-middle">
 				  <i id="menu-icon" class="material-icons text-light">menu</i>
 				</button>

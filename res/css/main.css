@@ -4,7 +4,6 @@
     -webkit-font-smoothing:antialiased;
 }
 nav {
-    z-index: 1000;
     background: rgba(255, 255, 255, 0.0);
 }
 #btn-menu-nav {
@@ -39,10 +38,9 @@ nav {
     2px 2px 1px rgba(0, 0, 0, 0.05);
 }
 #body {
+
     width: 100%;
-    height: 100%;
     background: #eee;
-    overflow: hidden;
 }
 
 .right {
@@ -221,7 +219,12 @@ footer{
     border-bottom: 1px solid rgba(39, 46, 64, 0.2);
 }
 .contenedor{
+    overflow: show;
+    padding-top: 65px; 
+    position: absolute; 
     width: 91%;
     /*background: rgba(0,0,0,0.2);*/
+    left: 0;
+    right: 0;
     margin:0 auto;
 }
