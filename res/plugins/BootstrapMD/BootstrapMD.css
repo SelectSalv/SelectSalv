@@ -6925,14 +6925,14 @@ button:focus {
   .btn-group-raised .btn-primary.custom-file-control::before {
     color: #fff;
     /*background-color: #009688;*/
-    background-color: #0069d9;
+    background-color: #007bff;
     border-color: #009688; }
     .btn.bmd-btn-fab.btn-primary:hover, .bmd-btn-fab.btn-primary.custom-file-control:hover::before, .btn.btn-raised.btn-primary:hover, .btn-raised.btn-primary.custom-file-control:hover::before,
     .btn-group-raised .btn.btn-primary:hover,
     .btn-group-raised .btn-primary.custom-file-control:hover::before {
       color: #fff;
       /*background-color: #008276;*/
-      background-color: #007bff;
+      background-color: #0069d9;
       border-color: #005951; }
     .btn.bmd-btn-fab.btn-primary:focus, .bmd-btn-fab.btn-primary.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-primary.focus, .bmd-btn-fab.btn-primary.focus.custom-file-control::before, .btn.btn-raised.btn-primary:focus, .btn-raised.btn-primary.custom-file-control:focus::before, .btn.btn-raised.btn-primary.focus, .btn-raised.btn-primary.focus.custom-file-control::before,
     .btn-group-raised .btn.btn-primary:focus,
