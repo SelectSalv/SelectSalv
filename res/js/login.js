@@ -19,6 +19,7 @@ $(document).ready(function() {
                     case '2':
                         $('#title-login').html('Datos Incorrectos');
                         $('#c-ins-login').addClass('bg-danger');
+                        $('#pass').val("");
                         setTimeout(function() {
                             $('#title-login').html('Ingresar');
                             $('#c-ins-login').removeClass('bg-danger');

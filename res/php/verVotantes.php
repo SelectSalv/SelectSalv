@@ -21,9 +21,47 @@
 	<div class="contenedor">
 		<div class="barra-titulo">
 			<p class="texto-barra-titulo">
-				Lista de Votantes por JRV
+				Votantes por JRV
 			</p>
 		</div>
+		<div style="width:100%;margin:auto;">
+		<table class="table table-hover">
+			<t-head class="thead-dark text-light bg-secondary">
+				<tr>
+					<th>DUI</th>
+					<th>Apellidos</th>
+					<th>Nombres</th>
+					<th>Voto</th>
+				</tr>
+			</t-head>
+			<tbody>
+				<?php
+					for ($i=0; $i <= 7 ; $i++) { 
+						echo "<tr>	
+								<td>12345678-9</td>
+								<td>Vaquerano Contreras</td>
+								<td>Saturnino Donato</td>
+								<td><i class='material-icons'>done</i></td>
+							</tr>
+
+							<tr>	
+								<td>78945612-3</td>
+								<td>Segoviano Martinez</td>
+								<td>Enrique Alfonso</td>
+								<td><i class='material-icons'>done</i></td>
+							</tr>
+
+							<tr>	
+								<td>78912345-6</td>
+								<td>Escobar Gaviria</td>
+								<td>Pablo Emilio</td>
+								<td><i class='material-icons'>close</i></td>
+							</tr>";	
+					}
+				?>
+			</tbody>
+		</table>
+	</div>
 	</div>
 </body>
 </html>

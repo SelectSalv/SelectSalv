@@ -21,7 +21,7 @@ class Usuario extends Conexion {
 
 		if(!$resultado)
 		{
-			return 2;
+			return 4;
 		}
 		else
 		{
@@ -35,6 +35,9 @@ class Usuario extends Conexion {
 				$_SESSION["rol"] = $fila["descRol"];
 
 				return 1;
+			} else if($n_filas < 1)
+			{
+				return 2;
 			}
 		}
 	}

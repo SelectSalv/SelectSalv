@@ -14,9 +14,9 @@ create table Usuario(
     pass text,
     idRol varchar(256),
     primary key(idUsuario)
-}
+);
 
-select * from Usuario
+
 
 #Tabla de Roles de Usuario
 create table Rol(
@@ -24,7 +24,32 @@ create table Rol(
     descRol text
 );
 
+#Tabla Persona
+create table persona(
+DUI varchar(15) not null,
+nomPersona varchar(100)not null,
+apePersona varchar(100)not null,
+fechaNac date not null,
+profesion varchar(100),
+direccion varchar(200)not null,
+estadoCivil varchar(15),
+idMunicipio int not null,
+primary key(DUI) );
 
+# Tabla Departamento
+create table departamento(
+idDepartamento int not null,
+nomDepartameno varchar(150) not null,
+primary key(idDepartamento));
+
+#Tabla Municipio
+create table municipio(
+idMunicipio int not null,
+nomMunicipio varchar(200) not null,
+idDepartamento int not null,
+primary key(idMunicipio)
+);
+select * from Rol;
 
 insert into Rol values('mMun', 'Desarrollador');
 
@@ -49,14 +74,7 @@ begin
 end
 $$
 
-# Usuario LizaUrbina
-call p_RegUsuario('gM+ryobUlNihzw==', '9e1b9d0da915a9aaafd7524b5d4b667ecbe7abb3', 'mMun');
-
-# Usuario JorgeSidgo
-call p_RegUsuario('ftWj0Ja1m9Oa3Q==', '559a826f33138abb6584c512ea919df8421876fa', 'mMun');
-
-# Usuario CarlosCampos
-call p_RegUsuario('d8ej1aDVddCg3qTU', 'a1d3288715911c7ea5b85627de62c4aabcf233c7', 'mMun');
+call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad', 'mMun');
 
 #Procedimiento almacenado para comparar datos de Logueo
 delimiter $$
