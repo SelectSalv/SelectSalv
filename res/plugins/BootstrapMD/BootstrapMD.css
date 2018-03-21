@@ -9022,7 +9022,7 @@ label.radio-inline {
       width: 1.25rem;
       height: 1.25rem;
       content: "";
-      background-color: #009688;
+      background-color: #2196f3;
       border-radius: 50%;
       transition: transform ease .28s;
       transform: scale3d(0, 0, 0); }
@@ -9039,10 +9039,10 @@ label.radio-inline {
     opacity: 0; }
     .radio label input[type=radio]:checked ~ .bmd-radio::after,
     label.radio-inline input[type=radio]:checked ~ .bmd-radio::after {
-      border-color: #009688; }
+      border-color: #2196f3; }
     .radio label input[type=radio]:checked ~ .bmd-radio::before,
     label.radio-inline input[type=radio]:checked ~ .bmd-radio::before {
-      background-color: #009688; }
+      background-color: #2196f3; }
     .radio label input[type=radio]:checked ~ .bmd-radio::before,
     label.radio-inline input[type=radio]:checked ~ .bmd-radio::before {
       transform: scale3d(0.5, 0.5, 1); }

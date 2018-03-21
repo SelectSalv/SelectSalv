@@ -46,7 +46,7 @@ class Plantilla{
 	{
 		echo '<nav class="navbar fixed-top d-flex">
 	    <a class="navbar-brand vape-header mr-auto p2 text-white">
-	      <img src="..//img/logoblanco.svg" width="35" alt="">
+	      <img src="../img/logoblanco.svg" width="30" alt="">
 	      selectsalv
 	    </a>
 	  </nav>';

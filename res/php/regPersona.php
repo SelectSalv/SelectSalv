@@ -143,22 +143,40 @@
 								<option value="-">Seleccione uno...</option>
 								<option value="Ahuachapán">Ahuachapán</option>
 								<option value="Sonsonate">Sonsonate</option>
-								<option value="Santa%20Ana">Santa Ana</option>
-								<option value=""></option>
-								<option value=""></option>
+								<option value="Santa Ana">Santa Ana</option>
+								<option value="Chalatenango">Chalatenango</option>
+								<option value="La Libertad">La Libertad</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-column col-md-6">
 						<div class="form-group bmd-form-group is-filled">
-							<label for="apellidosPersona" class="bmd-label-floating">Apellidos</label>
-							<select type="text" class="form-control" name="apellidosPersona" id="apellidosPersona">
+							<label for="municipio" class="bmd-label-floating">Municipio</label>
+							<select type="text" class="form-control" name="municipio" id="municipio">
+								<option value="-">Seleccione uno...</option>
 								<option value="Santa Tecla">Santa Tecla</option>
-								<option value="San">San</option>
-								<option value=""></option>
-								<option value=""></option>
-								<option value=""></option>
+								<option value="San">San Salvador</option>
+								<option value="Mejicanos">Mejicanos</option>
+								<option value="Ayutuxtepeque">Ayutuxtepeque</option>
+								<option value="Concepción de Ataco">Concepción de ataco</option>
 							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-column col-md-12">
+						<div class="form-group bmd-form-group">
+							<label for="direccion" class="bmd-label-floating">Dirección</label>
+							<input type="text" class="form-control" name="direccion" id="direccion">
+						</div>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-column col-md-12">
+						<div class="form-group bmd-form-group">
+							<button type="button" id="btnPersona" name="btnPersona" class="waves-effect waves-light btn btn-raised btn-success">Registrar</button>
 						</div>
 					</div>
 				</div>
