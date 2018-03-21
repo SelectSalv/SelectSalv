@@ -54,14 +54,20 @@ class Plantilla{
 
 	public function Menu()
 	{
-		echo '	<div class="menu">
+		echo '<div class="menu">
 		<ul class="list-menu">
 		<p class="titulo-menu">Menú</p>
 		<hr>
-			<a class="" href="">
+			<a class="" href="regPartido.php">
 				<li class="list-item align-middle">
 					<i class="menu-it-icon material-icons text-purp align-middle">flag</i>
 					Registar Partido
+				</li>
+			</a>
+			<a class="" href="regCandidato.php">
+				<li class="list-item align-middle">
+					<i class="menu-it-icon material-icons text-purp align-middle">face</i>
+					Registar Candidato
 				</li>
 			</a>
 			<a class="" href="regPersona.php">
@@ -77,7 +83,7 @@ class Plantilla{
 					Ver Resultados
 				</li>
 			</a>
-			<a class="" href="">
+			<a class="" href="verVotantes.php">
 				<li class="list-item align-middle">
 					<i class="menu-it-icon material-icons text-purp align-middle">people</i>
 					Ver Votantes

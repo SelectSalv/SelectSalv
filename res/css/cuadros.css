@@ -12,6 +12,20 @@
     top: 70px;
     margin-bottom: 25px;
 }
+#c-candidato {
+    width: 425px;
+    height: 425px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+#c-partido {
+    width: 400px;
+    height: 325px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
 #c-calc {
     width: 400px;
     height: 300px;
