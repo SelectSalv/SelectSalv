@@ -31,7 +31,7 @@ class Plantilla{
 					selectsalv
 				</a>
 				<div class="btn-group" style="margin:0;">
-				  <button class="waves-effect waves-light waves-block btn btn-raised btn-primary dropdown-toggle btn-sm" type="button" id="dropUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  <button class="waves-effect waves-light waves-block btn btn-raised btn-success dropdown-toggle btn-sm" type="button" id="dropUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				  '.$_SESSION["nomUsuario"].'
 				  </button>
 				  <div class="dropdown-menu" style="margin-left: -52px; " aria-labelledby="dropUsuario">
@@ -44,13 +44,20 @@ class Plantilla{
 
 	public function HeaderBar()
 	{
-
+		echo '<nav class="navbar fixed-top d-flex">
+	    <a class="navbar-brand vape-header mr-auto p2 text-white">
+	      <img src="..//img/logoblanco.svg" width="35" alt="">
+	      selectsalv
+	    </a>
+	  </nav>';
 	}
 
 	public function Menu()
 	{
 		echo '	<div class="menu">
 		<ul class="list-menu">
+		<p class="titulo-menu">Menú</p>
+		<hr>
 			<a class="" href="">
 				<li class="list-item align-middle">
 					<i class="menu-it-icon material-icons text-purp align-middle">flag</i>
@@ -63,12 +70,20 @@ class Plantilla{
 					Registar Persona
 				</li>
 			</a>
-			<a class="" href="">
+		<hr>
+			<a class="" href="dashboard.php">
 				<li class="list-item align-middle">
 					<i class="menu-it-icon material-icons text-purp align-middle">poll</i>
-					Ver Estadística
+					Ver Resultados
 				</li>
 			</a>
+			<a class="" href="">
+				<li class="list-item align-middle">
+					<i class="menu-it-icon material-icons text-purp align-middle">people</i>
+					Ver Votantes
+				</li>
+			</a>
+		<hr>
 		</ul>
 	</div>';
 	}

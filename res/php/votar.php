@@ -3,7 +3,7 @@
 	$plantilla = new PLantilla();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<title>Vota | Selectsalv</title>
@@ -11,7 +11,7 @@
 </head>
 <body id="body">
 	<?php 
-
+		$plantilla->HeaderBar();
 	?>
 	<div class="cuadro centro" id="c-dui">
 		<div class="cuadro-ins bg-primary">
@@ -31,7 +31,7 @@
 				<div class="form-row">
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
-							<button type="button" class="waves-effect waves-light btn btn-raised btn-primary" value="Ingresar" name="btnLogin" id="btnLogin">Ingresar</button>
+							<button type="button" class="waves-effect waves-light btn btn-raised btn-primary" value="Ingresar" name="btnLogin" id="btnLogin">Votar</button>
 						</div>
 					</div>
 				</div>

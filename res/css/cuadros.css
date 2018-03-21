@@ -5,6 +5,13 @@
     top: 40px;
     bottom: 0;
 }
+#c-persona {
+    width: 600px;
+    height: 700px;
+    position: relative;
+    top: 70px;
+    margin-bottom: 25px;
+}
 #c-calc {
     width: 400px;
     height: 300px;

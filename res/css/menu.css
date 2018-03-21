@@ -62,3 +62,9 @@ a:active>li>i
 .text-purp{
 	color:rgba(39, 46, 64, 0.955);
 }
+.titulo-menu{
+	width: 100%;
+	padding: 0px 15px;
+	font-size: 20px;
+	font-family: 'Proxima-Semibold';
+}
