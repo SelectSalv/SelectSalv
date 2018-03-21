@@ -49,6 +49,45 @@ nomMunicipio varchar(200) not null,
 idDepartamento int not null,
 primary key(idMunicipio)
 );
+
+create table centroVotacion(
+idCentro int not null,
+nomCentro varchar(200) not null,
+idMunicipio int not null,
+primary key(idCentro)
+);
+
+create table JRV(
+idJRV int not null,
+numJRV int not null,
+idCentro int not null,
+primary key(idJRV)
+);
+
+create table partido(
+idPartido int not null,
+nomPartido varchar(100),
+primary key(idPartido));
+
+create table detalleVoto(
+idDetalle int not null,
+DUI int not null,
+idPartido int not null,
+idJRV int not null,
+primary key(idDetalle)
+);
+
+create table tipoCandidato(
+idTipoCandidato int not null,
+descripcionTipo varchar(50),
+primary key(idTipoCandidato));
+
+create table candidato(
+idPartido int not null,
+idTipoCandidato int not null,
+DUI int not null
+);
+
 select * from Rol;
 
 insert into Rol values('mMun', 'Desarrollador');
@@ -56,7 +95,7 @@ insert into Rol values('mMun', 'Desarrollador');
 #LLAVES FORÁNEAS
 #-----------------------------------------------
 alter table Usuario add constraint fk_id_rol foreign key(idRol) references Rol(idRol);
-
+alter table munici
 
 
 #PROCEDIMIENTOS ALMACENADOS
