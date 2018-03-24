@@ -39,7 +39,7 @@ primary key(DUI) );
 # Tabla Departamento
 create table departamento(
 idDepartamento int not null,
-nomDepartameno varchar(150) not null,
+nomDepartamento varchar(150) not null,
 primary key(idDepartamento));
 
 #Tabla Municipio
@@ -75,7 +75,7 @@ DUI int not null,
 idPartido int not null,
 idJRV int not null,
 primary key(idDetalle)
-);
+)engine:innodb;
 
 create table tipoCandidato(
 idTipoCandidato int not null,
@@ -95,8 +95,19 @@ insert into Rol values('mMun', 'Desarrollador');
 #LLAVES FORÁNEAS
 #-----------------------------------------------
 alter table Usuario add constraint fk_id_rol foreign key(idRol) references Rol(idRol);
-alter table munici
+alter table municipio add constraint fk_id_departamento foreign key(idDepartamento) references departamento(idDepartamento);
+alter table centroVotacion add constraint fk_id_municipio foreign key(idMunicipio) references municipio(idMunicipio);
+alter table JRV add constraint fk_id_CentroVotacion foreign key(idCentro) references centroVotacion(idCentro);
+alter table detalleVoto add constraint fk_dui foreign key(DUI) references persona(DUI);
+alter table detalleVoto add constraint fk_idPartido foreign key(idPartido) references  partido(idPartido);
+alter table detalleVoto add constraint fk_idJRV foreign key(idJRV) references JRV(idJRV);
+alter table candidato add constraint fk_idTipoCandidato foreign key(idTipoCandidato) references tipoCandidato(idTipoCandidato);
 
+insert into departamento(idDepartamento, nomDepartamento)values(1, 'San salvador'),(2, 'La Libertad'),(3,'Santa Ana'),(4,'Sonsonate'),(5,'San Miguel'),(6,'Uusulutan'),(7,'Ahuachapan'),(8,'La Paz'),(9,'La Union'),(10,'Cuscatlan'),(11,'Chalatenango'),(12,'Morazan'),(13,'San Vicente'),(14,'Cabañas');		
+select * from departamento;
+
+insert into municipio(idMunicipio, nomMunicipio, idDepartamento)values(0608,'Mejicanos',1),(0501,'Santa Tecla',2),(0210,'Santa Ana',3);
+select * from municipio
 
 #PROCEDIMIENTOS ALMACENADOS
 #-----------------------------------------------

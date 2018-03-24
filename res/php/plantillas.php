@@ -3,7 +3,7 @@
 include '../proc/crypt.php';
 
 class Plantilla{
-
+ 
 	public function compInicioSesion()
 	{
 		session_start();
