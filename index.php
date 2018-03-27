@@ -19,7 +19,7 @@
 <body>
   <nav class="navbar fixed-top d-flex">
     <a class="navbar-brand vape-header mr-auto p2 text-white">
-      <img src="res/img/logoblanco.svg" width="35" alt="">
+      <img src="res/img/logoblanco.svg" width="30" alt="">
       selectsalv
     </a>
     <a  href="res/php/votar.php" class="waves-effect waves-light btn btn-raised btn-success btn-header p-2">vota</a>

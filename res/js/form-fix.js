@@ -15,6 +15,7 @@ $(document).ready(function() {
 		if($(this).val() == "")
 		{
 			$(this).parent().removeClass('is-focused');
+			$(this).parent().removeClass('is-filled');
 		} else{
 			$(this).parent().removeClass('is-focused');
 			$(this).parent().addClass('is-filled');
