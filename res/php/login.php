@@ -1,6 +1,6 @@
 <?php  
 	include 'plantillas.php';
-	$plantilla = new PLantilla();
+	$plantilla = new Plantilla();
 ?>
 <!DOCTYPE html>
 <html lang="es">
