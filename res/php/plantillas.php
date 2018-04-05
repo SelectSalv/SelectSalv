@@ -106,6 +106,7 @@ class Plantilla{
 	<link rel="stylesheet" href="../css/cuadros.css">
 	<link rel="stylesheet" href="../css/menu.css">
 	<link rel="stylesheet" href="../css/hero-1.css">
+	<link rel="stylesheet" href="../css/validacion.css">
 	<script src="../plugins/JQuery/jquery.js"></script>
 	<script src="../plugins/popper.js"></script>
     <script src="../plugins/BootstrapMD/BootstrapMD.min.js"></script>

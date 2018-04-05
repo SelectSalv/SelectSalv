@@ -9,11 +9,14 @@
 	<title>Ingresar | Selectsalv</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 	<link rel="stylesheet" href="../plugins/BootstrapMD/BootstrapMD.css">
 	<link rel="stylesheet" href="../css/main.css">
 	<link rel="stylesheet" href="../css/cuadros.css">
 	<link rel="stylesheet" href="../css/hero-1.css">
 	<link rel="stylesheet" href="../css/fuentes.css">
+	<link rel="stylesheet" href="../css/validacion.css">
 	<script src="../plugins/JQuery/jquery.js"></script>
 	<script src="../plugins/popper.js"></script>
     <script src="../plugins/BootstrapMD/BootstrapMD.min.js"></script>
@@ -35,16 +38,17 @@
 			<form id="frmLogin">
 				<div class="form-row">
 					<div class="form-column col-md-12">
-						<div class="form-group bmd-form-group">
-							<label for="user" class="bmd-label-floating">Usuario</label>
+						<div class="form-group bmd-form-group" id="input-user">
+							<label for="user" class="bmd-label-floating" id="label-user">Usuario</label>
+
 							<input type="text" class="form-control" name="user" id="user">
 						</div>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-column col-md-12">
-						<div class="form-group bmd-form-group">
-							<label for="pass" class="bmd-label-floating">Contraseña</label>
+						<div class="form-group bmd-form-group" id="input-pass">	
+							<label for="pass" class="bmd-label-floating" id="label-pass">Contraseña</label>
 							<input type="password" class="form-control" name="pass" id="pass">
 						</div>
 					</div>
