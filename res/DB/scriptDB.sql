@@ -141,6 +141,8 @@ call p_loginUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0a
 
 call p_loginUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad');
 
+
+
 #VISTAS
 #-----------------------------------------------
 

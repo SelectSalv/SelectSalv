@@ -7,7 +7,7 @@ create table Usuario(
 	idUsuario int auto_increment unique not null primary key,
     nomUsuario text,
     pass text,
-    codRol int not null
+    idRol int not null
 );
 
 
@@ -31,6 +31,7 @@ create table Persona(
     profesion varchar(100),
     direccion varchar(250),
     estadoCivil varchar(50),
+    estadoVotacion int,
     idMunicipio int not null
 );
 
@@ -41,12 +42,15 @@ create table Departamento(
     nomDepartamento varchar(150)
 );
 
+insert into Departamento(nomDepartamento) values('La Libertad');
+
 create table Municipio(
 	idMunicipio int auto_increment unique not null primary key,
     nomMunicipio varchar(150),
     idDepartamento int not null
 );
 
+insert into Municipio(nomMunicipio, idDepartamento) values('Santa Tecla', 1);
 
 
 create table CentroVotacion(
@@ -106,7 +110,15 @@ alter table Candidato add constraint fk_idPartido_Candidato foreign key (idParti
 alter table Candidato add constraint fk_idTipoCandidato_Candidato foreign key (idTipoCandidato) references TipoCandidato(idTipoCandidato);
 alter table Candidato add constraint fk_idPersona_Candidato foreign key (idPersona) references Persona(idPersona);
 
+# VISTAS
 
+# Vista con los datos de usuario
+
+create view v_Usuarios as (
+	select u.idUsuario, u.nomUsuario, u.pass, r.descRol
+    from Usuario u, Rol r
+    where u.idRol = r.idRol
+);
 
 # PROCEDIMIENTOS ALMACENADOS
 
@@ -118,6 +130,7 @@ create procedure p_RegUsuario(
     in rol text
 )
 begin
+	declare ideRol int;
     set ideRol = (select idRol from Rol where codRol = rol);
     insert into Usuario(nomUsuario, pass, idRol) values(nom, contra, ideRol);
 end
@@ -137,8 +150,22 @@ begin
 end
 $$
 
-create view v_Usuarios as (
-    select u.idUsuario, u.nomUsuario, u.pass, r.descRol
-    from Usuario u, Rol r
-    where u.idRol = r.idRol
-);
+# Procedimiento almacenado para registrar Persona
+
+delimiter $$
+create procedure p_regPersona(
+    in dui varchar(15),
+    in nom varchar(100),
+    in ape varchar(100),
+    in fechanac date,
+    in fechavenc date,
+    in prof varchar(100),
+    in direc varchar(250),
+    in estado varchar(50),
+    in estadoVot int,
+    in municipio int
+)
+begin
+
+end
+$$
