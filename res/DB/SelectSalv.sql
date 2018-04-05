@@ -43,6 +43,7 @@ create table Departamento(
 );
 
 insert into Departamento(nomDepartamento) values('La Libertad');
+insert into Departamento(nomDepartamento) values('San Salvador');
 
 create table Municipio(
 	idMunicipio int auto_increment unique not null primary key,
@@ -51,6 +52,7 @@ create table Municipio(
 );
 
 insert into Municipio(nomMunicipio, idDepartamento) values('Santa Tecla', 1);
+insert into Municipio(nomMunicipio, idDepartamento) values('San Salvador', 2);
 
 
 create table CentroVotacion(
@@ -120,6 +122,17 @@ create view v_Usuarios as (
     where u.idRol = r.idRol
 );
 
+# Vista con los datos de Persona
+
+create view v_Persona as (
+	select p.dui, p.nomPersona, p.apePersona, p.fechaNac, p.fechaVenc, p.profesion, p.direccion, p.estadoCivil, p.estadoVotacion, 
+            m.nomMunicipio, d.nomDepartamento
+    from Persona p, Municipio m, Departamento d
+    where p.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento
+);
+
+select * from v_Persona
+
 # PROCEDIMIENTOS ALMACENADOS
 
 # Procedimiento almacenado para registrar Usuarios
@@ -166,6 +179,23 @@ create procedure p_regPersona(
     in municipio int
 )
 begin
+	insert into Persona(dui, nomPersona, apePersona, fechaNac, fechaVenc, profesion, direccion, estadoCivil, estadoVotacion, idMunicipio)
+    values (dui, nom, ape, fechanac, fechavenc, prof, direc, estado, estadoVot, municipio);
 
 end
 $$
+
+call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 'Soltero', 0, 1);
+call p_regPersona('98765432-1', 'Pablo Emilio', 'Escobar Gaviria', '1945-02-01', '2022-02-01', 'Traficante', 'Col. Escalón 6ta av #1', 'Divorciado', 0, 1);
+
+#Procedimiento para devolver los datos de Persona en base a N° de DUI
+delimiter $$
+create procedure p_obtenerPersona(
+	in ndui varchar(15)
+)
+begin
+	select * from v_Persona where dui = ndui;
+end
+$$
+
+call p_obtenerPersona('12345678-9');

@@ -1,6 +1,6 @@
 <?php  
 	include 'plantillas.php';
-	$plantilla = new PLantilla();
+	$plantilla = new Plantilla();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -8,6 +8,10 @@
 	<meta charset="UTF-8">
 	<title>Vota | Selectsalv</title>
 	<?php $plantilla->Zeldas() ?>
+	<script src="../js/ingresar-dui.js"></script>
+	<script>
+		$(document).rea
+	</script>
 </head>
 <body id="body">
 	<?php 
@@ -23,7 +27,7 @@
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
 							<label for="dui" class="bmd-label-floating">DUI</label>
-							<input type="text" class="form-control" name="dui" id="user">
+							<input type="text" class="form-control" name="dui" id="dui">
 						</div>
 					</div>
 				</div>
@@ -31,7 +35,7 @@
 				<div class="form-row">
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
-							<button type="button" class="waves-effect waves-light btn btn-raised btn-primary" value="Ingresar" name="btnLogin" id="btnLogin">Votar</button>
+							<button type="button" class="waves-effect waves-light btn btn-raised btn-primary" value="Ingresar" name="btnDUI" id="btnDUI">Votar</button>
 						</div>
 					</div>
 				</div>

@@ -25,6 +25,7 @@
     <script src="../js/animacion.js"></script>
     <script src="../js/form-fix.js"></script>
     <script src="../js/login.js"></script>
+    <script src="../js/barra-navegacion.js"></script>
 </head>
 <body id="body">
 	<?php 

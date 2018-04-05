@@ -12,9 +12,9 @@ $(document).ready(function() {
                         $('#title-login').html('Datos Correctos');
                         $('#c-ins-login').addClass('bg-success');
                         $('#c-ins-login').removeClass('bg-info');
-                        $('#input-user').addClass("alv-valido");
+                        $('#input-user').css("background-image", "linear-gradient(to top, rgba(76, 175, 80, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.0) 1px, transparent 1px)");
                         $('#label-user').css("color", "rgba(76, 175, 80, 1)");
-                        $('#input-pass').addClass("alv-valido");
+                        $('#input-pass').css("background-image", "linear-gradient(to top, rgba(76, 175, 80, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.0) 1px, transparent 1px)");
                         $('#label-pass').css("color", "rgba(76, 175, 80, 1)");
                         setTimeout(function() {
 	                        location.href = "dashboard.php";
@@ -25,14 +25,15 @@ $(document).ready(function() {
                         $('#title-login').html('Datos Incorrectos');
                         $('#c-ins-login').addClass('bg-danger');
                         $('#pass').val("");
+
+                        $('#input-user').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.0) 1px, transparent 1px)");
+                        $('#label-user').css("color", "rgba(244, 67, 54, 1)");
+                        $('#input-pass').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.0) 1px, transparent 1px)");
+                        $('#label-pass').css("color", "rgba(244, 67, 54, 1)");
                         setTimeout(function() {
                             $('#title-login').html('Ingresar');
                             $('#c-ins-login').removeClass('bg-danger');
                         }, 1500);
-                        $('#input-user').addClass("alv-invalido");
-                        $('#label-user').css("color", "rgba(244, 67, 54, 1)");
-                        $('#input-pass').addClass("alv-invalido");
-                        $('#label-pass').css("color", "rgba(244, 67, 54, 1)");
                         break;
                     case '3':
                         $('#title-login').html('Campos Vacíos');

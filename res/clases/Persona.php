@@ -14,7 +14,7 @@ class Persona extends Conexion{
 	public $estadoVotacion;
 	public $idMunicipio;
 
-	public function registrarPersona($dui, $nom, $ape, $fechanac, $fechavenc, $prof, $direc, $estado, $estadoVot $municipio)
+	public function registrarPersona($dui, $nom, $ape, $fechanac, $fechavenc, $prof, $direc, $estado, $estadoVot, $municipio)
 	{
 		$this->dui = $dui;
 		$this->nomPersona = $nom;
