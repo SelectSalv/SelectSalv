@@ -26,6 +26,7 @@ create table Persona(
     dui varchar(15) not null,
     nomPersona varchar(100),
     apePersona varchar(100),
+    genero varchar(100),
     fechaNac date,
     fechaVenc date,
     profesion varchar(100),
@@ -125,7 +126,7 @@ create view v_Usuarios as (
 # Vista con los datos de Persona
 
 create view v_Persona as (
-	select p.dui, p.nomPersona, p.apePersona, p.fechaNac, p.fechaVenc, p.profesion, p.direccion, p.estadoCivil, p.estadoVotacion, 
+	select p.dui, p.nomPersona, p.apePersona, p.genero, p.fechaNac, p.fechaVenc, p.profesion, p.direccion, p.estadoCivil, p.estadoVotacion, 
             m.nomMunicipio, d.nomDepartamento
     from Persona p, Municipio m, Departamento d
     where p.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento
@@ -170,23 +171,24 @@ create procedure p_regPersona(
     in dui varchar(15),
     in nom varchar(100),
     in ape varchar(100),
+    in gen varchar(100),
     in fechanac date,
     in fechavenc date,
     in prof varchar(100),
     in direc varchar(250),
     in estado varchar(50),
-    in estadoVot int,
     in municipio int
 )
 begin
-	insert into Persona(dui, nomPersona, apePersona, fechaNac, fechaVenc, profesion, direccion, estadoCivil, estadoVotacion, idMunicipio)
-    values (dui, nom, ape, fechanac, fechavenc, prof, direc, estado, estadoVot, municipio);
-
+	insert into Persona(dui, nomPersona, apePersona, genero, fechaNac, fechaVenc, profesion, direccion, estadoCivil, estadoVotacion, idMunicipio)
+    values (dui, nom, ape, gen, fechanac, fechavenc, prof, direc, estado, 0, municipio);
 end
 $$
 
-call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 'Soltero', 0, 1);
-call p_regPersona('98765432-1', 'Pablo Emilio', 'Escobar Gaviria', '1945-02-01', '2022-02-01', 'Traficante', 'Col. Escalón 6ta av #1', 'Divorciado', 0, 2);
+call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 'Masculino', '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 'Soltero', 1);
+call p_regPersona('98765432-1', 'Pablo Emilio', 'Escobar Gaviria', 'Masculino', 1945-02-01', '2022-02-01', 'Traficante', 'Col. Escalón 6ta av #1', 'Divorciado', 2);
+
+call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 'Masculino', 1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 'Soltero', 1);
 
 #Procedimiento para devolver los datos de Persona en base a N° de DUI
 delimiter $$
@@ -198,4 +200,4 @@ begin
 end
 $$
 
-call p_obtenerPersona('12345678-9');
+call p_obtenerPersona('05878895-3');

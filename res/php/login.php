@@ -26,6 +26,11 @@
     <script src="../js/form-fix.js"></script>
     <script src="../js/login.js"></script>
     <script src="../js/barra-navegacion.js"></script>
+    <script>
+    	$(document).ready(function() {
+    		$('#user').focus();
+    	});
+    </script>
 </head>
 <body id="body">
 	<?php 

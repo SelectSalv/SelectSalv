@@ -37,8 +37,8 @@
 					<div class="form-column col-md-12">
 						<div class="form-group">
 							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-							  <label class="custom-file-label" for="customFileLang">Seleccionar Bandera</label>
+							  <input type="file" class="" id="customFileLang" lang="es">
+							  <label class="" for="customFileLang">Seleccionar Bandera</label>
 							</div>
 						</div>
 					</div>

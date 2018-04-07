@@ -6,6 +6,7 @@
     src: url(../fonts/futura1.otf);
 }
 
+
 @font-face {
     font-family: 'neutra';
     src: url(../fonts/NeutraBold.otf);
@@ -27,6 +28,17 @@
 	font-family: 'Proxima-Semibold';
 	src: url(../fonts/Proxima%20Nova/Proxima%20Nova%20Semibold.otf);
 }
+
+@font-face{
+    font-family: 'Proxima-Regular';
+    src: url(../fonts/Proxima%20Nova/Proxima%20Nova%20Regular.otf);
+}
+
+@font-face{
+    font-family: 'Proxima-Light';
+    src: url(../fonts/Proxima%20Nova/Proxima%20Nova%20Light.otf);
+}
+
 @font-face{
 	font-family: 'Circular-Book';
 	src: url(../fonts/Circular/CircularStd-Book.otf);

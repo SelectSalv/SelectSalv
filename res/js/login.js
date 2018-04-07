@@ -1,14 +1,25 @@
 $(document).ready(function() {
 	$('#btnLogin').click(function() {
-		var datos = $('#frmLogin').serialize();
-		$.ajax({
-			type: 'POST',
-			data: datos,
-			url: '../proc/procLogin.php',
-			success: function(r){
-				switch(r)
-				{
-					case '1':
+	   Datos();
+	});
+    $('body').keyup(function(e) {
+    if(e.keyCode == 13) {
+       Datos();
+    }
+    });
+});
+
+function Datos()
+{
+        var datos = $('#frmLogin').serialize();
+        $.ajax({
+            type: 'POST',
+            data: datos,
+            url: '../proc/procLogin.php',
+            success: function(r){
+                switch(r)
+                {
+                    case '1':
                         $('#title-login').html('Datos Correctos');
                         $('#c-ins-login').addClass('bg-success');
                         $('#c-ins-login').removeClass('bg-info');
@@ -22,7 +33,7 @@ $(document).ready(function() {
                         $('#btnLogin').removeClass('btn-info');
 
                         setTimeout(function() {
-	                        location.href = "dashboard.php";
+                            location.href = "dashboard.php";
                         }, 1000);
 
                         break;
@@ -58,8 +69,7 @@ $(document).ready(function() {
                         alert(r);
                         alert('error :\'v');
                         break;
-				}
-			}
-		});
-	});
-});
+                }
+            }
+        });
+}

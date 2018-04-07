@@ -191,3 +191,17 @@ footer{
     font-family: 'Proxima-Semibold';
     color: #fff;
 }
+
+.nombre-header{
+    display: inline-block;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    margin-right: 1rem;
+    line-height: inherit;
+    white-space: nowrap;
+    color: #fff;
+    font-family: 'Proxima-Regular';
+}
+.dui-header{
+    /*font-family: 'Proxima-Light';*/
+}

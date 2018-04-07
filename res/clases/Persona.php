@@ -12,6 +12,7 @@ class Persona {
 	private $dui;
 	private $nomPersona;
 	private $apePersona;
+	private $genero;
 	private $fechaNac;
 	private $fechaVenc;
 	private $profesion;
@@ -64,6 +65,16 @@ class Persona {
 	public function setApePersona($ape)
 	{
 		$this->apePersona = $ape;
+	}
+
+	# Métodos GET y SET para genero
+	public function getGenero()
+	{
+		return $this->genero;
+	}
+	public function setGenero($gen)
+	{
+		$this->genero = $gen; 
 	}
 
 	# Métodos GET y SET para fechaNac
@@ -137,34 +148,15 @@ class Persona {
 	}
 
 
-# Métodos GET y SET para estadoCivil
-	public function getEstadoCivil()
+	// MÉTODO PARA REGISTRAR DATOS DE PERSONA
+    public function registrarPersona()
 	{
-		return $this->estadoCivil;
-	}
-	public function setEstadoCivil($estado)
-	{
-		$this->estadoCivil = $estado
-	}
 
-	/*	public function registrarPersona()
-	{
-		$this->dui = $dui;
-		$this->nomPersona = $nom;
-		$this->apePersona = $ape;
-		$this->fechaNac = $fechanac;
-		$this->fechaVenc = $fechavenc;
-		$this->profesion = $prof;
-		$this->direccion = $direc;
-		$this->estadoCivil = $estado;
-		$this->estadoVotacion = $estadoVot;
-		$this->idMunicipio = $municipio;
-
-		$_query = "call p_RegPersona()";
+		$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', '".$this->genero."', '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', '".$this->estadoCivil."', '".$this->estadoVotacion."', '".$this->idMunicipio."')";
 		$resultado = Conectar->query($_query);
 
 		return $resultado;
-	}*/
+	}
 
 	// MÉTODO PARA OBTENER DATOS DE PERSONA POR SU N° DE DUI
 	public function obtenerPersona()

@@ -11,12 +11,14 @@
 	<title><?php echo $nomUsuario; ?> | Dashboard</title>
 	<?php $plantilla->Zeldas() ?>
 	<link rel="stylesheet" href="../css/grid.css">
- <!--    <script>
-    	$(document).ready(function() {
+    <script>
+   /* 	$(document).ready(function() {
     		var alt = $('.navbar').height();
     		alert(alt);
-    	});
-    </script> -->
+
+    		$('.menu').css('margin-top', alt + 'px');
+    	});*/
+    </script>
 </head>
 <body id="body">
 	<?php 

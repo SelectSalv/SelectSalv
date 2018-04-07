@@ -1,6 +1,17 @@
 $(document).ready(function() {
 	$('#btnDUI').click(function(){
-		var datos = $('#frmDui').serialize();
+		Datos();
+	});
+	$('body').keyup(function(e) {
+    if(e.keyCode == 13) {
+       Datos();
+    }
+    });
+});
+
+function Datos()
+{
+	var datos = $('#frmDui').serialize();
 
 		$.ajax({
 			type: 'POST',
@@ -23,5 +34,4 @@ $(document).ready(function() {
 				}
 			}
 		});
-	});
-});
+}

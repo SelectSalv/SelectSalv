@@ -2751,8 +2751,8 @@ tbody.collapse.show {
 
 .navbar-brand {
   display: inline-block;
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
   margin-right: 1rem;
   font-size: 1.25rem;
   line-height: inherit;
