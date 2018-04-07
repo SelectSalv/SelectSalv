@@ -24,7 +24,7 @@
 			</p>
 		</div>
 		<div class="wrap">
-			<form id="frmPersona">
+			<form id="frmPersona" action="../proc/procRegPersona.php" method="POST">
 				<div class="form-row">
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
@@ -72,11 +72,11 @@
 						   </span>
 					</div>
 						<div class="form-column col-md-6">
-						<label for="">Estado Familiar</label>
+						<label for="">Estado Civil</label>
 						   <span class="bmd-form-group is-filled">
 						   	<div class="radio">
 						   	    <label style="color:#555;">
-						   	      <input type="radio" name="estadoFamiliar" id="estadoFamiliar1" value="Casado" >
+						   	      <input type="radio" name="estadoCivil" id="estadoCivil1" value="Casado" >
 						   	      <span class="bmd-radio waves-effect waves-ripple"></span>
 						   	      Casado
 						   	    </label>
@@ -85,7 +85,7 @@
 						   <span class="bmd-form-group is-filled">
 						   	<div class="radio">
 						   	    <label style="color:#555;">
-						   	      <input type="radio" name="estadoFamiliar" id="estadoFamiliar2" value="Soltero" >
+						   	      <input type="radio" name="estadoCivil" id="estadoCivil2" value="Soltero" >
 						   	      <span class="bmd-radio waves-effect waves-ripple"></span>
 						   	      Soltero
 						   	    </label>
@@ -94,7 +94,7 @@
 						   <span class="bmd-form-group is-filled">
 						   	<div class="radio">
 						   	    <label style="color:#555;">
-						   	      <input type="radio" name="estadoFamiliar" id="estadoFamiliar3" value="Divorciado" >
+						   	      <input type="radio" name="estadoCivil" id="estadoCivil3" value="Divorciado" >
 						   	      <span class="bmd-radio waves-effect waves-ripple"></span>
 						   	      Divorciado
 						   	    </label>
@@ -103,7 +103,7 @@
 						   	   <span class="bmd-form-group is-filled">
 						   	<div class="radio">
 						   	    <label style="color:#555;">
-						   	      <input type="radio" name="estadoFamiliar" id="estadoFamiliar4" value="Viudo" >
+						   	      <input type="radio" name="estadoCivil" id="estadoCivil4" value="Viudo" >
 						   	      <span class="bmd-radio waves-effect waves-ripple"></span>
 						   	      Viudo
 						   	    </label>

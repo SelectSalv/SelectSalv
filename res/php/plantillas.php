@@ -80,19 +80,19 @@ class Plantilla{
 			<a class="" href="regPartido.php">
 				<li class="list-item align-middle">
 					<i class="menu-it-icon material-icons text-purp align-middle">flag</i>
-					Registar Partido
+					Gestionar Partidos
 				</li>
 			</a>
 			<a class="" href="regCandidato.php">
 				<li class="list-item align-middle">
 					<i class="menu-it-icon material-icons text-purp align-middle">face</i>
-					Registar Candidato
+					Gestionar Candidatos
 				</li>
 			</a>
 			<a class="" href="regPersona.php">
 				<li class="list-item align-middle">
 					<i class="menu-it-icon material-icons text-purp align-middle">account_box</i>
-					Registar Persona
+					Gestionar Personas
 				</li>
 			</a>
 		<hr>

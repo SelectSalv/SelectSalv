@@ -28,7 +28,7 @@
   <div class="banner">
     <div class="contenedor-hero-1">
       <h1 class="display-1 text-center">Vota hoy</h1>
-      <h2 class="display-4">haz valer tu opinión</h2>
+      <h2 class="display-4">haga valer su opinión</h2>
       <a href="res/php/votar.php" class="btn-centro waves-effect waves-light btn btn-raised btn-success btn-lg p-2" style="font-family: 'neutra';">Votar</a>
     </div>
   </div>

@@ -23,6 +23,7 @@ class Persona {
 
 	protected $con;
 
+
 	// MÉTODO INICIALIZADOR CLASE PERSONA
 	public function Persona()
 	{
@@ -140,7 +141,7 @@ class Persona {
 	# Métodos GET y SET para idMunicipio
 	public function getIdMunicipio()
 	{
-		return $this->IdMunicipio;
+		return $this->idMunicipio;
 	}
 	public function setIdMunicipio($id)
 	{
@@ -152,10 +153,10 @@ class Persona {
     public function registrarPersona()
 	{
 
-		$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', '".$this->genero."', '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', '".$this->estadoCivil."', '".$this->estadoVotacion."', '".$this->idMunicipio."')";
+		$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', '".$this->genero."', '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', '".$this->estadoCivil."', ".$this->idMunicipio.")";
 		$resultado = $this->con->Conectar()->query($_query);
 
-		return $resultado;
+		return $_query;
 	}
 
 	// MÉTODO PARA OBTENER DATOS DE PERSONA POR SU N° DE DUI
