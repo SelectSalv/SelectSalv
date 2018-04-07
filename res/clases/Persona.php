@@ -153,7 +153,7 @@ class Persona {
 	{
 
 		$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', '".$this->genero."', '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', '".$this->estadoCivil."', '".$this->estadoVotacion."', '".$this->idMunicipio."')";
-		$resultado = Conectar->query($_query);
+		$resultado = $this->con->Conectar()->query($_query);
 
 		return $resultado;
 	}
