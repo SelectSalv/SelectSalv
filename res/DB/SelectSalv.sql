@@ -186,7 +186,7 @@ end
 $$
 
 call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 'Soltero', 0, 1);
-call p_regPersona('98765432-1', 'Pablo Emilio', 'Escobar Gaviria', '1945-02-01', '2022-02-01', 'Traficante', 'Col. Escalón 6ta av #1', 'Divorciado', 0, 1);
+call p_regPersona('98765432-1', 'Pablo Emilio', 'Escobar Gaviria', '1945-02-01', '2022-02-01', 'Traficante', 'Col. Escalón 6ta av #1', 'Divorciado', 0, 2);
 
 #Procedimiento para devolver los datos de Persona en base a N° de DUI
 delimiter $$

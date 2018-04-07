@@ -20,6 +20,22 @@ class Plantilla{
 		}
 	}
 
+	public function compInicioSesionVotante()
+	{
+		session_start();
+		if(isset($_SESSION["duiVotante"]))
+		{
+			if(empty($_SESSION["duiVotante"]))
+			{
+				header("Location: ../../index.php");
+				
+			} 
+		} else {
+			header("Location: ../../index.php");
+			
+		}
+	}
+
 	public function HeaderBarUser()
 	{
 		echo '<nav class="navbar fixed-top navbar-dark bg-primary">

@@ -11,7 +11,15 @@ $(document).ready(function() {
 				switch(r)
 				{
 					 case '1': 
-					 	location.href = "boleta.php"; 
+					 	location.href = "boleta.php";
+					 	break;
+
+					 case '2':
+					 	alert(r);
+					 	break; 
+					 default: 
+					 	alert(r);
+					 	break;
 				}
 			}
 		});

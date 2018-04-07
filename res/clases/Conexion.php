@@ -1,14 +1,13 @@
 <?php
 
+include 'Credenciales.php';
 class Conexion{
-	private $serverName = "localhost";
-	private $dbUser     = "root";
-	private $dbPassword = "";
-	private $dbName     = "SelectSalv";
 
-	protected function Conectar()
+	protected $con;
+
+	public function Conectar()
 	{
-		$con = new mysqli($this->serverName, $this->dbUser, $this->dbPassword, $this->dbName);
+		$con = new mysqli(serverName, dbUser, dbPassword, dbName);
 
 		return $con;
 	}

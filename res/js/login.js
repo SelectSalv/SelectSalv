@@ -16,6 +16,11 @@ $(document).ready(function() {
                         $('#label-user').css("color", "rgba(76, 175, 80, 1)");
                         $('#input-pass').css("background-image", "linear-gradient(to top, rgba(76, 175, 80, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.0) 1px, transparent 1px)");
                         $('#label-pass').css("color", "rgba(76, 175, 80, 1)");
+
+
+                        $('#btnLogin').addClass('btn-success');
+                        $('#btnLogin').removeClass('btn-info');
+
                         setTimeout(function() {
 	                        location.href = "dashboard.php";
                         }, 1000);
@@ -30,9 +35,14 @@ $(document).ready(function() {
                         $('#label-user').css("color", "rgba(244, 67, 54, 1)");
                         $('#input-pass').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.0) 1px, transparent 1px)");
                         $('#label-pass').css("color", "rgba(244, 67, 54, 1)");
+                        $('#btnLogin').addClass('btn-danger');
+                        $('#btnLogin').removeClass('btn-info');
                         setTimeout(function() {
                             $('#title-login').html('Ingresar');
                             $('#c-ins-login').removeClass('bg-danger');
+
+                             $('#btnLogin').addClass('btn-info');
+                            $('#btnLogin').removeClass('btn-danger');
                         }, 1500);
                         break;
                     case '3':

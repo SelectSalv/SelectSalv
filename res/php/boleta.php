@@ -1,10 +1,16 @@
 <?php  
 	include 'plantillas.php';
 	include '../clases/Persona.php';
+	
 	$plantilla = new Plantilla();
 	$persona = new Persona();
 
-	$resultado = $persona->obtenerPersona($_COOKIE["duiVotante"]);
+	$plantilla->compInicioSesionVotante();
+
+	$dui = $_SESSION["duiVotante"];
+
+	$persona->setDui($dui);
+	$resultado = $persona->obtenerPersona();
 
 	$fila = $resultado->fetch_assoc();
 ?>

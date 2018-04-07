@@ -6,11 +6,12 @@ if(isset($_POST["dui"]))
 	{
 		$dui = $_POST["dui"];
 
-		setcookie("duiVotante", $dui, time() + (60 * 10), "/");
+		session_start();
+		$_SESSION["duiVotante"] = $dui;
 	}
 }
 
-if(!empty($_COOKIE["duiVotante"]))
+if(!empty($_SESSION["duiVotante"]))
 {
 	echo 1;
 }

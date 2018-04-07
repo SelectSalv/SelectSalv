@@ -4,10 +4,10 @@ include 'Conexion.php';
 include '../proc/crypt.php';
 
 class Usuario extends Conexion {
-	public $idUsuario;
-	public $nomUsuario;
-	public $passUsuario;
-	public $rolUsuario;
+	private $idUsuario;
+	private $nomUsuario;
+	private $passUsuario;
+	private $rolUsuario;
 
 	public function Login($nom, $pass)
 	{

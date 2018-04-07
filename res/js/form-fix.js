@@ -11,12 +11,18 @@ $(document).ready(function() {
 	$('.form-control').focus(function(event) {
 			$(this).parent().addClass('is-focused');
 	});
+
 	$('.form-control').focusout(function(event) {
-		if($(this).val() == "")
+		if($(this).val() == "" && ($(this).attr("type") != "date"))
 		{
 			$(this).parent().removeClass('is-focused');
 			$(this).parent().removeClass('is-filled');
-		} else{
+		} 
+		else if($(this).attr("type") == "date")
+		{
+			$(this).parent().removeClass('is-focused');
+		}
+		else{
 			$(this).parent().removeClass('is-focused');
 			$(this).parent().addClass('is-filled');
 		}

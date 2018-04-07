@@ -10,6 +10,7 @@
 	<meta charset="UTF-8">
 	<title><?php echo $nomUsuario; ?> | Registrar Persona </title>
 	<?php $plantilla->Zeldas() ?>
+	<script src="../js/regPersona.js"></script>
 </head>
 <body id="body">
 	<?php 
@@ -17,7 +18,7 @@
 		$plantilla->Menu();
 	?>
 	<div class="cuadro" id="c-persona">
-		<div class="cuadro-ins bg-success">
+		<div class="cuadro-ins bg-primary">
 			<p class="lead text-center">
 				Registrar Persona
 			</p>
@@ -69,15 +70,6 @@
 						   	    </label>
 						   	  </div>
 						   </span>
-						   <span class="bmd-form-group is-filled">
-						   	<div class="radio">
-						   	    <label style="color:#555;">
-						   	      <input type="radio" name="generoPersona" id="generoPersona3" value="Indefinido" >
-						   	      <span class="bmd-radio waves-effect waves-ripple"></span>
-						   	      Indefinido
-						   	    </label>
-						   	  </div>
-						   </span>
 					</div>
 						<div class="form-column col-md-6">
 						<label for="">Estado Familiar</label>
@@ -105,6 +97,15 @@
 						   	      <input type="radio" name="estadoFamiliar" id="estadoFamiliar3" value="Divorciado" >
 						   	      <span class="bmd-radio waves-effect waves-ripple"></span>
 						   	      Divorciado
+						   	    </label>
+						   	  </div>
+						   </span>
+						   	   <span class="bmd-form-group is-filled">
+						   	<div class="radio">
+						   	    <label style="color:#555;">
+						   	      <input type="radio" name="estadoFamiliar" id="estadoFamiliar4" value="Viudo" >
+						   	      <span class="bmd-radio waves-effect waves-ripple"></span>
+						   	      Viudo
 						   	    </label>
 						   	  </div>
 						   </span>
@@ -136,29 +137,13 @@
 				</div>
 
 				<div class="form-row">
-					<div class="form-column col-md-6">
-						<div class="form-group bmd-form-group is-filled">
-							<label for="departamento" class="bmd-label-floating">Departamento</label>
-							<select type="text" class="form-control" name="departamento" id="departamento">
-								<option value="-">Seleccione uno...</option>
-								<option value="Ahuachapán">Ahuachapán</option>
-								<option value="Sonsonate">Sonsonate</option>
-								<option value="Santa Ana">Santa Ana</option>
-								<option value="Chalatenango">Chalatenango</option>
-								<option value="La Libertad">La Libertad</option>
-							</select>
-						</div>
-					</div>
-					<div class="form-column col-md-6">
+					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group is-filled">
 							<label for="municipio" class="bmd-label-floating">Municipio</label>
 							<select type="text" class="form-control" name="municipio" id="municipio">
 								<option value="-">Seleccione uno...</option>
-								<option value="Santa Tecla">Santa Tecla</option>
-								<option value="San">San Salvador</option>
-								<option value="Mejicanos">Mejicanos</option>
-								<option value="Ayutuxtepeque">Ayutuxtepeque</option>
-								<option value="Concepción de Ataco">Concepción de ataco</option>
+								<option value="1">Santa Tecla</option>
+								<option value="2">San Salvador</option>
 							</select>
 						</div>
 					</div>
