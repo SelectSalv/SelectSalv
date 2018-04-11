@@ -115,7 +115,7 @@ class Plantilla{
 
 	public function Zeldas()
 	{
-		echo '	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	echo '	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 	<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
@@ -134,6 +134,8 @@ class Plantilla{
     <script src="../js/form-fix.js"></script>
     <script src="../js/animacion.js"></script>
     <script src="../js/menu.js"></script>
-    <script src="../js/barra-navegacion.js"></script>';
+    <script src="../js/barra-navegacion.js"></script>
+    <script src="../plugins/JQueryMask/jquery.mask.js"></script>
+    <script src="../js/mask-inputs.js"></script>';
 	}
 }

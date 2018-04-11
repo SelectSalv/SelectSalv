@@ -156,7 +156,7 @@ class Persona {
 		$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', '".$this->genero."', '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', '".$this->estadoCivil."', ".$this->idMunicipio.")";
 		$resultado = $this->con->Conectar()->query($_query);
 
-		return $_query;
+		return $resultado;
 	}
 
 	// MÉTODO PARA OBTENER DATOS DE PERSONA POR SU N° DE DUI

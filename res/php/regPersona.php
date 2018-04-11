@@ -17,6 +17,26 @@
 		$plantilla->HeaderBarUser(); 
 		$plantilla->Menu();
 	?>
+	<div id="contenedor-modal">
+		<div class="modal fade" id="modalRegPersona" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLongTitle">Registrar Persona</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>		
+		      <div class="modal-body">
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary waves-effect waves-" data-dismiss="modal">Cancelar</button>
+		        <button type="button" id="btnPersona" class="btnPersona btn btn-success waves-effect waves-green">Registrar</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
 	<div class="cuadro" id="c-persona">
 		<div class="cuadro-ins bg-primary">
 			<p class="lead text-center">
@@ -29,7 +49,7 @@
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
 							<label for="dui" class="bmd-label-floating">DUI</label>
-							<input type="text" class="form-control" name="dui" id="dui">
+							<input type="text" class="form-control dui " name="dui" id="dui">
 						</div>
 					</div>
 				</div>
@@ -116,13 +136,13 @@
 					<div class="form-column col-md-6">
 						<div class="form-group bmd-form-group is-filled">
 							<label for="fechaNacimiento" class="bmd-label-floating">Fecha de Nacimiento</label>
-							<input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento">
+							<input type="date" class="form-control " name="fechaNacimiento" id="fechaNacimiento">
 						</div>
 					</div>
 					<div class="form-column col-md-6">
 						<div class="form-group bmd-form-group is-filled">
 							<label for="fechaVencimiento" class="bmd-label-floating">Fecha de Vencimiento</label>
-							<input type="date" class="form-control" name="fechaVencimiento" id="fechaVencimiento">
+							<input type="date" class="form-control " name="fechaVencimiento" id="fechaVencimiento">
 						</div>
 					</div>
 				</div>
@@ -140,7 +160,7 @@
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group is-filled">
 							<label for="municipio" class="bmd-label-floating">Municipio</label>
-							<select type="text" class="form-control" name="municipio" id="municipio">
+							<select type="text" class="form-control " name="municipio" id="municipio">
 								<option value="-">Seleccione uno...</option>
 								<option value="1">Santa Tecla</option>
 								<option value="2">San Salvador</option>
@@ -153,7 +173,7 @@
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
 							<label for="direccion" class="bmd-label-floating">Dirección</label>
-							<input type="text" class="form-control" name="direccion" id="direccion">
+							<input type="text" class="form-control " name="direccion" id="direccion">
 						</div>
 					</div>
 				</div>
@@ -161,7 +181,7 @@
 				<div class="form-row">
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
-							<button type="button" id="btnPersona" name="btnPersona" class="waves-effect waves-light btn btn-raised btn-success">Registrar</button>
+							<button type="button" data-toggle="modal" data-target="#modalRegPersona" id="btnPersonaFrm" name="btnPersonaFrm" class="waves-effect waves-light btn btn-raised btn-success">Registrar</button>
 						</div>
 					</div>
 				</div>

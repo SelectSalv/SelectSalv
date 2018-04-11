@@ -38,7 +38,7 @@
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
 							<label for="dui" class="bmd-label-floating">DUI</label>
-							<input type="text" class="form-control" name="dui" id="dui">
+							<input type="text" class="form-control dui" name="dui" id="dui">
 						</div>
 					</div>
 				</div>
