@@ -7,9 +7,9 @@ class Conexion{
 
 	public function Conectar()
 	{
-		$con = new mysqli(serverName, dbUser, dbPassword, dbName);
+		$this->con = new mysqli(serverName, dbUser, dbPassword, dbName);
 
-		return $con;
+		return $this->con;
 	}
 
 	public function Desconectar()
