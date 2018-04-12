@@ -16,7 +16,7 @@ class Partido
 	{
 		return $this->nomPartido;
 	}
-	public function setNombrePartido()
+	public function setNombrePartido($nomPartido)
 	{
 		$this->nomPartido=$nomPartido;
 	}
