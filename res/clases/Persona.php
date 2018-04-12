@@ -1,9 +1,10 @@
 <?php 
 include 'Conexion.php'; 
 
-/**
-* Clase Persona
-*/
+	/**
+	* Nombre de la Clase: Persona
+	* Autor: Jorge Sidgo
+	*/
 
 class Persona {
 

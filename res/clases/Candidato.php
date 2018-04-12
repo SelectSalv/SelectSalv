@@ -1,6 +1,7 @@
 <?php 
 require_once "Partido.php";
 require_once "Persona.php";
+include 'Conexion.php';
 	
 	/**
 	* Nombre de la Clase: Candidato
@@ -13,12 +14,18 @@ require_once "Persona.php";
 	    private $idTipoCandidato;
 	    private $idPersona;
 
+	    protected $con;
+
 	    # Método Inicializador de La clase
 	    public function Candidato()
 	    {
 	    	$partido = new Partido();
 	    	$persona = new Persona();
+
+	    	$this->con = new Conexion();
 	    }
+
+	    // REFACTORIZACIÓN DE PROPIEDADES CLASE CANDIDATO
 
 	    # Métodos GET y SET para idCandidato
 	    public function getIdCandidato()

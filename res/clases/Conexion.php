@@ -1,5 +1,10 @@
 <?php
 
+	/**
+	* Nombre de la Clase: Conexion
+	* Autor: Jorge Sidgo
+	*/
+
 include 'Credenciales.php';
 class Conexion{
 
