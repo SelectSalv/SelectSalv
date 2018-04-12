@@ -41,11 +41,11 @@ require_once "Persona.php";
 		}
 
 		# Métodos GET y SET para idTipoCandidato
-		public function getIdTipoCandito()
+		public function getIdTipoCandidato()
 		{
 			return $this->idTipoCandidato;
 		}
-		public function setIdTipoCandito($id)
+		public function setIdTipoCandidato($id)
 		{
 			$this->idTipoCandidato = $id;
 		}

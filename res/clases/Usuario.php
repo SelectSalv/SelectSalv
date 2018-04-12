@@ -9,6 +9,16 @@ class Usuario extends Conexion {
 	private $passUsuario;
 	private $rolUsuario;
 
+	# Métodos GET y SET para idUsuario
+	public function getIdUsuario()
+	{
+		return $this->idUsuario;
+	}
+
+	# Métodos GET y SET para nomUsuario
+	
+
+	# MÉTODO PARA LOGUEAR USUARIO
 	public function Login($nom, $pass)
 	{
 		$enc = new Enc();
