@@ -35,11 +35,11 @@ function Datos()
 
 function modalRegPersona()
 {
-	var datos = $('#frmPersona').serializeArray
-	var val = validar();
+	var datos = $('#frmPersona').serializeArray();
+	// var val = validar();
 
-	if(val == 0)
-	{
+	// if(val == 0)
+	// {
 
 		$.each(datos, function(i, campo){  
 			var nombreCampo = '';
@@ -74,10 +74,10 @@ function modalRegPersona()
 
 			$(".modal-body").append( "<b>"+ nombreCampo + ":</b> " + campo.value + "<br>");  
 		}); 
-	}
-	else{
-		$('.modal-body').html(`Campos Vacios papu >:v`);
-	}
+	// }
+	// else{
+	// 	$('.modal-body').html(`Campos Vacios papu >:v`);
+	// }
 
 
 }

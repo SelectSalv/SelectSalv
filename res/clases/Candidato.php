@@ -11,19 +11,21 @@ require_once "Persona.php";
 		private $idPartido;
 	    private $idTipoCandidato;
 	    private $idPersona;
-	    function getidCandidato()
+
+	    
+	    public function getidCandidato()
 	    {
 	    	return $this->idCandidato;
 	    }
-	    function getidPartido()
+	    public function getidPartido()
 		{
 			return $this->idPartido;
 		}
-		function getidTipoCandito()
+		public function getidTipoCandito()
 		{
 			return $this->idTipoCandidato;
 		}
-		function getidPersona()
+		public function getidPersona()
 		{
 			return $this->idPersona;
 		}
