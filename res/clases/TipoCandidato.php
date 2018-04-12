@@ -2,6 +2,7 @@
 
 /**
 * Nombre de la clase: TipoCandidato
+* Autor : Carlos Campos
 */
 class TipoCandidato
 {
