@@ -1,7 +1,8 @@
 <?php 
 
 /**
-* Municipio Class
+* Nombre de la Clase: Municipio
+* Autor: Carlos Campos
 */
 class Municipio
 {
@@ -37,6 +38,25 @@ class Municipio
            $this->idDepartamento=$idDepartamento;
     }
 
+
+// METODOS
+    // Agregar municipio
+    function AgregarMunicipio()
+    {
+
+    }
+
+    //Modificar Municipio
+    function ModificarMunicipio()
+    {
+
+
+    }
+    //Eliminar Municipio
+    function EliminarMunicipio()
+    {
+
+    }
 
 
 }
