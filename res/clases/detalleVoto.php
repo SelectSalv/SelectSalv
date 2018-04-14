@@ -4,8 +4,9 @@ require_once "Partido.php";
 require_once "JRV.php";
 
 /**
-* clase detalle de voto
-*/
+    * Nombre de la Clase: DetalleVoto
+    * Autor: Michelle Urbina
+    */
 class DetalleVoto
 {
 	private $idDetalleVoto;
@@ -13,22 +14,50 @@ class DetalleVoto
     private $idPartido;
     private $idJrv;
 
-    function getidDetalleVoto()
+    // MÉTODO INICIALIZADOR DE LA CLASE DETALLEVOTO
+    public function DetalleVoto()
+    {
+
+    }
+
+    // REFACTORIZACIÓN DE PROPIEDADES CLASE DETALLEVOTO
+
+    # Método GET para idDetalleVoto
+    public function getIdDetalleVoto()
     {
     	return $this->idDetalleVoto;
     }
-    function getidPersona()
+
+    # Métodos GET y SET para IdPersona
+    public function getIdPersona()
     {
     	return $this->idPersona;
     }
-    function getidPartido()
+    public function setIdPersona($id)
+    {
+        $this->idPersona = $id;
+    }
+
+
+    # Métodos GET y SET para idPartido
+    public function getIdPartido()
     {
     	return $this->idPartido;
     }
-    function getidJRV()
+    public function setIdPartido($id)
+    {
+        $this->idPartido = $id;
+    }
+
+    # Métodos GET y SET para idJrv
+    public function getIdJrv()
 	{
 		return $this->idJrv;
 	}
+    public function setIdJrv($id)
+    {
+        $this->idJrv = $id;
+    }
 }
 
  ?>

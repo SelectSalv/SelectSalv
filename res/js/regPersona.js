@@ -70,6 +70,12 @@ function modalRegPersona()
 				case 'direccion':
 					nombreCampo = 'Dirección';
 					break;
+				case 'generoPersona':
+					nombreCampo = 'Género';
+					break;
+				case 'estadoCivil':
+					nombreCampo = 'Estado Civil';
+					break;
 			}
 
 			$(".modal-body").append( "<b>"+ nombreCampo + ":</b> " + campo.value + "<br>");  

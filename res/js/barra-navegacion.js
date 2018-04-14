@@ -4,6 +4,10 @@ $(document).ready(function(){
 	});
 
 	$('#flecha-atras-votar').click(function(){
-		location.href= "../../index.php";
+		location.href = "../../index.php";
+	});
+
+	$('#flecha-atras').click(function() {
+		window.history.back();
 	});
 });

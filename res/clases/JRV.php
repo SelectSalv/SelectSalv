@@ -1,22 +1,24 @@
 <?php 
+	
 	/**
-	* clase de la junta receptora de votos
-	*/
+    * Nombre de la Clase: Jrv
+    * Autor: Michelle Urbina
+    */
 	class JRV
 	{
 		private $idJrv; 
     	private $numJrv; 
     	private $idCentro;
 		
-		public function getidJRV()
+		public function getIdJrv()
 		{
 			return $this->idJrv;
 		}
-		public function getnumJRV()
+		public function getNumJrv()
 		{
 			return $this->numJrv;
 		}
-		public function getidCentro()
+		public function getIdCentro()
 		{
 			return $this->idCentro;
 		}

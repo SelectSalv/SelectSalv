@@ -38,9 +38,9 @@ nav {
     2px 2px 1px rgba(0, 0, 0, 0.05);
 }
 #body {
-
     width: 100%;
     background: #eee;
+    overflow: hidden;
 }
 
 .right {

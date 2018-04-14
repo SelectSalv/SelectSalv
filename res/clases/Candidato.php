@@ -16,7 +16,7 @@ include 'Conexion.php';
 
 	    protected $con;
 
-	    # Método Inicializador de La clase
+	    //MÉTODO INICIALIZADOR CLASE CANDIDATO
 	    public function Candidato()
 	    {
 	    	$partido = new Partido();
@@ -31,10 +31,6 @@ include 'Conexion.php';
 	    public function getIdCandidato()
 	    {
 	    	return $this->idCandidato;
-	    }
-	    public function setIdCandidato($id)
-	    {
-	    	$this->idCandidato = $id;
 	    }
 
 	    # Métodos GET y SET para idPartido

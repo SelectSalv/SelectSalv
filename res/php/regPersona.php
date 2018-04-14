@@ -1,4 +1,4 @@
-<?php  
+<?php
 	include 'plantillas.php';
 	$plantilla = new Plantilla();
 	$plantilla->compInicioSesion();
