@@ -37,12 +37,14 @@ create table Persona(
     idMunicipio int not null
 );
 
-select * from persona
+
 
 create table Departamento(
 	idDepartamento int auto_increment unique not null primary key,
     nomDepartamento varchar(150)
 );
+
+
 
 insert into Departamento(nomDepartamento) values('La Libertad');
 insert into Departamento(nomDepartamento) values('San Salvador');
@@ -133,7 +135,6 @@ create view v_Persona as (
     where p.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento
 );
 
-select * from v_Persona
 
 # PROCEDIMIENTOS ALMACENADOS
 
@@ -186,10 +187,7 @@ begin
 end
 $$
 
-call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 'Masculino', '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 'Soltero', 1);
-call p_regPersona('98765432-1', 'Pablo Emilio', 'Escobar Gaviria', 'Masculino', '1945-02-01', '2022-02-01', 'Traficante', 'Col. Escalón 6ta av #1', 'Divorciado', 2);
 
-call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 'Masculino', '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 'Soltero', 1);
 
 #Procedimiento para devolver los datos de Persona en base a N° de DUI
 delimiter $$
@@ -200,5 +198,10 @@ begin
 	select * from v_Persona where dui = ndui;
 end
 $$
+
+call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 'Masculino', '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 'Soltero', 1);
+call p_regPersona('98765432-1', 'Pablo Emilio', 'Escobar Gaviria', 'Masculino', '1945-02-01', '2022-02-01', 'Traficante', 'Col. Escalón 6ta av #1', 'Divorciado', 2);
+
+call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 'Masculino', '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 'Soltero', 1);
 
 call p_obtenerPersona('05878895-3');
