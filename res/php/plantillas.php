@@ -115,8 +115,7 @@ class Plantilla{
 
 	public function Zeldas()
 	{
-	echo '	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+	echo '<link rel="stylesheet" href="../plugins/Material-Icons/material-icons.css">
 	<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
 	<link rel="stylesheet" href="../plugins/BootstrapMD/BootstrapMD.css">

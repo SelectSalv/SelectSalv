@@ -21,12 +21,35 @@ function Datos()
 			{
 				switch(r)
 				{
-					case '1':
-						alert('simon');
+					case 'registrado':
+						$('.modal-title').html(``);
+						$('.modal-body').html(`Persona Registrada Exitosamente`);
+						$('.btnPersona').hide();
+						$('#btnCancelar').html('Aceptar');
+						$('#btnCancelar').addClass('btn-success');
+						$('#btnCancelar').click(function(){
+							location.reload();
+						});			
 						break;
 
-					case '0':
-						alert('nel prro');
+					case 'error al registrar':
+						$('.modal-title').html(``);
+						$('.modal-body').html(`Ocurrió un error al registrar`);
+						$('.btnPersona').hide();
+						$('#btnCancelar').html('Aceptar');
+						$('#btnCancelar').addClass('btn-danger');
+						break;
+
+					case 'dui registrado':
+						$('.modal-title').html(``);
+						$('.modal-body').html(`Ya existe una persona registrada con este N° de DUI`);
+						$('.btnPersona').hide();
+						$('#btnCancelar').html('Aceptar');
+						$('#btnCancelar').addClass('btn-danger');
+						break;
+
+					default: 
+						alert(r);
 						break;
 				}
 			}
@@ -36,10 +59,11 @@ function Datos()
 function modalRegPersona()
 {
 	var datos = $('#frmPersona').serializeArray();
-	// var val = validar();
+	var val = validar();
 
-	// if(val == 0)
-	// {
+	if(val == 0)
+	{
+		$(".modal-body").html("");
 
 		$.each(datos, function(i, campo){  
 			var nombreCampo = '';
@@ -77,14 +101,20 @@ function modalRegPersona()
 					nombreCampo = 'Estado Civil';
 					break;
 			}
-
+			$('.modal-title').html(`Registrar Persona`);
+			$('.btnPersona').show();
+			$('#btnCancelar').html('Cancelar');
+			$('#btnCancelar').removeClass('btn-danger');
 			$(".modal-body").append( "<b>"+ nombreCampo + ":</b> " + campo.value + "<br>");  
 		}); 
-	// }
-	// else{
-	// 	$('.modal-body').html(`Campos Vacios papu >:v`);
-	// }
-
+	}
+	else{
+		$('.modal-title').html(``);
+		$('.modal-body').html(`Complete todos los campos`);
+		$('.btnPersona').hide();
+		$('#btnCancelar').html('Aceptar');
+		$('#btnCancelar').addClass('btn-danger');
+	}
 
 }
 
@@ -94,7 +124,7 @@ function validar()
 	$('.requerido').each(function (){
 		var valor = $(this).val();
 
-		if(valor == ""){
+		if((valor == "") || (valor == "-")){
 			num++;	
 		}
 

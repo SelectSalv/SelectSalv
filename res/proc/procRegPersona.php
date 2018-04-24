@@ -19,13 +19,7 @@ if(isset($_POST["dui"]))
 		$persona->setDireccion($_POST["direccion"]);
 		$resultado =  $persona->registrarPersona();	
 
-		if(!$resultado)
-		{
-			echo 0;
-		}
-		else{
-			echo 1;
-		}
+		echo $resultado;
 	}
 	else{
 		

@@ -30,7 +30,7 @@
 		      <div class="modal-body">
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary waves-effect waves-" data-dismiss="modal">Cancelar</button>
+		        <button type="button" id="btnCancelar" class="btn btn-secondary waves-effect waves-" data-dismiss="modal">Cancelar</button>
 		        <button type="button" id="btnPersona" class="btnPersona btn btn-success waves-effect waves-green">Registrar</button>
 		      </div>
 		    </div>
@@ -49,7 +49,7 @@
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
 							<label for="dui" class="bmd-label-floating">DUI</label>
-							<input type="text" class="form-control dui " name="dui" id="dui">
+							<input type="text" class="form-control dui  requerido" name="dui" id="dui">
 						</div>
 					</div>
 				</div>
@@ -58,13 +58,13 @@
 					<div class="form-column col-md-6">
 						<div class="form-group bmd-form-group">
 							<label for="nomPersona" class="bmd-label-floating">Nombres</label>
-							<input type="text" class="form-control" name="nomPersona" id="nomPersona">
+							<input type="text" class="form-control requerido" name="nomPersona" id="nomPersona">
 						</div>
 					</div>
 					<div class="form-column col-md-6">
 						<div class="form-group bmd-form-group">
 							<label for="apellidosPersona" class="bmd-label-floating">Apellidos</label>
-							<input type="text" class="form-control" name="apellidosPersona" id="apellidosPersona">
+							<input type="text" class="form-control requerido" name="apellidosPersona" id="apellidosPersona">
 						</div>
 					</div>
 				</div>
@@ -136,13 +136,13 @@
 					<div class="form-column col-md-6">
 						<div class="form-group bmd-form-group is-filled">
 							<label for="fechaNacimiento" class="bmd-label-floating">Fecha de Nacimiento</label>
-							<input type="date" class="form-control " name="fechaNacimiento" id="fechaNacimiento">
+							<input type="date" class="form-control requerido" name="fechaNacimiento" id="fechaNacimiento">
 						</div>
 					</div>
 					<div class="form-column col-md-6">
 						<div class="form-group bmd-form-group is-filled">
 							<label for="fechaVencimiento" class="bmd-label-floating">Fecha de Vencimiento</label>
-							<input type="date" class="form-control " name="fechaVencimiento" id="fechaVencimiento">
+							<input type="date" class="form-control requerido" name="fechaVencimiento" id="fechaVencimiento">
 						</div>
 					</div>
 				</div>
@@ -151,7 +151,7 @@
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
 							<label for="profesion" class="bmd-label-floating">Profesión</label>
-							<input type="text" class="form-control" name="profesion" id="profesion">
+							<input type="text" class="form-control requerido" name="profesion" id="profesion">
 						</div>
 					</div>
 				</div>
@@ -160,7 +160,7 @@
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group is-filled">
 							<label for="municipio" class="bmd-label-floating">Municipio</label>
-							<select type="text" class="form-control " name="municipio" id="municipio">
+							<select type="text" class="form-control requerido" name="municipio" id="municipio">
 								<option value="-">Seleccione uno...</option>
 								<option value="1">Santa Tecla</option>
 								<option value="2">San Salvador</option>
@@ -173,7 +173,7 @@
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
 							<label for="direccion" class="bmd-label-floating">Dirección</label>
-							<input type="text" class="form-control " name="direccion" id="direccion">
+							<input type="text" class="form-control requerido" name="direccion" id="direccion">
 						</div>
 					</div>
 				</div>
