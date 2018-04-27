@@ -38,7 +38,8 @@
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
 							<label for="dui" class="bmd-label-floating">DUI</label>
-							<input type="text" class="form-control dui" name="dui" id="dui">
+							<input type="text" class="form-control dui red-tooltip" name="dui" id="dui">
+							<span class="bmd-help">El guión será agregado automáticamente</span>
 						</div>
 					</div>
 				</div>

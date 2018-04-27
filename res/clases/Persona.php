@@ -150,14 +150,53 @@ class Persona {
 	}
 
 
+	// MÉTODO PARA COMPROBAR LA EXISTENCIA DE UN N° DE DUI
+
+	public function compDui()
+	{
+		$_query = "select * from persona where dui = '".$this->dui."'";
+
+		$resultado = $this->con->Conectar()->query($_query);
+
+		if($resultado->num_rows == 0)
+		{
+			$respuesta = "disponible";
+		} else
+		{
+			$respuesta = "usuario registrado";
+		}
+
+		return $respuesta;
+	}
+
 	// MÉTODO PARA REGISTRAR DATOS DE PERSONA
     public function registrarPersona()
 	{
 
-		$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', '".$this->genero."', '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', '".$this->estadoCivil."', ".$this->idMunicipio.")";
+		$_query = "select * from persona where dui = '".$this->dui."'";
+
 		$resultado = $this->con->Conectar()->query($_query);
 
-		return $resultado;
+		if($resultado->num_rows == 0)
+		{
+			$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', '".$this->genero."', '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', '".$this->estadoCivil."', ".$this->idMunicipio.")";
+				$resultado = $this->con->Conectar()->query($_query);
+
+				if($resultado)
+				{
+					$respuesta = "registrado";
+				}
+				else{
+					$respuesta = "error al registrar";
+				}
+
+		} elseif($resultado->num_rows > 0){
+
+			$respuesta = "dui registrado";
+
+		}
+
+		return $respuesta;
 	}
 
 	// MÉTODO PARA OBTENER DATOS DE PERSONA POR SU N° DE DUI

@@ -36,16 +36,19 @@
   <div class="hero-2 parallax">
       <div class="contenedor-hero-flex">
          <div>
-           <h1 class="display-2 text-center">La importancia del voto:</h1>
+           <h4 class="display-4 text-center">Una papeleta de voto es más fuerte que una bala de fusil</h4>
            <hr class="hr-titulo">
+           <p class="blockquote-footer display-4"><cite title="Source Title display-4">Abraham Lincoln</cite></p>
          </div>
       </div>
   </div>
+
   <div class="hero-3 parallax">
       <div class="contenedor-hero-flex">
          <div>
-           <h1 class="display-2 text-center">Democracia</h1>
+           <h4 class="display-4 text-center">El papel de un ciudadano en la democracia, no acaba con el voto</h4>
            <hr class="hr-titulo">
+           <p class="blockquote-footer display-4"><cite title="Source Title display-4">Barack Obama</cite></p>
          <!--   <h6>Manifestación de la opinión, del parecer o de la voluntad de cada una de las personas consultadas para aprobar o rechazar una medida o, en unas elecciones, para elegir a una persona o partido.</h6> -->
          </div>
       </div>

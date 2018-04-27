@@ -17,39 +17,31 @@
 		$plantilla->HeaderBarUser(); 
 		$plantilla->Menu();
 	?>
-	<div id="contenedor-modal">
-		<div class="modal fade" id="modalRegPersona" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-		  <div class="modal-dialog modal-dialog-centered" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLongTitle">Registrar Persona</h5>
+	<!-- modal principal -->
+
+	<div class="modal fade" id="modalFrmPersona" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header  bg-primary">
+		        <div class="cuadro-ins-modal bg-primary">
+					<p class="lead text-center">
+						Registrar Persona
+					</p>
+				</div>
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
-		      </div>		
-		      <div class="modal-body">
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary waves-effect waves-" data-dismiss="modal">Cancelar</button>
-		        <button type="button" id="btnPersona" class="btnPersona btn btn-success waves-effect waves-green">Registrar</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-	</div>
-	<div class="cuadro" id="c-persona">
-		<div class="cuadro-ins bg-primary">
-			<p class="lead text-center">
-				Registrar Persona
-			</p>
-		</div>
-		<div class="wrap">
+	      </div>
+	      <div class="modal-body">
+	        
 			<form id="frmPersona" action="../proc/procRegPersona.php" method="POST">
 				<div class="form-row">
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
 							<label for="dui" class="bmd-label-floating">DUI</label>
-							<input type="text" class="form-control dui " name="dui" id="dui">
+							<input type="text" class="form-control dui  requerido" name="dui" id="dui">
+							<span id="ayudaDui" class="bmd-help">El guión será agregado automáticamente</span>
+							<div id="mensajeDui" class="invalid-feedback">Ya se registró este N° de DUI</div>
 						</div>
 					</div>
 				</div>
@@ -58,13 +50,13 @@
 					<div class="form-column col-md-6">
 						<div class="form-group bmd-form-group">
 							<label for="nomPersona" class="bmd-label-floating">Nombres</label>
-							<input type="text" class="form-control" name="nomPersona" id="nomPersona">
+							<input type="text" class="form-control requerido" name="nomPersona" id="nomPersona">
 						</div>
 					</div>
 					<div class="form-column col-md-6">
 						<div class="form-group bmd-form-group">
 							<label for="apellidosPersona" class="bmd-label-floating">Apellidos</label>
-							<input type="text" class="form-control" name="apellidosPersona" id="apellidosPersona">
+							<input type="text" class="form-control requerido" name="apellidosPersona" id="apellidosPersona">
 						</div>
 					</div>
 				</div>
@@ -136,13 +128,13 @@
 					<div class="form-column col-md-6">
 						<div class="form-group bmd-form-group is-filled">
 							<label for="fechaNacimiento" class="bmd-label-floating">Fecha de Nacimiento</label>
-							<input type="date" class="form-control " name="fechaNacimiento" id="fechaNacimiento">
+							<input type="date" class="form-control requerido" name="fechaNacimiento" id="fechaNacimiento">
 						</div>
 					</div>
 					<div class="form-column col-md-6">
 						<div class="form-group bmd-form-group is-filled">
 							<label for="fechaVencimiento" class="bmd-label-floating">Fecha de Vencimiento</label>
-							<input type="date" class="form-control " name="fechaVencimiento" id="fechaVencimiento">
+							<input type="date" class="form-control requerido" name="fechaVencimiento" id="fechaVencimiento">
 						</div>
 					</div>
 				</div>
@@ -151,7 +143,7 @@
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
 							<label for="profesion" class="bmd-label-floating">Profesión</label>
-							<input type="text" class="form-control" name="profesion" id="profesion">
+							<input type="text" class="form-control requerido" name="profesion" id="profesion">
 						</div>
 					</div>
 				</div>
@@ -160,7 +152,7 @@
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group is-filled">
 							<label for="municipio" class="bmd-label-floating">Municipio</label>
-							<select type="text" class="form-control " name="municipio" id="municipio">
+							<select type="text" class="form-control requerido" name="municipio" id="municipio">
 								<option value="-">Seleccione uno...</option>
 								<option value="1">Santa Tecla</option>
 								<option value="2">San Salvador</option>
@@ -173,20 +165,103 @@
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
 							<label for="direccion" class="bmd-label-floating">Dirección</label>
-							<input type="text" class="form-control " name="direccion" id="direccion">
-						</div>
-					</div>
-				</div>
-
-				<div class="form-row">
-					<div class="form-column col-md-12">
-						<div class="form-group bmd-form-group">
-							<button type="button" data-toggle="modal" data-target="#modalRegPersona" id="btnPersonaFrm" name="btnPersonaFrm" class="waves-effect waves-light btn btn-raised btn-success">Registrar</button>
+							<input type="text" class="form-control requerido" name="direccion" id="direccion">
 						</div>
 					</div>
 				</div>
 			</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary waves-effect waves-ripple" data-dismiss="modal">Cancelar</button>
+	       <button type="button" data-toggle="modal" data-target="#modalRegPersona" id="btnPersonaFrm" name="btnPersonaFrm" class="waves-effect waves-ripple waves-green btn btn-success">Registrar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- modal secundario -->
+	<div id="contenedor-modal">
+		<div class="modal fade" id="modalRegPersona" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="modal-title-sec">Registrar Persona</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>		
+		      <div id="modal-body-sec" class="modal-body">
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" id="btnCancelar" class="btn btn-secondary waves-effect waves-ripple" data-dismiss="modal">Cancelar</button>
+		        <button type="button" id="btnPersona" class="btnPersona btn btn-success waves-effect  waves-ripple waves-green">Registrar</button>
+		      </div>
+		    </div>
+		  </div>
 		</div>
 	</div>
+
+	<!-- modal buscar -->
+	<div id="contenedor-modal">
+		<div class="modal fade" id="modalBuscar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="modal-title-sec">Buscar</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>		
+		      <div id="modal-body-buscar" class="modal-body">
+		      	<form action="" id="frmBuscar">
+		      		<div class="form-row">
+					<div class="form-column col-md-12">
+						<div class="form-group bmd-form-group">
+							<label for="buscar" class="bmd-label-floating">Buscar</label>
+							<input type="text" class="form-control" name="buscar" id="buscar">
+						</div>
+					</div>
+				</div>
+		      	</form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" id="btnBuscar" class="btn btn-primary waves-effect  waves-ripple waves-teal"><i class="material-icons align-middle">search</i></button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+
+<div class="contenedor">
+    <div class="barra-titulo">
+        <p class="texto-barra-titulo">
+            Padrón Electoral
+        </p>
+    </div>
+    <div class="barra-principal">
+        <button type="button" style="margin-right: 10px;" class="waves-effect waves-light btn-raised btn btn-primary ml-auto p2" data-toggle="modal" data-target="#modalFrmPersona">
+		 Registrar Persona
+		</button>
+		<button type="button" class="waves-effect waves-light btn-raised btn btn-secondary p2" data-toggle="modal" data-target="#modalBuscar">
+		 Buscar
+		</button>
+    </div>
+	<hr>
+	<table class="mdl-data-table" cellspacing="1" width="100%" id="tablePadron">
+	<thead>
+		<th>N° DUI</th>
+		<th>Apellidos</th>
+		<th>Nombres</th>
+		<th>JRV</th>
+		<th>Acciones</th>
+	</thead>
+	<tbody>
+		
+	</tbody>
+</table>
+</div>
+
+
+
 </body>
 </html>

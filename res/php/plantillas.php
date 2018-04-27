@@ -78,34 +78,40 @@ class Plantilla{
 		<p class="titulo-menu">Menú</p>
 		<hr>
 			<a class="" href="regPartido.php">
-				<li class="list-item align-middle">
+				<li class="list-item align-middle waves-effect waves-ripple waves-light">
 					<i class="menu-it-icon material-icons text-purp align-middle">flag</i>
 					Gestionar Partidos
 				</li>
 			</a>
 			<a class="" href="regCandidato.php">
-				<li class="list-item align-middle">
+				<li class="list-item align-middle waves-effect waves-ripple waves-light">
 					<i class="menu-it-icon material-icons text-purp align-middle">face</i>
 					Gestionar Candidatos
 				</li>
 			</a>
 			<a class="" href="regPersona.php">
-				<li class="list-item align-middle">
+				<li class="list-item align-middle waves-effect waves-ripple waves-light">
 					<i class="menu-it-icon material-icons text-purp align-middle">account_box</i>
-					Gestionar Personas
+					Gestionar Padrón
 				</li>
 			</a>
 		<hr>
 			<a class="" href="dashboard.php">
-				<li class="list-item align-middle">
+				<li class="list-item align-middle waves-effect waves-ripple waves-light">
 					<i class="menu-it-icon material-icons text-purp align-middle">poll</i>
 					Ver Resultados
 				</li>
 			</a>
 			<a class="" href="verVotantes.php">
-				<li class="list-item align-middle">
+				<li class="list-item align-middle waves-effect waves-ripple waves-light">
 					<i class="menu-it-icon material-icons text-purp align-middle">people</i>
 					Ver Votantes
+				</li>
+			</a>
+			<a class="" href="verVotantes.php">
+				<li class="list-item align-middle waves-effect waves-ripple waves-light">
+					<i class="menu-it-icon material-icons text-purp align-middle">recent_actors</i>
+					Ver Movimientos
 				</li>
 			</a>
 		<hr>
@@ -115,8 +121,7 @@ class Plantilla{
 
 	public function Zeldas()
 	{
-	echo '	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+	echo '<link rel="stylesheet" href="../plugins/Material-Icons/material-icons.css">
 	<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
 	<link rel="stylesheet" href="../plugins/BootstrapMD/BootstrapMD.css">
@@ -130,12 +135,15 @@ class Plantilla{
 	<script src="../plugins/popper.js"></script>
     <script src="../plugins/BootstrapMD/BootstrapMD.min.js"></script>
     <script src="../plugins/BootstrapMD/materialize.js"></script>
+    <script src="../plugins/dataTable/jquery.dataTables.min.js"></script>
+ 	<script src="../plugins/dataTable/dataTables.material.min.js"></script>
     <script src="../js/fondo.js"></script>
     <script src="../js/form-fix.js"></script>
     <script src="../js/animacion.js"></script>
     <script src="../js/menu.js"></script>
     <script src="../js/barra-navegacion.js"></script>
     <script src="../plugins/JQueryMask/jquery.mask.js"></script>
-    <script src="../js/mask-inputs.js"></script>';
+    <script src="../js/mask-inputs.js"></script>
+    <script src="../js/dataTables.js"></script>';
 	}
 }

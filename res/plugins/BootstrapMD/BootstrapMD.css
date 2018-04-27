@@ -1527,12 +1527,12 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .was-validated .form-control:invalid, .was-validated .custom-file-control:invalid, .form-control.is-invalid, .is-invalid.custom-file-control, .was-validated
 .custom-select:invalid,
 .custom-select.is-invalid {
-  border-color: #f44336; }
+  border-color: none; }
   .was-validated .form-control:invalid:focus, .was-validated .custom-file-control:invalid:focus, .form-control.is-invalid:focus, .is-invalid.custom-file-control:focus, .was-validated
   .custom-select:invalid:focus,
   .custom-select.is-invalid:focus {
-    border-color: #f44336;
-    box-shadow: 0 0 0 0.2rem rgba(244, 67, 54, 0.25); }
+    border-color: none;
+    box-shadow: none }
   .was-validated .form-control:invalid ~ .invalid-feedback, .was-validated .custom-file-control:invalid ~ .invalid-feedback,
   .was-validated .form-control:invalid ~ .invalid-tooltip,
   .was-validated .custom-file-control:invalid ~ .invalid-tooltip, .form-control.is-invalid ~ .invalid-feedback, .is-invalid.custom-file-control ~ .invalid-feedback,
