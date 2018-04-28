@@ -1,0 +1,71 @@
+#c-frm {
+    width: 600px;
+    height: 525px;
+    position: absolute;
+    top: 40px;
+    bottom: 0;
+}
+#c-persona {
+    width: 600px;
+    height: 820px;
+    position: relative;
+    top: 70px;
+    margin-bottom: 25px;
+}
+#c-candidato {
+    width: 425px;
+    height: 425px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+#c-partido {
+    width: 400px;
+    height: 325px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+#c-calc {
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+#c-usuario{
+    width: 600px;
+    height: 490px;
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+}
+#c-resultado{
+     width: 600px;
+    height: 490px;
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+}
+#c-dash{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 800px;
+    height: 200px;
+}
+#c-login{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 400px;
+    height: 325px;
+}
+
+#c-dui{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    width: 400px;
+    height: 250px;
+}
