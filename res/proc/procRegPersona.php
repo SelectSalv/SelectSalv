@@ -12,6 +12,7 @@ if(isset($_POST["tipo"]))
 
 		echo $resultado;
 	}
+
 }
 else{
 	if(isset($_POST["dui"]))

@@ -33,7 +33,24 @@
 		        </button>
 	      </div>
 	      <div class="modal-body">
-	        
+		      </div>		
+		      <div class="modal-body">
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" id="btnCancelar" class="btn btn-secondary waves-effect waves-" data-dismiss="modal">Cancelar</button>
+		        <button type="button" id="btnPersona" class="btnPersona btn btn-success waves-effect waves-green">Registrar</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+	<div class="cuadro" id="c-persona">
+		<div class="cuadro-ins bg-primary">
+			<p class="lead text-center">
+				Registrar Persona
+			</p>
+		</div>
+		<div class="wrap">
 			<form id="frmPersona" action="../proc/procRegPersona.php" method="POST">
 				<div class="form-row">
 					<div class="form-column col-md-12">

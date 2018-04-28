@@ -225,3 +225,5 @@ footer{
     justify-content:space-between; 
 }
 
+.red-tooltip + .tooltip > .tooltip-inner {background-color: #f00;}
+

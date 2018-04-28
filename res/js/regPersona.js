@@ -75,6 +75,8 @@ function Datos()
 						$('#modalFrmPersona').hide();
 						$('#modal-title-sec').html(``);
 						$('#modal-body-sec').html(`Persona Registrada Exitosamente`);
+						$('.modal-title').html(``);
+						$('.modal-body').html(`Persona Registrada Exitosamente`);
 						$('.btnPersona').hide();
 						$('#btnCancelar').html('Aceptar');
 						$('#btnCancelar').addClass('btn-success');
@@ -87,6 +89,8 @@ function Datos()
 						$('#modalFrmPersona').hide();
 						$('#modal-title-sec').html(``);
 						$('#modal-body-sec').html(`Ocurrió un error al registrar`);
+						$('.modal-title').html(``);
+						$('.modal-body').html(`Ocurrió un error al registrar`);
 						$('.btnPersona').hide();
 						$('#btnCancelar').html('Aceptar');
 						$('#btnCancelar').addClass('btn-danger');
@@ -96,6 +100,8 @@ function Datos()
 						$('#modalFrmPersona').hide();
 						$('#modal-title-sec').html(``);
 						$('#modal-body-sec').html(`Ya existe una persona registrada con este N° de DUI`);
+						$('.modal-title').html(``);
+						$('.modal-body').html(`Ya existe una persona registrada con este N° de DUI`);
 						$('.btnPersona').hide();
 						$('#btnCancelar').html('Aceptar');
 						$('#btnCancelar').addClass('btn-danger');
@@ -117,6 +123,9 @@ function modalRegPersona()
 	if(val == 0)
 	{
 		$("#modal-body-sec").html("");
+
+		$(".modal-body").html("");
+
 
 		$.each(datos, function(i, campo){  
 			var nombreCampo = '';
@@ -154,6 +163,7 @@ function modalRegPersona()
 					nombreCampo = 'Estado Civil';
 					break;
 			}
+
 			$('#modalFrmPersona').hide();
 			$('#modal-title-sec').html(`Registrar Persona`);
 			$('.btnPersona').show();
@@ -171,7 +181,19 @@ function modalRegPersona()
 		$('#btnCancelar').addClass('btn-danger');
 		$('#btnCancelar').click(function(){
 			$('#modalFrmPersona').show();
+			$('.modal-title').html(`Registrar Persona`);
+			$('.btnPersona').show();
+			$('#btnCancelar').html('Cancelar');
+			$('#btnCancelar').removeClass('btn-danger');
+			$(".modal-body").append( "<b>"+ nombreCampo + ":</b> " + campo.value + "<br>");  
 		});
+	}
+	else{
+		$('.modal-title').html(``);
+		$('.modal-body').html(`Complete todos los campos`);
+		$('.btnPersona').hide();
+		$('#btnCancelar').html('Aceptar');
+		$('#btnCancelar').addClass('btn-danger');
 	}
 
 }
