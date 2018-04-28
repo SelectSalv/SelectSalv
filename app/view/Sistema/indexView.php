@@ -1,35 +1,16 @@
-<?php  ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<title>Selectsalv</title>
-	<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
-  <link rel="stylesheet" href="../plugins/BootstrapMD/BootstrapMD.css">
-  <link rel="stylesheet" href="../css/fuentes.css">
-	<link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/hero-1.css">
-	<script src="../plugins/JQuery/jquery.js"></script>
-  <script src="../plugins/popper.js"></script>
-  <script src="../plugins/BootstrapMD/bootstrap-material-design.js"></script>
-  <script src="../plugins/BootstrapMD/materialize.js"></script>
-  <script src="../js/fondo.js"></script>
-  <script src="../js/height2.js"></script>
-<body>
-  <nav class="navbar fixed-top d-flex">
+<nav class="navbar fixed-top d-flex">
     <a class="navbar-brand vape-header mr-auto p2 text-white">
-      <img src="../img/logoblanco.svg" width="30" alt="">
+      <img src="res/img/logoblanco.svg" width="30" alt="">
       selectsalv
     </a>
-    <a  href="../php/votar.php" class="waves-effect waves-light btn btn-raised btn-success btn-header p-2">vota</a>
+    <a  href="?1=Persona&2=render&3=IngresarView" class="waves-effect waves-light btn btn-raised btn-success btn-header p-2">vota</a>
   </nav>
 
   <div class="banner">
     <div class="contenedor-hero-1">
       <h1 class="display-1 text-center">Vota hoy</h1>
       <h2 class="display-4">haga valer su opinión</h2>
-      <a href="res/php/votar.php" class="btn-centro waves-effect waves-light btn btn-raised btn-success btn-lg p-2" style="font-family: 'neutra';">Votar</a>
+      <a href="?1=Persona&2=render&3=IngresarView" class="btn-centro waves-effect waves-light btn btn-raised btn-success btn-lg p-2" style="font-family: 'neutra';">Votar</a>
     </div>
   </div>
 
@@ -64,7 +45,7 @@
             Más
           </p>
           <ul class="">
-            <li><a class="footer-list" href="res/php/login.php">Iniciar Sesión</a></li>
+            <li><a class="footer-list" href="?1=Persona&2=IngresarView">Iniciar Sesión</a></li>
             <li><a class="footer-list" href="">Preguntas Frecuentes</a></li>
             <li><a class="footer-list" href="">ola ke ase</a></li>
           </ul>
@@ -75,5 +56,3 @@
       </div>
     </div>
   </div>
-</body>
-</html>
