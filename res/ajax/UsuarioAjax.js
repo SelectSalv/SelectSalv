@@ -1,21 +1,21 @@
 $(document).ready(function() {
 	$('#btnLogin').click(function() {
-	   Datos();
+	   Login();
 	});
     $('body').keyup(function(e) {
     if(e.keyCode == 13) {
-       Datos();
+       Login();
     }
     });
 });
 
-function Datos()
+function Login()
 {
         var datos = $('#frmLogin').serialize();
         $.ajax({
             type: 'POST',
             data: datos,
-            url: '../proc/procLogin.php',
+            url: '?1=Usuario&2=login',
             success: function(r){
                 switch(r)
                 {
@@ -33,7 +33,7 @@ function Datos()
                         $('#btnLogin').removeClass('btn-info');
 
                         setTimeout(function() {
-                            location.href = "dashboard.php";
+                            location.href = "?1=Usuario&2=render&3=DashboardView&4=headerBarUsuario&5=1";
                         }, 1000);
 
                         break;

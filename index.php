@@ -43,8 +43,27 @@ else
 
 	if(isset($_REQUEST["3"]))
 	{
-		$parametro = $_REQUEST["3"];
-		$controller->$accion($parametro, $carpeta);
+		$archivo = $_REQUEST["3"];
+
+		if(isset($_REQUEST["4"]))
+		{
+			$header = $_REQUEST["4"];
+
+			if(isset($_REQUEST["5"]))
+			{
+				$menu = $_REQUEST["5"];
+
+				$controller->$accion($archivo, $carpeta, $header, $menu);	
+			}
+			else
+			{
+				$controller->$accion($archivo, $carpeta, $header);
+			}
+		} 
+		else
+		{
+			$controller->$accion($archivo, $carpeta);
+		}
 	}
 	else
 	{

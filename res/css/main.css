@@ -6,6 +6,11 @@
 nav {
     background: rgba(255, 255, 255, 0.0);
 }
+
+.btn
+{
+    z-index:10;
+}
 #btn-menu-nav {
     color: #fff;
 /*    width: 25px;*/

@@ -65,7 +65,7 @@ class Plantilla{
 				  <i id="flecha-atras" class="material-icons text-light">arrow_back</i>
 		</button>
 	    <a class="navbar-brand vape-header mr-auto p2 text-white">
-	      <img src="../img/logoblanco.svg" width="30" alt="">
+	      <img src="res/img/logoblanco.svg" width="30" alt="">
 	      selectsalv
 	    </a>
 	  </nav>';

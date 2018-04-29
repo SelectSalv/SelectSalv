@@ -8,5 +8,5 @@ class PersonaController extends ControladorBase
   	parent::__construct();
   	$this->model = new Persona();
   }
-
+  
 }

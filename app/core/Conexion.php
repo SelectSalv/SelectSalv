@@ -1,6 +1,6 @@
 <?php
 
-class Conectar
+class Conexion
 {
 	private $driver;
 	private $hostName;
@@ -11,7 +11,7 @@ class Conectar
 
 	public function __construct()
 	{
-		$datos = require_once 'config/database.php';
+		$datos = require_once 'app/config/database.php';
 
 		$this->driver = $datos["driver"];
 		$this->hostName = $datos["hostName"];
@@ -21,7 +21,7 @@ class Conectar
 		$this->charset = $datos["charset"];
 	}
 
-	public function conexion()
+	public function conectar()
 	{
 		$con = new mysqli($this->hostName, $this->dbUser, $this->dbPass, $this->dbName);
 

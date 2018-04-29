@@ -12,10 +12,18 @@ class ControladorBase
 		}
 	}
 
-	public function render($doc, $controller)
+	public function render($doc, $carpeta, $header = null, $menu = null)
 	{
 		require_once 'app/view/plantillas/header.php';
-	  	require_once 'app/view/'.$controller.'/'.$doc.'.php';
+		if($header != null)
+		{
+			require_once 'app/view/plantillas/'.$header.'.php';
+		}
+		if($menu != null)
+		{
+			require_once 'app/view/plantillas/menu.php';
+		}
+	  	require_once 'app/view/'.$carpeta.'/'.$doc.'.php';
 	  	require_once 'app/view/plantillas/footer.php';
 	}
 }

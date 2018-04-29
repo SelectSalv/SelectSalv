@@ -16,8 +16,8 @@
 	<script src="res/plugins/popper.js"></script>
     <script src="res/plugins/BootstrapMD/BootstrapMD.min.js"></script>
     <script src="res/plugins/BootstrapMD/materialize.js"></script>
-    <script src="res/plugins/dataTable/jquery.dataTables.min.js"></script>
- 	<script src="res/plugins/dataTable/dataTables.material.min.js"></script>
+<!--     <script src="res/plugins/dataTable/jquery.dataTables.min.js"></script>
+ 	<script src="res/plugins/dataTable/dataTables.material.min.js"></script> -->
     <script src="res/js/fondo.js"></script>
     <script src="res/js/form-fix.js"></script>
     <script src="res/js/animacion.js"></script>
@@ -25,7 +25,6 @@
     <script src="res/js/barra-navegacion.js"></script>
     <script src="res/plugins/JQueryMask/jquery.mask.js"></script>
     <script src="res/js/mask-inputs.js"></script>
-    <script src="res/js/dataTables.js"></script>
     <title>SelectSalv</title>
 </head>
 <body id="body">
