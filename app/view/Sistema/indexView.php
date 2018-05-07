@@ -3,14 +3,14 @@
       <img src="res/img/logoblanco.svg" width="30" alt="">
       selectsalv
     </a>
-    <a  href="?1=Persona&2=render&3=IngresarView" class="waves-effect waves-light btn btn-raised btn-success btn-header p-2">vota</a>
+    <a  href="?1=Persona&2=render&3=IngresarView" class="material-ripple waves-light btn btn-raised btn-success btn-header p-2">vota</a>
   </nav>
 
   <div class="banner">
     <div class="contenedor-hero-1">
       <h1 class="display-1 text-center">Vota hoy</h1>
       <h2 class="display-4">haga valer su opinión</h2>
-      <a href="?1=Persona&2=render&3=IngresarView" class="btn-centro waves-effect waves-light btn btn-raised btn-success btn-lg p-2" style="font-family: 'neutra';">Votar</a>
+      <a href="?1=Persona&2=render&3=IngresarView" class="btn-centro material-ripple waves-light btn btn-raised btn-success btn-lg p-2" style="font-family: 'neutra';">Votar</a>
     </div>
   </div>
 

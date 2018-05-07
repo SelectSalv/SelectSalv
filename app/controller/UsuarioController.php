@@ -10,12 +10,16 @@ class UsuarioController extends ControladorBase
 
 	public function login()
 	{
-		$this->model->setNomUsuario($_REQUEST["user"]);
-		$this->model->setPassUsuario($_REQUEST["pass"]);
+		$datos = $_REQUEST["datos"];
 
-		$resultado = $this->model->login();
+		$datos = json_decode($datos);
 
-		echo $resultado;
+		$this->model->setNomUsuario($datos[0]->value);
+		$this->model->setPassUsuario($datos[1]->value);
+
+		$res = $this->model->login();
+
+		echo $res;
 	}
 
 }

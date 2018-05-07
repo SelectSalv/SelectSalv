@@ -211,7 +211,7 @@
             var parent = element.parentNode;
 
             // If input already have parent just pass through
-            if (parent.tagName.toLowerCase() === 'i' && parent.classList.contains('waves-effect')) {
+            if (parent.tagName.toLowerCase() === 'i' && parent.classList.contains('material-ripple')) {
                 return;
             }
 
@@ -240,7 +240,7 @@
             var parent = element.parentNode;
 
             // If input already have parent just pass through
-            if (parent.tagName.toLowerCase() === 'i' && parent.classList.contains('waves-effect')) {
+            if (parent.tagName.toLowerCase() === 'i' && parent.classList.contains('material-ripple')) {
                 return;
             }
 
@@ -360,8 +360,8 @@
 
 
     /**
-     * Delegated click handler for .waves-effect element.
-     * returns null when .waves-effect element not in "click tree"
+     * Delegated click handler for .material-ripple element.
+     * returns null when .material-ripple element not in "click tree"
      */
     function getWavesEffectElement(e) {
 
@@ -373,7 +373,7 @@
         var target = e.target || e.srcElement;
 
         while (target.parentElement) {
-            if ( (!(target instanceof SVGElement)) && target.classList.contains('waves-effect')) {
+            if ( (!(target instanceof SVGElement)) && target.classList.contains('material-ripple')) {
                 element = target;
                 break;
             }
@@ -384,7 +384,7 @@
     }
 
     /**
-     * Bubble the click and show effect if .waves-effect elem was found
+     * Bubble the click and show effect if .material-ripple elem was found
      */
     function showEffect(e) {
 
@@ -488,7 +488,7 @@
 
 
     /**
-     * Attach Waves to dynamically loaded inputs, or add .waves-effect and other
+     * Attach Waves to dynamically loaded inputs, or add .material-ripple and other
      * waves classes to a set of elements. Set drag to true if the ripple mouseover
      * or skimming effect should be applied to the elements.
      */
@@ -514,8 +514,8 @@
                 element = element.parentElement;
             }
 
-            if (element.className.indexOf('waves-effect') === -1) {
-                element.className += ' waves-effect' + classes;
+            if (element.className.indexOf('material-ripple') === -1) {
+                element.className += ' material-ripple' + classes;
             }
         }
     };

@@ -3241,7 +3241,7 @@ tbody.collapse.show {
   .page-link:focus {
     z-index: 2;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 150, 136, 0.25); }
+    box-shadow: 0 0 0 0.2rem rgba(66, 66, 66, 0.25);; }
   .page-link:not(:disabled):not(.disabled) {
     cursor: pointer; }
 
@@ -3257,8 +3257,8 @@ tbody.collapse.show {
 .page-item.active .page-link {
   z-index: 1;
   color: #fff;
-  background-color: #009688;
-  border-color: #009688; }
+  background-color: #2196f3;
+  border-color: #424242; }
 
 .page-item.disabled .page-link {
   color: #6c757d;
@@ -3844,7 +3844,7 @@ button.close {
     .bs-tooltip-top .arrow::before, .bs-tooltip-auto[x-placement^="top"] .arrow::before {
       top: 0;
       border-width: 0.4rem 0.4rem 0;
-      border-top-color: rgba(97, 97, 97, 0.9); }
+      border-top-color: rgba(0, 0, 0, 0.0); }
 
 .bs-tooltip-right, .bs-tooltip-auto[x-placement^="right"] {
   padding: 0 0.4rem; }
@@ -3855,7 +3855,7 @@ button.close {
     .bs-tooltip-right .arrow::before, .bs-tooltip-auto[x-placement^="right"] .arrow::before {
       right: 0;
       border-width: 0.4rem 0.4rem 0.4rem 0;
-      border-right-color: rgba(97, 97, 97, 0.9); }
+      border-right-color: rgba(0, 0, 0, 0.0); }
 
 .bs-tooltip-bottom, .bs-tooltip-auto[x-placement^="bottom"] {
   padding: 0.4rem 0; }
@@ -3864,7 +3864,7 @@ button.close {
     .bs-tooltip-bottom .arrow::before, .bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
       bottom: 0;
       border-width: 0 0.4rem 0.4rem;
-      border-bottom-color: rgba(97, 97, 97, 0.9); }
+      border-bottom-color: rgba(0, 0, 0, 0.0); }
 
 .bs-tooltip-left, .bs-tooltip-auto[x-placement^="left"] {
   padding: 0 0.4rem; }
@@ -3875,14 +3875,14 @@ button.close {
     .bs-tooltip-left .arrow::before, .bs-tooltip-auto[x-placement^="left"] .arrow::before {
       left: 0;
       border-width: 0.4rem 0 0.4rem 0.4rem;
-      border-left-color: rgba(97, 97, 97, 0.9); }
+      border-left-color: rgba(0, 0, 0, 0.0); }
 
 .tooltip-inner {
   max-width: 200px;
   padding: 0.25rem 0.5rem;
   color: #fff;
   text-align: center;
-  background-color: rgba(97, 97, 97, 0.9);
+  background-color: rgba(0, 0, 0, 0.9);
   border-radius: 0.125rem; }
 
 .popover {
@@ -7753,7 +7753,7 @@ button:focus {
   .btn-group-raised .custom-file-control:hover::before,
   .btn-group-raised .btn:focus,
   .btn-group-raised .custom-file-control:focus::before {
-    z-index: 1;
+    /*z-index: 1;*/
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2); }
   .btn.bmd-btn-fab.active, .bmd-btn-fab.active.custom-file-control::before, .btn.bmd-btn-fab:active, .bmd-btn-fab.custom-file-control:active::before, .btn.btn-raised.active, .btn-raised.active.custom-file-control::before, .btn.btn-raised:active, .btn-raised.custom-file-control:active::before,
   .btn-group-raised .btn.active,
@@ -11181,7 +11181,7 @@ h6 {
 
 /*JorgeSidgoPimentel WavesEffect*/
 
-.waves-effect {
+.material-ripple {
   position: relative;
   cursor: pointer;
   display: inline-block;
@@ -11192,12 +11192,11 @@ h6 {
           user-select: none;
   -webkit-tap-highlight-color: transparent;
   vertical-align: middle;
-  z-index: 1;
   -webkit-transition: .3s ease-out;
   transition: .3s ease-out;
 }
 
-.waves-effect .waves-ripple {
+.material-ripple .waves-ripple {
   position: absolute;
   border-radius: 50%;
   width: 20px;
@@ -11205,7 +11204,7 @@ h6 {
   margin-top: -10px;
   margin-left: -10px;
   opacity: 0;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.3);
   -webkit-transition: all 0.7s ease-out;
   transition: all 0.7s ease-out;
   -webkit-transition-property: opacity, -webkit-transform;
@@ -11217,35 +11216,35 @@ h6 {
   pointer-events: none;
 }
 
-.waves-effect.waves-light .waves-ripple {
+.material-ripple.waves-light .waves-ripple {
   background-color: rgba(255, 255, 255, 0.45);
 }
 
-.waves-effect.waves-red .waves-ripple {
+.material-ripple.waves-red .waves-ripple {
   background-color: rgba(244, 67, 54, 0.7);
 }
 
-.waves-effect.waves-yellow .waves-ripple {
+.material-ripple.waves-yellow .waves-ripple {
   background-color: rgba(255, 235, 59, 0.7);
 }
 
-.waves-effect.waves-orange .waves-ripple {
+.material-ripple.waves-orange .waves-ripple {
   background-color: rgba(255, 152, 0, 0.7);
 }
 
-.waves-effect.waves-purple .waves-ripple {
+.material-ripple.waves-purple .waves-ripple {
   background-color: rgba(156, 39, 176, 0.7);
 }
 
-.waves-effect.waves-green .waves-ripple {
+.material-ripple.waves-green .waves-ripple {
   background-color: rgba(76, 175, 80, 0.7);
 }
 
-.waves-effect.waves-teal .waves-ripple {
+.material-ripple.waves-teal .waves-ripple {
   background-color: rgba(0, 150, 136, 0.7);
 }
 
-.waves-effect input[type="button"], .waves-effect input[type="reset"], .waves-effect input[type="submit"] {
+.material-ripple input[type="button"], .material-ripple input[type="reset"], .material-ripple input[type="submit"] {
   border: 0;
   font-style: normal;
   font-size: inherit;
@@ -11253,9 +11252,8 @@ h6 {
   background: none;
 }
 
-.waves-effect img {
+.material-ripple img {
   position: relative;
-  z-index: -1;
 }
 
 .waves-notransition {
@@ -11278,7 +11276,6 @@ h6 {
   position: relative;
   top: 0;
   left: 0;
-  z-index: 1;
 }
 
 .waves-circle {
@@ -11295,6 +11292,6 @@ h6 {
 }
 
 /* Firefox Bug: link not triggered */
-.waves-effect .waves-ripple {
+/*.material-ripple .waves-ripple {
   z-index: -1;
-}
+}*/

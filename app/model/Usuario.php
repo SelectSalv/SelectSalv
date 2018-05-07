@@ -1,7 +1,6 @@
 <?php  
 
-// include 'Conexion.php';
-// include '../proc/crypt.php';
+include 'app/plugs/crypt.php';
 
 class Usuario extends ModeloBase {
 	private $idUsuario;
@@ -62,7 +61,12 @@ class Usuario extends ModeloBase {
 	# MÉTODO PARA LOGUEAR USUARIO
 	public function Login()
 	{
+
+		$enc = new Enc();
+
 		$pass = sha1($this->passUsuario);
+
+		$this->nomUsuario = $enc->s_Encrypt($this->nomUsuario);
 
 		$_query = "call p_loginUsuario('".$this->nomUsuario."', '".$pass."')";
 
@@ -70,7 +74,7 @@ class Usuario extends ModeloBase {
 
 		if(!$resultado)
 		{
-			return 4;
+			$data["resultado"] = 3;
 		}
 		else
 		{
@@ -78,17 +82,18 @@ class Usuario extends ModeloBase {
 			if($n_filas == 1)
 			{
 				$fila = $resultado->fetch_assoc();
-				session_start();
 				$_SESSION["idUsuario"] = $fila["idUsuario"];
-				$_SESSION["nomUsuario"] = $fila["nomUsuario"];
+				$_SESSION["nomUsuario"] = $enc->s_Decrypt($fila["nomUsuario"]);
 				$_SESSION["rol"] = $fila["descRol"];
 
-				return 1;
+				$data["resultado"] = 1;
 			} else if($n_filas < 1)
 			{
-				return 2;
+				$data["resultado"] = 2;
 			}
 		}
+
+		return json_encode($data);
 	}
 
 }

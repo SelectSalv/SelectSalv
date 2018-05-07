@@ -30,7 +30,7 @@
 				<div class="form-row">
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
-							<button type="button" class="waves-effect waves-light btn btn-raised btn-info" value="Ingresar" name="btnLogin" id="btnLogin">Ingresar</button>
+							<button type="button" class="material-ripple waves-light btn btn-raised btn-info" value="Ingresar" name="btnLogin" id="btnLogin">Ingresar</button>
 						</div>
 					</div>
 				</div>

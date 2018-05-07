@@ -3,8 +3,7 @@
 	* Nombre de la Clase: Persona
 	* Autor: Jorge Sidgo
 	*/
-
-class Persona {
+class Persona extends ModeloBase {
 
 	// PROPIEDADES CLASE PERSONA
 	private $idPersona;
@@ -24,9 +23,9 @@ class Persona {
 
 
 	// MÉTODO INICIALIZADOR CLASE PERSONA
-	public function Persona()
+	public function __construct()
 	{
-		// $this->con = new Conexion();
+		parent::__construct();
 	}
 
 	// REFACTORIZACIÓN DE PROPIEDADES CLASE PERSONA
@@ -167,18 +166,72 @@ class Persona {
 		return $respuesta;
 	}
 
+	public function getPadronJSON()
+	{
+		$_query = "select * from v_Persona";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		$datos = "";
+
+		while ($fila = $resultado->fetch_assoc()) {
+		    
+		    //Inicializacion de botones
+		    $mas = null;
+		    $modificar = null;
+		    $eliminar = null;
+
+
+			$mas = '<button id=\"'.$fila["idPersona"].'\" class=\"btn btn-secondary btnDetalles btn-raised bmd-btn-icon\"><i class=\"material-icons\">more_horiz</i></button>';
+
+			if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
+			{
+				$modificar = '<button id=\"'.$fila["idPersona"].'\" class=\"btn btn-info btnModificar btn-raised bmd-btn-icon\"><i class=\"material-icons\">edit</i></button>';
+
+				$eliminar = '<button id=\"'.$fila["idPersona"].'\"  class=\"btn btn-danger btnEliminar btn-raised bmd-btn-icon\"><i class=\"material-icons\">clear</i></button>';
+			}
+			
+			if($fila["estadoVotacion"] == 0 )
+			{
+				$estadoVotacion = '<i class=\"material-icons\">clear</i>';
+			}
+			else if($fila["estadoVotacion"] == 1)
+			{
+				$estadoVotacion = '<i class=\"material-icons\">check</i>';
+			}
+
+			$datos .= ' {	"idPersona": "'.$fila["idPersona"].'",
+							"DUI": "'.$fila["dui"].'",
+							"Apellidos": "'.$fila["apePersona"].'",
+							"Nombres": "'.$fila["nomPersona"].'",
+							"Genero": "'.$fila["genero"].'",
+							"Fecha": "'.$fila["fechaNac"].'",
+							"Municipio": "'.$fila["nomMunicipio"].'",
+							"Estado": "'.$estadoVotacion.'",
+							"Acciones": "'.$mas.$modificar.$eliminar.'"
+						},';
+
+		}
+
+		$datos = substr($datos,0, strlen($datos) - 1);
+
+        return '{"data" : ['.$datos.']}';
+	}
+
 	// MÉTODO PARA REGISTRAR DATOS DE PERSONA
     public function registrarPersona()
 	{
 
+
+
 		$_query = "select * from persona where dui = '".$this->dui."'";
 
-		$resultado = $this->con->Conectar()->query($_query);
+		$resultado = $this->con->conectar()->query($_query);
 
 		if($resultado->num_rows == 0)
 		{
 			$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', '".$this->genero."', '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', '".$this->estadoCivil."', ".$this->idMunicipio.")";
-				$resultado = $this->con->Conectar()->query($_query);
+				$resultado = $this->con->conectar()->query($_query);
 
 				if($resultado)
 				{
@@ -202,7 +255,7 @@ class Persona {
 	{
 		$_query = "call p_obtenerPersona('".$this->dui."')";
 
-		$resultado = $this->con->Conectar()->query($_query);
+		$resultado = $this->con->conectar()->query($_query);
 
 		return $resultado;
 	}

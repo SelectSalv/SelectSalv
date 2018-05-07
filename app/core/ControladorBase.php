@@ -10,6 +10,7 @@ class ControladorBase
 		foreach (glob('app/model/*.php') as $model) {
 			require_once $model;
 		}
+
 	}
 
 	public function render($doc, $carpeta, $header = null, $menu = null)

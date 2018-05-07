@@ -6,6 +6,10 @@
     src: url(../fonts/futura1.otf);
 }
 
+@font-face {
+    font-family: 'bebas';
+    src: url(../fonts/bebas.otf);
+}
 
 @font-face {
     font-family: 'neutra';

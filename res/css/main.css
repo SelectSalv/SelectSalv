@@ -4,13 +4,10 @@
     -webkit-font-smoothing:antialiased;
 }
 nav {
+    z-index: -1;
     background: rgba(255, 255, 255, 0.0);
 }
 
-.btn
-{
-    z-index:10;
-}
 #btn-menu-nav {
     color: #fff;
 /*    width: 25px;*/
@@ -219,7 +216,7 @@ footer{
 
 .red-tooltip + .tooltip > .tooltip-inner {background-color: #f00;}
 
-#modalFrmPersona{
+.modal{
     overflow-y: scroll;
 }
 .barra-principal
@@ -232,3 +229,19 @@ footer{
 
 .red-tooltip + .tooltip > .tooltip-inner {background-color: #f00;}
 
+
+.dataTab
+{
+    margin-bottom: 30px;
+}
+
+.fila-tabla
+{
+    background: #fff;
+}
+
+.tabla
+{
+    border-collapse: collapse;
+    border-color:;
+}

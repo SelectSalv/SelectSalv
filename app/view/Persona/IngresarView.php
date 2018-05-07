@@ -1,5 +1,5 @@
 <nav class="navbar fixed-top d-flex">
-		<button type="button" style="margin-right: 10px;" id="btn-menu-nav" class=" p2 waves-effect waves-ripple waves-light btn btn-primary bmd-btn-icon align-middle">
+		<button type="button" style="margin-right: 10px;" id="btn-menu-nav" class=" p2 material-ripple waves-ripple waves-light btn btn-primary bmd-btn-icon align-middle">
 				  <i id="flecha-atras-votar" class="material-icons text-light">arrow_back</i>
 		</button>
 	    <a class="navbar-brand vape-header mr-auto p2 text-white">
@@ -26,7 +26,7 @@
 				<div class="form-row">
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
-							<button type="button" class="waves-effect waves-light btn btn-raised btn-primary" value="Ingresar" name="btnDUI" id="btnDUI">Votar</button>
+							<button type="button" class="material-ripple waves-light btn btn-raised btn-primary" value="Ingresar" name="btnDUI" id="btnDUI">Votar</button>
 						</div>
 					</div>
 				</div>

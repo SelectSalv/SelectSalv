@@ -39,7 +39,7 @@ class Plantilla{
 	public function HeaderBarUser()
 	{
 		echo '<nav class="navbar fixed-top navbar-dark bg-primary">
-				<button type="button" style="margin-right: 10px;" id="btn-menu-nav" class=" p2 waves-effect waves-ripple waves-light btn btn-primary bmd-btn-icon align-middle">
+				<button type="button" style="margin-right: 10px;" id="btn-menu-nav" class=" p2 material-ripple waves-ripple waves-light btn btn-primary bmd-btn-icon align-middle">
 				  <i id="menu-icon" class="material-icons text-light">menu</i>
 				</button>
 				<a class="navbar-brand vape-header align-middle mr-auto p2 text-white">
@@ -47,12 +47,12 @@ class Plantilla{
 					selectsalv
 				</a>
 				<div class="btn-group" style="margin:0;">
-				  <button class="waves-effect waves-light waves-block btn btn-raised btn-success dropdown-toggle btn-sm" type="button" id="dropUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  <button class="material-ripple waves-light waves-block btn btn-raised btn-success dropdown-toggle btn-sm" type="button" id="dropUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				  '.$_SESSION["nomUsuario"].'
 				  </button>
 				  <div class="dropdown-menu" style="margin-left: -52px; " aria-labelledby="dropUsuario">
-				  	<a class="dropdown-item" class="waves-effect" style="">'.$_SESSION["rol"].'</a>
-				    <a class="dropdown-item" class="waves-effect" style="color: red;" href="../proc/logout.php">Cerrar Sesión</a>
+				  	<a class="dropdown-item" class="material-ripple" style="">'.$_SESSION["rol"].'</a>
+				    <a class="dropdown-item" class="material-ripple" style="color: red;" href="../proc/logout.php">Cerrar Sesión</a>
 				  </div>
 				</div>
 			</nav>';
@@ -61,7 +61,7 @@ class Plantilla{
 	public function HeaderBar()
 	{
 		echo '<nav class="navbar fixed-top d-flex">
-		<button type="button" style="margin-right: 10px;" id="btn-menu-nav" class=" p2 waves-effect waves-ripple waves-light btn btn-primary bmd-btn-icon align-middle">
+		<button type="button" style="margin-right: 10px;" id="btn-menu-nav" class=" p2 material-ripple waves-ripple waves-light btn btn-primary bmd-btn-icon align-middle">
 				  <i id="flecha-atras" class="material-icons text-light">arrow_back</i>
 		</button>
 	    <a class="navbar-brand vape-header mr-auto p2 text-white">
@@ -78,38 +78,38 @@ class Plantilla{
 		<p class="titulo-menu">Menú</p>
 		<hr>
 			<a class="" href="regPartido.php">
-				<li class="list-item align-middle waves-effect waves-ripple waves-light">
+				<li class="list-item align-middle material-ripple waves-ripple waves-light">
 					<i class="menu-it-icon material-icons text-purp align-middle">flag</i>
 					Gestionar Partidos
 				</li>
 			</a>
 			<a class="" href="regCandidato.php">
-				<li class="list-item align-middle waves-effect waves-ripple waves-light">
+				<li class="list-item align-middle material-ripple waves-ripple waves-light">
 					<i class="menu-it-icon material-icons text-purp align-middle">face</i>
 					Gestionar Candidatos
 				</li>
 			</a>
 			<a class="" href="regPersona.php">
-				<li class="list-item align-middle waves-effect waves-ripple waves-light">
+				<li class="list-item align-middle material-ripple waves-ripple waves-light">
 					<i class="menu-it-icon material-icons text-purp align-middle">account_box</i>
 					Gestionar Padrón
 				</li>
 			</a>
 		<hr>
 			<a class="" href="dashboard.php">
-				<li class="list-item align-middle waves-effect waves-ripple waves-light">
+				<li class="list-item align-middle material-ripple waves-ripple waves-light">
 					<i class="menu-it-icon material-icons text-purp align-middle">poll</i>
 					Ver Resultados
 				</li>
 			</a>
 			<a class="" href="verVotantes.php">
-				<li class="list-item align-middle waves-effect waves-ripple waves-light">
+				<li class="list-item align-middle material-ripple waves-ripple waves-light">
 					<i class="menu-it-icon material-icons text-purp align-middle">people</i>
 					Ver Votantes
 				</li>
 			</a>
 			<a class="" href="verVotantes.php">
-				<li class="list-item align-middle waves-effect waves-ripple waves-light">
+				<li class="list-item align-middle material-ripple waves-ripple waves-light">
 					<i class="menu-it-icon material-icons text-purp align-middle">recent_actors</i>
 					Ver Movimientos
 				</li>

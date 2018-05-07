@@ -23,11 +23,68 @@ div.gráficos{
 }
 
 .tarjeta-uno{
-	height:400px;
+    padding: 20px;
+	height:75vh;
 }
 .tarjeta-xl{
-	height:300px;
+    padding: 15px;
+	height:425px;
 }
 .tarjeta-md{
- 	height: 200px; 
+    padding: 12px;
+ 	height: 225px; 
+}
+
+.titulo-tarjeta-uno{
+    font-family: 'bebas';
+    color:rgba(39, 46, 64, 0.955);
+     font-size: 30px;
+}
+.titulo-tarjeta-sec{
+    font-family: 'bebas';
+    color:rgba(39, 46, 64, 0.955);
+     font-size: 20px;
+}
+.mapa
+{
+    /*background: rgba(0,0,0,0.3);*/
+    position:absolute;
+    width: 50%;
+    height:80%;
+    /*width: 555px;*/
+    /*height: 305px;*/
+    right: 0px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 50px;
+}
+
+#Capa_1
+{
+    display: block;
+}
+
+.stats
+{
+    /*background: rgba(0,0,0,0.3);*/
+    position: relative;
+    width: 50%;
+}
+
+.titulo-helper
+{
+    font-family: 'bebas';
+    color:rgba(39, 46, 64, 0.955);
+    font-size: 22px;
+    padding-bottom: 13px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(39, 46, 64, 0.2);
+}
+
+.p-stats
+{
+    font-family: 'bebas';
+    color:rgba(39, 46, 64, 0.955);
+     font-size: 22px;
 }

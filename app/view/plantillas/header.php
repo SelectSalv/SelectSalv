@@ -12,19 +12,22 @@
 	<link rel="stylesheet" href="res/css/menu.css">
 	<link rel="stylesheet" href="res/css/hero-1.css">
 	<link rel="stylesheet" href="res/css/validacion.css">
+	<link rel="stylesheet" href="res/plugins/ripple/ripple.css">
 	<script src="res/plugins/JQuery/jquery.js"></script>
 	<script src="res/plugins/popper.js"></script>
     <script src="res/plugins/BootstrapMD/BootstrapMD.min.js"></script>
-    <script src="res/plugins/BootstrapMD/materialize.js"></script>
-<!--     <script src="res/plugins/dataTable/jquery.dataTables.min.js"></script>
- 	<script src="res/plugins/dataTable/dataTables.material.min.js"></script> -->
+    <script src="res/plugins/ripple/ripple.js"></script>
+    <script src="res/plugins/ripple/ripple.init.js"></script>
     <script src="res/js/fondo.js"></script>
     <script src="res/js/form-fix.js"></script>
     <script src="res/js/animacion.js"></script>
+    <script src="res/js/tooltips.js"></script>
     <script src="res/js/menu.js"></script>
+    <script src="res/js/botones.js"></script>
     <script src="res/js/barra-navegacion.js"></script>
     <script src="res/plugins/JQueryMask/jquery.mask.js"></script>
     <script src="res/js/mask-inputs.js"></script>
     <title>SelectSalv</title>
 </head>
 <body id="body">
+

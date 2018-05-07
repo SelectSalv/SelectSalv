@@ -67,7 +67,18 @@ else
 	}
 	else
 	{
-		$controller->$accion();
+		if($accion == 'getJSON')
+		{
+			$res = $controller->$accion();
+
+			echo $res;
+			die();
+		}
+		else 
+		{
+			$controller->$accion();
+		}	
+
 	}
 	
 }
