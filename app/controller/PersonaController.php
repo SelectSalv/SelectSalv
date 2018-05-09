@@ -17,29 +17,41 @@ class PersonaController extends ControladorBase
 		echo $resultado;
 	}
 
+	public function getPersona()
+	{
+		$datos = $_POST['idUsuario'];
+
+		$datos = json_decode($datos);
+
+		$resultado = $this->model->getPersona($datos);
+
+		echo $resultado;
+	}
+
 	public function getJSON()
 	{
 		$datos = $this->model->getPadronJSON();
-		return $datos;
+		
+		echo $datos;
 	}
 
 	public function registrarPersona()
 	{
 
-		$decode = $_POST["datos"];
+		$datos = $_POST["datos"];
 
-		$decode = json_decode($decode);
+		$datos = json_decode($datos);
 
-		$this->model->setDui($decode[0]->value);
-		$this->model->setNomPersona($decode[1]->value);
-		$this->model->setApePersona($decode[2]->value);
-		$this->model->setGenero($decode[3]->value);
-		$this->model->setEstadoCivil($decode[4]->value);
-		$this->model->setFechaNac($decode[5]->value);
-		$this->model->setFechaVenc($decode[6]->value);
-		$this->model->setProfesion($decode[7]->value);
-		$this->model->setIdMunicipio($decode[8]->value);
-		$this->model->setDireccion($decode[9]->value);
+		$this->model->setDui($datos[0]->value);
+		$this->model->setNomPersona($datos[1]->value);
+		$this->model->setApePersona($datos[2]->value);
+		$this->model->setGenero($datos[3]->value);
+		$this->model->setEstadoCivil($datos[4]->value);
+		$this->model->setFechaNac($datos[5]->value);
+		$this->model->setFechaVenc($datos[6]->value);
+		$this->model->setProfesion($datos[7]->value);
+		$this->model->setIdMunicipio($datos[8]->value);
+		$this->model->setDireccion($datos[9]->value);
 		$resultado =  $this->model->registrarPersona();	
 
 		echo $resultado;

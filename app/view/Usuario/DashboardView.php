@@ -21,7 +21,7 @@
 						<p class="titulo-tarjeta-uno">Resultados Globales</p>
 						<div class="mapa">
 							<!-- <img src="res/img/svgsv.svg" alt=""> -->
-							<?php require_once 'res/img/svgsv.svg' ?>
+							<?php require_once 'res/img/svgsv.svg'; ?>
 						</div>
 						<div class="stats">
 							<p class="p-stats">

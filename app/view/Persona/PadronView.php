@@ -4,8 +4,6 @@
 	<script src="res/plugins/dataTableBootstrap/jquery.dataTables.min.js"></script>
 	<script src="res/plugins/dataTableBootstrap/dataTables.bootstrap.min.js"></script>
 
-	<script src="res/js/dataTables.js"></script>
-
 	<script src="res/ajax/PersonaAjax.js"></script>
 
 	<script>
@@ -181,7 +179,7 @@
 		      	<table width="80%" style="margin: auto;" class="table table-striped" id="tablaModalDatos">
 		      		<thead>
 		      			<tr>
-		      				<th>Campo</th>
+		      				<th>Campos</th>
 		      				<th>Dato</th>
 		      			</tr>
 		      		</thead>
@@ -241,8 +239,8 @@
 									   <span class="bmd-form-group is-filled">
 									   	<div class="radio">
 									   	    <label style="color:#555;">
-									   	      <input type="radio" name="generoPersona" id="generoPersona1" value="Masculino" >
-									   	      <span class="bmd-radio material-ripple waves-ripple"></span>
+									   	      <input type="radio" name="generoPersona" id="generoMasculinoModificar" value="Masculino" >
+									   	      <span id="radioMasculino" class="bmd-radio material-ripple waves-ripple"></span>
 									   	      Masculino
 									   	    </label>
 									   	  </div>
@@ -250,8 +248,8 @@
 									   <span class="bmd-form-group is-filled">
 									   	<div class="radio">
 									   	    <label style="color:#555;">
-									   	      <input type="radio" name="generoPersona" id="generoPersona2" value="Femenino" >
-									   	      <span class="bmd-radio material-ripple waves-ripple"></span>
+									   	      <input type="radio" name="generoPersona" id="generoFemeninoModificar" value="Femenino" >
+									   	      <span id="radioFemenino" class="bmd-radio material-ripple waves-ripple"></span>
 									   	      Femenino
 									   	    </label>
 									   	  </div>
@@ -421,7 +419,6 @@
 	            </tr>
 			</thead>
 			<tbody>
-				<a></a>
 			</tbody>
 		</table>
 	</div>

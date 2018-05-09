@@ -12,7 +12,6 @@ class Usuario extends ModeloBase {
  	{
  		parent::__construct();
  	}
-
     public function setIdUsuario($idUsuario)
     {
         $this->idUsuario = $idUsuario;
@@ -94,6 +93,74 @@ class Usuario extends ModeloBase {
 		}
 
 		return json_encode($data);
+	}
+
+	# MÉTODO PARA REGISTRAR USUARIOS
+	public function registrar()
+	{
+		$enc = new Enc();
+
+		$this->nomUsuario = $enc->s_Encrypt($this->nomUsuario);
+		$this->passUsuario = sha1($this->passUsuario);
+
+		$_query = "call p_RegUsuario('".$this->nomUsuario."', '".$this->passUsuario."', '".$this->rolUsuario."');";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		$data = array();
+
+		if ($resultado) {
+
+            $data['estado'] = true;
+            $data['descripcion'] = "Usuario Ingresados Correctamente";
+        }else{
+             $data['estado'] = false;
+             $data['descripcion'] = "Error al ingresar datos ".$this->con->conectar()->error;
+        }
+            return json_encode($data);
+	}
+
+	# MÉTODO PARA OBTENER TODOS LOS USUARIOS
+	public function getUsersJSON()
+	{
+		$enc = new Enc();
+
+		$_query = "select * from v_Usuarios";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		$datos = "";
+
+		while($fila = $resultado->fetch_assoc())
+		{
+			//Inicializacion de botones
+		    $mas = null;
+		    $modificar = null;
+		    $eliminar = null;
+
+		    $mas = '<button id=\"'.$fila["idUsuario"].'\" class=\"btn btn-secondary btnDetalles btn-raised bmd-btn-icon\"><i class=\"material-icons\">more_horiz</i></button>';
+
+			if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
+			{
+				$modificar = '<button id=\"'.$fila["idUsuario"].'\" class=\"btn btn-info btnModificar btn-raised bmd-btn-icon\"><i class=\"material-icons\">edit</i></button>';
+
+				$eliminar = '<button id=\"'.$fila["idUsuario"].'\"  class=\"btn btn-danger btnEliminar btn-raised bmd-btn-icon\"><i class=\"material-icons\">clear</i></button>';
+			}
+			
+			if($fila["estado"] == 1)
+			{
+				$datos .= ' {
+								"idUsuario": "'.$fila["idUsuario"].'",
+								"Nombre de Usuario": "'.$enc->s_Decrypt($fila["nomUsuario"]).'",
+								"Permisos": "'.$fila["descRol"].'" ,
+								"Acciones": "'.$mas.' '.$modificar.' '.$eliminar.'"	
+							},'; 
+			}
+
+			
+		}
+		$datos = substr($datos,0, strlen($datos) - 1);
+		return '{"data" : ['.$datos.']}';
 	}
 
 }

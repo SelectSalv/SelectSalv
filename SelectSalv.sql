@@ -22,7 +22,10 @@ create table Rol(
 
 select * from Rol;
 
-insert into Rol(codRol, descRol) values('mMun', 'Desarrollador');
+insert into Rol values(null, 'mMun',1, 'Desarrollador');
+insert into Rol values(null, 'lcqe0p8=',1, 'Administrador');
+insert into Rol values(null, 'lcqe0p8=',1, 'Invitado');
+
 
 create table Persona(
 	idPersona int auto_increment unique not null primary key,
@@ -125,7 +128,7 @@ alter table Candidato add constraint fk_idPersona_Candidato foreign key (idPerso
 # Vista con los datos de usuario
 
 create view v_Usuarios as (
-	select u.idUsuario, u.nomUsuario, u.pass, r.descRol
+	select u.idUsuario, u.nomUsuario, u.pass, u.estado, r.descRol
     from Usuario u, Rol r
     where u.idRol = r.idRol
 );
@@ -134,7 +137,7 @@ create view v_Usuarios as (
 
 create view v_Persona as (
 	select p.idPersona, p.dui, p.nomPersona, p.apePersona, p.genero, p.fechaNac, p.fechaVenc, p.profesion, p.direccion, p.estadoCivil, p.estadoVotacion, 
-            m.nomMunicipio, d.nomDepartamento 
+            m.idMunicipio, m.nomMunicipio, d.nomDepartamento 
     from Persona p, Municipio m, Departamento d
     where p.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento
     order by p.idPersona desc
@@ -153,14 +156,16 @@ create procedure p_RegUsuario(
 begin
 	declare ideRol int;
     set ideRol = (select idRol from Rol where codRol = rol);
-    insert into Usuario(nomUsuario, pass, idRol) values(nom, contra, ideRol);
+    insert into Usuario values(null, nom, contra, 1, ideRol);
 end
 $$
 
+select idRol from Rol where codRol = 'mMun'
+
+call p_RegUsuario('gM+rynjXl+Gl06fQ', '9e1b9d0da915a9aaafd7524b5d4b667ecbe7abb3', 'mMun');
 
 
-
-
+select * from usuario
 
 call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad', 'mMun');
 
@@ -199,8 +204,17 @@ begin
 end
 $$
 
-truncate table Persona
+truncate table Persona;
 
+#Procedimiento para devolver los datos de Persona en base a ID de registro
+delimiter $$
+create procedure p_obtenerPersonaId(
+	in nid int
+)
+begin
+	select * from v_Persona where idPersona = nid;
+end
+$$
 
 #Procedimiento para devolver los datos de Persona en base a N° de DUI
 delimiter $$
@@ -211,6 +225,8 @@ begin
 	select * from v_Persona where dui = ndui;
 end
 $$
+
+call p_obtenerPersonaId(3);
 
 call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 'Masculino', '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 'Soltero', 1);
 call p_regPersona('98765432-1', 'Pablo Emilio', 'Escobar Gaviria', 'Masculino', '1945-02-01', '2022-02-01', 'Traficante', 'Col. Escalón 6ta av #1', 'Divorciado', 2);

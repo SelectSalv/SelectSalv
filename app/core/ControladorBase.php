@@ -22,7 +22,13 @@ class ControladorBase
 		}
 		if($menu != null)
 		{
-			require_once 'app/view/plantillas/menu.php';
+			if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
+			{
+				require_once 'app/view/plantillas/menuCompleto.php';
+			}
+			else{
+				require_once 'app/view/plantillas/menu.php';
+			}
 		}
 	  	require_once 'app/view/'.$carpeta.'/'.$doc.'.php';
 	  	require_once 'app/view/plantillas/footer.php';

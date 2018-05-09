@@ -147,13 +147,27 @@ class Persona extends ModeloBase {
 	}
 
 
+	// MÉTODO PARA OBTENER LOS DATOS DE UNA PERSONA
+
+	public function getPersona($id)
+	{
+		$_query = "call p_obtenerPersonaId(".$id.")";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		$datos = $resultado->fetch_assoc();
+
+		return json_encode($datos);
+	}
+
+
 	// MÉTODO PARA COMPROBAR LA EXISTENCIA DE UN N° DE DUI
 
 	public function compDui()
 	{
 		$_query = "select * from persona where dui = '".$this->dui."'";
 
-		$resultado = $this->con->Conectar()->query($_query);
+		$resultado = $this->con->conectar()->query($_query);
 
 		if($resultado->num_rows == 0)
 		{
@@ -171,7 +185,6 @@ class Persona extends ModeloBase {
 		$_query = "select * from v_Persona";
 
 		$resultado = $this->con->conectar()->query($_query);
-
 		$datos = "";
 
 		while ($fila = $resultado->fetch_assoc()) {
