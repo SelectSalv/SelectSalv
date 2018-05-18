@@ -11,7 +11,6 @@ create table Usuario(
     idRol int not null
 );
 
-select * from usuario;
 
 create table Rol(
 	idRol int auto_increment unique not null primary key,
@@ -20,11 +19,10 @@ create table Rol(
     descRol text
 );
 
-select * from Rol;
 
 insert into Rol values(null, 'mMun',1, 'Desarrollador');
 insert into Rol values(null, 'lcqe0p8=',1, 'Administrador');
-insert into Rol values(null, 'lcqe0p8=',1, 'Invitado');
+insert into Rol values(null, 'ndSn',1, 'Invitado');
 
 
 create table Persona(
@@ -44,14 +42,11 @@ create table Persona(
     idMunicipio int not null
 );
 
-select * from persona;
 
 create table Departamento(
 	idDepartamento int auto_increment unique not null primary key,
     nomDepartamento varchar(150)
 );
-
-
 
 insert into Departamento(nomDepartamento) values('La Libertad');
 insert into Departamento(nomDepartamento) values('San Salvador');
@@ -62,13 +57,10 @@ create table Municipio(
     idDepartamento int not null
 );
 
-insert into Municipio(nomMunicipio, idDepartamento) values('Santa Tecla', 1);
-insert into Municipio(nomMunicipio, idDepartamento) values('San Salvador', 2);
-
-
 create table CentroVotacion(
 	idCentro int auto_increment unique not null primary key,
     nomCentro varchar(150),
+    numJrv int,
     idMunicipio int not null
 );
 
@@ -77,7 +69,15 @@ create table CentroVotacion(
 create table Jrv(
 	idJrv int auto_increment unique not null primary key,
     numJrv varchar(20) not null,
+    numPersonas int,
     idCentro int not null
+);
+
+
+create table padron(
+	id int auto_increment unique not null primary key,
+    idPersona int not null, 
+    idJrv int not null 
 );
 
 
@@ -122,6 +122,9 @@ alter table DetalleVoto add constraint fk_idJrv_DetalleVoto foreign key (idJrv) 
 alter table Candidato add constraint fk_idPartido_Candidato foreign key (idPartido) references Partido(idPartido);
 alter table Candidato add constraint fk_idTipoCandidato_Candidato foreign key (idTipoCandidato) references TipoCandidato(idTipoCandidato);
 alter table Candidato add constraint fk_idPersona_Candidato foreign key (idPersona) references Persona(idPersona);
+alter table padron add constraint fk_idPersona_padron foreign key (idPersona) references Persona(idPersona);
+alter table padron add constraint fk_idJrv foreign key (idJrv) references Jrv(idJrv);
+
 
 # VISTAS
 
@@ -143,8 +146,7 @@ create view v_Persona as (
     order by p.idPersona desc
 );
 
-select * from v_Persona
-# PROCEDIMIENTOS ALMACENADOS
+
 
 # Procedimiento almacenado para registrar Usuarios
 delimiter $$
@@ -160,12 +162,8 @@ begin
 end
 $$
 
-select idRol from Rol where codRol = 'mMun'
-
 call p_RegUsuario('gM+rynjXl+Gl06fQ', '9e1b9d0da915a9aaafd7524b5d4b667ecbe7abb3', 'mMun');
 
-
-select * from usuario
 
 call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad', 'mMun');
 
@@ -179,12 +177,8 @@ create procedure p_loginUsuario(
 begin
     select * from v_Usuarios where nomUsuario = nom and pass = contra;
 end
-$$
-
-call p_loginUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad');
-
-# Procedimiento almacenado para registrar Persona
-
+ $$
+ 
 delimiter $$
 create procedure p_regPersona(
     in dui varchar(15),
@@ -199,12 +193,11 @@ create procedure p_regPersona(
     in municipio int
 )
 begin
-	insert into Persona(dui, nomPersona, apePersona, genero, fechaNac, fechaVenc, profesion, direccion, estadoCivil, estadoVotacion, idMunicipio)
-    values (dui, nom, ape, gen, fechanac, fechavenc, prof, direc, estado, 0, municipio);
+	declare cv int;
+	insert into Persona values (null, dui, nom, ape, gen, fechanac, fechavenc, prof, direc, estado, 0, municipio);
+    set cv =  (select  idMunicipio from CentroVotacion
 end
 $$
-
-truncate table Persona;
 
 #Procedimiento para devolver los datos de Persona en base a ID de registro
 delimiter $$
@@ -216,6 +209,26 @@ begin
 end
 $$
 
+# Procedimiento almacenado para registrar municipios y centro de votación
+
+delimiter $$
+create procedure p_regMunicipio(
+	in nom varchar(150),
+    in dep int
+)
+begin
+	declare nomCv varchar(50);
+    declare mun int;
+    set nomCv = concat_ws("-", "centro", nom);
+	insert into Municipio values(null, nom, dep);
+    set mun = (select idMunicipio from Municipio where nomMunicipio = nom);
+    insert into CentroVotacion values(null, nomCv, 0, mun);
+end
+$$
+
+call p_regMunicipio('Santa Tecla', 1);
+call p_regMunicipio('San Salvador', 2);
+
 #Procedimiento para devolver los datos de Persona en base a N° de DUI
 delimiter $$
 create procedure p_obtenerPersona(
@@ -226,11 +239,7 @@ begin
 end
 $$
 
-call p_obtenerPersonaId(3);
 
 call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 'Masculino', '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 'Soltero', 1);
-call p_regPersona('98765432-1', 'Pablo Emilio', 'Escobar Gaviria', 'Masculino', '1945-02-01', '2022-02-01', 'Traficante', 'Col. Escalón 6ta av #1', 'Divorciado', 2);
 
 call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 'Masculino', '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 'Soltero', 1);
-
-call p_obtenerPersona('05878895-3');

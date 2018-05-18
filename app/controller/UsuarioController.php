@@ -8,6 +8,59 @@ class UsuarioController extends ControladorBase
 		$this->model = new Usuario();
 	}
 
+	# Acciones de Vistas
+
+	public function loginView()
+	{}
+
+	public function transacciones()
+	{
+		require_once 'app/view/plantillas/header.php';
+		require_once 'app/view/plantillas/headerBarUsuario.php';
+		if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
+			{
+				require_once 'app/view/plantillas/menuCompleto.php';
+			}
+			else{
+				require_once 'app/view/plantillas/menu.php';
+			}
+		require_once 'app/view/Usuario/transaccionesView.php';
+		require_once 'app/view/plantillas/footer.php';
+	}
+
+	public function dashboard()
+	{
+		require_once 'app/view/plantillas/header.php';
+		require_once 'app/view/plantillas/headerBarUsuario.php';
+		if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
+			{
+				require_once 'app/view/plantillas/menuCompleto.php';
+			}
+			else{
+				require_once 'app/view/plantillas/menu.php';
+			}
+		require_once 'app/view/Usuario/DashboardView.php';
+		require_once 'app/view/plantillas/footer.php';
+	}
+
+
+	public function listaUsuarios()
+	{
+		require_once 'app/view/plantillas/header.php';
+		require_once 'app/view/plantillas/headerBarUsuario.php';
+		if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
+			{
+				require_once 'app/view/plantillas/menuCompleto.php';
+			}
+			else{
+				require_once 'app/view/plantillas/menu.php';
+			}
+		require_once 'app/view/Usuario/crudView.php';
+		require_once 'app/view/plantillas/footer.php';
+	}
+
+	# Acciones Lógicas
+
 	public function login()
 	{
 		$datos = $_REQUEST["datos"];
@@ -28,7 +81,6 @@ class UsuarioController extends ControladorBase
 
 		echo $datos;
 	}
-
 	public function registrar()
 	{
 		$datos = $_REQUEST["datos"];

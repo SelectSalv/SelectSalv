@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+   
+
     if ($('#tableUsuarios').length) {
         var tabla = $('#tableUsuarios').DataTable({
             "ajax": {

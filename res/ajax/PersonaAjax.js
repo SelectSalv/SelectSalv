@@ -274,8 +274,6 @@ $(document).ready(function() {
                 var genero = '#genero' + data.genero + 'Modificar';
                 var radioBtn = '#radio' + data.genero;
 
-                alert(genero);
-
                 $(radioBtn).addClass('is-filled');
                 $(genero).prop('checked').true;
             }

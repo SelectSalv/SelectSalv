@@ -147,9 +147,9 @@ class Persona extends ModeloBase {
 	}
 
 
-	// MÉTODO PARA OBTENER LOS DATOS DE UNA PERSONA
+	// MÉTODO PARA OBTENER LOS DATOS DE UNA PERSONA POR SU ID
 
-	public function getPersona($id)
+	public function getPersonaId($id)
 	{
 		$_query = "call p_obtenerPersonaId(".$id.")";
 
@@ -158,6 +158,16 @@ class Persona extends ModeloBase {
 		$datos = $resultado->fetch_assoc();
 
 		return json_encode($datos);
+	}
+
+	// MÉTODO PARA OBTENER DATOS DE PERSONA POR SU N° DE DUI
+	public function getPersonaDui()
+	{
+		$_query = "call p_obtenerPersona('".$this->dui."')";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		return $resultado;
 	}
 
 
@@ -263,13 +273,6 @@ class Persona extends ModeloBase {
 		return $respuesta;
 	}
 
-	// MÉTODO PARA OBTENER DATOS DE PERSONA POR SU N° DE DUI
-	public function obtenerPersona()
-	{
-		$_query = "call p_obtenerPersona('".$this->dui."')";
+	
 
-		$resultado = $this->con->conectar()->query($_query);
-
-		return $resultado;
-	}
 } // FIN CLASE PERSONA

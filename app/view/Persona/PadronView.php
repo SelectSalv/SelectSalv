@@ -51,63 +51,21 @@
 							<div class="form-row">
 								<div class="form-column col-md-6">
 									<label for="">Género</label>
-									   <span class="bmd-form-group is-filled">
-									   	<div class="radio">
-									   	    <label style="color:#555;">
-									   	      <input type="radio" name="generoPersona" id="generoPersona1" value="Masculino" >
-									   	      <span class="bmd-radio material-ripple waves-ripple"></span>
-									   	      Masculino
-									   	    </label>
-									   	  </div>
-									   </span>
-									   <span class="bmd-form-group is-filled">
-									   	<div class="radio">
-									   	    <label style="color:#555;">
-									   	      <input type="radio" name="generoPersona" id="generoPersona2" value="Femenino" >
-									   	      <span class="bmd-radio material-ripple waves-ripple"></span>
-									   	      Femenino
-									   	    </label>
-									   	  </div>
-									   </span>
+									<select name="genero" id="genero" class="form-control">
+										<option value="-">Seleccione uno...</option>
+										<option value="1">Masculino</option>
+										<option value="2">Femenino</option>
+									</select>
 								</div>
 									<div class="form-column col-md-6">
 									<label for="">Estado Civil</label>
-									   <span class="bmd-form-group is-filled">
-									   	<div class="radio">
-									   	    <label style="color:#555;">
-									   	      <input type="radio" name="estadoCivil" id="estadoCivil1" value="Casado" >
-									   	      <span class="bmd-radio material-ripple waves-ripple"></span>
-									   	      Casado
-									   	    </label>
-									   	  </div>
-									   </span>
-									   <span class="bmd-form-group is-filled">
-									   	<div class="radio">
-									   	    <label style="color:#555;">
-									   	      <input type="radio" name="estadoCivil" id="estadoCivil2" value="Soltero" >
-									   	      <span class="bmd-radio material-ripple waves-ripple"></span>
-									   	      Soltero
-									   	    </label>
-									   	  </div>
-									   </span>
-									   <span class="bmd-form-group is-filled">
-									   	<div class="radio">
-									   	    <label style="color:#555;">
-									   	      <input type="radio" name="estadoCivil" id="estadoCivil3" value="Divorciado" >
-									   	      <span class="bmd-radio material-ripple waves-ripple"></span>
-									   	      Divorciado
-									   	    </label>
-									   	  </div>
-									   </span>
-									   	   <span class="bmd-form-group is-filled">
-									   	<div class="radio">
-									   	    <label style="color:#555;">
-									   	      <input type="radio" name="estadoCivil" id="estadoCivil4" value="Viudo" >
-									   	      <span class="bmd-radio material-ripple waves-ripple"></span>
-									   	      Viudo
-									   	    </label>
-									   	  </div>
-									   </span>
+									<select name="estadoCivil" id="estadoCivil" class="form-control">
+										<option value="-">Seleccione uno...</option>
+										<option value="1">Soltero</option>
+										<option value="2">Casado</option>
+										<option value="3">Divorciado</option>
+										<option value="4">Viudo</option>
+									</select>
 								</div>
 							</div>
 
@@ -236,63 +194,21 @@
 							<div class="form-row">
 								<div class="form-column col-md-6">
 									<label for="">Género</label>
-									   <span class="bmd-form-group is-filled">
-									   	<div class="radio">
-									   	    <label style="color:#555;">
-									   	      <input type="radio" name="generoPersona" id="generoMasculinoModificar" value="Masculino" >
-									   	      <span id="radioMasculino" class="bmd-radio material-ripple waves-ripple"></span>
-									   	      Masculino
-									   	    </label>
-									   	  </div>
-									   </span>
-									   <span class="bmd-form-group is-filled">
-									   	<div class="radio">
-									   	    <label style="color:#555;">
-									   	      <input type="radio" name="generoPersona" id="generoFemeninoModificar" value="Femenino" >
-									   	      <span id="radioFemenino" class="bmd-radio material-ripple waves-ripple"></span>
-									   	      Femenino
-									   	    </label>
-									   	  </div>
-									   </span>
+									<select name="genero" id="genero" class="form-control">
+										<option value="-">Seleccione uno...</option>
+										<option value="1">Masculino</option>
+										<option value="2">Femenino</option>
+									</select>
 								</div>
 									<div class="form-column col-md-6">
 									<label for="">Estado Civil</label>
-									   <span class="bmd-form-group is-filled">
-									   	<div class="radio">
-									   	    <label style="color:#555;">
-									   	      <input type="radio" name="estadoCivil" id="radioCasado" value="Casado" >
-									   	      <span class="bmd-radio material-ripple waves-ripple"></span>
-									   	      Casado
-									   	    </label>
-									   	  </div>
-									   </span>
-									   <span class="bmd-form-group is-filled">
-									   	<div class="radio">
-									   	    <label style="color:#555;">
-									   	      <input type="radio" name="estadoCivil" id="radioSoltero" value="Soltero" >
-									   	      <span class="bmd-radio material-ripple waves-ripple"></span>
-									   	      Soltero
-									   	    </label>
-									   	  </div>
-									   </span>
-									   <span class="bmd-form-group is-filled">
-									   	<div class="radio">
-									   	    <label style="color:#555;">
-									   	      <input type="radio" name="estadoCivil" id="radioDivorciado" value="Divorciado" >
-									   	      <span class="bmd-radio material-ripple waves-ripple"></span>
-									   	      Divorciado
-									   	    </label>
-									   	  </div>
-									   </span>
-									   	   <span class="bmd-form-group is-filled">
-									   	<div class="radio">
-									   	    <label style="color:#555;">
-									   	      <input type="radio" name="estadoCivil" id="radioViudo" value="Viudo" >
-									   	      <span class="bmd-radio material-ripple waves-ripple"></span>
-									   	      Viudo
-									   	    </label>
-									   	  </div>
-									   </span>
+									  <select name="estadoCivil" id="estadoCivil" class="form-control">
+										<option value="-">Seleccione uno...</option>
+										<option value="1">Soltero</option>
+										<option value="2">Casado</option>
+										<option value="3">Divorciado</option>
+										<option value="4">Viudo</option>
+									</select>
 								</div>
 							</div>
 

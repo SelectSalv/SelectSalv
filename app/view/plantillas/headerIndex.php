@@ -15,9 +15,6 @@
 	<script src="res/plugins/JQuery/jquery.js"></script>
 	<script src="res/plugins/popper.js"></script>
     <script src="res/plugins/BootstrapMD/BootstrapMD.min.js"></script>
-    <script src="res/plugins/BootstrapMD/materialize.js"></script>
-    <script src="res/plugins/dataTable/jquery.dataTables.min.js"></script>
- 	<script src="res/plugins/dataTable/dataTables.material.min.js"></script>
     <script src="res/js/fondo.js"></script>
     <script src="res/js/height.js"></script>
     <script src="res/js/form-fix.js"></script>

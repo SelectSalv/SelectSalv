@@ -12,7 +12,7 @@
 			<p class="lead text-center">Ingrese su número de DUI</p>
 		</div>
 		<div class="wrap">
-			<form id="frmDui">
+			<form id="frmDui" action="?1=Persona&2=ingresarDui" method="POST">
 				<div class="form-row">
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">

@@ -13,6 +13,11 @@ class ControladorBase
 
 	}
 
+	public function renderData()
+	{
+		
+	}
+
 	public function render($doc, $carpeta, $header = null, $menu = null)
 	{
 		require_once 'app/view/plantillas/header.php';
