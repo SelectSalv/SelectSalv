@@ -34,6 +34,11 @@ create table tipoTransaccion(
 );
 
 insert into tipoTransaccion values(null, 'Registro de Persona');
+insert into tipoTransaccion values(null, 'Eliminacion de Persona');
+insert into tipoTransaccion values(null, 'Edicion de datos de Persona');
+insert into tipoTransaccion values(null, 'Registro de Usuario');
+insert into tipoTransaccion values(null, 'Eliminar Usuario');
+
 
 insert into Rol values(null, 'mMun',1, 'Desarrollador');
 insert into Rol values(null, 'lcqe0p8=',1, 'Administrador');
@@ -153,7 +158,7 @@ create view v_Usuarios as (
 
 # Vista con los datos de Persona
 
-drop view v_Persona as (
+create view v_Persona as (
 	select p.idPersona, p.dui, p.nomPersona, p.apePersona, p.genero, p.fechaNac, p.fechaVenc, p.profesion, p.direccion, p.estadoCivil, p.estadoVotacion, 
             m.idMunicipio, m.nomMunicipio, d.nomDepartamento 
     from Persona p, Municipio m, Departamento d
@@ -171,6 +176,8 @@ create view v_Transacciones as (
     where u.idUsuario = t.idUsuario and  u.idRol = r.idRol and t.idTipo = tp.id
     order by t.id desc
 );
+
+select * from v_Transacciones
 
 # Procedimiento almacenado para registrar transacciones
 
@@ -259,7 +266,7 @@ begin
             end if;
 		
 	end if;
-    call p_RegTransacciones(1, 1);
+    call p_RegTransaccion(1, 1);
 end
 $$
 
@@ -287,7 +294,7 @@ begin
     set nomCv = concat("Centro de Votacion", nom);
 	insert into Municipio values(null, nom, dep);
     set mun = (select idMunicipio from Municipio where nomMunicipio = nom);
-    insert into CentroVotacion values(null, nomCv, 0, mun);
+    insert into CentroVotacion values(null, nomCv, mun);
 end
 $$
 
@@ -307,4 +314,4 @@ $$
 
 # call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 'Masculino', '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 'Soltero', 1);
 
- call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 'Masculino', '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 'Soltero', 1);
+call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 'Masculino', '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 'Soltero', 1);

@@ -138,7 +138,7 @@
 		      		<thead>
 		      			<tr>
 		      				<th>Campos</th>
-		      				<th>Dato</th>
+		      				<th>Datos</th>
 		      			</tr>
 		      		</thead>
 		      		<tbody id="bodyTablaDatos">
