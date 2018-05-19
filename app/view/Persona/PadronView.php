@@ -50,22 +50,26 @@
 
 							<div class="form-row">
 								<div class="form-column col-md-6">
-									<label for="">Género</label>
-									<select name="genero" id="genero" class="form-control">
-										<option value="-" data="">Seleccione uno...</option>
-										<option value="1" data="Masculino">Masculino</option>
-										<option value="2" data="Femenino">Femenino</option>
-									</select>
+									<div class="form-group bmd-form-group is-filled">
+										<label for="" class="bmd-label-floating">Género</label>
+										<select name="genero" id="genero" class="form-control">
+											<option value="-" data="">Seleccione uno...</option>
+											<option value="1" data="Masculino">Masculino</option>
+											<option value="2" data="Femenino">Femenino</option>
+										</select>
+									</div>
 								</div>
-									<div class="form-column col-md-6">
-									<label for="">Estado Civil</label>
-									<select name="estadoCivil" id="estadoCivil" class="form-control">
-										<option value="-" data="">Seleccione uno...</option>
-										<option value="1" data="Soltero">Soltero</option>
-										<option value="2" data="Casado">Casado</option>
-										<option value="3" data="Divorciado">Divorciado</option>
-										<option value="4" data="Viudo">Viudo</option>
-									</select>
+								<div class="form-column col-md-6">
+									<div class="form-group bmd-form-group is-filled">
+										<label for="" class="bmd-label-floating">Estado Civil</label>
+										<select name="estadoCivil" id="estadoCivil" class="form-control">
+											<option value="-" data="">Seleccione uno...</option>
+											<option value="1" data="Soltero">Soltero</option>
+											<option value="2" data="Casado">Casado</option>
+											<option value="3" data="Divorciado">Divorciado</option>
+											<option value="4" data="Viudo">Viudo</option>
+										</select>
+									</div>
 								</div>
 							</div>
 

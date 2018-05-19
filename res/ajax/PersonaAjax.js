@@ -264,6 +264,10 @@ $(document).ready(function() {
                 $('#apellidosPersonaModificar').val(data.apePersona);
                 $('#apellidosPersonaModificar').parent().addClass('is-filled');
 
+                $('#generoModificar').val(data.idGenero);
+
+                $('#estadoCivilModificar').val(data.idestadoCivil);
+
 
                 $('#fechaNacimientoModificar').val(data.fechaNac);
                 $('#fechaVencimientoModificar').val(data.fechaVenc);

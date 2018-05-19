@@ -62,17 +62,31 @@ create table Persona(
     dui varchar(15) not null,
     nomPersona varchar(100),
     apePersona varchar(100),
-    genero varchar(100),
+    idgenero int,
     fechaNac date,
     fechaVenc date,
     fechaReg date,
     estado int,
     profesion varchar(100),
     direccion varchar(250),
-    estadoCivil varchar(50),
+    idEstadoCivil int,
     estadoVotacion int,
     idMunicipio int not null
 );
+
+create table genero(
+	idGenero int auto_increment unique not null primary key,
+    descGenero varchar(25)
+);
+
+insert into genero values(null, 'Femenino');
+insert into genero values(null, 'Maculino');
+
+create table estadoCivil(
+	idEstadoCivil int auto_increment unique not null primary key,
+    descEstadoCivil varchar(25)
+);
+
 
 
 create table Departamento(
@@ -146,6 +160,8 @@ create table Candidato(
 
 alter table Usuario add constraint fk_idRol_Usuario foreign key(idRol) references Rol(idRol);
 alter table Persona add constraint fk_idMunicipio_Municipio foreign key(idMunicipio) references Municipio(idMunicipio);
+alter table Persona add constraint fk_idGenero_Persona foreign key (idGenero) references genero(idGenero);
+alter table Persona add constraint fk_idEstadoCivil_Persona foreign key (idEstadoCivil) references estadoCivil(idEstadoCivil);
 alter table Municipio add constraint fk_idDepartamento_Municipio foreign key (idDepartamento) references Departamento(idDepartamento);
 alter table centroVotacion add constraint fk_idMunicipio_CV foreign key (idMunicipio) references Municipio(idMunicipio);
 alter table Jrv add constraint fk_idCentro_Jrv foreign key (idCentro) references CentroVotacion(idCentro);
@@ -173,10 +189,10 @@ create view v_Usuarios as (
 # Vista con los datos de Persona
 
 create view v_Persona as (
-	select p.idPersona, p.dui, p.nomPersona, p.apePersona, j.numJrv, p.genero, p.fechaNac, p.fechaVenc, p.profesion, p.direccion, p.estadoCivil, p.estadoVotacion, 
+	select p.idPersona, p.dui, p.nomPersona, p.apePersona, j.numJrv,g.idGenero, g.descGenero, p.fechaNac, p.fechaVenc, p.profesion, p.direccion,e.idEstadoCivil, e.descEstadoCivil, p.estadoVotacion, 
             m.idMunicipio, m.nomMunicipio, d.nomDepartamento 
-    from Persona p, Municipio m, Departamento d, padron pd, jrv j
-    where p.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento and pd.idPersona = p.idPersona and pd.idJrv = j.idJrv
+    from Persona p, Municipio m, Departamento d, padron pd, jrv j, genero g, estadoCivil e
+    where p.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento and pd.idPersona = p.idPersona and pd.idJrv = j.idJrv and p.idGenero = g.idGenero and p.idEstadoCivil = e.idEstadoCivil
     order by p.idPersona desc
 );
 
@@ -321,7 +337,7 @@ end
 $$
 
 
-
+# call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 'Masculino', '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 'Divorciado', 2);
 
 # call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 'Masculino', '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 'Soltero', 1);
 
