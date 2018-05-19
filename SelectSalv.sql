@@ -20,6 +20,21 @@ create table Rol(
 );
 
 
+create table transacciones(
+	id int auto_increment unique not null primary key,
+    idUsuario int,
+    idTipo int,
+    fecha date, 
+    hora varchar(25)
+);
+
+create table tipoTransaccion(
+	id int auto_increment unique not null primary key,
+    descTransaccion varchar(50)
+);
+
+insert into tipoTransaccion values(null, 'Registro de Persona');
+
 insert into Rol values(null, 'mMun',1, 'Desarrollador');
 insert into Rol values(null, 'lcqe0p8=',1, 'Administrador');
 insert into Rol values(null, 'ndSn',1, 'Invitado');
@@ -60,7 +75,6 @@ create table Municipio(
 create table CentroVotacion(
 	idCentro int auto_increment unique not null primary key,
     nomCentro varchar(150),
-    numJrv int,
     idMunicipio int not null
 );
 
@@ -69,10 +83,10 @@ create table CentroVotacion(
 create table Jrv(
 	idJrv int auto_increment unique not null primary key,
     numJrv varchar(20) not null,
-    numPersonas int,
     idCentro int not null
 );
 
+insert into Jrv values(null, '11', 1);
 
 create table padron(
 	id int auto_increment unique not null primary key,
@@ -124,6 +138,7 @@ alter table Candidato add constraint fk_idTipoCandidato_Candidato foreign key (i
 alter table Candidato add constraint fk_idPersona_Candidato foreign key (idPersona) references Persona(idPersona);
 alter table padron add constraint fk_idPersona_padron foreign key (idPersona) references Persona(idPersona);
 alter table padron add constraint fk_idJrv foreign key (idJrv) references Jrv(idJrv);
+alter table transacciones add constraint fk_tipoTransaccion foreign key (idTipo) references tipoTransaccion(id);
 
 
 # VISTAS
@@ -138,7 +153,7 @@ create view v_Usuarios as (
 
 # Vista con los datos de Persona
 
-create view v_Persona as (
+drop view v_Persona as (
 	select p.idPersona, p.dui, p.nomPersona, p.apePersona, p.genero, p.fechaNac, p.fechaVenc, p.profesion, p.direccion, p.estadoCivil, p.estadoVotacion, 
             m.idMunicipio, m.nomMunicipio, d.nomDepartamento 
     from Persona p, Municipio m, Departamento d
@@ -146,6 +161,28 @@ create view v_Persona as (
     order by p.idPersona desc
 );
 
+# Vista para transacciones
+
+# DATE_FORMAT(NOW( ), "%H:%i:%S" )
+
+create view v_Transacciones as (
+	select t.id, u.nomUsuario, r.descRol, tp.descTransaccion, t.fecha, t.hora
+    from transacciones t, tipoTransaccion tp, Usuario u, Rol r
+    where u.idUsuario = t.idUsuario and  u.idRol = r.idRol and t.idTipo = tp.id
+    order by t.id desc
+);
+
+# Procedimiento almacenado para registrar transacciones
+
+delimiter $$
+create procedure p_RegTransaccion(
+	in usuario int,
+    in tipo int
+)
+begin
+	insert into transacciones values(null, usuario, tipo, curdate(), DATE_FORMAT(NOW( ), "%H:%i:%S" ));
+end
+$$
 
 
 # Procedimiento almacenado para registrar Usuarios
@@ -189,15 +226,43 @@ create procedure p_regPersona(
     in fechavenc date,
     in prof varchar(100),
     in direc varchar(250),
-    in estado varchar(50),
+    in estadoCiv varchar(50),
     in municipio int
 )
 begin
-	declare cv int;
-	insert into Persona values (null, dui, nom, ape, gen, fechanac, fechavenc, prof, direc, estado, 0, municipio);
-    set cv =  (select  idMunicipio from CentroVotacion
+	declare numJrv int;
+    declare codJrv varchar(10);
+    declare idPersonaP int;
+    declare idJrvP int;
+    declare numPersonas int;
+    
+	insert into Persona values (null, dui, nom, ape, gen, fechanac, fechavenc, curdate(), 1, prof, direc, estadoCiv, 0, municipio);
+    set numJrv = (select count(idJrv) from Jrv where idCentro = municipio);
+    
+	if numJrv = 0 then
+			set codJRv = concat(municipio, 1);
+			insert into Jrv values(null, codJrv, municipio);
+            set idPersonaP = (select max(idPersona) from Persona);
+            set idJrvP = (select max(idJrv) from Jrv);
+            insert into padron values(null, idPersonaP, idJrvP);
+	elseif	numJrv > 0 then
+			set idPersonaP = (select max(idPersona) from Persona);
+			set idJrvP = (select max(idJrv) from Jrv);
+			set numPersonas = (select count(idPersona) from padron where idJrv = idJrvP);
+            if numPersonas < 10 then
+				insert into padron values(null, idPersonaP, idJrvP);
+			elseif numPersonas > 10 then
+				set idJrvP = ((select max(idJrv) from Jrv) + 1);
+				set codJrv = concat(municipio, idJrvP);
+				insert into Jrv values(null, codJrv, municipio);			
+                set numPersonas = (select count(idPersona) from padron where idJrv = idJrvP);
+            end if;
+		
+	end if;
+    call p_RegTransacciones(1, 1);
 end
 $$
+
 
 #Procedimiento para devolver los datos de Persona en base a ID de registro
 delimiter $$
@@ -219,7 +284,7 @@ create procedure p_regMunicipio(
 begin
 	declare nomCv varchar(50);
     declare mun int;
-    set nomCv = concat_ws("-", "centro", nom);
+    set nomCv = concat("Centro de Votacion", nom);
 	insert into Municipio values(null, nom, dep);
     set mun = (select idMunicipio from Municipio where nomMunicipio = nom);
     insert into CentroVotacion values(null, nomCv, 0, mun);
@@ -240,6 +305,6 @@ end
 $$
 
 
-call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 'Masculino', '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 'Soltero', 1);
+# call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 'Masculino', '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 'Soltero', 1);
 
-call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 'Masculino', '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 'Soltero', 1);
+ call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 'Masculino', '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 'Soltero', 1);
