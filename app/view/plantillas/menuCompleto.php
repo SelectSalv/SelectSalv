@@ -37,7 +37,7 @@
 			<a class="" href="?1=Usuario&2=transacciones">
 				<li class="list-item align-middle waves-light">
 					<i class="menu-it-icon material-icons text-purp align-middle">recent_actors</i>
-					Ver Movimientos
+					Ver Transacciones
 				</li>
 			</a>
 		<hr>
