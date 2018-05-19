@@ -50,22 +50,26 @@
 
 							<div class="form-row">
 								<div class="form-column col-md-6">
-									<label for="">Género</label>
-									<select name="genero" id="genero" class="form-control">
-										<option value="-">Seleccione uno...</option>
-										<option value="1">Masculino</option>
-										<option value="2">Femenino</option>
-									</select>
+									<div class="form-group bmd-form-group is-filled">
+										<label for="" class="bmd-label-floating">Género</label>
+										<select name="genero" id="genero" class="form-control">
+											<option value="-" data="">Seleccione uno...</option>
+											<option value="1" data="Masculino">Masculino</option>
+											<option value="2" data="Femenino">Femenino</option>
+										</select>
+									</div>
 								</div>
-									<div class="form-column col-md-6">
-									<label for="">Estado Civil</label>
-									<select name="estadoCivil" id="estadoCivil" class="form-control">
-										<option value="-">Seleccione uno...</option>
-										<option value="1">Soltero</option>
-										<option value="2">Casado</option>
-										<option value="3">Divorciado</option>
-										<option value="4">Viudo</option>
-									</select>
+								<div class="form-column col-md-6">
+									<div class="form-group bmd-form-group is-filled">
+										<label for="" class="bmd-label-floating">Estado Civil</label>
+										<select name="estadoCivil" id="estadoCivil" class="form-control">
+											<option value="-" data="">Seleccione uno...</option>
+											<option value="1" data="Soltero">Soltero</option>
+											<option value="2" data="Casado">Casado</option>
+											<option value="3" data="Divorciado">Divorciado</option>
+											<option value="4" data="Viudo">Viudo</option>
+										</select>
+									</div>
 								</div>
 							</div>
 
@@ -98,9 +102,9 @@
 									<div class="form-group bmd-form-group is-filled">
 										<label for="municipio" class="bmd-label-floating">Municipio</label>
 										<select type="text" class="form-control requeridoRegistrar" name="municipio" id="municipio">
-											<option value="-">Seleccione uno...</option>
-											<option value="1">Santa Tecla</option>
-											<option value="2">San Salvador</option>
+											<option value="-" data="">Seleccione uno...</option>
+											<option value="1" data="SanTa Tecla">Santa Tecla</option>
+											<option value="2" data="San Salvador">San Salvador</option>
 										</select>
 									</div>
 								</div>
@@ -194,7 +198,7 @@
 							<div class="form-row">
 								<div class="form-column col-md-6">
 									<label for="">Género</label>
-									<select name="genero" id="genero" class="form-control">
+									<select name="generoModificar" id="generoModificar" class="form-control">
 										<option value="-">Seleccione uno...</option>
 										<option value="1">Masculino</option>
 										<option value="2">Femenino</option>
@@ -202,7 +206,7 @@
 								</div>
 									<div class="form-column col-md-6">
 									<label for="">Estado Civil</label>
-									  <select name="estadoCivil" id="estadoCivil" class="form-control">
+									  <select name="estadoCivilModificar" id="estadoCivilModificar" class="form-control">
 										<option value="-">Seleccione uno...</option>
 										<option value="1">Soltero</option>
 										<option value="2">Casado</option>
@@ -327,6 +331,7 @@
 	                <th class="text-light" >DUI</th>
 	                <th class="text-light" >Apellidos</th>
 	                <th class="text-light" >Nombres</th>
+	                <th class="text-light" >JRV</th>
 	                <th class="text-light" >Género</th>
 	                <th class="text-light" >Fecha de Nacimiento</th>
 	                <th class="text-light" >Municipio</th>
