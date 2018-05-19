@@ -327,6 +327,7 @@
 	                <th class="text-light" >DUI</th>
 	                <th class="text-light" >Apellidos</th>
 	                <th class="text-light" >Nombres</th>
+	                <th class="text-light" >JRV</th>
 	                <th class="text-light" >Género</th>
 	                <th class="text-light" >Fecha de Nacimiento</th>
 	                <th class="text-light" >Municipio</th>
