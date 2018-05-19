@@ -9,7 +9,7 @@
 				</li>
 			</a>
 		<hr>
-			<a class="" href="regPartido.php">
+			<a class="" href="?1=Partido&2=partidoView">
 				<li class="list-item align-middle waves-light">
 					<i class="menu-it-icon material-icons text-purp align-middle">flag</i>
 					Gestionar Partidos
