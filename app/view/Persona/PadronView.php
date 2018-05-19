@@ -5,13 +5,7 @@
 	<script src="res/plugins/dataTableBootstrap/dataTables.bootstrap.min.js"></script>
 
 	<script src="res/ajax/PersonaAjax.js"></script>
-
-	<script>
-		$(document).ready(function() {
-			
-		});
-	</script>
-
+	
 	<!-- modal principal de Registro -->
 	<div id="contenedor-modal">
 		<div class="modal fade" id="modalFrmPersona" tabindex="-1" role="dialog" aria-labelledby="ModalFrm" aria-hidden="true">

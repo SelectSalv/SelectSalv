@@ -266,7 +266,7 @@ $(document).ready(function() {
 
                 $('#generoModificar').val(data.idGenero);
 
-                $('#estadoCivilModificar').val(data.idestadoCivil);
+                $('#estadoCivilModificar').val(data.idEstadoCivil);
 
 
                 $('#fechaNacimientoModificar').val(data.fechaNac);
