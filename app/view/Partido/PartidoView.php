@@ -1,8 +1,8 @@
   <?php $partido = new PartidoController() ?>
   
-  <link rel="stylesheet" href="res/plugins/dataTableBootstrap/dataTables.bootstrap4.min.css">
-  <script src="res/plugins/dataTableBootstrap/jquery.dataTables.min.js"></script>
-  <script src="res/plugins/dataTableBootstrap/dataTables.bootstrap.min.js"></script>
+<link rel="stylesheet" href="res/plugins/dataTableBootstrap/dataTables.bootstrap4.min.css">
+<script src="res/plugins/dataTableBootstrap/jquery.dataTables.min.js"></script>
+<script src="res/plugins/dataTableBootstrap/dataTables.bootstrap.min.js"></script>
 
   <script src="res/ajax/PartidoAjax.js"></script>
 
@@ -11,19 +11,36 @@
       
     });
   </script>
+  <div class="contenedor">
 
-    <!-- modal principal de Registro -->
-    <div id="contenedor-modal">
-        <div class="modal fade" id="modalFrmPartido" tabindex="-1" role="dialog" aria-labelledby="ModalFrm" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header" id="modal-header-frm">
-                <h5 class="modal-title" id="modal-title-frm">Registrar Partido</h5>
-              </div>        
-              <div id="modal-body-frm" class="modal-body">
-                        <form id="frmPartido" action="../proc/procRegPartido.php" method="POST">
+ <!--  <div class="barra-titulo">
+    <p class="texto-barra-titulo">
+      Registro de Partidos
+    </p>
+  </div>
+    <div class="dataTab">
+      <table id="tableTransacciones" class="table table-hover table-bordered" style="width: 100%; margin: auto;">
+        <thead class="bg-primary">
+          <th class="text-light">idPartido</th>
+          <th class="text-light">Nombre del Partido</th>
+          <th class="text-light">Bandera</th>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>-->
 
-        <div class="form-row">
+
+  <div class="cuadro" id="c-Partido">
+    <div class="cuadro-ins bg-info">
+      <p class="lead text-center">
+        Registrar Partido
+      </p>
+    </div>
+    <div class="wrap">
+      <form id="frmPartido">
+        
+      <div class="form-row">
             <div class="form-column col-md-12">
                 <div class="form-group bmd-form-group">
                     <label for="nomPartido" class="bmd-label-floating">Nombre del Partido</label>
@@ -31,25 +48,25 @@
                 </div>
             </div>
         </div>
+        
         <br>
         <div class="form-row">
-            <div class="form-column col-md-12">
-                <div class="form-group">
-                    <div class="custom-file">
-                      <input type="file" class="" id="customFileLang" lang="es">
-                      <label class="" for="customFileLang">Seleccionar Bandera</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-                    </form>
-              </div>
-              <div class="modal-footer" id="modal-footer-frm">
-                <button type="button" id="btnCancelarFrm" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
-                <button type="button" id="btnFrmRegistrar" class="btn btn-success material-ripple">Registrar</button>
+          <div class="form-column col-md-12">
+            <div class="form-group">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+                <label class="custom-file-label" for="customFileLang">Seleccionar Foto</label>
               </div>
             </div>
           </div>
         </div>
+        <div class="form-row">
+          <div class="form-column col-md-12">
+            <div class="form-group bmd-form-group">
+              <button type="button" id="btnPersona" name="btnPartido" class="waves-effect waves-light btn btn-raised btn-info">Registrar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
