@@ -10,6 +10,7 @@ $(document).ready(function() {
             { "data": "DUI" },
             { "data": "Apellidos" },
             { "data": "Nombres" },
+            { "data": "JRV" },
             { "data": "Genero" },
             { "data": "Fecha" },
             { "data": "Municipio" },
@@ -71,6 +72,7 @@ $(document).ready(function() {
 
             $.each(datos, function(i, campo) {
                 var nombreCampo = '';
+                var dato = campo.value;
 
                 switch (campo.name) {
                     case 'dui':
@@ -93,22 +95,26 @@ $(document).ready(function() {
                         break;
                     case 'municipio':
                         nombreCampo = 'Municipio';
+
+                        dato = $( "#municipio option:selected" ).text();;
                         break;
                     case 'direccion':
                         nombreCampo = 'Dirección';
                         break;
-                    case 'generoPersona':
+                    case 'genero':
                         nombreCampo = 'Género';
+                        dato = $( "#genero option:selected" ).text();
                         break;
                     case 'estadoCivil':
                         nombreCampo = 'Estado Civil';
+                        dato = $( "#estadoCivil option:selected" ).text();
                         break;
                 }
 
                 var fila = `<tr>
-                            <th scope="row">` + nombreCampo + `</th>
-                            <td>` + campo.value + `</td>
-                        </tr>`;
+                                <th scope="row">` + nombreCampo + `</th>
+                                <td>` + dato + `</td>
+                            </tr>`;
 
                 $('#modal-title-datos').html(`Registrar Persona`);
                 $('#btnDatos').show();
@@ -271,11 +277,6 @@ $(document).ready(function() {
                 $('#direccionModificar').val(data.direccion);
                 $('#direccionModificar').parent().addClass('is-filled');
 
-                var genero = '#genero' + data.genero + 'Modificar';
-                var radioBtn = '#radio' + data.genero;
-
-                $(radioBtn).addClass('is-filled');
-                $(genero).prop('checked').true;
             }
         });
 

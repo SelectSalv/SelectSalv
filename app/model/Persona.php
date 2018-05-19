@@ -227,6 +227,7 @@ class Persona extends ModeloBase {
 							"DUI": "'.$fila["dui"].'",
 							"Apellidos": "'.$fila["apePersona"].'",
 							"Nombres": "'.$fila["nomPersona"].'",
+							"JRV": "'.$fila["numJrv"].'",
 							"Genero": "'.$fila["genero"].'",
 							"Fecha": "'.$fila["fechaNac"].'",
 							"Municipio": "'.$fila["nomMunicipio"].'",
