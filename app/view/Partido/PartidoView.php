@@ -1,18 +1,3 @@
-  <?php $partido = new PartidoController() ?>
-  
-<link rel="stylesheet" href="res/plugins/dataTableBootstrap/dataTables.bootstrap4.min.css">
-<script src="res/plugins/dataTableBootstrap/jquery.dataTables.min.js"></script>
-<script src="res/plugins/dataTableBootstrap/dataTables.bootstrap.min.js"></script>
-
-  <script src="res/ajax/PartidoAjax.js"></script>
-
-  <script>
-    $(document).ready(function() {
-      
-    });
-  </script>
-  <div class="contenedor">
-
  <!--  <div class="barra-titulo">
     <p class="texto-barra-titulo">
       Registro de Partidos
@@ -31,7 +16,7 @@
     </div>-->
 
 
-  <div class="cuadro" id="c-Partido">
+  <div class="cuadro" id="c-partido">
     <div class="cuadro-ins bg-info">
       <p class="lead text-center">
         Registrar Partido

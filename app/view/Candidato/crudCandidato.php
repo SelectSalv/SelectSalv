@@ -5,7 +5,7 @@
 			</p>
 		</div>
 		<div class="wrap">
-			<form id="frmPartido">
+			<form id="frmCandidato">
 				<div class="form-row">
 					<div class="form-column col-md-12">
 						<div class="form-group bmd-form-group">
