@@ -79,8 +79,8 @@ create table genero(
     descGenero varchar(25)
 );
 
-insert into genero values(null, 'Femenino');
 insert into genero values(null, 'Masculino');
+insert into genero values(null, 'Femenino');
 
 create table estadoCivil(
 	idEstadoCivil int auto_increment unique not null primary key,
@@ -192,7 +192,7 @@ create view v_Usuarios as (
 # Vista con los datos de Persona
 
 create view v_Persona as (
-	select p.idPersona, p.dui, p.nomPersona, p.apePersona, j.numJrv, g.idGenero, g.descGenero, p.fechaNac, p.fechaVenc, p.profesion, p.direccion,e.idEstadoCivil, e.descEstadoCivil, p.estadoVotacion, 
+	select p.idPersona, p.dui, p.nomPersona, p.apePersona, j.numJrv, g.idGenero, g.descGenero,date_format(p.fechanac, "%d/%m/%Y") as fechaNac,  date_format(p.fechavenc, "%d/%m/%Y") as fechaVenc, p.profesion, p.direccion,e.idEstadoCivil, e.descEstadoCivil, p.estadoVotacion, 
             m.idMunicipio, m.nomMunicipio, d.nomDepartamento 
     from Persona p, Municipio m, Departamento d, padron pd, jrv j, genero g, estadoCivil e
     where p.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento and pd.idPersona = p.idPersona and pd.idJrv = j.idJrv and p.idgenero = g.idGenero and p.idEstadoCivil = e.idEstadoCivil
@@ -329,8 +329,7 @@ end
 $$
 
 
-call p_regMunicipio('Santa Tecla', 1);
-call p_regMunicipio('San Salvador', 2);
+
 
 #Procedimiento para devolver los datos de Persona en base a N° de DUI
 delimiter $$
@@ -343,11 +342,17 @@ end
 $$
 
 
+
 # call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 'Masculino', '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 'Divorciado', 2);
 
 # call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 'Masculino', '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 'Soltero', 1);
 
-call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 2, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1);
+# call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1);
+
+call p_regMunicipio('Santa Tecla', 1);
+
+call p_regMunicipio('San Salvador', 2);
+
 
 call p_RegUsuario('gM+rynjXl+Gl06fQ', '9e1b9d0da915a9aaafd7524b5d4b667ecbe7abb3', 'mMun');
 
