@@ -81,6 +81,13 @@ class UsuarioController extends ControladorBase
 
 		echo $datos;
 	}
+
+	public function getTransacciones()
+	{
+		$datos = $this->model->getTransacciones();
+
+		echo $datos;
+	}
 	public function registrar()
 	{
 		$datos = $_REQUEST["datos"];

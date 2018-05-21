@@ -3,7 +3,7 @@ $(document).ready(function() {
    
 
     if ($('#tableUsuarios').length) {
-        var tabla = $('#tableUsuarios').DataTable({
+        var tablaUsuarios = $('#tableUsuarios').DataTable({
             "ajax": {
                 "url": "index.php?1=Usuario&2=getJSON",
                 "type": "POST"
@@ -45,7 +45,7 @@ $(document).ready(function() {
 
 
         // Ocultar columna de id de Usuario
-        tabla.column(0).visible(false);
+        tablaUsuarios.column(0).visible(false);
         setTimeout(function() {
             $('tr td:last-child').addClass('text-right');
             // $('tr td:last-child').addClass('text-center');
@@ -54,6 +54,54 @@ $(document).ready(function() {
             $('tr td:last-child').addClass('text-right');
         });
 
+    }
+
+     if ($('#tableTransacciones').length) {
+        var tablaTransacciones = $('#tableTransacciones').DataTable({
+            "ajax": {
+                "url": "index.php?1=Usuario&2=getTransacciones",
+                "type": "POST"
+            },
+            "columns": [
+                { "data": "id" },
+                { "data": "Nombre de Usuario" },
+                { "data": "Permisos del Usuario" },
+                { "data": "Tipo de Transaccion" },
+                { "data": "Fecha" },
+                { "data": "Hora" },
+            ],
+            "order": [
+                [0, "desc"]
+            ],
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+            }
+        }); // Termina configuración de dataTable
+
+
+        // Ocultar columna de id de Usuario
+        tablaTransacciones.column(0).visible(false);
     }
 
     // ACTIVAR MODAL DE REGISTRO

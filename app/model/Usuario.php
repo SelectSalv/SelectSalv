@@ -163,4 +163,31 @@ class Usuario extends ModeloBase {
 		return '{"data" : ['.$datos.']}';
 	}
 
+	public function getTransacciones()
+	{
+		$enc = new Enc();
+
+		$_query = "select * from v_Transacciones";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		$datos = "";
+
+		while($fila = $resultado->fetch_assoc())
+		{
+
+			$fecha = date_create($fila["fecha"]);
+			$datos .= ' {
+							"id": "'.$fila["id"].'",
+							"Nombre de Usuario": "'.$enc->s_Decrypt($fila["nomUsuario"]).'",
+							"Permisos del Usuario": "'.$fila["descRol"].'" ,
+							"Tipo de Transaccion": "'.$fila["descTransaccion"].'" ,
+							"Fecha": "'.date_format($fecha, "d/m/Y").'" ,
+							"Hora": "'.$fila["hora"].'"
+						},'; 
+
+		}
+		$datos = substr($datos,0, strlen($datos) - 1);
+		return '{"data" : ['.$datos.']}';
+	}
 }
