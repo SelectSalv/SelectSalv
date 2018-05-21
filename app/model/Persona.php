@@ -223,13 +223,15 @@ class Persona extends ModeloBase {
 				$estadoVotacion = '<i class=\"material-icons\">check</i>';
 			}
 
+			$fecha = date_create($fila["fechaNac"]);
+
 			$datos .= ' {	"idPersona": "'.$fila["idPersona"].'",
 							"DUI": "'.$fila["dui"].'",
 							"Apellidos": "'.$fila["apePersona"].'",
 							"Nombres": "'.$fila["nomPersona"].'",
 							"JRV": "'.$fila["numJrv"].'",
 							"Genero": "'.$fila["descGenero"].'",
-							"Fecha": "'.$fila["fechaNac"].'",
+							"Fecha": "'.date_format($fecha, "d/m/Y").'",
 							"Municipio": "'.$fila["nomMunicipio"].'",
 							"Estado": "'.$estadoVotacion.'",
 							"Acciones": "'.$mas.$modificar.$eliminar.'"
@@ -254,7 +256,7 @@ class Persona extends ModeloBase {
 
 		if($resultado->num_rows == 0)
 		{
-			$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', '".$this->genero."', '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', '".$this->estadoCivil."', ".$this->idMunicipio.")";
+			$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', ".$this->genero.", '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', ".$this->estadoCivil.", ".$this->idMunicipio.", ".$_SESSION["idUsuario"].")";
 				$resultado = $this->con->conectar()->query($_query);
 
 				if($resultado)

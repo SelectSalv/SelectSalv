@@ -192,7 +192,7 @@ create view v_Usuarios as (
 # Vista con los datos de Persona
 
 create view v_Persona as (
-	select p.idPersona, p.dui, p.nomPersona, p.apePersona, j.numJrv, g.idGenero, g.descGenero,date_format(p.fechanac, "%d/%m/%Y") as fechaNac,  date_format(p.fechavenc, "%d/%m/%Y") as fechaVenc, p.profesion, p.direccion,e.idEstadoCivil, e.descEstadoCivil, p.estadoVotacion, 
+	select p.idPersona, p.dui, p.nomPersona, p.apePersona, j.numJrv, g.idGenero, g.descGenero, p.fechaNac, p.fechaVenc, p.profesion, p.direccion,e.idEstadoCivil, e.descEstadoCivil, p.estadoVotacion, 
             m.idMunicipio, m.nomMunicipio, d.nomDepartamento 
     from Persona p, Municipio m, Departamento d, padron pd, jrv j, genero g, estadoCivil e
     where p.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento and pd.idPersona = p.idPersona and pd.idJrv = j.idJrv and p.idgenero = g.idGenero and p.idEstadoCivil = e.idEstadoCivil
@@ -264,7 +264,8 @@ create procedure p_regPersona(
     in prof varchar(100),
     in direc varchar(250),
     in estadoCiv varchar(50),
-    in municipio int
+    in municipio int,
+    in iduser int
 )
 begin
 	declare numJrv int;
@@ -288,15 +289,27 @@ begin
 			set numPersonas = (select count(idPersona) from padron where idJrv = idJrvP);
             if numPersonas < 10 then
 				insert into padron values(null, idPersonaP, idJrvP);
-			elseif numPersonas > 10 then
-				set idJrvP = ((select max(idJrv) from Jrv) + 1);
+			else
+				set idJrvP = (select max(idJrv) from Jrv);
+                set idJrvP = idJrvP + 1;
 				set codJrv = concat(municipio, idJrvP);
 				insert into Jrv values(null, codJrv, municipio);			
-                set numPersonas = (select count(idPersona) from padron where idJrv = idJrvP);
+                insert into padron values(null, idPersonaP, idJrvP);
             end if;
 		
 	end if;
-    call p_RegTransaccion(1, 1);
+    call p_RegTransaccion(iduser, 1);
+end
+$$
+
+
+delimiter $$
+create procedure prueba()
+begin
+	declare idJrvP int;
+	set idJrvP = (select max(idJrv) from Jrv);
+	set idJrvP = idJrvP + 1;
+    select idJrvP;
 end
 $$
 
@@ -331,6 +344,7 @@ $$
 
 
 
+
 #Procedimiento para devolver los datos de Persona en base a N° de DUI
 delimiter $$
 create procedure p_obtenerPersona(
@@ -342,19 +356,28 @@ end
 $$
 
 
+/*
+call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 1, '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 2, 1, 1);
 
-# call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 'Masculino', '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 'Divorciado', 2);
+call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 1, '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 3, 1, 1);
 
-# call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 'Masculino', '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 'Soltero', 1);
+call p_regPersona('05878895-8', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-7', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-6', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-5', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-4', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-2', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-9', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
 
-# call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1);
+call p_regPersona('05878895-0', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-1', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1); */
 
 call p_regMunicipio('Santa Tecla', 1);
 
 call p_regMunicipio('San Salvador', 2);
 
 
-call p_RegUsuario('gM+rynjXl+Gl06fQ', '9e1b9d0da915a9aaafd7524b5d4b667ecbe7abb3', 'mMun');
-
-
 call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad', 'mMun');
+
+call p_RegUsuario('gM+rynjXl+Gl06fQ', '9e1b9d0da915a9aaafd7524b5d4b667ecbe7abb3', 'mMun');

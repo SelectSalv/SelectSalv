@@ -143,6 +143,7 @@
 		      			
 		      		</tbody>
 		      	</table>
+		      	<div id="mensaje-modal"></div>
 		      </div>
 		      <div class="modal-footer" id="modal-footer-datos">
 		       <button type="button" id="btnCancelarDatos" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>

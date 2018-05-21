@@ -115,7 +115,8 @@ $(document).ready(function() {
                                 <th scope="row">` + nombreCampo + `</th>
                                 <td>` + dato + `</td>
                             </tr>`;
-
+                $('#mensaje-modal').html(``);            
+                $('#tablaModalDatos').show();
                 $('#modal-title-datos').html(`Registrar Persona`);
                 $('#btnDatos').show();
                 $('#btnCancelarDatos').html('Cancelar');
@@ -132,7 +133,8 @@ $(document).ready(function() {
             });
         } else {
             $('#modal-title-datos').html(``);
-            $('#modal-body-datos').html(`Complete todos los campos`);
+            $('#tablaModalDatos').hide();
+            $('#mensaje-modal').html(`Complete todos los campos`);
             $('#btnDatos').hide();
             $('#btnCancelarDatos').html('Aceptar');
             $('#btnCancelarDatos').addClass('btn-danger');
@@ -191,6 +193,8 @@ $(document).ready(function() {
     $('#btnDatos').click(function() {
         var datos = JSON.stringify($('#frmPersona :input').serializeArray());
 
+        console.log(datos);
+
         $.ajax({
             type: 'POST',
             data: { datos: datos },
@@ -205,8 +209,8 @@ $(document).ready(function() {
                         $('#btnCancelarDatos').addClass('btn-success');
                         $('#btnCancelarDatos').click(function() {
                             $('#btnCancelarFrm').click();
+                            location.reload();
                         });
-                         $('#tablePadron');
                         break;
 
                     case 'error al registrar':

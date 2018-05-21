@@ -26,6 +26,7 @@
     <script src="res/js/botones.js"></script>
     <script src="res/js/barra-navegacion.js"></script>
     <script src="res/plugins/JQueryMask/jquery.mask.js"></script>
+    <script src="res/plugins/date.js"></script>
     <script src="res/js/mask-inputs.js"></script>
     <title>SelectSalv</title>
 </head>
