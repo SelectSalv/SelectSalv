@@ -231,15 +231,16 @@ delimiter $$
 create procedure p_RegUsuario(
     in nom text,
     in contra text,
-    in rol text
+    in rol text, 
+    in iduser int
 )
 begin
 	declare ideRol int;
     set ideRol = (select idRol from Rol where codRol = rol);
     insert into Usuario values(null, nom, contra, 1, ideRol);
+    call p_RegTransaccion(iduser,4);
 end
 $$
-
 
 # Procedimiento almacenado para comparar datos de logueo
 delimiter $$
@@ -257,12 +258,12 @@ create procedure p_regPersona(
     in dui varchar(15),
     in nom varchar(100),
     in ape varchar(100),
-    in gen varchar(100),
+    in gen int,
     in fechanac date,
     in fechavenc date,
     in prof varchar(100),
     in direc varchar(250),
-    in estadoCiv varchar(50),
+    in estadoCiv int,
     in municipio int,
     in iduser int
 )
@@ -302,13 +303,42 @@ end
 $$
 
 delimiter $$
-create procedure p_EliminarPersona(
-	in id int
+create procedure p_EditarPersona(
+	in id int,
+	in ndui varchar(15),
+    in nom varchar(100),
+    in ape varchar(100),
+    in gen int,
+    in edfechanac date,
+    in edfechavenc date,
+    in prof varchar(100),
+    in direc varchar(250),
+    in estadoCiv int,
+    in municipio int,
+    in iduser int
 )
 begin
-	update persona set estado = 0 where idPersona = id;
+	update persona 
+    set dui = ndui, nomPersona = nom, apePersona = ape, idgenero = gen, fechaNac = edfechanac, profesion = prof, direccion = direc, idEstadoCivil = estadoCiv, idMunicipio = municipio
+    where idPersona = id;
+    call p_RegTransaccion(iduser,3);
 end
 $$
+
+
+delimiter $$
+create procedure p_EliminarPersona(
+	in id int,
+    in iduser int
+)
+begin
+	update persona 
+    set estado = 0
+    where idPersona = id;
+    call p_RegTransaccion(iduser,2);
+end
+$$
+
 
 delimiter $$
 create procedure prueba()
@@ -385,6 +415,8 @@ call p_regMunicipio('Santa Tecla', 1);
 call p_regMunicipio('San Salvador', 2);
 
 
-call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad', 'mMun');
+call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad', 'mMun', 0);
 
-call p_RegUsuario('gM+rynjXl+Gl06fQ', '9e1b9d0da915a9aaafd7524b5d4b667ecbe7abb3', 'mMun');
+call p_RegUsuario('gM+rynjXl+Gl06fQ', '9e1b9d0da915a9aaafd7524b5d4b667ecbe7abb3', 'mMun', 0);
+
+call p_RegUsuario('d8ej1aDVddCg3qTU', 'a1d3288715911c7ea5b85627de62c4aabcf233c7', 'mMun', 0);

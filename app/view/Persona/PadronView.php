@@ -253,6 +253,7 @@
 									<div class="form-group bmd-form-group">
 										<label for="direccion" class="bmd-label-floating">Dirección</label>
 										<input type="text" class="form-control requerido" name="direccion" id="direccionModificar">
+										<input type="hidden" name="idModificar" id="idModificar">
 									</div>
 								</div>
 							</div>
@@ -308,16 +309,20 @@
             Padrón Electoral
         </p>
     </div>
-    <div class="barra-principal">
-        <button type="button" id="btnRegistrar" class="material-ripple btn-raised btn btn-primary ml-auto p2">
-        	
-		 Registrar Persona
-		</button>
-		<!-- <button type="button" class="material-ripple waves-light btn-raised btn btn-secondary p2" data-toggle="modal" data-target="#modalBuscar">
-		 Buscar
-		</button> -->
-    </div>
-	<hr>
+    <?php 
+
+    	if(($_SESSION["rol"] == "Administrador") || ($_SESSION["rol"] == "Desarrollador"))
+    	{
+    		echo '	<div class="barra-principal">
+				        <button type="button" id="btnRegistrar" class="material-ripple btn-raised btn btn-primary ml-auto p2">
+				        	
+						 Registrar Persona
+						</button>
+				    </div>
+					<hr>';
+    	}
+
+    ?>
 	<div class="dataTab">
 		<table id="tablePadron" class="table table-hover table-bordered" style="width:100%; margin:auto;">
 			<thead class="bg-primary">

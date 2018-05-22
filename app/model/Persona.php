@@ -279,10 +279,28 @@ class Persona extends ModeloBase {
 		return $respuesta;
 	}
 
-	// MÉTODOO PARA ELIMINAR PERSONA
+	// MÉTODO PARA EDITAR PERSONA
+	public function editarPersona($id)
+	{
+		$_query = "call p_EditarPersona(".$id.", '".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', ".$this->genero.", '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', ".$this->estadoCivil.", ".$this->idMunicipio.", ".$_SESSION["idUsuario"].")";
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado)
+		{
+			$respuesta = "modificado";
+		}
+		else 
+		{
+			$respuesta = "error al modificar el registro";
+		}
+
+		return $respuesta;
+	}
+
+	// MÉTODO PARA ELIMINAR PERSONA
 	public function eliminarPersona($id)
 	{
-		$_query = "call p_EliminarPersona(".$id.")";
+		$_query = "call p_EliminarPersona(".$id.", ".$_SESSION["idUsuario"].")";
 
 		$resultado = $this->con->conectar()->query($_query);
 

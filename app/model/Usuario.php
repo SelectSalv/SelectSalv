@@ -103,7 +103,7 @@ class Usuario extends ModeloBase {
 		$this->nomUsuario = $enc->s_Encrypt($this->nomUsuario);
 		$this->passUsuario = sha1($this->passUsuario);
 
-		$_query = "call p_RegUsuario('".$this->nomUsuario."', '".$this->passUsuario."', '".$this->rolUsuario."');";
+		$_query = "call p_RegUsuario('".$this->nomUsuario."', '".$this->passUsuario."', '".$this->rolUsuario."', ".$_SESSION["idUsuario"].");";
 
 		$resultado = $this->con->conectar()->query($_query);
 
