@@ -193,14 +193,13 @@ create view v_Usuarios as (
 
 create view v_Persona as (
 	select p.idPersona, p.dui, p.nomPersona, p.apePersona, j.numJrv, g.idGenero, g.descGenero, p.fechaNac, p.fechaVenc, p.profesion, p.direccion,e.idEstadoCivil, e.descEstadoCivil, p.estadoVotacion, 
-            m.idMunicipio, m.nomMunicipio, d.nomDepartamento 
+            m.idMunicipio, m.nomMunicipio, d.nomDepartamento, p.estado
     from Persona p, Municipio m, Departamento d, padron pd, jrv j, genero g, estadoCivil e
     where p.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento and pd.idPersona = p.idPersona and pd.idJrv = j.idJrv and p.idgenero = g.idGenero and p.idEstadoCivil = e.idEstadoCivil
     order by p.idPersona desc
 );
 
  
-
 # Vista para transacciones
 
 # DATE_FORMAT(NOW( ), "%H:%i:%S" )
@@ -302,6 +301,14 @@ begin
 end
 $$
 
+delimiter $$
+create procedure p_EliminarPersona(
+	in id int
+)
+begin
+	update persona set estado = 0 where idPersona = id;
+end
+$$
 
 delimiter $$
 create procedure prueba()
@@ -342,7 +349,7 @@ end
 $$
 
 
-
+select * from v_Transacciones
 
 
 #Procedimiento para devolver los datos de Persona en base a N° de DUI

@@ -1,6 +1,6 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-   
+
 
     if ($('#tableUsuarios').length) {
         var tablaUsuarios = $('#tableUsuarios').DataTable({
@@ -9,10 +9,18 @@ $(document).ready(function() {
                 "type": "POST"
             },
             "columns": [
-                { "data": "idUsuario" },
-                { "data": "Nombre de Usuario" },
-                { "data": "Permisos" },
-                { "data": "Acciones" }
+                {
+                    "data": "idUsuario"
+                },
+                {
+                    "data": "Nombre de Usuario"
+                },
+                {
+                    "data": "Permisos"
+                },
+                {
+                    "data": "Acciones"
+                }
             ],
             "order": [
                 [0, "desc"]
@@ -46,29 +54,41 @@ $(document).ready(function() {
 
         // Ocultar columna de id de Usuario
         tablaUsuarios.column(0).visible(false);
-        setTimeout(function() {
+        setTimeout(function () {
             $('tr td:last-child').addClass('text-right');
             // $('tr td:last-child').addClass('text-center');
         }, 800);
-        $(document).on('click', '.page-link', function() {
+        $(document).on('click', '.page-link', function () {
             $('tr td:last-child').addClass('text-right');
         });
 
     }
 
-     if ($('#tableTransacciones').length) {
+    if ($('#tableTransacciones').length) {
         var tablaTransacciones = $('#tableTransacciones').DataTable({
             "ajax": {
                 "url": "index.php?1=Usuario&2=getTransacciones",
                 "type": "POST"
             },
             "columns": [
-                { "data": "id" },
-                { "data": "Nombre de Usuario" },
-                { "data": "Permisos del Usuario" },
-                { "data": "Tipo de Transaccion" },
-                { "data": "Fecha" },
-                { "data": "Hora" },
+                {
+                    "data": "id"
+                },
+                {
+                    "data": "Nombre de Usuario"
+                },
+                {
+                    "data": "Permisos del Usuario"
+                },
+                {
+                    "data": "Tipo de Transaccion"
+                },
+                {
+                    "data": "Fecha"
+                },
+                {
+                    "data": "Hora"
+                },
             ],
             "order": [
                 [0, "desc"]
@@ -105,12 +125,15 @@ $(document).ready(function() {
     }
 
     // ACTIVAR MODAL DE REGISTRO
-    $('#btnNuevoUsuario').click(function() {
-        $("#modalRegistrar").modal({ backdrop: "static", keyboard: false });
+    $('#btnNuevoUsuario').click(function () {
+        $("#modalRegistrar").modal({
+            backdrop: "static",
+            keyboard: false
+        });
     });
 
     // CONFIRMAR DATOS DE USUARIO
-    $('#btnRegistrar').click(function() {
+    $('#btnRegistrar').click(function () {
 
         var datos = $('#frmRegistrar').serializeArray();
 
@@ -121,34 +144,38 @@ $(document).ready(function() {
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
-                data: { datos: datos },
+                data: {
+                    datos: datos
+                },
                 url: '?1=Usuario&2=registrar',
-                success: function(datos) {
+                success: function (datos) {
                     if (datos.estado) {
                         location.reload();
                     }
                 }
             });
-        }
-        else{
+        } else {
             $('#modal-body-datos').html(`Complete todos los campos`);
             $('#btnDatos').hide();
             $('#btnCancelarDatos').html('Aceptar');
             $('#btnCancelarDatos').addClass('btn-danger');
             $('#btnCancelarDatos').addClass('waves-red')
-            $("#modalDatos").modal({ backdrop: "static", keyboard: false });;
+            $("#modalDatos").modal({
+                backdrop: "static",
+                keyboard: false
+            });;
             $('#modalRegistrar').modal('hide');
-            $('#btnCancelarDatos').click(function() {
+            $('#btnCancelarDatos').click(function () {
                 $('#modalRegistrar').modal('show');
             });
         }
-       
+
     });
 
-    $('#btnLogin').click(function() {
+    $('#btnLogin').click(function () {
         Login();
     });
-    $('body').keyup(function(e) {
+    $('body').keyup(function (e) {
         if (e.keyCode == 13) {
             Login();
         }
@@ -161,9 +188,11 @@ function Login() {
     $.ajax({
         type: 'POST',
         dataType: 'json',
-        data: { datos: datos },
+        data: {
+            datos: datos
+        },
         url: '?1=Usuario&2=login',
-        success: function(r) {
+        success: function (r) {
 
             var resultado = r.resultado;
 
@@ -181,7 +210,7 @@ function Login() {
                     $('#btnLogin').addClass('btn-success');
                     $('#btnLogin').removeClass('btn-info');
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         location.href = "?1=Usuario&2=render&3=DashboardView&4=headerBarUsuario&5=1";
                     }, 1000);
 
@@ -197,7 +226,7 @@ function Login() {
                     $('#label-pass').css("color", "rgba(244, 67, 54, 1)");
                     $('#btnLogin').addClass('btn-danger');
                     $('#btnLogin').removeClass('btn-info');
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $('#title-login').html('Ingresar');
                         $('#c-ins-login').removeClass('bg-danger');
 
@@ -208,7 +237,7 @@ function Login() {
                 case 3:
                     $('#title-login').html('Campos Vacíos');
                     $('#c-ins-login').addClass('bg-danger');
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $('#title-login').html('Ingresar');
                         $('#c-ins-login').removeClass('bg-danger');
                     }, 1500);
@@ -225,7 +254,7 @@ function Login() {
 
 function validar(parametro) {
     var num = 0;
-    $(parametro).each(function() {
+    $(parametro).each(function () {
         var valor = $(this).val();
 
         if ((valor == "") || (valor == "-")) {

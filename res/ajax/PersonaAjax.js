@@ -1,21 +1,41 @@
 $(document).ready(function() {
-
+      // Método para configurar DataTable de Pradrón
     var tabla = $('#tablePadron').DataTable({
         "ajax": {
             "url": "index.php?1=Persona&2=getJSON",
             "type": "POST"
         },
         "columns": [
-            { "data": "idPersona" },
-            { "data": "DUI" },
-            { "data": "Apellidos" },
-            { "data": "Nombres" },
-            { "data": "JRV" },
-            { "data": "Genero" },
-            { "data": "Fecha" },
-            { "data": "Municipio" },
-            { "data": "Estado" },
-            { "data": "Acciones" }
+            {
+                "data": "idPersona"
+            },
+            {
+                "data": "DUI"
+            },
+            {
+                "data": "Apellidos"
+            },
+            {
+                "data": "Nombres"
+            },
+            {
+                "data": "JRV"
+            },
+            {
+                "data": "Genero"
+            },
+            {
+                "data": "Fecha"
+            },
+            {
+                "data": "Municipio"
+            },
+            {
+                "data": "Estado"
+            },
+            {
+                "data": "Acciones"
+            }
         ],
         "order": [
             [0, "desc"]
@@ -50,27 +70,29 @@ $(document).ready(function() {
     tabla.column(0).visible(false);
 
     // Función para centrar acciones de las filas
-    setTimeout(function() {
+    setTimeout(function () {
         $('tr td:last-child').css('display', 'flex');
         $('tr td:last-child').css('justify-content', 'space-around');
         $('tr td:last-child').css('align-items', 'center');
         // $('tr td:last-child').addClass('text-center');
     }, 800);
 
-    $(document).on('click', '.page-link', function() {
+    $(document).on('click', '.page-link', function () {
         $('tr td:last-child').css('display', 'flex');
         $('tr td:last-child').css('justify-content', 'space-around');
         $('tr td:last-child').css('align-items', 'center');
     });
 
-    $('#btnFrmRegistrar').click(function() {
+
+    // Método para Modal con Resumen de Datos
+    $('#btnFrmRegistrar').click(function () {
         var contenedor = '#frmPersona';
         var datos = $(contenedor).serializeArray();
         var val = validar('.requeridoRegistrar');
         if (val == 0) {
             $("#bodyTablaDatos").html("");
 
-            $.each(datos, function(i, campo) {
+            $.each(datos, function (i, campo) {
                 var nombreCampo = '';
                 var dato = campo.value;
 
@@ -86,9 +108,13 @@ $(document).ready(function() {
                         break;
                     case 'fechaNacimiento':
                         nombreCampo = 'Fecha de Nacimiento';
+                        var fecha = new Date(dato).toString('dd/MM/yyyy');
+                        dato = fecha;
                         break;
                     case 'fechaVencimiento':
                         nombreCampo = 'Fecha de Vencimiento';
+                        var fecha = new Date(dato).toString('dd/MM/yyyy');
+                        dato = fecha;
                         break;
                     case 'profesion':
                         nombreCampo = 'Profesión';
@@ -96,18 +122,18 @@ $(document).ready(function() {
                     case 'municipio':
                         nombreCampo = 'Municipio';
 
-                        dato = $( "#municipio option:selected" ).text();;
+                        dato = $("#municipio option:selected").text();;
                         break;
                     case 'direccion':
                         nombreCampo = 'Dirección';
                         break;
                     case 'genero':
                         nombreCampo = 'Género';
-                        dato = $( "#genero option:selected" ).text();
+                        dato = $("#genero option:selected").text();
                         break;
                     case 'estadoCivil':
                         nombreCampo = 'Estado Civil';
-                        dato = $( "#estadoCivil option:selected" ).text();
+                        dato = $("#estadoCivil option:selected").text();
                         break;
                 }
 
@@ -115,7 +141,7 @@ $(document).ready(function() {
                                 <th scope="row">` + nombreCampo + `</th>
                                 <td>` + dato + `</td>
                             </tr>`;
-                $('#mensaje-modal').html(``);            
+                $('#mensaje-modal').html(``);
                 $('#tablaModalDatos').show();
                 $('#modal-title-datos').html(`Registrar Persona`);
                 $('#btnDatos').show();
@@ -126,8 +152,11 @@ $(document).ready(function() {
                 $("#bodyTablaDatos").append(fila);
 
                 $('#modalFrmPersona').modal('hide');
-                $("#modalDatos").modal({ backdrop: "static", keyboard: false });
-                $('#btnCancelarDatos').click(function() {
+                $("#modalDatos").modal({
+                    backdrop: "static",
+                    keyboard: false
+                });
+                $('#btnCancelarDatos').click(function () {
                     $('#modalFrmPersona').modal('show');
                 });
             });
@@ -139,14 +168,19 @@ $(document).ready(function() {
             $('#btnCancelarDatos').html('Aceptar');
             $('#btnCancelarDatos').addClass('btn-danger');
             $('#btnCancelarDatos').addClass('waves-red')
-            $("#modalDatos").modal({ backdrop: "static", keyboard: false });;
+            $("#modalDatos").modal({
+                backdrop: "static",
+                keyboard: false
+            });;
             $('#modalFrmPersona').modal('hide');
-            $('#btnCancelarDatos').click(function() {
+            $('#btnCancelarDatos').click(function () {
                 $('#modalFrmPersona').modal('show');
             });
         }
     });
-    $('#dui').change(function() {
+
+    // Método para Comprobar N° de DUI
+    $('#dui').change(function () {
         var ndui = $('#dui').val().toString();
 
         if ((ndui.length > 0) && (ndui.length < 10)) {
@@ -164,9 +198,11 @@ $(document).ready(function() {
         } else {
             $.ajax({
                 type: 'POST',
-                data: { ndui: ndui },
+                data: {
+                    ndui: ndui
+                },
                 url: '?1=Persona&2=compDui',
-                success: function(r) {
+                success: function (r) {
                     switch (r) {
                         case 'usuario registrado':
                             $('#ayudaDui').html('');
@@ -190,16 +226,46 @@ $(document).ready(function() {
 
         }
     });
-    $('#btnDatos').click(function() {
-        var datos = JSON.stringify($('#frmPersona :input').serializeArray());
 
-        console.log(datos);
+    // Método para Eliminar Persona
+    $(document).on('click', '.btnEliminar', function () {
+        $("#modalEliminar").modal({
+            backdrop: "static",
+            keyboard: false
+        });
+
+        var idPersona = $(this).attr("id");
+
+        $(document).on("click", "#btnEliminar", function() {
+            $.ajax({
+               type: 'POST',
+               data: {idPersona: idPersona},
+               url: '?1=Persona&2=eliminarPersona',
+               success: function(data)
+               {
+                    switch(data)
+                    {
+                        case 'eliminado':
+                            tabla.ajax.reload();
+
+                            break;
+                    }
+               } 
+            });
+        });
+    });
+
+    // Método para Registrar Persona
+    $('#btnDatos').click(function () {
+        var datos = JSON.stringify($('#frmPersona :input').serializeArray());
 
         $.ajax({
             type: 'POST',
-            data: { datos: datos },
+            data: {
+                datos: datos
+            },
             url: '?1=Persona&2=registrarPersona',
-            success: function(r) {
+            success: function (r) {
                 switch (r) {
                     case 'registrado':
                         $('#modal-title-datos').html(``);
@@ -207,9 +273,9 @@ $(document).ready(function() {
                         $('#btnDatos').hide();
                         $('#btnCancelarDatos').html('Aceptar');
                         $('#btnCancelarDatos').addClass('btn-success');
-                        $('#btnCancelarDatos').click(function() {
+                        $('#btnCancelarDatos').click(function () {
                             $('#btnCancelarFrm').click();
-                            location.reload();
+                            tabla.ajax.reload();
                         });
                         break;
 
@@ -237,27 +303,35 @@ $(document).ready(function() {
         });
     });
 
-    $('#btnRegistrar').click(function() {
-        $("#modalFrmPersona").modal({ backdrop: "static", keyboard: false });
+
+    // Control de Modales
+    $('#btnRegistrar').click(function () {
+        $("#modalFrmPersona").modal({
+            backdrop: "static",
+            keyboard: false
+        });
     });
-    $(document).on('click', '.btnEliminar', function() {
-        $("#modalEliminar").modal({ backdrop: "static", keyboard: false });
-    });
-    $(document).on('click', '.btnDetalles', function() {
-        $("#modalDetalles").modal({ backdrop: "static", keyboard: false });
+
+    $(document).on('click', '.btnDetalles', function () {
+        $("#modalDetalles").modal({
+            backdrop: "static",
+            keyboard: false
+        });
     });
 
     // Retornar datos de persona
-    $(document).on('click', '.btnModificar', function() {
+    $(document).on('click', '.btnModificar', function () {
 
         var idUsuario = $(this).attr("id");
 
         $.ajax({
             type: 'POST',
             dataType: 'json',
-            data: { idUsuario: idUsuario },
+            data: {
+                idUsuario: idUsuario
+            },
             url: '?1=Persona&2=getPersona',
-            success: function(data) {
+            success: function (data) {
 
                 $('#duiModificar').val(data.dui);
                 $('#duiModificar').parent().addClass('is-filled');
@@ -288,15 +362,18 @@ $(document).ready(function() {
             }
         });
 
-        $("#modalFrmModificar").modal({ backdrop: "static", keyboard: false });
+        $("#modalFrmModificar").modal({
+            backdrop: "static",
+            keyboard: false
+        });
     });
 
 });
 
-
+// Función para validar campos requeridos
 function validar(parametro) {
     var num = 0;
-    $(parametro).each(function() {
+    $(parametro).each(function () {
         var valor = $(this).val();
 
         if ((valor == "") || (valor == "-")) {

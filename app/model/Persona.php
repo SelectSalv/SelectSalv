@@ -199,44 +199,47 @@ class Persona extends ModeloBase {
 
 		while ($fila = $resultado->fetch_assoc()) {
 		    
-		    //Inicializacion de botones
-		    $mas = null;
-		    $modificar = null;
-		    $eliminar = null;
+		   if($fila["estado"] == 1)
+		   {
+			   	 //Inicializacion de botones
+			    $mas = null;
+			    $modificar = null;
+			    $eliminar = null;
 
 
-			$mas = '<button id=\"'.$fila["idPersona"].'\" class=\"btn btn-secondary btnDetalles btn-raised bmd-btn-icon\"><i class=\"material-icons\">more_horiz</i></button>';
+				$mas = '<button id=\"'.$fila["idPersona"].'\" class=\"btn btn-secondary btnDetalles btn-raised bmd-btn-icon\"><i class=\"material-icons\">more_horiz</i></button>';
 
-			if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
-			{
-				$modificar = '<button id=\"'.$fila["idPersona"].'\" class=\"btn btn-info btnModificar btn-raised bmd-btn-icon\"><i class=\"material-icons\">edit</i></button>';
+				if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
+				{
+					$modificar = '<button id=\"'.$fila["idPersona"].'\" class=\"btn btn-info btnModificar btn-raised bmd-btn-icon\"><i class=\"material-icons\">edit</i></button>';
 
-				$eliminar = '<button id=\"'.$fila["idPersona"].'\"  class=\"btn btn-danger btnEliminar btn-raised bmd-btn-icon\"><i class=\"material-icons\">clear</i></button>';
-			}
-			
-			if($fila["estadoVotacion"] == 0 )
-			{
-				$estadoVotacion = '<i class=\"material-icons\">clear</i>';
-			}
-			else if($fila["estadoVotacion"] == 1)
-			{
-				$estadoVotacion = '<i class=\"material-icons\">check</i>';
-			}
+					$eliminar = '<button id=\"'.$fila["idPersona"].'\"  class=\"btn btn-danger btnEliminar btn-raised bmd-btn-icon\"><i class=\"material-icons\">clear</i></button>';
+				}
+				
+				if($fila["estadoVotacion"] == 0 )
+				{
+					$estadoVotacion = '<i class=\"material-icons\">clear</i>';
+				}
+				else if($fila["estadoVotacion"] == 1)
+				{
+					$estadoVotacion = '<i class=\"material-icons\">check</i>';
+				}
 
-			$fecha = date_create($fila["fechaNac"]);
+				$fecha = date_create($fila["fechaNac"]);
 
-			$datos .= ' {	"idPersona": "'.$fila["idPersona"].'",
-							"DUI": "'.$fila["dui"].'",
-							"Apellidos": "'.$fila["apePersona"].'",
-							"Nombres": "'.$fila["nomPersona"].'",
-							"JRV": "'.$fila["numJrv"].'",
-							"Genero": "'.$fila["descGenero"].'",
-							"Fecha": "'.date_format($fecha, "d/m/Y").'",
-							"Municipio": "'.$fila["nomMunicipio"].'",
-							"Estado": "'.$estadoVotacion.'",
-							"Acciones": "'.$mas.$modificar.$eliminar.'"
-						},';
+				$datos .= ' {	"idPersona": "'.$fila["idPersona"].'",
+								"DUI": "'.$fila["dui"].'",
+								"Apellidos": "'.$fila["apePersona"].'",
+								"Nombres": "'.$fila["nomPersona"].'",
+								"JRV": "'.$fila["numJrv"].'",
+								"Genero": "'.$fila["descGenero"].'",
+								"Fecha": "'.date_format($fecha, "d/m/Y").'",
+								"Municipio": "'.$fila["nomMunicipio"].'",
+								"Estado": "'.$estadoVotacion.'",
+								"Acciones": "'.$mas.$modificar.$eliminar.'"
+							},';
 
+		   }
 		}
 
 		$datos = substr($datos,0, strlen($datos) - 1);
@@ -271,6 +274,25 @@ class Persona extends ModeloBase {
 
 			$respuesta = "dui registrado";
 
+		}
+
+		return $respuesta;
+	}
+
+	// MÉTODOO PARA ELIMINAR PERSONA
+	public function eliminarPersona($id)
+	{
+		$_query = "call p_EliminarPersona(".$id.")";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado)
+		{
+			$respuesta = "eliminado";
+		}
+		else 
+		{
+			$respuesta = "error al eliminar del padron";
 		}
 
 		return $respuesta;

@@ -7,10 +7,10 @@ nav {
     z-index: -1;
     background: rgba(255, 255, 255, 0.0);
 }
-.navbar{
+/*.navbar{
 box-shadow: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-}
+}*/
 #btn-menu-nav {
     color: #fff;
 /*    width: 25px;*/

@@ -279,7 +279,7 @@
 		      </div>
 		      <div class="modal-footer" id="modal-footer-eliminar">
 		       <button type="button" id="btnCancelarEliminar" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
-		        <button type="button" id="btnEliminar" class="btn btn-danger material-ripple ">Eliminar</button>
+		        <button type="button" id="btnEliminar" data-dismiss="modal" class="btn btn-danger material-ripple ">Eliminar</button>
 		      </div>
 		    </div>
 		  </div>

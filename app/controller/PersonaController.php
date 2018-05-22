@@ -96,4 +96,13 @@ class PersonaController extends ControladorBase
 		echo $resultado;
 	}
 
+	public function eliminarPersona()
+	{
+		$id = $_POST["idPersona"];
+
+		$resultado = $this->model->eliminarPersona($id);
+
+		echo $resultado;
+	}
+
 }
