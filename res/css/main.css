@@ -184,12 +184,25 @@ footer{
     padding-top:12px;
     /*background: rgba(0,0,0,0.1);*/
 }
+.barra-titulo-boleta{
+    width: 100%;
+    padding-top:10px;
+    /*background: rgba(0,0,0,0.1);*/
+}
 .texto-barra-titulo{
     font-family: 'vape';
     color:rgba(39, 46, 64, 0.955);
     font-size: 28px;
     padding-bottom: 13px;
     border-bottom: 1px solid rgba(39, 46, 64, 0.2);
+    /*background: rgba(0,0,0,0.2);*/
+}
+.texto-barra-titulo-boleta{
+    font-family: 'vape';
+    color:rgba(39, 46, 64, 0.955);
+    font-size: 28px;
+    
+
     /*background: rgba(0,0,0,0.2);*/
 }
 .contenedor{
