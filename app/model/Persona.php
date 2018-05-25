@@ -170,6 +170,37 @@ class Persona extends ModeloBase {
 		return $resultado;
 	}
 
+	public function ingresarDui()
+	{
+		$_query = "call p_obtenerPersona('".$this->dui."')";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado)
+		{
+			if($resultado->num_rows == 1)
+			{
+				$fila = $resultado->fetch_assoc();
+
+				$_SESSION["duiPersona"] = $this->dui;
+				$_SESSION["apePersona"] = $fila["apePersona"];
+				$_SESSION["nomPersona"] = $fila["nomPersona"];
+				$_SESSION["municipioPersona"] = $fila["nomMunicipio"];
+				$_SESSION["departamentoPersona"] = $fila["nomDepartamento"];
+
+				$respuesta = "ok";
+			}
+			else {
+				$respuesta = "no registrado";
+			}
+			
+		} else
+		{
+			$respuesta = "error";
+		}
+
+		return $respuesta;
+	}
 
 	// MÉTODO PARA COMPROBAR LA EXISTENCIA DE UN N° DE DUI
 

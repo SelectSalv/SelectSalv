@@ -61,21 +61,13 @@ class PersonaController extends ControladorBase
 	// Método para obtener Datos de persona por DUI
 	public function ingresarDui()
 	{
-		$datos = $_POST["dui"];
+		$datos = $_POST["duiVotar"];
 
-		$resultado = $this->model->getPersonaDui($datos);
+		$this->model->setDui($datos);
+		$resultado = $this->model->ingresarDui();
 
-		if($resultado)
-		{
-			$fila = $resultado->fetch_assoc();
 
-			$_SESSION["duiPersona"] = $datos;
-			$_SESSION["apePersona"] = $fila["apePersona"];
-			$_SESSION["nomPersona"] = $fila["nomPersona"];
-			$_SESSION["municipioPersona"] = $fila["nomMunicipio"];
-			$_SESSION["departamentoPersona"] = $fila["nomDepartamento"];
-		}
-
+		echo $resultado;
 	}
 
 	// Método para obterner padron en formato JSON

@@ -10,7 +10,7 @@
 </script>
 <script>
 	$(document).ready(function() {
-		$('.cuadro-boleta').css('height','70vh');
+		$('.cuadro-boleta').css('height','65vh');
 	});
 </script>
 <script>
@@ -31,88 +31,87 @@
 		<div class="row">
 			<div class="col-md-4 col-sm-12">
 				<div class="cuadro-boleta" id="nuevasIdeas">
-					<div class="humo">
-						<div class="detalles-partido">
+					<div class="humo d-flex flex-column">
+						<div class="detalles-partido mt-auto p-2">
 							<p class="nombre-partido">
 								Nuevas Ideas
 							</p>
+							<div class="candidatos">
+								<div class="candidato-left">
+									<p class="nombre-candidato">
+										Nayib Bukele
+									</p>
+									<p class="titulo-candidato">
+										Presidente
+									</p>
+								</div>
+								<div class="candidato-right">
+									<p class="nombre-candidato">
+										Pepe Barahona
+									</p>
+									<p class="titulo-candidato">
+										Vicepresidente
+									</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-12">
 				<div class="cuadro-boleta" id="arena">
-					<div class="humo">
-						<div class="detalles-partido">
+					<div class="humo d-flex flex-column">
+						<div class="detalles-partido mt-auto p-2">
 							<p class="nombre-partido">
 								Arena
 							</p>
+							<div class="candidatos">
+								<div class="candidato-left">
+									<p class="nombre-candidato">
+										Juan Perez
+									</p>
+									<p class="titulo-candidato">
+										Presidente
+									</p>
+								</div>
+								<div class="candidato-right">
+									<p class="nombre-candidato">
+										Juan Perez
+									</p>
+									<p class="titulo-candidato">
+										Vicepresidente
+									</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-12">
 				<div class="cuadro-boleta" id="fmln">
-					<div class="humo">
-						<div class="detalles-partido">
+					<div class="humo d-flex flex-column">
+						<div class="detalles-partido mt-auto p-2">
 							<p class="nombre-partido">
 								FMLN
 							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-12">
-				<div class="cuadro-boleta" id="">
-					<div class="humo">
-						<div class="detalles-partido">
-							<p class="nombre-partido">
-								FMLN
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-12">
-				<div class="cuadro-boleta" id="">
-					<div class="humo">
-						<div class="detalles-partido">
-							<p class="nombre-partido">
-								FMLN
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-12">
-				<div class="cuadro-boleta" id="">
-					<div class="humo">
-						<div class="detalles-partido">
-							<p class="nombre-partido">
-								FMLN
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-12">
-				<div class="cuadro-boleta" id="">
-					<div class="humo">
-						<div class="detalles-partido">
-							<p class="nombre-partido">
-								FMLN
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-12">
-				<div class="cuadro-boleta" id="">
-					<div class="humo">
-						<div class="detalles-partido">
-							<p class="nombre-partido">
-								FMLN
-							</p>
+							<div class="candidatos">
+								<div class="candidato-left">
+									<p class="nombre-candidato">
+										Juan Perez
+									</p>
+									<p class="titulo-candidato">
+										Presidente
+									</p>
+								</div>
+								<div class="candidato-right">
+									<p class="nombre-candidato">
+										Juan Perez
+									</p>
+									<p class="titulo-candidato">
+										Vicepresidente
+									</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
