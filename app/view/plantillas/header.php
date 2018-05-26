@@ -13,6 +13,8 @@
 	<link rel="stylesheet" href="res/css/hero-1.css">
 	<link rel="stylesheet" href="res/css/validacion.css">
 	<link rel="stylesheet" href="res/plugins/ripple/ripple.css">
+	<link rel="stylesheet" type="text/css" href="res/plugins/sweetalert-master/dist/sweetalert.css">
+
 	<script src="res/plugins/JQuery/jquery.js"></script>
 	<script src="res/plugins/popper.js"></script>
     <script src="res/plugins/BootstrapMD/BootstrapMD.min.js"></script>
@@ -26,8 +28,21 @@
     <script src="res/js/botones.js"></script>
     <script src="res/js/barra-navegacion.js"></script>
     <script src="res/plugins/JQueryMask/jquery.mask.js"></script>
+    <script type="text/javascript" src="res/plugins/sweetalert-master/dist/sweetalert.min.js"></script>	
+    <script src="res/plugins/date.js"></script>
     <script src="res/js/mask-inputs.js"></script>
-    <title>SelectSalv</title>
+    <title>
+    	SelectSalv
+    	<?php  
+    		if(isset($_SESSION["nomUsuario"]))
+    		{
+    			if(!empty($_SESSION["nomUsuario"]))
+    			{
+    				echo " | ".$_SESSION["nomUsuario"];
+    			}
+    		}
+    	?>
+    </title>
 </head>
 <body id="body">
 

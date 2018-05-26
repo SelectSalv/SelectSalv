@@ -1,18 +1,25 @@
 $(document).ready(function() {
 
-   
+
 
     if ($('#tableUsuarios').length) {
-        var tabla = $('#tableUsuarios').DataTable({
+        var tablaUsuarios = $('#tableUsuarios').DataTable({
             "ajax": {
                 "url": "index.php?1=Usuario&2=getJSON",
                 "type": "POST"
             },
-            "columns": [
-                { "data": "idUsuario" },
-                { "data": "Nombre de Usuario" },
-                { "data": "Permisos" },
-                { "data": "Acciones" }
+            "columns": [{
+                    "data": "idUsuario"
+                },
+                {
+                    "data": "Nombre de Usuario"
+                },
+                {
+                    "data": "Permisos"
+                },
+                {
+                    "data": "Acciones"
+                }
             ],
             "order": [
                 [0, "desc"]
@@ -45,7 +52,7 @@ $(document).ready(function() {
 
 
         // Ocultar columna de id de Usuario
-        tabla.column(0).visible(false);
+        tablaUsuarios.column(0).visible(false);
         setTimeout(function() {
             $('tr td:last-child').addClass('text-right');
             // $('tr td:last-child').addClass('text-center');
@@ -56,9 +63,71 @@ $(document).ready(function() {
 
     }
 
+    if ($('#tableTransacciones').length) {
+        var tablaTransacciones = $('#tableTransacciones').DataTable({
+            "ajax": {
+                "url": "index.php?1=Usuario&2=getTransacciones",
+                "type": "POST"
+            },
+            "columns": [{
+                    "data": "id"
+                },
+                {
+                    "data": "Nombre de Usuario"
+                },
+                {
+                    "data": "Permisos del Usuario"
+                },
+                {
+                    "data": "Tipo de Transaccion"
+                },
+                {
+                    "data": "Fecha"
+                },
+                {
+                    "data": "Hora"
+                },
+            ],
+            "order": [
+                [0, "desc"]
+            ],
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+            }
+        }); // Termina configuración de dataTable
+
+
+        // Ocultar columna de id de Usuario
+        tablaTransacciones.column(0).visible(false);
+    }
+
     // ACTIVAR MODAL DE REGISTRO
     $('#btnNuevoUsuario').click(function() {
-        $("#modalRegistrar").modal({ backdrop: "static", keyboard: false });
+        $("#modalRegistrar").modal({
+            backdrop: "static",
+            keyboard: false
+        });
     });
 
     // CONFIRMAR DATOS DE USUARIO
@@ -73,28 +142,97 @@ $(document).ready(function() {
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
-                data: { datos: datos },
+                data: {
+                    datos: datos
+                },
                 url: '?1=Usuario&2=registrar',
                 success: function(datos) {
                     if (datos.estado) {
-                        location.reload();
+                        swal({
+                            title: "Éxito!",
+                            text: "Usuario Registrado",
+                            timer: 1500,
+                            type: 'success',
+                            closeOnConfirm: true,
+                            closeOnCancel: true
+                        });
+                        tablaUsuarios.ajax.reload();
+                        vaciarRegistrar();
+                        setTimeout(function() {
+                            $('tr td:last-child').addClass('text-right');
+                            // $('tr td:last-child').addClass('text-center');
+                        }, 800);
                     }
                 }
             });
-        }
-        else{
+        } else {
             $('#modal-body-datos').html(`Complete todos los campos`);
             $('#btnDatos').hide();
             $('#btnCancelarDatos').html('Aceptar');
             $('#btnCancelarDatos').addClass('btn-danger');
             $('#btnCancelarDatos').addClass('waves-red')
-            $("#modalDatos").modal({ backdrop: "static", keyboard: false });;
+            $("#modalDatos").modal({
+                backdrop: "static",
+                keyboard: false
+            });;
             $('#modalRegistrar').modal('hide');
             $('#btnCancelarDatos').click(function() {
                 $('#modalRegistrar').modal('show');
             });
         }
-       
+
+    });
+
+    // Funcion para mostrar datos a editar de Usuario
+    $(document).on('click', '.btnModificar', function() {
+        $("#modalEditar").modal({
+            backdrop: "static",
+            keyboard: false
+        });
+
+        var idUsuario = $(this).attr("id");
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: { idUsuario: idUsuario },
+            url: '?1=Usuario&2=getUsuario',
+            success: function(data) {
+                $('#idUsuarioEditar').val(idUsuario);
+
+                $('#nomUsuarioEditar').val(data.nomUsuarioEditar);
+                $('#nomUsuarioEditar').parent().addClass('is-filled');
+
+                $('#rolUsuarioEditar').val(data.codRolEditar);
+            }
+        });
+    });
+
+    // Funcion para editar datos de Usuario
+    $('#btnEditar').click(function() {
+
+        var datos = JSON.stringify($('#frmEditar :input').serializeArray());
+
+        $.ajax({
+            type: 'POST',
+            data: { datos: datos },
+            url: '?1=Usuario&2=editarUsuario',
+            success: function(data) {
+                switch (data) {
+                    case 'modificado':
+                        swal({
+                            title: "Éxito!",
+                            text: "Los cambios fueron Guardados",
+                            timer: 1500,
+                            type: 'success',
+                            closeOnConfirm: true,
+                            closeOnCancel: true
+                        });
+                        break;
+                }
+            }
+        });
+
     });
 
     $('#btnLogin').click(function() {
@@ -113,7 +251,9 @@ function Login() {
     $.ajax({
         type: 'POST',
         dataType: 'json',
-        data: { datos: datos },
+        data: {
+            datos: datos
+        },
         url: '?1=Usuario&2=login',
         success: function(r) {
 
@@ -173,6 +313,13 @@ function Login() {
             }
         }
     });
+}
+
+function vaciarRegistrar()
+{
+    $('#nomUsuario').val("");
+    $('#passUsuario').val("");
+    $('#rolUsuario').val("lcqe0p8=");
 }
 
 function validar(parametro) {

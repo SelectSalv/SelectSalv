@@ -170,6 +170,37 @@ class Persona extends ModeloBase {
 		return $resultado;
 	}
 
+	public function ingresarDui()
+	{
+		$_query = "call p_obtenerPersona('".$this->dui."')";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado)
+		{
+			if($resultado->num_rows == 1)
+			{
+				$fila = $resultado->fetch_assoc();
+
+				$_SESSION["duiPersona"] = $this->dui;
+				$_SESSION["apePersona"] = $fila["apePersona"];
+				$_SESSION["nomPersona"] = $fila["nomPersona"];
+				$_SESSION["municipioPersona"] = $fila["nomMunicipio"];
+				$_SESSION["departamentoPersona"] = $fila["nomDepartamento"];
+
+				$respuesta = "ok";
+			}
+			else {
+				$respuesta = "no registrado";
+			}
+			
+		} else
+		{
+			$respuesta = "error";
+		}
+
+		return $respuesta;
+	}
 
 	// MÉTODO PARA COMPROBAR LA EXISTENCIA DE UN N° DE DUI
 
@@ -199,42 +230,47 @@ class Persona extends ModeloBase {
 
 		while ($fila = $resultado->fetch_assoc()) {
 		    
-		    //Inicializacion de botones
-		    $mas = null;
-		    $modificar = null;
-		    $eliminar = null;
+		   if($fila["estado"] == 1)
+		   {
+			   	 //Inicializacion de botones
+			    $mas = null;
+			    $modificar = null;
+			    $eliminar = null;
 
 
-			$mas = '<button id=\"'.$fila["idPersona"].'\" class=\"btn btn-secondary btnDetalles btn-raised bmd-btn-icon\"><i class=\"material-icons\">more_horiz</i></button>';
+				$mas = '<button id=\"'.$fila["idPersona"].'\" class=\"btn btn-secondary btnDetalles btn-raised bmd-btn-icon\"><i class=\"material-icons\">more_horiz</i></button>';
 
-			if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
-			{
-				$modificar = '<button id=\"'.$fila["idPersona"].'\" class=\"btn btn-info btnModificar btn-raised bmd-btn-icon\"><i class=\"material-icons\">edit</i></button>';
+				if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
+				{
+					$modificar = '<button id=\"'.$fila["idPersona"].'\" class=\"btn btn-info btnModificar btn-raised bmd-btn-icon\"><i class=\"material-icons\">edit</i></button>';
 
-				$eliminar = '<button id=\"'.$fila["idPersona"].'\"  class=\"btn btn-danger btnEliminar btn-raised bmd-btn-icon\"><i class=\"material-icons\">clear</i></button>';
-			}
-			
-			if($fila["estadoVotacion"] == 0 )
-			{
-				$estadoVotacion = '<i class=\"material-icons\">clear</i>';
-			}
-			else if($fila["estadoVotacion"] == 1)
-			{
-				$estadoVotacion = '<i class=\"material-icons\">check</i>';
-			}
+					$eliminar = '<button id=\"'.$fila["idPersona"].'\"  class=\"btn btn-danger btnEliminar btn-raised bmd-btn-icon\"><i class=\"material-icons\">clear</i></button>';
+				}
+				
+				if($fila["estadoVotacion"] == 0 )
+				{
+					$estadoVotacion = '<i class=\"material-icons\">clear</i>';
+				}
+				else if($fila["estadoVotacion"] == 1)
+				{
+					$estadoVotacion = '<i class=\"material-icons\">check</i>';
+				}
 
-			$datos .= ' {	"idPersona": "'.$fila["idPersona"].'",
-							"DUI": "'.$fila["dui"].'",
-							"Apellidos": "'.$fila["apePersona"].'",
-							"Nombres": "'.$fila["nomPersona"].'",
-							"JRV": "'.$fila["numJrv"].'",
-							"Genero": "'.$fila["descGenero"].'",
-							"Fecha": "'.$fila["fechaNac"].'",
-							"Municipio": "'.$fila["nomMunicipio"].'",
-							"Estado": "'.$estadoVotacion.'",
-							"Acciones": "'.$mas.$modificar.$eliminar.'"
-						},';
+				$fecha = date_create($fila["fechaNac"]);
 
+				$datos .= ' {	"idPersona": "'.$fila["idPersona"].'",
+								"DUI": "'.$fila["dui"].'",
+								"Apellidos": "'.$fila["apePersona"].'",
+								"Nombres": "'.$fila["nomPersona"].'",
+								"JRV": "'.$fila["numJrv"].'",
+								"Genero": "'.$fila["descGenero"].'",
+								"Fecha": "'.date_format($fecha, "d/m/Y").'",
+								"Municipio": "'.$fila["nomMunicipio"].'",
+								"Estado": "'.$estadoVotacion.'",
+								"Acciones": "'.$mas.$modificar.$eliminar.'"
+							},';
+
+		   }
 		}
 
 		$datos = substr($datos,0, strlen($datos) - 1);
@@ -242,19 +278,16 @@ class Persona extends ModeloBase {
         return '{"data" : ['.$datos.']}';
 	}
 
-	// MÉTODO PARA REGISTRAR DATOS DE PERSONA
-    public function registrarPersona()
+	// MÉTODO PARA REGISTRAR PERSONA EXTENDIDO
+	public function registrarPersonaExt()
 	{
-
-
-
 		$_query = "select * from persona where dui = '".$this->dui."'";
 
 		$resultado = $this->con->conectar()->query($_query);
 
 		if($resultado->num_rows == 0)
 		{
-			$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', '".$this->genero."', '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', '".$this->estadoCivil."', ".$this->idMunicipio.")";
+			$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', ".$this->genero.", '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', ".$this->estadoCivil.", ".$this->idMunicipio.", ".$_SESSION["idUsuario"].")";
 				$resultado = $this->con->conectar()->query($_query);
 
 				if($resultado)
@@ -269,6 +302,73 @@ class Persona extends ModeloBase {
 
 			$respuesta = "dui registrado";
 
+		}
+
+		return $respuesta;
+	} 
+
+	// MÉTODO PARA REGISTRAR DATOS DE PERSONA
+    public function registrarPersona()
+	{
+
+		$_query = "select * from persona where dui = '".$this->dui."'";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado->num_rows == 0)
+		{
+			$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', ".$this->genero.", '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', ".$this->estadoCivil.", ".$this->idMunicipio.", ".$_SESSION["idUsuario"].")";
+				$resultado = $this->con->conectar()->query($_query);
+
+				if($resultado)
+				{
+					$respuesta = "registrado";
+				}
+				else{
+					$respuesta = "error al registrar";
+				}
+
+		} elseif($resultado->num_rows > 0){
+
+			$respuesta = "dui registrado";
+
+		}
+
+		return $respuesta;
+	}
+
+	// MÉTODO PARA EDITAR PERSONA
+	public function editarPersona($id)
+	{
+		$_query = "call p_EditarPersona(".$id.", '".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', ".$this->genero.", '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', ".$this->estadoCivil.", ".$this->idMunicipio.", ".$_SESSION["idUsuario"].")";
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado)
+		{
+			$respuesta = "modificado";
+		}
+		else 
+		{
+			$respuesta = "error al modificar el registro";
+		}
+
+		return $respuesta;
+	}
+
+	// MÉTODO PARA ELIMINAR PERSONA
+	public function eliminarPersona($id)
+	{
+		$_query = "call p_EliminarPersona(".$id.", ".$_SESSION["idUsuario"].")";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado)
+		{
+			$respuesta = "eliminado";
+		}
+		else 
+		{
+			$respuesta = "error al eliminar del padron";
 		}
 
 		return $respuesta;

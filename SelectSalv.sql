@@ -120,7 +120,7 @@ create table Jrv(
     idCentro int not null
 );
 
-insert into Jrv values(null, '11', 1);
+
 
 create table padron(
 	id int auto_increment unique not null primary key,
@@ -132,9 +132,15 @@ create table padron(
 
 create table partido(
 	idPartido int auto_increment unique not null primary key,
-    nomPartido varchar(100), 
+    nomPartido varchar(100),
+    rutaBandera varchar(100),
     estado int
 );
+
+insert into partido values(null, 'Nuevas Ideas', '-', 1);
+insert into partido values(null, 'Arena', '-', 1);
+insert into partido values(null, 'FMLN', '-', 1);
+
 
 create table DetalleVoto(
 	idDetalleVoto int auto_increment unique not null primary key,
@@ -151,6 +157,9 @@ create table TipoCandidato(
     descTipoCandidato varchar(100)
 );
 
+insert into tipoCandidato values(null, 'pNiW3A==', 'Presidente');
+insert into tipoCandidato values(null, 'qs+Uzg==', 'Vicepresidente');
+
 create table Candidato(
 	idCandidato int auto_increment unique not null primary key,
 	idPartido int not null,
@@ -158,6 +167,15 @@ create table Candidato(
     idPersona int not null, 
     estado int
 );
+
+# Candidatos Nuevas Ideas
+insert into candidato values(null, 1, 1, 1, 1);
+insert into candidato values(null, 1, 2, 2, 1);
+
+# Candidatos ARENA
+insert into candidato values(null, 2, 1, 4, 1);
+insert into candidato values(null, 2, 2, 5, 1);
+
 
 #Llaves Foráneas
 
@@ -184,7 +202,7 @@ alter table transacciones add constraint fk_tipoTransaccion foreign key (idTipo)
 # Vista con los datos de usuario
 
 create view v_Usuarios as (
-	select u.idUsuario, u.nomUsuario, u.pass, u.estado, r.descRol
+	select u.idUsuario, u.nomUsuario, u.pass, u.estado, r.descRol, r.codRol
     from Usuario u, Rol r
     where u.idRol = r.idRol
 );
@@ -192,14 +210,13 @@ create view v_Usuarios as (
 # Vista con los datos de Persona
 
 create view v_Persona as (
-	select p.idPersona, p.dui, p.nomPersona, p.apePersona, j.numJrv, g.idGenero, g.descGenero,date_format(p.fechanac, "%d/%m/%Y") as fechaNac,  date_format(p.fechavenc, "%d/%m/%Y") as fechaVenc, p.profesion, p.direccion,e.idEstadoCivil, e.descEstadoCivil, p.estadoVotacion, 
-            m.idMunicipio, m.nomMunicipio, d.nomDepartamento 
+	select p.idPersona, p.dui, p.nomPersona, p.apePersona, j.numJrv, g.idGenero, g.descGenero, p.fechaNac, p.fechaVenc, p.profesion, p.direccion,e.idEstadoCivil, e.descEstadoCivil, p.estadoVotacion, 
+            m.idMunicipio, m.nomMunicipio, d.nomDepartamento, p.estado
     from Persona p, Municipio m, Departamento d, padron pd, jrv j, genero g, estadoCivil e
     where p.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento and pd.idPersona = p.idPersona and pd.idJrv = j.idJrv and p.idgenero = g.idGenero and p.idEstadoCivil = e.idEstadoCivil
     order by p.idPersona desc
 );
 
- 
 
 # Vista para transacciones
 
@@ -212,8 +229,78 @@ create view v_Transacciones as (
     order by t.id desc
 );
 
-select * from v_Transacciones
+# Vista para boleta
 
+create view v_Boleta as (
+	select p.idPartido, p.nomPartido, p.estado as estadoPartido, c.idCandidato, per.nomPersona, per.apePersona, t.descTipoCandidato
+    from partido p, candidato c, tipoCandidato t, persona per
+    where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato
+    order by p.idPartido desc
+);
+
+
+# Procedimiento almacenado para registrar Partidos
+delimiter $$
+create procedure p_RegPartido(
+	in nom varchar(100),
+    in ruta varchar(100)
+)
+begin
+	insert into partido values(null, nom, ruta, 1);
+end
+$$
+
+# Procedimiento almacenado para modificar Partidos
+delimiter $$
+create procedure p_EditarPartido(
+	in id int, 
+    in nom varchar(100),
+    in ruta varchar(100)
+)
+begin
+	update partido
+    set nomPartido = nom, rutaBandera = ruta
+    where idPartido = id;
+end
+$$
+
+# Procedimiento almacenado para eliminar Partido
+delimiter $$
+create procedure p_EliminarPartido(
+	in id int
+)
+begin
+	update partido
+    set estado = 0
+    where idPartido = id; 
+end
+$$
+
+
+# Procedimiento Almacenado para registrar Candidatos
+
+delimiter $$
+create procedure p_RegCandidato(
+	in partido int,
+    in tipo int,
+    in ndui varchar(15)
+)
+begin
+	declare persona int;
+    set persona = (select idPersona from Persona where dui = ndui);
+    insert into Candidato values(null, partido, tipo, persona);
+end
+$$
+
+
+# Procedimiento almacenado para Modificar Candidatos
+/*delimiter $$
+create procedure p_EditarCandidato(
+	in id
+)
+begin
+end
+$$*/
 # Procedimiento almacenado para registrar transacciones
 
 delimiter $$
@@ -232,15 +319,26 @@ delimiter $$
 create procedure p_RegUsuario(
     in nom text,
     in contra text,
-    in rol text
+    in rol text, 
+    in iduser int
 )
 begin
 	declare ideRol int;
     set ideRol = (select idRol from Rol where codRol = rol);
     insert into Usuario values(null, nom, contra, 1, ideRol);
+    call p_RegTransaccion(iduser,4);
 end
 $$
 
+# Procedimiento almacenado para obtener datos de usuario por id
+delimiter $$
+create procedure p_obtenerUsuarioId(
+	in nid int
+)
+begin
+	select * from v_Usuarios where idUsuario = nid;
+end
+$$
 
 # Procedimiento almacenado para comparar datos de logueo
 delimiter $$
@@ -258,13 +356,14 @@ create procedure p_regPersona(
     in dui varchar(15),
     in nom varchar(100),
     in ape varchar(100),
-    in gen varchar(100),
+    in gen int,
     in fechanac date,
     in fechavenc date,
     in prof varchar(100),
     in direc varchar(250),
-    in estadoCiv varchar(50),
-    in municipio int
+    in estadoCiv int,
+    in municipio int,
+    in iduser int
 )
 begin
 	declare numJrv int;
@@ -280,23 +379,76 @@ begin
 			set codJRv = concat(municipio, 1);
 			insert into Jrv values(null, codJrv, municipio);
             set idPersonaP = (select max(idPersona) from Persona);
-            set idJrvP = (select max(idJrv) from Jrv);
+            set idJrvP = (select max(idJrv) from Jrv where idCentro = municipio);
             insert into padron values(null, idPersonaP, idJrvP);
 	elseif	numJrv > 0 then
 			set idPersonaP = (select max(idPersona) from Persona);
-			set idJrvP = (select max(idJrv) from Jrv);
+			set idJrvP = (select max(idJrv) from Jrv where idCentro = municipio);
 			set numPersonas = (select count(idPersona) from padron where idJrv = idJrvP);
             if numPersonas < 10 then
 				insert into padron values(null, idPersonaP, idJrvP);
-			elseif numPersonas > 10 then
-				set idJrvP = ((select max(idJrv) from Jrv) + 1);
+			else
+				set idJrvP = (select max(idJrv) from Jrv where idCentro = municipio);
+                set idJrvP = idJrvP + 1;
 				set codJrv = concat(municipio, idJrvP);
 				insert into Jrv values(null, codJrv, municipio);			
-                set numPersonas = (select count(idPersona) from padron where idJrv = idJrvP);
+                insert into padron values(null, idPersonaP, idJrvP);
             end if;
 		
 	end if;
-    call p_RegTransaccion(1, 1);
+    call p_RegTransaccion(iduser, 1);
+end
+$$
+select * from centroVotacion
+select * from jrv
+
+select * from padron
+
+delimiter $$
+create procedure p_EditarPersona(
+	in id int,
+	in ndui varchar(15),
+    in nom varchar(100),
+    in ape varchar(100),
+    in gen int,
+    in edfechanac date,
+    in edfechavenc date,
+    in prof varchar(100),
+    in direc varchar(250),
+    in estadoCiv int,
+    in municipio int,
+    in iduser int
+)
+begin
+	update persona 
+    set dui = ndui, nomPersona = nom, apePersona = ape, idgenero = gen, fechaNac = edfechanac, profesion = prof, direccion = direc, idEstadoCivil = estadoCiv, idMunicipio = municipio
+    where idPersona = id;
+    call p_RegTransaccion(iduser,3);
+end
+$$
+
+
+delimiter $$
+create procedure p_EliminarPersona(
+	in id int,
+    in iduser int
+)
+begin
+	update persona 
+    set estado = 0
+    where idPersona = id;
+    call p_RegTransaccion(iduser,2);
+end
+$$
+
+
+delimiter $$
+create procedure prueba()
+begin
+	declare idJrvP int;
+	set idJrvP = (select max(idJrv) from Jrv);
+	set idJrvP = idJrvP + 1;
+    select idJrvP;
 end
 $$
 
@@ -321,14 +473,12 @@ create procedure p_regMunicipio(
 begin
 	declare nomCv varchar(50);
     declare mun int;
-    set nomCv = concat("Centro de Votacion", nom);
+    set nomCv = concat("Centro de Votacion ", nom);
 	insert into Municipio values(null, nom, dep);
     set mun = (select idMunicipio from Municipio where nomMunicipio = nom);
     insert into CentroVotacion values(null, nomCv, mun);
 end
 $$
-
-
 
 
 #Procedimiento para devolver los datos de Persona en base a N° de DUI
@@ -342,21 +492,57 @@ end
 $$
 
 
+/*
+call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 1, '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 2, 1, 1);
 
-# call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 'Masculino', '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 'Divorciado', 2);
+call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 1, '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 3, 1, 1);
 
-# call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 'Masculino', '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 'Soltero', 1);
+call p_regPersona('67845389-9', 'Nayib Armando', 'Bukele Ortez', 1, '1981-06-24', '2019-05-05', 'Presidente', 'Colonia Escalon', 2, 2, 1);
+call p_regPersona('67836689-8', 'Jose', 'Barahona Rais', 1, '1981-06-24', '2019-05-05', 'Vicepresidente', 'Colonia Escalon', 2, 2, 1);
 
-# call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1);
+call p_regPersona('67871989-9', 'Juan Carlos', 'Calleja Hakker', 1, '1977-06-24', '2019-05-05', 'Empresario', 'Colonia Escalon', 2, 2, 1);
+call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 1, '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 2, 1, 1);
+call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 1, '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 3, 2, 1);
+
+call p_regPersona('05878895-8', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-7', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-6', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-5', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-4', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-2', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-9', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+
+call p_regPersona('05878895-0', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878895-1', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878896-1', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1); 
+call p_regPersona('67845389-9', 'Nayib Armando', 'Bukele Ortez', 1, '1981-06-24', '2019-05-05', 'Presidente', 'Colonia Escalon', 2, 2, 1);
+call p_regPersona('67836689-8', 'Jose', 'Barahona Rais', 1, '1981-06-24', '2019-05-05', 'Vicepresidente', 'Colonia Escalon', 2, 2, 1);
+
+call p_regPersona('67871989-9', 'Juan Carlos', 'Calleja Hakker', 1, '1977-06-24', '2019-05-05', 'Empresario', 'Colonia Escalon', 2, 2, 1);
+call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 1, '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 2, 1, 1);
+call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 1, '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 3, 2, 1);*/
+
 
 # call p_regPersona('05809350-2', 'Liza Michell', 'Guerrero Urbina', 1, '1998-10-28', '2024-12-18', 'Estudiante', 'col kennedy 2A CL PPAL #60', 1, 1);
 
 call p_regMunicipio('Santa Tecla', 1);
 
 call p_regMunicipio('San Salvador', 2);
+/*
+select * from municipio
+select * from persona
+select * from padron
+select * from jrv*/
+/*call p_regPersona('67845389-9', 'Nayib Armando', 'Bukele Ortez', 1, '1981-06-24', '2019-05-05', 'Presidente', 'Colonia Escalon', 2, 2, 1);
+call p_regPersona('67836689-8', 'Jose', 'Barahona Rais', 1, '1981-06-24', '2019-05-05', 'Vicepresidente', 'Colonia Escalon', 2, 2, 1);
 
+call p_regPersona('67871989-9', 'Juan Carlos', 'Calleja Hakker', 1, '1977-06-24', '2019-05-05', 'Empresario', 'Colonia Escalon', 2, 2, 1);
+call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 1, '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 2, 1, 1);
+call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 1, '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 3, 2, 1);*/
 
-call p_RegUsuario('gM+rynjXl+Gl06fQ', '9e1b9d0da915a9aaafd7524b5d4b667ecbe7abb3', 'mMun');
+call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad', 'mMun', 0);
 
+call p_RegUsuario('gM+rynjXl+Gl06fQ', '9e1b9d0da915a9aaafd7524b5d4b667ecbe7abb3', 'mMun', 0);
 
-call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad', 'mMun');
+call p_RegUsuario('d8ej1aDVddCg3qTU', 'a1d3288715911c7ea5b85627de62c4aabcf233c7', 'mMun', 0);

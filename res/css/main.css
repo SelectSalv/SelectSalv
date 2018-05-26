@@ -7,7 +7,10 @@ nav {
     z-index: -1;
     background: rgba(255, 255, 255, 0.0);
 }
-
+/*.navbar{
+box-shadow: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}*/
 #btn-menu-nav {
     color: #fff;
 /*    width: 25px;*/
@@ -39,9 +42,14 @@ nav {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05),
     2px 2px 1px rgba(0, 0, 0, 0.05);
 }
-#body {
+/*#body {
     width: 100%;
     background: #eee;
+    overflow: hidden;
+}*/
+#body {
+    width: 100%;
+    background: #F8F9F9;
     overflow: hidden;
 }
 
@@ -176,12 +184,25 @@ footer{
     padding-top:12px;
     /*background: rgba(0,0,0,0.1);*/
 }
+.barra-titulo-boleta{
+    width: 100%;
+    padding-top:10px;
+    /*background: rgba(0,0,0,0.1);*/
+}
 .texto-barra-titulo{
     font-family: 'vape';
     color:rgba(39, 46, 64, 0.955);
     font-size: 28px;
     padding-bottom: 13px;
     border-bottom: 1px solid rgba(39, 46, 64, 0.2);
+    /*background: rgba(0,0,0,0.2);*/
+}
+.texto-barra-titulo-boleta{
+    font-family: 'vape';
+    color:rgba(39, 46, 64, 0.955);
+    font-size: 28px;
+    
+
     /*background: rgba(0,0,0,0.2);*/
 }
 .contenedor{

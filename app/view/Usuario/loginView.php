@@ -1,8 +1,10 @@
 	 <script>
-    	$(document).ready(function() {
-    		$('#user').focus();
-    	});
-    </script>
+		$(document).ready(function() {
+			setTimeout(function() {
+				$('#user').focus();
+			}, 500);
+		});
+	</script>
     <script src="res/ajax/UsuarioAjax.js"></script>
 	<div class="cuadro c-centro" id="c-login">
 		<div class="cuadro-ins bg-info" id="c-ins-login">

@@ -1,7 +1,7 @@
 
 <nav class="navbar fixed-top navbar-dark bg-primary">
 				<button type="button" style="margin-right: 10px;" id="btn-menu-nav" class=" p2 material-ripple waves-ripple waves-light btn btn-primary bmd-btn-icon align-middle">
-				  <i id="menu-icon" class="material-icons text-light">menu</i>
+				  <i id="menu-icon" class="material-icons">menu</i>
 				</button>
 				<a class="navbar-brand vape-header align-middle mr-auto p2 text-white">
 					<img src="res/img/logoblanco.svg" class="align-middle" width="30">

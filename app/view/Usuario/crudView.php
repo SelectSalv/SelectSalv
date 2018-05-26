@@ -43,11 +43,62 @@
 		      </div>
 		      <div class="modal-footer" id="modal-footer-registrar">
 		       <button type="button" id="btnCancelarRegistrar" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
-		        <button type="button" id="btnRegistrar" class="btn btn-success">Registrar</button>
+		        <button type="button" id="btnRegistrar" data-dismiss="modal" class="btn btn-success">Registrar</button>
 		      </div>
 		    </div>
 		  </div>
 		</div>
+
+<!-- modal editar -->
+<div id="contenedor-modal">
+		<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modaleditarPersona" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header" id="modal-header-editar">
+		        <h5 class="modal-title" id="modal-title-editar">Editar Usuario</h5>
+		      </div>		
+		      <div id="modal-body-editar" class="modal-body">
+		      	<form id="frmEditar">
+		      		<div class="form-row">
+		      			<div class="form-column col-md-12">
+		      				<div class="form-group bmd-form-group">
+		      					<label class="bmd-label-floating" for="nomUsuario">Nombre de Usuario:</label>
+		      					<input type="text" class="form-control requeridoEditar" name="nomUsuarioEditar" id="nomUsuarioEditar">
+		      				</div>
+		      			</div>
+		      			<div class="form-column col-md-6">
+		      				<div class="form-group bmd-form-group">
+		      					<label class="bmd-label-floating" for="passUsuario">Contraseña Antigua:</label>
+		      					<input type="password" class="form-control requeridoEditar" name="passAntiguaEditar" id="passAntiguaEditar">
+		      				</div>
+		      			</div>
+		      			<div class="form-column col-md-6">
+		      				<div class="form-group bmd-form-group">
+		      					<label class="bmd-label-floating" for="passUsuario">Nueva Contraseña:</label>
+		      					<input type="password" class="form-control requeridoEditar" name="passNuevaEditar" id="passNuevaEditar">
+		      				</div>
+		      			</div>
+		      			<div class="form-column col-md-12">
+		      				<div class="form-group bmd-form-group is-filled">
+		      					<label class="bmd-label-floating" for="rolUsuario">Permisos de la Cuenta:</label>
+		      					<select class="form-control" name="rolUsuarioEditar" id="rolUsuarioEditar">
+		      						<option value="lcqe0p8=">Administrador</option>
+		      						<option value="ndSn">Invitado</option>
+		      					</select>
+		      					<input type="hidden" id="idUsuarioEditar" name="idUsuarioEditar">
+		      				</div>
+		      			</div>
+		      		</div>
+		      	</form>
+		      </div>
+		      <div class="modal-footer" id="modal-footer-editar">
+		       <button type="button" id="btnCancelarEditar" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
+		        <button type="button" id="btnEditar" data-dismiss="modal" class="btn btn-info">Guardar Cambios</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
 
 <!-- Modal Datos -->
 	<div id="contenedor-modal">
