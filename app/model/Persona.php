@@ -19,8 +19,6 @@ class Persona extends ModeloBase {
 	private $estadoVotacion;
 	private $idMunicipio;
 
-	protected $con;
-
 
 	// MÉTODO INICIALIZADOR CLASE PERSONA
 	public function __construct()

@@ -42,14 +42,22 @@ class PartidoController extends ControladorBase
 					$ruta=$bandera['tmp_name'];
 					$destino="res/img/partidos".$nombre;
 					//$rutaDesatino="../../res/img/";
+<<<<<<< HEAD
 				//EJECUNTANDO EL METODO PARA INSERTAR LA BANDERA
 				
 
 				$this->model->setNombrePartido($nombre);
 				$this->model->setEstado(1);
 				$info =$this->model->registrarPartido($destino);
+=======
+				//EJECUNTANDO EL METODO PARA INSERTAR LA BANDERa
 
-				if($info==1)
+				$this->model->setNombrePartido($nombre);
+				$this->model->setEstado(1);
+				$info =$this->model->registrarPartido($ruta);
+>>>>>>> 329225754e407f81359f3a8293e4c06d24019482
+
+				if($info == 1)
 				{
 				 copy($ruta,$destino);
 				 echo "Imagen subida Correctamente";
@@ -65,9 +73,6 @@ class PartidoController extends ControladorBase
 			{
 				echo "lamentablemente lo que usted intenta insertar no es una imagen";
 			}
-
-
-			
 
 	} 
 }

@@ -208,6 +208,39 @@ $(document).ready(function() {
         });
     });
 
+    $('#passAntiguaEditar').change(function() {
+        var contra = $(this).val();
+        var id = $('#idUsuarioEditar').val();
+
+        $.ajax({
+            type: 'POST',
+            data: { id: id, contra: contra },
+            url: '?1=Usuario&2=compContra',
+            success: function(data) {
+                switch (data) {
+                    case 'Contra Incorrecta':
+
+                        $('#mensajeContra').html('Contraseña Incorrecta');
+                        $('#passAntiguaEditar').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
+                        $('#labelContra').css("color", "rgba(244, 67, 54, 1)");
+                        $('#passAntiguaEditar').addClass('is-invalid');
+
+                        break;
+                    case 'Contra Correcta':
+
+                        $('#mensajeContra').html('');
+                        $('#passAntiguaEditar').css("background-image", "linear-gradient(to top, rgba(33, 150, 243, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
+                        $('#labelContra').css("color", "rgba(33, 150, 243, 1)");
+                        $('#passAntiguaEditar').removeClass('is-invalid');
+                        break;
+                    default:
+                        alert(data);
+                        break;
+                }
+            }
+        });
+    });
+
     // Funcion para editar datos de Usuario
     $('#btnEditar').click(function() {
 
@@ -219,7 +252,7 @@ $(document).ready(function() {
             url: '?1=Usuario&2=editarUsuario',
             success: function(data) {
                 switch (data) {
-                    case 'modificado':
+                    case 'Cambios Guardados':
                         swal({
                             title: "Éxito!",
                             text: "Los cambios fueron Guardados",
@@ -228,6 +261,15 @@ $(document).ready(function() {
                             closeOnConfirm: true,
                             closeOnCancel: true
                         });
+                        tablaUsuarios.ajax.reload();
+                        vaciarRegistrar();
+                        setTimeout(function() {
+                            $('tr td:last-child').addClass('text-right');
+                            // $('tr td:last-child').addClass('text-center');
+                        }, 800);
+                        break;
+                    default:
+                        alert(data);
                         break;
                 }
             }
@@ -315,8 +357,13 @@ function Login() {
     });
 }
 
-function vaciarRegistrar()
-{
+function vaciarEditar() {
+    $('#nomUsuarioEditar').val("");
+    $('#passAntiguaEditar').val("");
+    $('#rolUsuario').val("lcqe0p8=");
+}
+
+function vaciarRegistrar() {
     $('#nomUsuario').val("");
     $('#passUsuario').val("");
     $('#rolUsuario').val("lcqe0p8=");
