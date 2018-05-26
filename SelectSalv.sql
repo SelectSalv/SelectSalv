@@ -524,6 +524,8 @@ call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 1, '1976-05-0
 call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 1, '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 3, 2, 1);*/
 
 
+# call p_regPersona('05809350-2', 'Liza Michell', 'Guerrero Urbina', 1, '1998-10-28', '2024-12-18', 'Estudiante', 'col kennedy 2A CL PPAL #60', 1, 1);
+
 call p_regMunicipio('Santa Tecla', 1);
 
 call p_regMunicipio('San Salvador', 2);
