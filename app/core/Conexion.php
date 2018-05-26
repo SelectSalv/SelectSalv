@@ -25,6 +25,8 @@ class Conexion
 	{
 		$con = new mysqli($this->hostName, $this->dbUser, $this->dbPass, $this->dbName);
 
+		// $con = new mysqli("localhost", "root", "", "selectsalv");
+
 		return $con;
 	}
 }
