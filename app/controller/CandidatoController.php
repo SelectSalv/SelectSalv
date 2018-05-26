@@ -22,7 +22,7 @@ class CandidatoController extends ControladorBase
 			else{
 				require_once 'app/view/plantillas/menu.php';
 			}
-		require_once 'app/view/Candidato/crudCandidato.php';
+		require_once 'app/view/Candidato/candidatoView.php';
 		require_once 'app/view/plantillas/footer.php';
 	}
  
