@@ -349,6 +349,8 @@ $$
 
 # call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1);
 
+# call p_regPersona('05809350-2', 'Liza Michell', 'Guerrero Urbina', 1, '1998-10-28', '2024-12-18', 'Estudiante', 'col kennedy 2A CL PPAL #60', 1, 1);
+
 call p_regMunicipio('Santa Tecla', 1);
 
 call p_regMunicipio('San Salvador', 2);
