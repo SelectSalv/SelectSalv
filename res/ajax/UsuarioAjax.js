@@ -148,7 +148,20 @@ $(document).ready(function() {
                 url: '?1=Usuario&2=registrar',
                 success: function(datos) {
                     if (datos.estado) {
-                        location.reload();
+                        swal({
+                            title: "Éxito!",
+                            text: "Usuario Registrado",
+                            timer: 1500,
+                            type: 'success',
+                            closeOnConfirm: true,
+                            closeOnCancel: true
+                        });
+                        tablaUsuarios.ajax.reload();
+                        vaciarRegistrar();
+                        setTimeout(function() {
+                            $('tr td:last-child').addClass('text-right');
+                            // $('tr td:last-child').addClass('text-center');
+                        }, 800);
                     }
                 }
             });
@@ -300,6 +313,13 @@ function Login() {
             }
         }
     });
+}
+
+function vaciarRegistrar()
+{
+    $('#nomUsuario').val("");
+    $('#passUsuario').val("");
+    $('#rolUsuario').val("lcqe0p8=");
 }
 
 function validar(parametro) {

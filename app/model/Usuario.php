@@ -137,8 +137,6 @@ class Usuario extends ModeloBase {
 		    $modificar = null;
 		    $eliminar = null;
 
-		    $mas = '<button id=\"'.$fila["idUsuario"].'\" class=\"btn btn-secondary btnDetalles btn-raised bmd-btn-icon\"><i class=\"material-icons\">more_horiz</i></button>';
-
 			if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
 			{
 				$modificar = '<button id=\"'.$fila["idUsuario"].'\" class=\"btn btn-info btnModificar btn-raised bmd-btn-icon\"><i class=\"material-icons\">edit</i></button>';
@@ -152,7 +150,7 @@ class Usuario extends ModeloBase {
 								"idUsuario": "'.$fila["idUsuario"].'",
 								"Nombre de Usuario": "'.$enc->s_Decrypt($fila["nomUsuario"]).'",
 								"Permisos": "'.$fila["descRol"].'" ,
-								"Acciones": "'.$mas.' '.$modificar.' '.$eliminar.'"	
+								"Acciones": "'.$modificar.' '.$eliminar.'"	
 							},'; 
 			}
 
@@ -209,8 +207,55 @@ class Usuario extends ModeloBase {
 		return json_encode($datosUsuario);
 	}
 
+
+	// Método para comprobar disponibilidad de nombre de Usuario
+	public function compNomUsuario()
+	{
+		$enc = new Enc();
+
+		$_query = "select * from usuario where nomUsuario = ".$enc->s_Encrypt($this->nomUsuario);
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado->num_rows == 1)
+		{
+
+		}
+		else
+		{
+
+		}
+	}
+
+	public function compContra($id)
+	{
+		$_query = "select * from usuario where pass = ".sha1($this->passUsuario);
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado->num_rows == 1)
+		{
+
+		}
+		else
+		{
+
+		}
+	}
+
 	public function editarUsuario($id, $newPass)
 	{
-		
+		$_query = "select * from usuario where pass = ".sha1($this->passUsuario);
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado->num_rows == 1)
+		{
+
+		}
+		else
+		{
+			$respuesta = "Contraseña Incorrecta";
+		}
+
+		return $respuesta;
 	}
 }
