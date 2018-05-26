@@ -12,7 +12,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header" id="modal-header-frm">
-            <h5 class="modal-title" id="modal-title-frm">Registrar Persona</h5>
+            <h5 class="modal-title" id="modal-title-frm">Registrar Candidato</h5>
           </div>    
           <div id="modal-body-frm" class="modal-body">
               <form id="frmCandidato">
@@ -132,7 +132,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header" id="modal-header-datos">
-            <h5 class="modal-title" id="modal-title-datos">Registrar Persona</h5>
+            <h5 class="modal-title" id="modal-title-datos">Registrar Candidato</h5>
           </div>    
           <div id="modal-body-datos" class="modal-body">
             <table width="80%" style="margin: auto;" class="table table-striped" id="tablaModalDatos">
@@ -266,7 +266,7 @@
         echo '  <div class="barra-principal">
                 <button type="button" id="btnRegistrar" class="material-ripple btn-raised btn btn-primary ml-auto p2">
                   
-             Registrar Persona
+             Registrar Candidato
             </button>
             </div>
           <hr>';
