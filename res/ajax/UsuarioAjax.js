@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
 
 
@@ -8,8 +8,7 @@ $(document).ready(function () {
                 "url": "index.php?1=Usuario&2=getJSON",
                 "type": "POST"
             },
-            "columns": [
-                {
+            "columns": [{
                     "data": "idUsuario"
                 },
                 {
@@ -54,11 +53,11 @@ $(document).ready(function () {
 
         // Ocultar columna de id de Usuario
         tablaUsuarios.column(0).visible(false);
-        setTimeout(function () {
+        setTimeout(function() {
             $('tr td:last-child').addClass('text-right');
             // $('tr td:last-child').addClass('text-center');
         }, 800);
-        $(document).on('click', '.page-link', function () {
+        $(document).on('click', '.page-link', function() {
             $('tr td:last-child').addClass('text-right');
         });
 
@@ -70,8 +69,7 @@ $(document).ready(function () {
                 "url": "index.php?1=Usuario&2=getTransacciones",
                 "type": "POST"
             },
-            "columns": [
-                {
+            "columns": [{
                     "data": "id"
                 },
                 {
@@ -125,7 +123,7 @@ $(document).ready(function () {
     }
 
     // ACTIVAR MODAL DE REGISTRO
-    $('#btnNuevoUsuario').click(function () {
+    $('#btnNuevoUsuario').click(function() {
         $("#modalRegistrar").modal({
             backdrop: "static",
             keyboard: false
@@ -133,7 +131,7 @@ $(document).ready(function () {
     });
 
     // CONFIRMAR DATOS DE USUARIO
-    $('#btnRegistrar').click(function () {
+    $('#btnRegistrar').click(function() {
 
         var datos = $('#frmRegistrar').serializeArray();
 
@@ -148,7 +146,7 @@ $(document).ready(function () {
                     datos: datos
                 },
                 url: '?1=Usuario&2=registrar',
-                success: function (datos) {
+                success: function(datos) {
                     if (datos.estado) {
                         location.reload();
                     }
@@ -165,17 +163,41 @@ $(document).ready(function () {
                 keyboard: false
             });;
             $('#modalRegistrar').modal('hide');
-            $('#btnCancelarDatos').click(function () {
+            $('#btnCancelarDatos').click(function() {
                 $('#modalRegistrar').modal('show');
             });
         }
 
     });
 
-    $('#btnLogin').click(function () {
+    // Funcion para mostrar datos a editar de Usuario
+    $(document).on('click', '.btnModificar', function() {
+        $("#modalEditar").modal({
+            backdrop: "static",
+            keyboard: false
+        });
+
+        var idUsuario = $(this).attr("id");
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: {idUsuario: idUsuario},
+            url: '?1=Usuario&2=getUsuario',
+            success: function(data)
+            {
+                $('#idUsuarioEditar').val(idUsuario);
+
+                $('#duiModificar').val(data.dui);
+                $('#duiModificar').parent().addClass('is-filled');
+            }
+        });
+    });
+
+    $('#btnLogin').click(function() {
         Login();
     });
-    $('body').keyup(function (e) {
+    $('body').keyup(function(e) {
         if (e.keyCode == 13) {
             Login();
         }
@@ -192,7 +214,7 @@ function Login() {
             datos: datos
         },
         url: '?1=Usuario&2=login',
-        success: function (r) {
+        success: function(r) {
 
             var resultado = r.resultado;
 
@@ -210,7 +232,7 @@ function Login() {
                     $('#btnLogin').addClass('btn-success');
                     $('#btnLogin').removeClass('btn-info');
 
-                    setTimeout(function () {
+                    setTimeout(function() {
                         location.href = "?1=Usuario&2=render&3=DashboardView&4=headerBarUsuario&5=1";
                     }, 1000);
 
@@ -226,7 +248,7 @@ function Login() {
                     $('#label-pass').css("color", "rgba(244, 67, 54, 1)");
                     $('#btnLogin').addClass('btn-danger');
                     $('#btnLogin').removeClass('btn-info');
-                    setTimeout(function () {
+                    setTimeout(function() {
                         $('#title-login').html('Ingresar');
                         $('#c-ins-login').removeClass('bg-danger');
 
@@ -237,7 +259,7 @@ function Login() {
                 case 3:
                     $('#title-login').html('Campos Vacíos');
                     $('#c-ins-login').addClass('bg-danger');
-                    setTimeout(function () {
+                    setTimeout(function() {
                         $('#title-login').html('Ingresar');
                         $('#c-ins-login').removeClass('bg-danger');
                     }, 1500);
@@ -254,7 +276,7 @@ function Login() {
 
 function validar(parametro) {
     var num = 0;
-    $(parametro).each(function () {
+    $(parametro).each(function() {
         var valor = $(this).val();
 
         if ((valor == "") || (valor == "-")) {

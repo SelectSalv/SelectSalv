@@ -103,4 +103,15 @@ class UsuarioController extends ControladorBase
 		echo $resultado;
 	}
 
+	// Método para obtener Datos de usuario por id
+	public function getUsuario()
+	{
+		$datos = $_POST['idUsuario'];
+
+		$datos = json_decode($datos);
+
+		$resultado = $this->model->getUsuarioId($datos);
+
+		echo $resultado;
+	}
 }

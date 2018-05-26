@@ -1,10 +1,10 @@
 $(document).ready(function(){
 	$('#flecha-atras-boleta').click(function(){
-		location.href = "votar.php";
+		location.href = "?1=Sistema&2=index";
 	});
 
 	$('#flecha-atras-votar').click(function(){
-		location.href = "../../index.php";
+		location.href = "?1=Sistema&2=index";
 	});
 
 	$('#flecha-atras').click(function() {

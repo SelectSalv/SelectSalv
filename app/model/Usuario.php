@@ -12,11 +12,10 @@ class Usuario extends ModeloBase {
  	{
  		parent::__construct();
  	}
-    public function setIdUsuario($idUsuario)
-    {
-        $this->idUsuario = $idUsuario;
 
-        return $this;
+ 	 public function getIdUsuario()
+    {
+        return $this->idUsuario;
     }
 
     public function getNomUsuario()
@@ -190,4 +189,23 @@ class Usuario extends ModeloBase {
 		$datos = substr($datos,0, strlen($datos) - 1);
 		return '{"data" : ['.$datos.']}';
 	}
+
+	// MÉTODO PARA OBTENER LOS DATOS DE UN USUARIO POR SU ID
+	public function getUsuarioId($id)
+	{
+		$_query = "call p_obtenerUsuarioId(".$id.")";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		$datos = $resultado->fetch_assoc();
+
+		$datosUsuario = array();
+
+		$datosUsuario["nomUsuarioEditar"] = s_Decrypt($datos["nomUsuario"]);
+		$datosUsuario["codRolEditar"] = $datos["codRol"];
+		
+		return json_encode($datosUsuario);
+	}
+
+
 }

@@ -28,7 +28,18 @@
     <script src="res/plugins/JQueryMask/jquery.mask.js"></script>
     <script src="res/plugins/date.js"></script>
     <script src="res/js/mask-inputs.js"></script>
-    <title>SelectSalv</title>
+    <title>
+    	SelectSalv
+    	<?php  
+    		if(isset($_SESSION["nomUsuario"]))
+    		{
+    			if(!empty($_SESSION["nomUsuario"]))
+    			{
+    				echo " | ".$_SESSION["nomUsuario"];
+    			}
+    		}
+    	?>
+    </title>
 </head>
 <body id="body">
 

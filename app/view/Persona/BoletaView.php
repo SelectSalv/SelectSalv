@@ -2,11 +2,11 @@
 <link rel="stylesheet" href="res/css/boleta.css">
 
 <script>
-	$(document).ready(function() {
+	/*$(document).ready(function() {
 		$('#nuevasIdeas').css('background-image', 'url(res/img/partidos/nuevasIdeas.jpg)');
 		$('#arena').css('background-image', 'url(res/img/partidos/arena.jpg)');
 		$('#fmln').css('background-image', 'url(res/img/partidos/fmln.jpg)');
-	});	
+	});	*/
 </script>
 <script>
 	$(document).ready(function() {
@@ -24,13 +24,13 @@
 			<p style="display: block;" class="texto-barra-titulo-boleta">
 				Papeleta
 			</p>
-			<button style="display: block;" type="button" class="btn btn-secondary btn-raised" >Votar</button>
+			<button style="display: block;" type="button" class="btn btn-secondary" >Votar</button>
 	</div>
 	<hr style="margin-top:0;">
 	<div class="boleta">
 		<div class="row">
 			<div class="col-md-4 col-sm-12">
-				<div class="cuadro-boleta" id="nuevasIdeas">
+				<div class="cuadro-boleta" id="nuevasIdeas" style="background-image: url(res/img/partidos/nuevasIdeas.jpg)">
 					<div class="humo d-flex flex-column">
 						<div class="detalles-partido mt-auto p-2">
 							<p class="nombre-partido">

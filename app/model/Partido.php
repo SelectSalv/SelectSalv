@@ -24,4 +24,9 @@ class Partido extends ModeloBase
 	{
 		$this->nomPartido=$nomPartido;
 	}
+
+	public function getInfoPartido()
+	{
+		
+	}
 }

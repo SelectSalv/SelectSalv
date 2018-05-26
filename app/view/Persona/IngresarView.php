@@ -1,4 +1,12 @@
-	<script src="res/ajax/PersonaAjax.js"></script>
+<script src="res/ajax/PersonaAjax.js"></script>
+
+<script>
+	$(document).ready(function() {
+		setTimeout(function() {
+			$('#duiVotar').focus();
+		}, 500);
+	});
+</script>
 
 <nav class="navbar fixed-top d-flex">
 		<button type="button" style="margin-right: 10px;" id="btn-menu-nav" class=" p2 material-ripple waves-ripple waves-light btn btn-primary bmd-btn-icon align-middle">

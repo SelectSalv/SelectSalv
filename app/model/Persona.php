@@ -278,11 +278,38 @@ class Persona extends ModeloBase {
         return '{"data" : ['.$datos.']}';
 	}
 
+	// MÉTODO PARA REGISTRAR PERSONA EXTENDIDO
+	public function registrarPersonaExt()
+	{
+		$_query = "select * from persona where dui = '".$this->dui."'";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado->num_rows == 0)
+		{
+			$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', ".$this->genero.", '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', ".$this->estadoCivil.", ".$this->idMunicipio.", ".$_SESSION["idUsuario"].")";
+				$resultado = $this->con->conectar()->query($_query);
+
+				if($resultado)
+				{
+					$respuesta = "registrado";
+				}
+				else{
+					$respuesta = "error al registrar";
+				}
+
+		} elseif($resultado->num_rows > 0){
+
+			$respuesta = "dui registrado";
+
+		}
+
+		return $respuesta;
+	} 
+
 	// MÉTODO PARA REGISTRAR DATOS DE PERSONA
     public function registrarPersona()
 	{
-
-
 
 		$_query = "select * from persona where dui = '".$this->dui."'";
 

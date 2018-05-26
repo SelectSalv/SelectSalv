@@ -49,6 +49,57 @@
 		  </div>
 		</div>
 
+<!-- modal editar -->
+<div id="contenedor-modal">
+		<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modaleditarPersona" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header" id="modal-header-editar">
+		        <h5 class="modal-title" id="modal-title-editar">Editar Usuario</h5>
+		      </div>		
+		      <div id="modal-body-editar" class="modal-body">
+		      	<form id="frmEditar">
+		      		<div class="form-row">
+		      			<div class="form-column col-md-12">
+		      				<div class="form-group bmd-form-group">
+		      					<label class="bmd-label-floating" for="nomUsuario">Nombre de Usuario:</label>
+		      					<input type="text" class="form-control requeridoEditar" name="nomUsuarioEditar" id="nomUsuarioEditar">
+		      				</div>
+		      			</div>
+		      			<div class="form-column col-md-12">
+		      				<div class="form-group bmd-form-group">
+		      					<label class="bmd-label-floating" for="passUsuario">Contraseña Antigua:</label>
+		      					<input type="password" class="form-control requeridoEditar" name="passUsuarioEditar" id="passAntiguaEditar">
+		      				</div>
+		      			</div>
+		      			<div class="form-column col-md-12">
+		      				<div class="form-group bmd-form-group">
+		      					<label class="bmd-label-floating" for="passUsuario">Nueva Contraseña:</label>
+		      					<input type="password" class="form-control requeridoEditar" name="passUsuarioEditar" id="passNuevaEditar">
+		      				</div>
+		      			</div>
+		      			<div class="form-column col-md-12">
+		      				<div class="form-group bmd-form-group is-filled">
+		      					<label class="bmd-label-floating" for="rolUsuario">Permisos de la Cuenta:</label>
+		      					<select class="form-control" name="rolUsuarioEditar" id="rolUsuarioEditar">
+		      						<option value="lcqe0p8=">Administrador</option>
+		      						<option value="ndSn">Invitado</option>
+		      					</select>
+		      				</div>
+		      			</div>
+		      		</div>
+		      	</form>
+		      </div>
+		      <div class="modal-footer" id="modal-footer-editar">
+		      	<input type="hidden" id="idUsuarioEditar" name="idUsuarioEditar">
+		       <button type="button" id="btnCancelarEditar" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
+		        <button type="button" id="btnEditar" class="btn btn-info">Guardar Cambios</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+
 <!-- Modal Datos -->
 	<div id="contenedor-modal">
 		<div class="modal fade" id="modalDatos" tabindex="-1" role="dialog" aria-labelledby="modalregistrarPersona" aria-hidden="true">
