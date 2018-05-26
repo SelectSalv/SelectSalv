@@ -5,6 +5,9 @@ class Partido extends ModeloBase
 
 	private	$idPartido; 
 	private	$nomPartido;
+	private $estado;
+
+	protected $con;
 	
 
 	public function __construct()
@@ -23,5 +26,34 @@ class Partido extends ModeloBase
 	public function setNombrePartido($nomPartido)
 	{
 		$this->nomPartido=$nomPartido;
+	}
+
+	public function getEstado()
+	{
+		return $this->estado;
+	}
+	public function setEstado($estado)
+	{
+		$this->estado=$estado;
+	}
+
+
+	//METODO PARA INSERTAR PARTIDO
+	public function registrarPartido( $url)
+	{
+
+		$sql="INSERT INTO partido VALUES(0,'".$this->nomPartido."', '".$url."',".$this->estado." )";
+		
+
+		$info = $this->con->conectar()->query($sql);
+		if($info)
+		{
+			$resp=1;
+		}
+		else
+		{
+			$resp=0;
+		}
+		return $resp;
 	}
 }
