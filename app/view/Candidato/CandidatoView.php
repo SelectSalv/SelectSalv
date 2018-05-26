@@ -15,7 +15,7 @@
             <h5 class="modal-title" id="modal-title-frm">Registrar Candidato</h5>
           </div>    
           <div id="modal-body-frm" class="modal-body">
-              <form id="frmCandidato" >
+              <form id="frmCandidato" action="" method="POST">
               <div class="form-row">
                 <div class="form-column col-md-12">
                   <div class="form-group bmd-form-group">

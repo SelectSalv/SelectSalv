@@ -234,7 +234,7 @@ $(document).ready(function() {
             keyboard: false
         });
 
-        var idCandidato = $(this).attr("id");
+        var idCandidato = $(this).attr("idCandidato");
 
         $(document).on("click", "#btnEliminar", function() {
             $.ajax({

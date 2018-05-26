@@ -1,5 +1,6 @@
 <?php
 
+
 class CandidatoController extends ControladorBase
 {
 
@@ -34,27 +35,16 @@ class CandidatoController extends ControladorBase
 	}
 
 	# Acciones Lógicas
-
-
-	// Método para Comprobar disponibilidad de DUI
-	public function compDui()
-	{
-		$this->model->setDui($_POST["dui"]);
-		$resultado = $this->model->compDUI();
-
-		echo $resultado;
-	}
-
 	// Método para obtener Datos de Candidato por id
 	public function getCandidato()
 	{
-		/*$datos = $_POST['idCandidato'];
+		$datos = $_POST['idCandidato'];
 
 		$datos = json_decode($datos);
 
-		$resultado = $this->model->getUsuario($datos);
+		$resultado = $this->model->getIdCandidato($datos);
 
-		echo $resultado;*/
+		echo $resultado;
 	}
 
 	// Método para obtener Datos de Candidato por DUI
