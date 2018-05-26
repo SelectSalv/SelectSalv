@@ -68,8 +68,9 @@
 		      			</div>
 		      			<div class="form-column col-md-6">
 		      				<div class="form-group bmd-form-group">
-		      					<label class="bmd-label-floating" for="passUsuario">Contraseña Antigua:</label>
+		      					<label class="bmd-label-floating" for="passUsuario" id="labelContra">Contraseña Antigua:</label>
 		      					<input type="password" class="form-control requeridoEditar" name="passAntiguaEditar" id="passAntiguaEditar">
+		      					<div id="mensajeContra" class="invalid-feedback"></div>
 		      				</div>
 		      			</div>
 		      			<div class="form-column col-md-6">

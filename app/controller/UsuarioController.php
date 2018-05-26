@@ -112,12 +112,25 @@ class UsuarioController extends ControladorBase
 
 		$this->model->setNomUsuario($datos[0]->value);
 		$this->model->setPassUsuario($datos[1]->value);
-		$this->model->setRolUsuario($datos[2]->value);
+		$this->model->setRolUsuario($datos[3]->value);
 
 		$id = $datos[4]->value;
 		$newPass = $datos[2]->value;
 
 		$resultado = $this->model->editarUsuario($id, $newPass);
+
+		echo $resultado;
+	}
+
+	// Método para comprobar contraseña de usuario
+	public function compContra()
+	{
+		$contra = $_POST["contra"];
+		$id = $_POST["id"];
+
+		$this->model->setPassUsuario($contra);
+
+		$resultado = $this->model->compContra($id);
 
 		echo $resultado;
 	}

@@ -213,47 +213,71 @@ class Usuario extends ModeloBase {
 	{
 		$enc = new Enc();
 
-		$_query = "select * from usuario where nomUsuario = ".$enc->s_Encrypt($this->nomUsuario);
+		$_query = "select * from usuario where nomUsuario = '".$enc->s_Encrypt($this->nomUsuario)."'";
 		$resultado = $this->con->conectar()->query($_query);
 
-		if($resultado->num_rows == 1)
+		if($resultado->num_rows == 0)
 		{
-
+			$respuesta = "Usuario Disponible";
 		}
 		else
 		{
-
+			$respuesta = "Usuario no Disponible";
 		}
+
+		return $respuesta;
 	}
 
 	public function compContra($id)
 	{
-		$_query = "select * from usuario where pass = ".sha1($this->passUsuario);
+		$_query = "select * from usuario where idUsuario = ".$id." and pass = '".sha1($this->passUsuario)."'";
 		$resultado = $this->con->conectar()->query($_query);
 
-		if($resultado->num_rows == 1)
-		{
 
-		}
-		else
+		if($resultado)
 		{
-
+			if($resultado->num_rows == 1)
+			{
+				$respuesta = "Contra Correcta";
+			}
+			else
+			{
+				$respuesta = "Contra Incorrecta";
+			}
 		}
+		else{
+			$respuesta = "error";
+		}
+
+		return $respuesta;
 	}
 
 	public function editarUsuario($id, $newPass)
 	{
-		$_query = "select * from usuario where pass = ".sha1($this->passUsuario);
+		$enc = new Enc();
+
+		$_query = "select * from usuario where pass = '".sha1($this->passUsuario)."' and idUsuario = ".$id;
 
 		$resultado = $this->con->conectar()->query($_query);
 
 		if($resultado->num_rows == 1)
 		{
+			$_query = "call p_editarUsuario(".$id.", '".$enc->s_Encrypt($this->nomUsuario)."', '".sha1($newPass)."', '".$this->rolUsuario."', ".$_SESSION["idUsuario"].")";
 
+			$resultado = $this->con->conectar()->query($_query);
+
+			if($resultado)
+			{
+				$respuesta = "Cambios Guardados";
+			}
+			else
+			{
+				$respuesta = "Error";
+			}
 		}
 		else
 		{
-			$respuesta = "Contraseña Incorrecta";
+			$respuesta = "Contra Incorrecta";
 		}
 
 		return $respuesta;
