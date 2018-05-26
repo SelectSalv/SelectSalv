@@ -33,22 +33,25 @@ class PartidoController extends ControladorBase
 			$bandera=$_FILES['bandera'];
 
 
+
 				//validando que sea una imagen
 			if($bandera["type"]=="image/jpg" || $bandera["type"]=="image/jpeg" || $bandera["type"]=="image/png")
 			{
 				//OBTENIENDO LA RUTA
-					$ruta="controller/".$bandera["name"];
+					$nombre=$bandera['name'];
+					$ruta=$bandera['tmp_name'];
+					$destino="res/img/partidos".$nombre;
 					//$rutaDesatino="../../res/img/";
 				//EJECUNTANDO EL METODO PARA INSERTAR LA BANDERA
-				$objPartido=new Partido();
+				
 
-				$objPartido->setNombrePartido($nombre);
-				$objPartido->setEstado(1);
-				$info =$objPartido->registrarPartido($ruta);
+				$this->model->setNombrePartido($nombre);
+				$this->model->setEstado(1);
+				$info =$this->model->registrarPartido($destino);
 
 				if($info==1)
 				{
-				 move_uploaded_file($bandera["tmp_name"], $ruta);
+				 copy($ruta,$destino);
 				 echo "Imagen subida Correctamente";
 				}
 				else

@@ -48,8 +48,7 @@ class Partido extends ModeloBase
 
 		$info = $this->con->conectar()->query($sql);
 
-		print_r($info);
-		die();
+		
 
 		if($info)
 		{
@@ -57,7 +56,7 @@ class Partido extends ModeloBase
 		}
 		else
 		{
-			$resp=0;
+			$resp=1;
 			
 		}
 		return $resp;
