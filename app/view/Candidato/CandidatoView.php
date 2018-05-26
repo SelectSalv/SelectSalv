@@ -28,61 +28,6 @@
               </div>
 
               <div class="form-row">
-                <div class="form-column col-md-6">
-                  <div class="form-group bmd-form-group">
-                    <label for="nomCandidato" class="bmd-label-floating">Nombres</label>
-                    <input type="text" class="form-control requeridoRegistrar" name="nomCandidato" id="nomCandidato">
-                  </div>
-                </div>
-                <div class="form-column col-md-6">
-                  <div class="form-group bmd-form-group">
-                    <label for="apellidosCandidato" class="bmd-label-floating">Apellidos</label>
-                    <input type="text" class="form-control requeridoRegistrar" name="apellidosCandidato" id="apellidosCandidato">
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-column col-md-6">
-                  <div class="form-group bmd-form-group is-filled">
-                    <label for="" class="bmd-label-floating">Género</label>
-                    <select name="genero" id="genero" class="form-control">
-                      <option value="-" data="">Seleccione uno...</option>
-                      <option value="1" data="Masculino">Masculino</option>
-                      <option value="2" data="Femenino">Femenino</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-column col-md-6">
-                  <div class="form-group bmd-form-group is-filled">
-                    <label for="" class="bmd-label-floating">Estado Civil</label>
-                    <select name="estadoCivil" id="estadoCivil" class="form-control">
-                      <option value="-" data="">Seleccione uno...</option>
-                      <option value="1" data="Soltero">Soltero</option>
-                      <option value="2" data="Casado">Casado</option>
-                      <option value="3" data="Divorciado">Divorciado</option>
-                      <option value="4" data="Viudo">Viudo</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-column col-md-6">
-                  <div class="form-group bmd-form-group is-filled">
-                    <label for="fechaNacimiento" class="bmd-label-floating">Fecha de Nacimiento</label>
-                    <input type="date" class="form-control requeridoRegistrar" name="fechaNacimiento" id="fechaNacimiento">
-                  </div>
-                </div>
-                <div class="form-column col-md-6">
-                  <div class="form-group bmd-form-group is-filled">
-                    <label for="fechaVencimiento" class="bmd-label-floating">Fecha de Vencimiento</label>
-                    <input type="date" class="form-control requeridoRegistrar" name="fechaVencimiento" id="fechaVencimiento">
-                  </div>
-                </div>
-              </div>
-              
-              <div class="form-row">
           <div class="form-column col-md-6">
             <div class="form-group bmd-form-group is-filled">
               <label for="departamento" class="bmd-label-floating">Partido Político</label>
@@ -169,59 +114,7 @@
                   </div>
                 </div>
               </div>
-
-              <div class="form-row">
-                <div class="form-column col-md-6">
-                  <div class="form-group bmd-form-group">
-                    <label for="nomCandidato" class="bmd-label-floating">Nombres</label>
-                    <input type="text" class="form-control requerido" name="nomCandidato" id="nomCandidatoModificar">
-                  </div>
-                </div>
-                <div class="form-column col-md-6">
-                  <div class="form-group bmd-form-group">
-                    <label for="apellidosCandidato" class="bmd-label-floating">Apellidos</label>
-                    <input type="text" class="form-control requerido" name="apellidosCandidato" id="apellidosCandidatoModificar">
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-column col-md-6">
-                  <label for="">Género</label>
-                  <select name="generoModificar" id="generoModificar" class="form-control">
-                    <option value="-">Seleccione uno...</option>
-                    <option value="1">Masculino</option>
-                    <option value="2">Femenino</option>
-                  </select>
-                </div>
-                  <div class="form-column col-md-6">
-                  <label for="">Estado Civil</label>
-                    <select name="estadoCivilModificar" id="estadoCivilModificar" class="form-control">
-                    <option value="-">Seleccione uno...</option>
-                    <option value="1">Soltero</option>
-                    <option value="2">Casado</option>
-                    <option value="3">Divorciado</option>
-                    <option value="4">Viudo</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-column col-md-6">
-                  <div class="form-group bmd-form-group is-filled">
-                    <label for="fechaNacimiento" class="bmd-label-floating">Fecha de Nacimiento</label>
-                    <input type="date" class="form-control requerido" name="fechaNacimiento" id="fechaNacimientoModificar">
-                  </div>
-                </div>
-                <div class="form-column col-md-6">
-                  <div class="form-group bmd-form-group is-filled">
-                    <label for="fechaVencimiento" class="bmd-label-floating">Fecha de Vencimiento</label>
-                    <input type="date" class="form-control requerido" name="fechaVencimiento" id="fechaVencimientoModificar">
-                  </div>
-                </div>
-              </div>
-              
-              <div class="form-row">
+        <div class="form-row">
           <div class="form-column col-md-6">
             <div class="form-group bmd-form-group is-filled">
               <label for="departamento" class="bmd-label-floating">Partido Político</label>
