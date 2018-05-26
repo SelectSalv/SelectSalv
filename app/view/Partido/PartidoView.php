@@ -74,13 +74,16 @@
 
     ?>
     <div class="dataTab">
-      <table id="tableTransacciones" class="table table-hover table-bordered" style="width: 100%; margin: auto;">
+      <table id="tablePartidos" class="table table-hover table-bordered" style="width: 100%; margin: auto;">
         <thead class="bg-primary">
           <th class="text-light">idPartido</th>
           <th class="text-light">Nombre del Partido</th>
           <th class="text-light">Bandera</th>
+          <th class="text-light">Acciones</th>
         </thead>
         <tbody>
+
+
         </tbody>
       </table>
     </div>

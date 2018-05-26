@@ -1,5 +1,79 @@
 $(document).ready(function(){
 
+//CONFIGURANDO EL DATA TABLE
+    if($('#tablePartidos').length) {
+
+          var tabla = $('#tablePartidos').DataTable({
+        "ajax": {
+            "url": "index.php?1=Partido&2=getPartidos",
+            "type": "POST"
+        },
+        "columns": [{
+                "data": "idPartido"
+            },
+            {
+                "data": "nomPartido"
+            },
+            {
+                "data": "Bandera",
+                "render":function(data, type, row){
+                    var data_n=data.split("/");
+                    return '<center><img src="'+data_n[0]+"/"+data_n[1]+"/"+data_n[2]+"/"+data_n[3]+'" width="120" height="80"></center>';
+                }
+           },
+           {
+                "data": "Acciones"
+           }
+        ],
+        "order": [
+            [0, "desc"]
+        ],
+        "language": {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla",
+            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        }
+    }); // Termina Configuración de DataTable
+
+    // función para ocultar columna de ids
+    tabla.column(0).visible(false);
+
+    // Función para centrar acciones de las filas
+    setTimeout(function() {
+        $('tr td:last-child').css('display', 'flex');
+        $('tr td:last-child').css('justify-content', 'space-around');
+        $('tr td:last-child').css('align-items', 'center');
+        // $('tr td:last-child').addClass('text-center');
+    }, 500);
+
+    $(document).on('click', '.page-link', function() {
+        $('tr td:last-child').css('display', 'flex');
+        $('tr td:last-child').css('justify-content', 'space-around');
+        $('tr td:last-child').css('align-items', 'center');
+    });
+    }
+
+
+
 
 
 $("#btnRegistrarPartido").click(function(){
@@ -10,7 +84,7 @@ $("#btnRegistrarPartido").click(function(){
         });;
 });
 
-$("#tableTransacciones").DataTable();
+
 
 
 //METODO AJAX PARA ENVIAR DATOS DE PARTIDO
