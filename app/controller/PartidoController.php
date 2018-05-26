@@ -67,5 +67,12 @@ class PartidoController extends ControladorBase
 			}
 
 	} 
+
+	public function getPartidos()
+	{
+		$datos=$this->model->mostrarPartidos();
+		echo $datos;
+
+	}
 }
  ?>
