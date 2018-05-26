@@ -66,16 +66,16 @@
 		      					<input type="text" class="form-control requeridoEditar" name="nomUsuarioEditar" id="nomUsuarioEditar">
 		      				</div>
 		      			</div>
-		      			<div class="form-column col-md-12">
+		      			<div class="form-column col-md-6">
 		      				<div class="form-group bmd-form-group">
 		      					<label class="bmd-label-floating" for="passUsuario">Contraseña Antigua:</label>
-		      					<input type="password" class="form-control requeridoEditar" name="passUsuarioEditar" id="passAntiguaEditar">
+		      					<input type="password" class="form-control requeridoEditar" name="passAntiguaEditar" id="passAntiguaEditar">
 		      				</div>
 		      			</div>
-		      			<div class="form-column col-md-12">
+		      			<div class="form-column col-md-6">
 		      				<div class="form-group bmd-form-group">
 		      					<label class="bmd-label-floating" for="passUsuario">Nueva Contraseña:</label>
-		      					<input type="password" class="form-control requeridoEditar" name="passUsuarioEditar" id="passNuevaEditar">
+		      					<input type="password" class="form-control requeridoEditar" name="passNuevaEditar" id="passNuevaEditar">
 		      				</div>
 		      			</div>
 		      			<div class="form-column col-md-12">
@@ -85,15 +85,15 @@
 		      						<option value="lcqe0p8=">Administrador</option>
 		      						<option value="ndSn">Invitado</option>
 		      					</select>
+		      					<input type="hidden" id="idUsuarioEditar" name="idUsuarioEditar">
 		      				</div>
 		      			</div>
 		      		</div>
 		      	</form>
 		      </div>
 		      <div class="modal-footer" id="modal-footer-editar">
-		      	<input type="hidden" id="idUsuarioEditar" name="idUsuarioEditar">
 		       <button type="button" id="btnCancelarEditar" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
-		        <button type="button" id="btnEditar" class="btn btn-info">Guardar Cambios</button>
+		        <button type="button" id="btnEditar" data-dismiss="modal" class="btn btn-info">Guardar Cambios</button>
 		      </div>
 		    </div>
 		  </div>

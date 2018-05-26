@@ -193,6 +193,8 @@ class Usuario extends ModeloBase {
 	// MÉTODO PARA OBTENER LOS DATOS DE UN USUARIO POR SU ID
 	public function getUsuarioId($id)
 	{
+		$enc = new Enc();
+
 		$_query = "call p_obtenerUsuarioId(".$id.")";
 
 		$resultado = $this->con->conectar()->query($_query);
@@ -201,11 +203,14 @@ class Usuario extends ModeloBase {
 
 		$datosUsuario = array();
 
-		$datosUsuario["nomUsuarioEditar"] = s_Decrypt($datos["nomUsuario"]);
+		$datosUsuario["nomUsuarioEditar"] = $enc->s_Decrypt($datos["nomUsuario"]);
 		$datosUsuario["codRolEditar"] = $datos["codRol"];
-		
+
 		return json_encode($datosUsuario);
 	}
 
-
+	public function editarUsuario($id, $newPass)
+	{
+		
+	}
 }

@@ -182,16 +182,44 @@ $(document).ready(function() {
         $.ajax({
             type: 'POST',
             dataType: 'json',
-            data: {idUsuario: idUsuario},
+            data: { idUsuario: idUsuario },
             url: '?1=Usuario&2=getUsuario',
-            success: function(data)
-            {
+            success: function(data) {
                 $('#idUsuarioEditar').val(idUsuario);
 
-                $('#duiModificar').val(data.dui);
-                $('#duiModificar').parent().addClass('is-filled');
+                $('#nomUsuarioEditar').val(data.nomUsuarioEditar);
+                $('#nomUsuarioEditar').parent().addClass('is-filled');
+
+                $('#rolUsuarioEditar').val(data.codRolEditar);
             }
         });
+    });
+
+    // Funcion para editar datos de Usuario
+    $('#btnEditar').click(function() {
+
+        var datos = JSON.stringify($('#frmEditar :input').serializeArray());
+
+        $.ajax({
+            type: 'POST',
+            data: { datos: datos },
+            url: '?1=Usuario&2=editarUsuario',
+            success: function(data) {
+                switch (data) {
+                    case 'modificado':
+                        swal({
+                            title: "Éxito!",
+                            text: "Los cambios fueron Guardados",
+                            timer: 1500,
+                            type: 'success',
+                            closeOnConfirm: true,
+                            closeOnCancel: true
+                        });
+                        break;
+                }
+            }
+        });
+
     });
 
     $('#btnLogin').click(function() {

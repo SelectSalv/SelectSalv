@@ -202,7 +202,7 @@ alter table transacciones add constraint fk_tipoTransaccion foreign key (idTipo)
 # Vista con los datos de usuario
 
 create view v_Usuarios as (
-	select u.idUsuario, u.nomUsuario, u.pass, u.estado, r.descRol
+	select u.idUsuario, u.nomUsuario, u.pass, u.estado, r.descRol, r.codRol
     from Usuario u, Rol r
     where u.idRol = r.idRol
 );
@@ -238,8 +238,6 @@ create view v_Boleta as (
     order by p.idPartido desc
 );
 
-
-select * from v_Boleta;
 
 # Procedimiento almacenado para registrar Partidos
 delimiter $$
@@ -329,6 +327,16 @@ begin
     set ideRol = (select idRol from Rol where codRol = rol);
     insert into Usuario values(null, nom, contra, 1, ideRol);
     call p_RegTransaccion(iduser,4);
+end
+$$
+
+# Procedimiento almacenado para obtener datos de usuario por id
+delimiter $$
+create procedure p_obtenerUsuarioId(
+	in nid int
+)
+begin
+	select * from v_Usuarios where idUsuario = nid;
 end
 $$
 
@@ -489,17 +497,31 @@ call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 1, '1976-05-0
 
 call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 1, '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 3, 1, 1);
 
-call p_regPersona('05878895-8', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 2, 1);
+call p_regPersona('67845389-9', 'Nayib Armando', 'Bukele Ortez', 1, '1981-06-24', '2019-05-05', 'Presidente', 'Colonia Escalon', 2, 2, 1);
+call p_regPersona('67836689-8', 'Jose', 'Barahona Rais', 1, '1981-06-24', '2019-05-05', 'Vicepresidente', 'Colonia Escalon', 2, 2, 1);
+
+call p_regPersona('67871989-9', 'Juan Carlos', 'Calleja Hakker', 1, '1977-06-24', '2019-05-05', 'Empresario', 'Colonia Escalon', 2, 2, 1);
+call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 1, '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 2, 1, 1);
+call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 1, '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 3, 2, 1);
+
+call p_regPersona('05878895-8', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
 call p_regPersona('05878895-7', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
 call p_regPersona('05878895-6', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
 call p_regPersona('05878895-5', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
 call p_regPersona('05878895-4', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
 call p_regPersona('05878895-3', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
-call p_regPersona('05878895-2', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 2, 1);
+call p_regPersona('05878895-2', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
 call p_regPersona('05878895-9', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
 
 call p_regPersona('05878895-0', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
-call p_regPersona('05878895-1', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1); */
+call p_regPersona('05878895-1', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1);
+call p_regPersona('05878896-1', 'Jorge Luis', 'Sidgo Pimentel', 1, '1999-05-21', '2025-05-26', 'Estudiante', 'Res. Las Colinas Sda Maquilishuat #24', 1, 1, 1); 
+call p_regPersona('67845389-9', 'Nayib Armando', 'Bukele Ortez', 1, '1981-06-24', '2019-05-05', 'Presidente', 'Colonia Escalon', 2, 2, 1);
+call p_regPersona('67836689-8', 'Jose', 'Barahona Rais', 1, '1981-06-24', '2019-05-05', 'Vicepresidente', 'Colonia Escalon', 2, 2, 1);
+
+call p_regPersona('67871989-9', 'Juan Carlos', 'Calleja Hakker', 1, '1977-06-24', '2019-05-05', 'Empresario', 'Colonia Escalon', 2, 2, 1);
+call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 1, '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 2, 1, 1);
+call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 1, '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 3, 2, 1);*/
 
 
 call p_regMunicipio('Santa Tecla', 1);
