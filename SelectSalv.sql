@@ -197,7 +197,9 @@ alter table padron add constraint fk_idJrv foreign key (idJrv) references Jrv(id
 alter table transacciones add constraint fk_tipoTransaccion foreign key (idTipo) references tipoTransaccion(id);
 
 
+
 # VISTAS
+
 
 # Vista con los datos de usuario
 

@@ -19,8 +19,9 @@
 		      		<div class="form-row">
 		      			<div class="form-column col-md-12">
 		      				<div class="form-group bmd-form-group">
-		      					<label class="bmd-label-floating" for="nomUsuario">Nombre de Usuario:</label>
+		      					<label id="labelUsuario" class="bmd-label-floating" for="nomUsuario">Nombre de Usuario:</label>
 		      					<input type="text" class="form-control requeridoRegistrar" name="nomUsuario" id="nomUsuario">
+		      					<div id="mensajeUsuario" class="invalid-feedback"></div>
 		      				</div>
 		      			</div>
 		      			<div class="form-column col-md-12">
@@ -101,20 +102,20 @@
 		</div>
 
 
-<!-- Modal Datos -->
+<!-- Modal Eliminar -->
 	<div id="contenedor-modal">
-		<div class="modal fade" id="modalDatos" tabindex="-1" role="dialog" aria-labelledby="modalregistrarPersona" aria-hidden="true">
+		<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalregistrarPersona" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered" role="document">
 		    <div class="modal-content">
-		      <div class="modal-header" id="modal-header-datos">
-		        <h5 class="modal-title" id="modal-title-datos">Registrar Usuario</h5>
+		      <div class="modal-header" id="modal-header-eliminar">
+		        <h5 class="modal-title" id="modal-title-eliminar">Eliminar Usuario</h5>
 		      </div>		
-		      <div id="modal-body-datos" class="modal-body">
-		      
+		      <div id="modal-body-eliminar" class="modal-body">
+		      	¿Desea eliminar a este usuario del Sistema?
 		      </div>
-		      <div class="modal-footer" id="modal-footer-datos">
-		       <button type="button" id="btnCancelarDatos" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
-		        <button type="button" id="btnDatos" class="btn btn-success">Registrar</button>
+		      <div class="modal-footer" id="modal-footer-eliminar">
+		       <button type="button" id="btnCancelarEliminar" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
+		        <button type="button" id="btnEliminar" data-dismiss="modal" class="btn btn-danger">Eliminar</button>
 		      </div>
 		    </div>
 		  </div>

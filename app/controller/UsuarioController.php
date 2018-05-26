@@ -135,6 +135,18 @@ class UsuarioController extends ControladorBase
 		echo $resultado;
 	}
 
+	// Método para comprobar disponibilidad de nombre de Usuario
+	public function compNomUsuario()
+	{
+		$nom = $_POST["nombre"];
+
+		$this->model->setNomUsuario($nom);
+
+		$resultado = $this->model->compNomUsuario();
+
+		echo $resultado;
+	}
+
 	// Método para obtener Datos de usuario por id
 	public function getUsuario()
 	{
@@ -143,6 +155,16 @@ class UsuarioController extends ControladorBase
 		$datos = json_decode($datos);
 
 		$resultado = $this->model->getUsuarioId($datos);
+
+		echo $resultado;
+	}
+
+	// Método para eliminar Usuario
+	public function eliminarUsuario() 
+	{
+		$idUsuario = $_POST["idUsuario"];
+
+		$resultado = $this->model->eliminarUsuario($idUsuario);
 
 		echo $resultado;
 	}
