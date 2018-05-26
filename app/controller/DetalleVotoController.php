@@ -11,11 +11,11 @@ class DetalleVotoController extends ControladorBase
 	}
 
 	public function DetallevotoView()
-	{
-		require_once 'app/view/plantillas/header.php';
+	{	if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "
+		r			{
+equire_once 'app/view/plantillas/header.php';
 		require_once 'app/view/plantillas/headerBarUsuario.php';
-		if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
-			{
+	Administrador"))
 				require_once 'app/view/plantillas/menuCompleto.php';
 			}
 			else{

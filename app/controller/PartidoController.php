@@ -1,7 +1,5 @@
 <?php 
-/**
-* 
-*/
+require_once 'app/model/Partido.php';
 class PartidoController extends ControladorBase
 {
 	
@@ -25,6 +23,49 @@ class PartidoController extends ControladorBase
 			}
 		require_once 'app/view/Partido/PartidoView.php';
 		require_once 'app/view/plantillas/footer.php';
+	}
+
+	public function registrarPartido()
+	{
+
+		
+			$nombre=$_POST['nomPartido'];
+			$bandera=$_FILES['bandera'];
+
+
+
+				//validando que sea una imagen
+			if($bandera["type"]=="image/jpg" || $bandera["type"]=="image/jpeg" || $bandera["type"]=="image/png")
+			{
+				//OBTENIENDO LA RUTA
+					$nombreBandera=$bandera['name'];
+					$ruta=$bandera['tmp_name'];
+					$destino="res/img/partidos/".$nombreBandera;
+					//$rutaDesatino="../../res/img/";
+
+
+				$this->model->setNombrePartido($nombre);
+				$this->model->setEstado(1);
+				$info =$this->model->registrarPartido($destino);
+
+
+				if($info == 1)
+				{
+				 move_uploaded_file($bandera["tmp_name"], $destino);
+				 echo "Imagen subida Correctamente";
+				}
+				else
+				{
+
+					echo "no se pudo guardar la imagen";
+				}
+
+			}
+			else
+			{
+				echo "lamentablemente lo que usted intenta insertar no es una imagen";
+			}
+
 	} 
 }
  ?>
