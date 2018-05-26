@@ -103,4 +103,34 @@ class UsuarioController extends ControladorBase
 		echo $resultado;
 	}
 
+	// Método para editar datos de Usuario
+	public function editarUsuario()
+	{
+		$datos = $_POST["datos"];
+
+		$datos = json_decode($datos);
+
+		$this->model->setNomUsuario($datos[0]->value);
+		$this->model->setPassUsuario($datos[1]->value);
+		$this->model->setRolUsuario($datos[2]->value);
+
+		$id = $datos[4]->value;
+		$newPass = $datos[2]->value;
+
+		$resultado = $this->model->editarUsuario($id, $newPass);
+
+		echo $resultado;
+	}
+
+	// Método para obtener Datos de usuario por id
+	public function getUsuario()
+	{
+		$datos = $_POST['idUsuario'];
+
+		$datos = json_decode($datos);
+
+		$resultado = $this->model->getUsuarioId($datos);
+
+		echo $resultado;
+	}
 }

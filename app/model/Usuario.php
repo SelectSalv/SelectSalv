@@ -12,11 +12,10 @@ class Usuario extends ModeloBase {
  	{
  		parent::__construct();
  	}
-    public function setIdUsuario($idUsuario)
-    {
-        $this->idUsuario = $idUsuario;
 
-        return $this;
+ 	 public function getIdUsuario()
+    {
+        return $this->idUsuario;
     }
 
     public function getNomUsuario()
@@ -138,8 +137,6 @@ class Usuario extends ModeloBase {
 		    $modificar = null;
 		    $eliminar = null;
 
-		    $mas = '<button id=\"'.$fila["idUsuario"].'\" class=\"btn btn-secondary btnDetalles btn-raised bmd-btn-icon\"><i class=\"material-icons\">more_horiz</i></button>';
-
 			if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
 			{
 				$modificar = '<button id=\"'.$fila["idUsuario"].'\" class=\"btn btn-info btnModificar btn-raised bmd-btn-icon\"><i class=\"material-icons\">edit</i></button>';
@@ -153,7 +150,7 @@ class Usuario extends ModeloBase {
 								"idUsuario": "'.$fila["idUsuario"].'",
 								"Nombre de Usuario": "'.$enc->s_Decrypt($fila["nomUsuario"]).'",
 								"Permisos": "'.$fila["descRol"].'" ,
-								"Acciones": "'.$mas.' '.$modificar.' '.$eliminar.'"	
+								"Acciones": "'.$modificar.' '.$eliminar.'"	
 							},'; 
 			}
 
@@ -189,5 +186,76 @@ class Usuario extends ModeloBase {
 		}
 		$datos = substr($datos,0, strlen($datos) - 1);
 		return '{"data" : ['.$datos.']}';
+	}
+
+	// MÉTODO PARA OBTENER LOS DATOS DE UN USUARIO POR SU ID
+	public function getUsuarioId($id)
+	{
+		$enc = new Enc();
+
+		$_query = "call p_obtenerUsuarioId(".$id.")";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		$datos = $resultado->fetch_assoc();
+
+		$datosUsuario = array();
+
+		$datosUsuario["nomUsuarioEditar"] = $enc->s_Decrypt($datos["nomUsuario"]);
+		$datosUsuario["codRolEditar"] = $datos["codRol"];
+
+		return json_encode($datosUsuario);
+	}
+
+
+	// Método para comprobar disponibilidad de nombre de Usuario
+	public function compNomUsuario()
+	{
+		$enc = new Enc();
+
+		$_query = "select * from usuario where nomUsuario = ".$enc->s_Encrypt($this->nomUsuario);
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado->num_rows == 1)
+		{
+
+		}
+		else
+		{
+
+		}
+	}
+
+	public function compContra($id)
+	{
+		$_query = "select * from usuario where pass = ".sha1($this->passUsuario);
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado->num_rows == 1)
+		{
+
+		}
+		else
+		{
+
+		}
+	}
+
+	public function editarUsuario($id, $newPass)
+	{
+		$_query = "select * from usuario where pass = ".sha1($this->passUsuario);
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado->num_rows == 1)
+		{
+
+		}
+		else
+		{
+			$respuesta = "Contraseña Incorrecta";
+		}
+
+		return $respuesta;
 	}
 }

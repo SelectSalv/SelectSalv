@@ -170,6 +170,37 @@ class Persona extends ModeloBase {
 		return $resultado;
 	}
 
+	public function ingresarDui()
+	{
+		$_query = "call p_obtenerPersona('".$this->dui."')";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado)
+		{
+			if($resultado->num_rows == 1)
+			{
+				$fila = $resultado->fetch_assoc();
+
+				$_SESSION["duiPersona"] = $this->dui;
+				$_SESSION["apePersona"] = $fila["apePersona"];
+				$_SESSION["nomPersona"] = $fila["nomPersona"];
+				$_SESSION["municipioPersona"] = $fila["nomMunicipio"];
+				$_SESSION["departamentoPersona"] = $fila["nomDepartamento"];
+
+				$respuesta = "ok";
+			}
+			else {
+				$respuesta = "no registrado";
+			}
+			
+		} else
+		{
+			$respuesta = "error";
+		}
+
+		return $respuesta;
+	}
 
 	// MÉTODO PARA COMPROBAR LA EXISTENCIA DE UN N° DE DUI
 
@@ -247,11 +278,38 @@ class Persona extends ModeloBase {
         return '{"data" : ['.$datos.']}';
 	}
 
+	// MÉTODO PARA REGISTRAR PERSONA EXTENDIDO
+	public function registrarPersonaExt()
+	{
+		$_query = "select * from persona where dui = '".$this->dui."'";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado->num_rows == 0)
+		{
+			$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', ".$this->genero.", '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', ".$this->estadoCivil.", ".$this->idMunicipio.", ".$_SESSION["idUsuario"].")";
+				$resultado = $this->con->conectar()->query($_query);
+
+				if($resultado)
+				{
+					$respuesta = "registrado";
+				}
+				else{
+					$respuesta = "error al registrar";
+				}
+
+		} elseif($resultado->num_rows > 0){
+
+			$respuesta = "dui registrado";
+
+		}
+
+		return $respuesta;
+	} 
+
 	// MÉTODO PARA REGISTRAR DATOS DE PERSONA
     public function registrarPersona()
 	{
-
-
 
 		$_query = "select * from persona where dui = '".$this->dui."'";
 

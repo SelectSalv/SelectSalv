@@ -1,6 +1,7 @@
 $(document).ready(function() {
     // Método para configurar DataTable de Pradrón
-    var tabla = $('#tablePadron').DataTable({
+    if($('#tablePadron').length) {
+          var tabla = $('#tablePadron').DataTable({
         "ajax": {
             "url": "index.php?1=Persona&2=getJSON",
             "type": "POST"
@@ -81,6 +82,7 @@ $(document).ready(function() {
         $('tr td:last-child').css('justify-content', 'space-around');
         $('tr td:last-child').css('align-items', 'center');
     });
+    }
 
 
     // Método para Modal con Resumen de Datos
@@ -387,6 +389,50 @@ $(document).ready(function() {
             keyboard: false
         });
     });
+
+    // Funcion para recibir N° de DUI al votar
+    $('#btnDUI').click(function() {
+        var val = validar('.requeridoDui');
+
+        if(val == 0)
+        {
+            var duiVotar = $('#duiVotar').val();
+
+            $.ajax({
+                type: 'POST',
+                data: 'duiVotar=' + duiVotar,
+                url: '?1=Persona&2=ingresarDui',
+                success: function(r)
+                {
+                    switch(r)
+                    {
+                        case 'ok': 
+                            location.href = "?1=Persona&2=boletaView";
+                            break;
+
+                        case 'no registrado':
+                                $('#mensajeDui').html('DUI no registrado');
+                                $('#ayudaDui').html('');
+                                $('#duiVotar').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
+                                $('#label-dui').css("color", "rgba(244, 67, 54, 1)");
+                                $('#duiVotar').addClass('is-invalid');
+                            break;
+                        default:
+                            alert(r);
+                            break;
+                    }
+                }
+            });
+        }
+        else
+        {
+            $('#mensajeDui').html('Ingrese un N° de DUI');
+            $('#ayudaDui').html('');
+            $('#duiVotar').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
+            $('#label-dui').css("color", "rgba(244, 67, 54, 1)");
+            $('#duiVotar').addClass('is-invalid');
+        }
+    }); 
 
 });
 

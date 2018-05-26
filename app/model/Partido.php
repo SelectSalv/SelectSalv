@@ -42,10 +42,15 @@ class Partido extends ModeloBase
 	public function registrarPartido( $url)
 	{
 
-		$sql="INSERT INTO partido VALUES(0,'".$this->nomPartido."', '".$url."',".$this->estado." )";
-		
+		$sql="INSERT INTO `partido`(`idPartido`, `nomPartido`, `ruta`, `estado`) VALUE(null,'".$this->nomPartido."', '".$url."', '".$this->estado."')";
+
+
 
 		$info = $this->con->conectar()->query($sql);
+
+		print_r($info);
+		die();
+
 		if($info)
 		{
 			$resp=1;
@@ -53,6 +58,7 @@ class Partido extends ModeloBase
 		else
 		{
 			$resp=0;
+			
 		}
 		return $resp;
 	}

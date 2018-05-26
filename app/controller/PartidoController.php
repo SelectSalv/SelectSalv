@@ -53,7 +53,8 @@ class PartidoController extends ControladorBase
 				}
 				else
 				{
-					echo "Problema al insertar imagen";
+
+					echo "no se pudo guardar la imagen";
 				}
 
 			}
