@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
   <link rel="stylesheet" href="res/plugins/dataTableBootstrap/dataTables.bootstrap4.min.css">
 <script src="res/plugins/dataTableBootstrap/jquery.dataTables.min.js"></script>
 <script src="res/plugins/dataTableBootstrap/dataTables.bootstrap.min.js"></script>
@@ -86,3 +88,4 @@
       </table>
     </div>
     </div>
+>>>>>>> e9bd38a71ec2ecff44b61800c397ce2d9ea5407b
