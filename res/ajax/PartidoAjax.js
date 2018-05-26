@@ -18,7 +18,7 @@ $(document).ready(function(){
                 "data": "Bandera",
                 "render":function(data, type, row){
                     var data_n=data.split("/");
-                    return '<center><img src="'+data_n[0]+"/"+data_n[1]+"/"+data_n[2]+"/"+data_n[3]+'" width="120" height="80"></center>';
+                    return '<center><img src="'+data_n[0]+"/"+data_n[1]+"/"+data_n[2]+"/"+data_n[3]+'" width="120"></center>';
                 }
            },
            {

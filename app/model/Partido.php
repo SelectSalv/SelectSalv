@@ -64,7 +64,7 @@ class Partido extends ModeloBase
 	{
 
 			//armando la sql
-		$sql="SELECT `idPartido`, `nomPartido`,`ruta`,`estado` FROM `partido` WHERE estado=1";
+		$sql="SELECT `idPartido`, `nomPartido`,`rutaBandera`,`estado` FROM `partido` WHERE estado=1";
 
 		$resultado = $this->con->conectar()->query($sql);
 		$datos = "";
@@ -94,7 +94,7 @@ class Partido extends ModeloBase
 
 				$datos .= ' {	"idPartido": "'.$fila["idPartido"].'",
 								"nomPartido": "'.$fila["nomPartido"].'",
-								"Bandera": "'.$fila["ruta"].'",
+								"Bandera": "'.$fila["rutaBandera"].'",
 								"Acciones": "'.$mas.$modificar.$eliminar.'"
 							},';
 
