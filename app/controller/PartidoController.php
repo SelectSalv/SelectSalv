@@ -74,5 +74,18 @@ class PartidoController extends ControladorBase
 		echo $datos;
 
 	}
+
+	public function getInformationPartido()
+	{
+
+		$datos=$_POST['idPartido'];
+
+		$data=json_decode($datos);
+
+		$info=$this->model->getInformation($data);
+
+		echo $info;
+
+	}
 }
  ?>

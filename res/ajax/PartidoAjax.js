@@ -101,7 +101,8 @@ $("#btnPartido").click(function(){
 		processData: false,
 
 		success: function(data){
-			alert(data)
+			alert(data);
+            tabla.ajax.reload();
 		}
 
 	});
@@ -109,6 +110,47 @@ $("#btnPartido").click(function(){
 	
 
 });
+
+//MOSTRANDO EL MODAL DE MODIFICAR
+
+
+$(document).on("click",".btnModificar",function() {
+
+    //OBTENIENDO ID DEL PARTIDO
+      var idPartido = $(this).attr("id");
+
+    $('#viewBandera').html('');
+    
+     //EXTRAYENDO INFORMACION DEL PARTIDO
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: {idPartido:idPartido},
+            url: '?1=Partido&2=getInformationPartido',
+            success: function(data) {
+
+                $('#partidoEditar').val(idPartido);
+
+                $('#nomPartidoEditar').val(data.nomPartido);
+                $('#nomPersonaModificar').parent().addClass('is-filled');
+
+                
+
+                $('#viewBandera').append('<center><img src="'+data.ruta+'" width="120" height="80"></center>');
+
+                
+            }
+        });
+
+        $("#modalModificarPartido").modal({
+            backdrop: "static",
+            keyboard: false
+        });
+
+    
+});
+
+  
 
 
 });
