@@ -209,6 +209,13 @@ create view v_Usuarios as (
     where u.idRol = r.idRol
 );
 
+# Vista con los datos de candidato
+create view v_Candidatos as (
+    select c.idCandidato,c.idPartido, c.idTipoCandidato, c.idPersona, 
+    from Candidato c, Persona p, TipoCandidato t
+    where c.idPersona = p.idPersona and c.idTipoCandidato=t.idTipoCandidato
+);
+
 # Vista con los datos de Persona
 
 create view v_Persona as (
@@ -339,6 +346,15 @@ create procedure p_obtenerUsuarioId(
 )
 begin
 	select * from v_Usuarios where idUsuario = nid;
+end
+$$
+
+delimiter $$
+create procedure p_obtenerCandidatoId(
+    in nuid int
+)
+begin
+    select * from v_Candidatos where idCandidato = nuid;
 end
 $$
 

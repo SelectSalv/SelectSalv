@@ -63,6 +63,18 @@ class Candidato extends ModeloBase
 		$this->idPersona = $id;
 	}
 
+public function getCandidatoId($id)
+	{
+		$_query = "call p_obtenerCandidatoId(".$id.")";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		$datos = $resultado->fetch_assoc();
+
+		return json_encode($datos);
+	}
+	
+
 	# MÉTODO PARA REGISTRAR CANDIDATO
 	public function regCandidato()
 	{
