@@ -63,9 +63,11 @@ class Boleta extends ModeloBase
 
 				if($fila["estadoPartido"] == 1)
 				{
-					echo '
+					if($fila["idPartido"] != 1)
+					{
+						echo '
 						<div class="col-md-4 col-sm-12">
-							<div class="cuadro-boleta" id="'.$fila["idPartido"].'" style="background-image: url('.$fila["rutaBandera"].')">
+							<div class="cuadro-boleta elemento-boleta" voto="'.$fila["idPartido"].'" id="'.$fila["idPartido"].'" style="background-image: url('.$fila["rutaBandera"].')">
 								<div class="humo d-flex flex-column">
 									<div class="detalles-partido mt-auto p-2">
 										<p class="nombre-partido">
@@ -95,6 +97,7 @@ class Boleta extends ModeloBase
 						</div>
 					 ';
 
+					}
 				}
 			}
 		}

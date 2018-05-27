@@ -137,13 +137,14 @@ create table partido(
     estado int
 );
 
+insert into partido values(null, 'Voto Nulo', 'res/img/partidos/nulo.jpg', 1);
 insert into partido values(null, 'Nuevas Ideas', 'res/img/partidos/nuevasIdeas.jpg', 1);
 insert into partido values(null, 'Arena', 'res/img/partidos/arena.jpg', 1);
 insert into partido values(null, 'FMLN', 'res/img/partidos/fmln.jpg', 1);
 
 create table DetalleVoto(
 	idDetalleVoto int auto_increment unique not null primary key,
-    idPersona int not null,
+    idPartido int not null,
     idPadron int not null
 );
 
@@ -186,8 +187,7 @@ alter table Municipio add constraint fk_idDepartamento_Municipio foreign key (id
 alter table centroVotacion add constraint fk_idMunicipio_CV foreign key (idMunicipio) references Municipio(idMunicipio);
 alter table Jrv add constraint fk_idCentro_Jrv foreign key (idCentro) references CentroVotacion(idCentro);
 alter table DetalleVoto add constraint fk_idPartido_DetalleVoto foreign key (idPartido) references Partido(idPartido);
-alter table DetalleVoto add constraint fk_idPersona_DetalleVoto foreign key (idPersona) references Persona(idPersona);
-alter table DetalleVoto add constraint fk_idJrv_DetalleVoto foreign key (idJrv) references Jrv(idJrv);
+alter table DetalleVoto add constraint fk_idPadron_DetalleVoto foreign key (idPadron) references padron(id);
 alter table Candidato add constraint fk_idPartido_Candidato foreign key (idPartido) references Partido(idPartido);
 alter table Candidato add constraint fk_idTipoCandidato_Candidato foreign key (idTipoCandidato) references TipoCandidato(idTipoCandidato);
 alter table Candidato add constraint fk_idPersona_Candidato foreign key (idPersona) references Persona(idPersona);
@@ -198,7 +198,6 @@ alter table transacciones add constraint fk_tipoTransaccion foreign key (idTipo)
 
 
 # VISTAS
-
 
 
 
@@ -247,7 +246,15 @@ create view v_Boleta as (
     where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and p.idPartido = 1
 );
 
+# Vista resumen de Voto
 
+create view v_Voto as (
+	select v.idDetalleVoto, p.idPartido, p.nomPartido, j.idJrv, j.numJrv, per.idPersona,per.dui, per.nomPersona, per.apePersona,d.idDepartamento, d.nomDepartamento, m.idMunicipio, m.nomMunicipio
+    from DetalleVoto v, partido p, persona per, padron pd, Jrv j, municipio m , departamento d
+    where v.idPartido = p.idPartido and pd.idPersona = per.idPersona and pd.idJrv = j.idJrv and per.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento
+);
+
+select * from v_Voto
 /*
 select p.idPartido, p.nomPartido, p.rutaBandera, p.estado as estadoPartido, 
 
@@ -280,16 +287,22 @@ select * from candidato
 */
 
 #Procedimiento almacenado para registrar voto
-/*
+
 delimiter $$
 create procedure p_Votar(
-
+	in partido int,
+    in ndui varchar(15)
 )
 begin
+	declare persona int;
+    declare padron int;
+    set persona = (select idPersona from persona where dui = ndui);
+    set padron = (select id from padron where idPersona = persona);
+    insert into DetalleVoto value(null,partido, padron);
 end
-$$*/
+$$
 
-
+call p_Votar(2, '98765432-1');
 
 # Procedimiento almacenado para registrar Partidos
 delimiter $$
@@ -609,12 +622,12 @@ call p_regPersona('67871989-9', 'Juan Carlos', 'Calleja Hakker', 1, '1977-06-24'
 call p_regPersona('98765432-1', 'Pablo Emilio', 'Escobar Gaviria', 1, '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 2, 1, 1);
 
 # Candidatos Nuevas Ideas
-insert into candidato values(null, 1, 1, 1, 1);
-insert into candidato values(null, 1, 2, 2, 1);
+insert into candidato values(null, 2, 1, 1, 1);
+insert into candidato values(null, 2, 2, 2, 1);
 
 # Candidatos ARENA
-insert into candidato values(null, 2, 1, 3, 1);
-insert into candidato values(null, 2, 2, 4, 1);
+insert into candidato values(null, 3, 1, 3, 1);
+insert into candidato values(null, 3, 2, 4, 1);
 
 
 
