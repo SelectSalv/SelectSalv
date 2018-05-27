@@ -44,7 +44,7 @@
 		      </div>
 		      <div class="modal-footer" id="modal-footer-nulo">
 		       <button type="button" id="btnCancelarNulo" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
-		        <button type="button" id="btnNulo" data-dismiss="modal" class="btn btn-info">Aceptar</button>
+		        <button type="button" id="btnNulo" data-dismiss="modal" class="btn btn-info">Votar</button>
 		      </div>
 		    </div>
 		</div>

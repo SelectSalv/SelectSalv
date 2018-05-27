@@ -13,14 +13,17 @@ $(document).ready(function() {
         });
 
         $(this).addClass('seleccionado');
-        
+
         $('#btnVotar').removeAttr('disabled');
         $('#btnVotar').addClass('btn-raised');
+        $('#btnVotar').css('animation', 'pulso .7s alternate infinite');
     });
 
     $(document).on("click", '#btnVotar', function() {
 
         $('#modal-body-votar').html("¿Está seguro de votar por el partido " + nomPartido + "?");
+
+        $('#btnVotar').css('animation', '');
 
         $("#modalVotar").modal({
             backdrop: "static",
