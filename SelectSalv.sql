@@ -169,12 +169,12 @@ create table Candidato(
 );
 
 # Candidatos Nuevas Ideas
-insert into candidato values(null, 1, 1, 1, 1);
-insert into candidato values(null, 1, 2, 2, 1);
+#insert into candidato values(null, 1, 1, 1, 1);
+#insert into candidato values(null, 1, 2, 2, 1);
 
 # Candidatos ARENA
-insert into candidato values(null, 2, 1, 4, 1);
-insert into candidato values(null, 2, 2, 5, 1);
+#insert into candidato values(null, 2, 1, 4, 1);
+#insert into candidato values(null, 2, 2, 5, 1);
 
 
 #Llaves Foráneas

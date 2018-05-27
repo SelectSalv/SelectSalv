@@ -136,7 +136,7 @@ $(document).on("click",".btnModificar",function() {
 
                 
 
-                $('#viewBandera').append('<center><img src="'+data.ruta+'" width="120" height="80"></center>');
+                $('#viewBandera').append('<center><img src="'+data.rutaBandera+'" width="120" height="80"></center>');
 
                 
             }
