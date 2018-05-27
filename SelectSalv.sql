@@ -213,7 +213,7 @@ create view v_Usuarios as (
 
 # Vista con los datos de candidato
 create view v_Candidatos as (
-    select c.idCandidato,c.idPartido, c.idTipoCandidato, c.idPersona, 
+    select c.idCandidato,c.idPartido, c.idTipoCandidato, c.idPersona
     from Candidato c, Persona p, TipoCandidato t
     where c.idPersona = p.idPersona and c.idTipoCandidato=t.idTipoCandidato
 );
@@ -249,35 +249,30 @@ create view v_Boleta as (
 );
 
 
-
+/*
 select p.idPartido, p.nomPartido, p.rutaBandera, p.estado as estadoPartido, 
 
 	(select nomPersona 
 	from persona per, candidato c, tipoCandidato t, partido p
-	where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and t.descTipoCandidato = 'Presidente' and p.idPartido = 2) as nomPresidente,
+	where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and t.descTipoCandidato = 'Presidente' and p.idPartido = 3) as nomPresidente,
     
     (select apePersona 
 	from persona per, candidato c, tipoCandidato t, partido p
-	where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and t.descTipoCandidato = 'Presidente' and p.idPartido = 2) as apePresidente,
+	where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and t.descTipoCandidato = 'Presidente' and p.idPartido = 3) as apePresidente,
     
     
 	(select nomPersona 
 	from persona per, candidato c, tipoCandidato t, partido p
-	where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and t.descTipoCandidato = 'Vicepresidente' and p.idPartido = 2) as nomVicepresidente,
+	where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and t.descTipoCandidato = 'Vicepresidente' and p.idPartido = 3) as nomVicepresidente,
     
     (select apePersona 
 	from persona per, candidato c, tipoCandidato t, partido p
-	where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and t.descTipoCandidato = 'Vicepresidente' and p.idPartido = 2) as apeVicepresidente
+	where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and t.descTipoCandidato = 'Vicepresidente' and p.idPartido = 3) as apeVicepresidente
     
 from partido p
-where idPartido = 2
+where idPartido = 3
 
 
-
-select (select nomPersona 
-from persona per, candidato c, tipoCandidato t, partido p
-where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and t.descTipoCandidato = 'Presidente' and p.idPartido = 1) as nomPresidente 
-/*
 select p.idPartido, p.nomPartido
 from partido p, candidato c, tipoCandidato t, persona per
 where p.idPartido = c.idPartido and c.idPersona = per.idPersona

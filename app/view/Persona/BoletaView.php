@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="res/css/grid.css">
 <link rel="stylesheet" href="res/css/boleta.css">
 
+<script src="res/ajax/BoletaAjax.js"></script>
+
 <div class="contenedor">
 	<div class="barra-titulo-boleta" style="display: flex; align-items:baseline; justify-content: space-between;">
 			<p style="display: block;" class="texto-barra-titulo-boleta">
