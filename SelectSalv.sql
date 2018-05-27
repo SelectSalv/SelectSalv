@@ -144,8 +144,7 @@ insert into partido values(null, 'FMLN', 'res/img/partidos/fmln.jpg', 1);
 create table DetalleVoto(
 	idDetalleVoto int auto_increment unique not null primary key,
     idPersona int not null,
-    idPartido int not null,
-    idJrv int not null
+    idPadron int not null
 );
 
 
@@ -186,8 +185,8 @@ alter table Persona add constraint fk_idEstadoCivil_Persona foreign key (idEstad
 alter table Municipio add constraint fk_idDepartamento_Municipio foreign key (idDepartamento) references Departamento(idDepartamento);
 alter table centroVotacion add constraint fk_idMunicipio_CV foreign key (idMunicipio) references Municipio(idMunicipio);
 alter table Jrv add constraint fk_idCentro_Jrv foreign key (idCentro) references CentroVotacion(idCentro);
-alter table DetalleVoto add constraint fk_idPersona_DetalleVoto foreign key (idPersona) references Persona(idPersona);
 alter table DetalleVoto add constraint fk_idPartido_DetalleVoto foreign key (idPartido) references Partido(idPartido);
+alter table DetalleVoto add constraint fk_idPersona_DetalleVoto foreign key (idPersona) references Persona(idPersona);
 alter table DetalleVoto add constraint fk_idJrv_DetalleVoto foreign key (idJrv) references Jrv(idJrv);
 alter table Candidato add constraint fk_idPartido_Candidato foreign key (idPartido) references Partido(idPartido);
 alter table Candidato add constraint fk_idTipoCandidato_Candidato foreign key (idTipoCandidato) references TipoCandidato(idTipoCandidato);
@@ -279,6 +278,19 @@ where p.idPartido = c.idPartido and c.idPersona = per.idPersona
 
 select * from candidato
 */
+
+#Procedimiento almacenado para registrar voto
+/*
+delimiter $$
+create procedure p_Votar(
+
+)
+begin
+end
+$$*/
+
+
+
 # Procedimiento almacenado para registrar Partidos
 delimiter $$
 create procedure p_RegPartido(
