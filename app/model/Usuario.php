@@ -282,4 +282,23 @@ class Usuario extends ModeloBase {
 
 		return $respuesta;
 	}
+
+	// Método para eliminar Usuario
+	public function eliminarUsuario($id)
+	{
+		$_query = "update Usuario set estado = 0 where idUsuario = ".$id;
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado)
+		{
+			$respuesta = "eliminado";
+		}
+		else 
+		{
+			$respuesta = "error";
+		}
+
+		return $respuesta;
+	}
 }

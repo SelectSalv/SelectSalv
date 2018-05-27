@@ -183,6 +183,50 @@ $(document).ready(function() {
 
     });
 
+    // Funcion para eliminar Usuario
+    $(document).on('click', '.btnEliminar', function() {
+        $("#modalEliminar").modal({
+            backdrop: "static",
+            keyboard: false
+        });
+
+        var idUsuario = $(this).attr("id");
+
+        $('#btnEliminar').click(function() {
+
+            $.ajax({
+                type: 'POST',
+                data: { idUsuario: idUsuario },
+                url: '?1=Usuario&2=eliminarUsuario',
+                success: function(data) {
+                    switch (data) {
+                        case 'eliminado':
+                            swal({
+                                title: "Éxito!",
+                                text: "Usuario eliminado exitósamente",
+                                timer: 1500,
+                                type: 'success',
+                                closeOnConfirm: true,
+                                closeOnCancel: true
+                            });
+                            tablaUsuarios.ajax.reload();
+                            setTimeout(function() {
+                                $('tr td:last-child').addClass('text-right');
+                                // $('tr td:last-child').addClass('text-center');
+                            }, 800);
+                            break;
+
+                        default:
+                            alert(data);
+                            break;
+                    }
+                }
+            });
+
+        });
+
+    });
+
     // Funcion para mostrar datos a editar de Usuario
     $(document).on('click', '.btnModificar', function() {
         $("#modalEditar").modal({
@@ -208,6 +252,30 @@ $(document).ready(function() {
         });
     });
 
+    $('#nomUsuario').change(function() {
+        var nom = $(this).val();
+        var disp = compNomUsuario(nom);
+        alert(nom);
+        // alert(disp);
+
+        if (disp == "disponible") {
+            $('#mensajeUsuario').html('');
+            $('#nomUsuario').css("background-image", "linear-gradient(to top, rgba(33, 150, 243, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
+            $('#labelUsuario').css("color", "rgba(33, 150, 243, 1)");
+            $('#nomUsuario').removeClass('is-invalid');
+        }
+        else if(disp == "!disponible")
+        {
+            $('#mensajeUsuario').html('Nombre de Usuario no disponible');
+            $('#nomUsuario').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
+            $('#labelUsuario').css("color", "rgba(244, 67, 54, 1)");
+            $('#nomUsuario').addClass('is-invalid');
+        }
+    });
+
+
+
+    // Funcion para comprobar contraseña antigua del usuario 
     $('#passAntiguaEditar').change(function() {
         var contra = $(this).val();
         var id = $('#idUsuarioEditar').val();
@@ -355,6 +423,32 @@ function Login() {
             }
         }
     });
+}
+
+// Funcion para comprobar disponibilidad de nombre de usuario
+function compNomUsuario(nombre) {
+    var resultado = "";
+
+    $.ajax({
+        type: 'POST',
+        data: { nombre: nombre },
+        url: '?1=Usuario&2=compNomUsuario',
+        success: function(data) {
+            switch (data) {
+                case 'disponible':
+                    resultado = data;
+                    break;
+                case 'Usuario no Disponible':
+                    resultado = data;
+
+                default:
+                    resultado = "error";
+                    break;
+            }
+        }
+    });
+
+    return resultado;
 }
 
 function vaciarEditar() {

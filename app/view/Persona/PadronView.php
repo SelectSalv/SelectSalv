@@ -15,7 +15,7 @@
 		        <h5 class="modal-title" id="modal-title-frm">Registrar Persona</h5>
 		      </div>		
 		      <div id="modal-body-frm" class="modal-body">
-					  	<form id="frmPersona" action="../proc/procRegPersona.php" method="POST">
+					  	<form id="frmPersona" action="" method="POST">
 							<div class="form-row">
 								<div class="form-column col-md-12">
 									<div class="form-group bmd-form-group">

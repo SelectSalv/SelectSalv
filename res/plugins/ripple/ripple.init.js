@@ -57,7 +57,7 @@ $.ripple(".cuadro-boleta", {
 	on: 'mousedown', // The event to trigger a ripple effect
 
 	opacity: 0.4, // The opacity of the ripple
-	color: "#fff", // Set the background color. If set to "auto", it will use the text color
+	color: "auto", // Set the background color. If set to "auto", it will use the text color
 	multi: false, // Allow multiple ripples per element
 
 	duration: 0.5, // The duration of the ripple

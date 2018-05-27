@@ -197,7 +197,9 @@ alter table padron add constraint fk_idJrv foreign key (idJrv) references Jrv(id
 alter table transacciones add constraint fk_tipoTransaccion foreign key (idTipo) references tipoTransaccion(id);
 
 
+
 # VISTAS
+
 
 # Vista con los datos de usuario
 
@@ -205,6 +207,13 @@ create view v_Usuarios as (
 	select u.idUsuario, u.nomUsuario, u.pass, u.estado, r.descRol, r.codRol
     from Usuario u, Rol r
     where u.idRol = r.idRol
+);
+
+# Vista con los datos de candidato
+create view v_Candidatos as (
+    select c.idCandidato,c.idPartido, c.idTipoCandidato, c.idPersona, 
+    from Candidato c, Persona p, TipoCandidato t
+    where c.idPersona = p.idPersona and c.idTipoCandidato=t.idTipoCandidato
 );
 
 # Vista con los datos de Persona
@@ -337,6 +346,15 @@ create procedure p_obtenerUsuarioId(
 )
 begin
 	select * from v_Usuarios where idUsuario = nid;
+end
+$$
+
+delimiter $$
+create procedure p_obtenerCandidatoId(
+    in nuid int
+)
+begin
+    select * from v_Candidatos where idCandidato = nuid;
 end
 $$
 
