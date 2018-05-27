@@ -137,10 +137,9 @@ create table partido(
     estado int
 );
 
-insert into partido values(null, 'Nuevas Ideas', '-', 1);
-insert into partido values(null, 'Arena', '-', 1);
-insert into partido values(null, 'FMLN', '-', 1);
-
+insert into partido values(null, 'Nuevas Ideas', 'res/img/partidos/nuevasIdeas.jpg', 1);
+insert into partido values(null, 'Arena', 'res/img/partidos/arena.jpg', 1);
+insert into partido values(null, 'FMLN', 'res/img/partidos/fmln.jpg', 1);
 
 create table DetalleVoto(
 	idDetalleVoto int auto_increment unique not null primary key,
@@ -168,6 +167,7 @@ create table Candidato(
     estado int
 );
 
+<<<<<<< HEAD
 # Candidatos Nuevas Ideas
 #insert into candidato values(null, 1, 1, 1, 1);
 #insert into candidato values(null, 1, 2, 2, 1);
@@ -175,6 +175,8 @@ create table Candidato(
 # Candidatos ARENA
 #insert into candidato values(null, 2, 1, 4, 1);
 #insert into candidato values(null, 2, 2, 5, 1);
+=======
+>>>>>>> dfe21c8fc08ee3ba763963641ed52ecdbf522523
 
 
 #Llaves Foráneas
@@ -199,6 +201,8 @@ alter table transacciones add constraint fk_tipoTransaccion foreign key (idTipo)
 
 
 # VISTAS
+
+
 
 
 # Vista con los datos de usuario
@@ -247,7 +251,13 @@ create view v_Boleta as (
     order by p.idPartido desc
 );
 
+/*
+select p.idPartido, p.nomPartido
+from partido p, candidato c, tipoCandidato t, persona per
+where p.idPartido = c.idPartido and c.idPersona = per.idPersona
 
+select * from candidato
+*/
 # Procedimiento almacenado para registrar Partidos
 delimiter $$
 create procedure p_RegPartido(
@@ -321,7 +331,7 @@ begin
 	insert into transacciones values(null, usuario, tipo, curdate(), DATE_FORMAT(NOW( ), "%H:%i:%S" ));
 end
 $$
-
+select * from partido;
 
 # Procedimiento almacenado para registrar Usuarios
 delimiter $$
@@ -368,6 +378,8 @@ begin
     select * from v_Usuarios where nomUsuario = nom and pass = contra;
 end
  $$
+ 
+
  
 delimiter $$
 create procedure p_regPersona(
@@ -417,10 +429,7 @@ begin
     call p_RegTransaccion(iduser, 1);
 end
 $$
-select * from centroVotacion
-select * from jrv
 
-select * from padron
 
 delimiter $$
 create procedure p_EditarPersona(
@@ -558,6 +567,23 @@ call p_regPersona('67836689-8', 'Jose', 'Barahona Rais', 1, '1981-06-24', '2019-
 call p_regPersona('67871989-9', 'Juan Carlos', 'Calleja Hakker', 1, '1977-06-24', '2019-05-05', 'Empresario', 'Colonia Escalon', 2, 2, 1);
 call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 1, '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 2, 1, 1);
 call p_regPersona('12345678-9', 'Saturnino Donato', 'Vaquerano Contreras', 1, '1976-05-05', '2019-05-05', 'Ingeniero en Sistemas', 'Residencial Veranda Senda Maquilishuat #22', 3, 2, 1);*/
+
+
+call p_regPersona('67845389-9', 'Nayib Armando', 'Bukele Ortez', 1, '1981-06-24', '2019-05-05', 'Presidente', 'Colonia Escalon', 2, 2, 1);
+call p_regPersona('67836689-8', 'Jose', 'Barahona Rais', 1, '1981-06-24', '2019-05-05', 'Vicepresidente', 'Colonia Escalon', 2, 2, 1);
+
+call p_regPersona('67871989-9', 'Juan Carlos', 'Calleja Hakker', 1, '1977-06-24', '2019-05-05', 'Empresario', 'Colonia Escalon', 2, 2, 1);
+call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 1, '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 2, 1, 1);
+
+# Candidatos Nuevas Ideas
+insert into candidato values(null, 1, 1, 1, 1);
+insert into candidato values(null, 1, 2, 2, 1);
+
+# Candidatos ARENA
+insert into candidato values(null, 2, 1, 3, 1);
+insert into candidato values(null, 2, 2, 4, 1);
+
+
 
 call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad', 'mMun', 0);
 

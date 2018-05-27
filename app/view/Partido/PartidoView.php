@@ -1,5 +1,7 @@
 
-  <link rel="stylesheet" href="res/plugins/dataTableBootstrap/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="res/plugins/dataTableBootstrap/dataTables.bootstrap4.min.css">
+
+<link rel="stylesheet" href="res/plugins/dataTableBootstrap/dataTables.bootstrap4.min.css">
 <script src="res/plugins/dataTableBootstrap/jquery.dataTables.min.js"></script>
 <script src="res/plugins/dataTableBootstrap/dataTables.bootstrap.min.js"></script>
 <script src="res/ajax/PartidoAjax.js"></script>
@@ -152,7 +154,3 @@
       </table>
     </div>
     </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 3aad8848dfbddf9f478e0baec64d87bdacabfd7c

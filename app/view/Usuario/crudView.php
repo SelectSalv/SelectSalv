@@ -63,8 +63,9 @@
 		      		<div class="form-row">
 		      			<div class="form-column col-md-12">
 		      				<div class="form-group bmd-form-group">
-		      					<label class="bmd-label-floating" for="nomUsuario">Nombre de Usuario:</label>
+		      					<label id="labelUsuarioEditar" class="bmd-label-floating" for="nomUsuario">Nombre de Usuario:</label>
 		      					<input type="text" class="form-control requeridoEditar" name="nomUsuarioEditar" id="nomUsuarioEditar">
+		      					<div id="mensajeUsuarioEditar" class="invalid-feedback"></div>
 		      				</div>
 		      			</div>
 		      			<div class="form-column col-md-6">
