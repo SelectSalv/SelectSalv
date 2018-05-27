@@ -407,7 +407,7 @@ $(document).ready(function() {
                     switch(r)
                     {
                         case 'ok': 
-                            location.href = "?1=Persona&2=boletaView";
+                            location.href = "?1=Boleta&2=boletaView";
                             break;
 
                         case 'no registrado':
