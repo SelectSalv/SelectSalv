@@ -167,7 +167,6 @@ create table Candidato(
     estado int
 );
 
-<<<<<<< HEAD
 # Candidatos Nuevas Ideas
 #insert into candidato values(null, 1, 1, 1, 1);
 #insert into candidato values(null, 1, 2, 2, 1);
@@ -175,8 +174,7 @@ create table Candidato(
 # Candidatos ARENA
 #insert into candidato values(null, 2, 1, 4, 1);
 #insert into candidato values(null, 2, 2, 5, 1);
-=======
->>>>>>> dfe21c8fc08ee3ba763963641ed52ecdbf522523
+
 
 
 #Llaves Foráneas
@@ -245,12 +243,40 @@ create view v_Transacciones as (
 # Vista para boleta
 
 create view v_Boleta as (
-	select p.idPartido, p.nomPartido, p.estado as estadoPartido, c.idCandidato, per.nomPersona, per.apePersona, t.descTipoCandidato
+	select p.idPartido, p.nomPartido, p.rutaBandera, p.estado as estadoPartido, c.idCandidato, per.nomPersona, per.apePersona, t.descTipoCandidato
     from partido p, candidato c, tipoCandidato t, persona per
-    where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato
-    order by p.idPartido desc
+    where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and p.idPartido = 1
 );
 
+
+
+select p.idPartido, p.nomPartido, p.rutaBandera, p.estado as estadoPartido, 
+
+	(select nomPersona 
+	from persona per, candidato c, tipoCandidato t, partido p
+	where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and t.descTipoCandidato = 'Presidente' and p.idPartido = 2) as nomPresidente,
+    
+    (select apePersona 
+	from persona per, candidato c, tipoCandidato t, partido p
+	where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and t.descTipoCandidato = 'Presidente' and p.idPartido = 2) as apePresidente,
+    
+    
+	(select nomPersona 
+	from persona per, candidato c, tipoCandidato t, partido p
+	where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and t.descTipoCandidato = 'Vicepresidente' and p.idPartido = 2) as nomVicepresidente,
+    
+    (select apePersona 
+	from persona per, candidato c, tipoCandidato t, partido p
+	where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and t.descTipoCandidato = 'Vicepresidente' and p.idPartido = 2) as apeVicepresidente
+    
+from partido p
+where idPartido = 2
+
+
+
+select (select nomPersona 
+from persona per, candidato c, tipoCandidato t, partido p
+where p.idPartido = c.idPartido and c.idPersona = per.idPersona and c.idTipoCandidato = t.idTipoCandidato and t.descTipoCandidato = 'Presidente' and p.idPartido = 1) as nomPresidente 
 /*
 select p.idPartido, p.nomPartido
 from partido p, candidato c, tipoCandidato t, persona per
@@ -573,7 +599,7 @@ call p_regPersona('67845389-9', 'Nayib Armando', 'Bukele Ortez', 1, '1981-06-24'
 call p_regPersona('67836689-8', 'Jose', 'Barahona Rais', 1, '1981-06-24', '2019-05-05', 'Vicepresidente', 'Colonia Escalon', 2, 2, 1);
 
 call p_regPersona('67871989-9', 'Juan Carlos', 'Calleja Hakker', 1, '1977-06-24', '2019-05-05', 'Empresario', 'Colonia Escalon', 2, 2, 1);
-call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 1, '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 2, 1, 1);
+call p_regPersona('98765432-1', 'Pablo Emilio', 'Escobar Gaviria', 1, '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 2, 1, 1);
 
 # Candidatos Nuevas Ideas
 insert into candidato values(null, 1, 1, 1, 1);
