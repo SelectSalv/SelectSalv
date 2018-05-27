@@ -87,5 +87,63 @@ class PartidoController extends ControladorBase
 		echo $info;
 
 	}
+
+
+	public function modificarPartido()
+	{
+		//OBTENIENDO LOS DATOS 
+		$idPartido=$_POST['idPartidoEditar'];
+		$nombre=$_POST['nomPartido'];
+		$bandera=$_FILES['bandera'];
+		
+
+		$nomBandera=$bandera['name'];
+		
+
+		if($bandera['name']==""){
+
+			$destino=null;
+			$this->model->setIdPartido($idPartido);
+			$this->model->setNombrePartido($nombre);
+			$this->model->setEstado(1);
+
+			$resp= $this->model->modificarPartido($destino);
+
+			
+		}
+		else if(!empty($bandera))
+		{
+			$destino="res/img/partidos/".$nomBandera;
+			$this->model->setIdPartido($idPartido);
+			$this->model->setNombrePartido($nombre);
+			$this->model->setEstado(1);
+			
+			$resp= $this->model->modificarPartido($destino);
+			if($resp=="Excelente")
+			{
+				move_uploaded_file($bandera['tmp_name'], $destino);
+			}
+
+			
+
+
+		}
+
+		echo $resp;
+
+
+	}
+
+
+	public function eliminarPartido()
+	{
+
+			$datos=$_POST['idPartido'];
+			$data= json_decode($datos);
+
+			$info=$this->model->eliminarPartido($data, 0);
+			echo $info;
+
+	}
 }
  ?>

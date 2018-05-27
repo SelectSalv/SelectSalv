@@ -63,7 +63,7 @@
             <h5 class="modal-title" id="modal-title-frm">Modificar Partido</h5>
           </div>    
           <div id="modal-body-frm" class="modal-body">
-      <form id="frmPartido" enctype="multipart/form-data">
+      <form id="frmModificarPartido" enctype="multipart/form-data">
         
       <div class="form-row">
             <div class="form-column col-md-12">
@@ -112,6 +112,52 @@
 </div>
 </div>
 </div>
+
+<!--ELIMINAR PARTIDO-->
+<div id="contenedor-modal">
+    <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminarPersona" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header" id="modal-header-eliminar">
+            <h5 class="modal-title" id="modal-title-eliminar">Eliminar Partido</h5>
+          </div>    
+          <div id="modal-body-eliminar" class="modal-body">
+            ¿Desea eliminar este registro?
+          </div>
+          <div class="modal-footer" id="modal-footer-eliminar">
+           <button type="button" id="btnCancelarEliminar" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
+            <button type="button" id="btnEliminar" data-dismiss="modal" class="btn btn-danger material-ripple ">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--CONFIRMACION DE ELIMINADO-->
+    <div id="contenedor-modal">
+    <div class="modal fade" id="modalConfirmacionEliminado" tabindex="-1" role="dialog" aria-labelledby="modalConfirmacionEliminado" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header" id="modal-header-eliminar">
+            <h5 class="modal-title" id="modal-title-eliminar">Confirmacion</h5>
+          </div>    
+          <div id="eliminado" class="modal-body">
+            
+          </div>
+          <div class="modal-footer" id="modal-footer-eliminar">
+           <button type="button" id="btnCancelarEliminar" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
+            <button type="button" id="btnEliminar" data-dismiss="modal" class="btn btn-danger material-ripple ">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
 
 
 

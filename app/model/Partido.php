@@ -17,6 +17,10 @@ class Partido extends ModeloBase
 	{
 		return $this->idPartido;
 	}
+	public function setIdPartido($idPartido)
+	{
+		$this->idPartido=$idPartido;
+	}
 	public function getNombrePartido()
 	{
 		return $this->nomPartido;
@@ -121,7 +125,50 @@ class Partido extends ModeloBase
 
 	}
 
+	public function modificarPartido($ruta){
 
+		if($ruta==null){
+			$sql="UPDATE partido SET nomPartido='".$this->nomPartido."' WHERE IdPartido=".$this->idPartido."";
+
+			
+		}
+		else if($ruta!=null)
+		{
+			$sql="UPDATE partido SET nomPartido='".$this->nomPartido."', rutaBandera='".$ruta."' WHERE IdPartido=".$this
+			->idPartido."";
+			
+		}
+
+		$resp=$this->con->conectar()->query($sql);
+		if($resp)
+		{
+			$info="Excelente";
+		}
+
+		return $info;
+
+
+
+	}
+
+//ELIMINANDO PARTIDO
+	public function eliminarPartido($id, $estado)
+	{
+			$sql="UPDATE partido SET estado=".$estado." WHERE idPartido=".$id."";
+			$info=$this->con->conectar()->query($sql);
+			if($info)
+			{
+				$resp="Partido Eliminado Correctamente";
+			}
+			else
+			{
+				$resp="Ocurrió un error a la hora de Elinar el Partido";
+			}
+
+			$respuesta=json_encode($resp);
+			return $respuesta;
+
+	}
 
 
 }
