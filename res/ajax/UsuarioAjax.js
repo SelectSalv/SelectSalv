@@ -253,24 +253,75 @@ $(document).ready(function() {
     });
 
     $('#nomUsuario').change(function() {
-        var nom = $(this).val();
-        var disp = compNomUsuario(nom);
-        alert(nom);
-        // alert(disp);
+        var nombre = $(this).val();
 
-        if (disp == "disponible") {
-            $('#mensajeUsuario').html('');
-            $('#nomUsuario').css("background-image", "linear-gradient(to top, rgba(33, 150, 243, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
-            $('#labelUsuario').css("color", "rgba(33, 150, 243, 1)");
-            $('#nomUsuario').removeClass('is-invalid');
-        }
-        else if(disp == "!disponible")
-        {
-            $('#mensajeUsuario').html('Nombre de Usuario no disponible');
-            $('#nomUsuario').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
-            $('#labelUsuario').css("color", "rgba(244, 67, 54, 1)");
-            $('#nomUsuario').addClass('is-invalid');
-        }
+        $.ajax({
+            type: 'POST',
+            data: { nombre: nombre },
+            url: '?1=Usuario&2=compNomUsuario',
+            success: function(data) {
+                switch (data) {
+                    case 'Usuario Disponible':
+                        $('#mensajeUsuario').html('');
+                        $('#nomUsuario').css("background-image", "linear-gradient(to top, rgba(33, 150, 243, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
+                        $('#labelUsuario').css("color", "rgba(33, 150, 243, 1)");
+                        $('#nomUsuario').removeClass('is-invalid');
+                        $('#btnRegistrar').removeAttr('disabled');
+                        break;
+                    case 'Usuario no Disponible':
+                        $('#mensajeUsuario').html('Nombre de Usuario no disponible');
+                        $('#nomUsuario').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
+                        $('#labelUsuario').css("color", "rgba(244, 67, 54, 1)");
+                        $('#nomUsuario').addClass('is-invalid');
+                        $('#btnRegistrar').attr('disabled', 'true');
+                        break;
+
+                    default:
+                        alert(data);
+                        break;
+                }
+            }
+        });
+    });
+
+    $('#btnCancelarRegistrar').click(function() {
+        vaciarRegistrar();
+    });
+    $('#btnCancelarEditar').click(function() {
+        vaciarEditar();
+    });
+
+
+    $('#nomUsuarioEditar').change(function() {
+        var nombre = $(this).val();
+
+        $.ajax({
+            type: 'POST',
+            data: { nombre: nombre },
+            url: '?1=Usuario&2=compNomUsuario',
+            success: function(data) {
+                switch (data) {
+                    case 'Usuario Disponible':
+                        $('#mensajeUsuarioEditar').html('');
+                        $('#nomUsuarioEditar').css("background-image", "linear-gradient(to top, rgba(33, 150, 243, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
+                        $('#labelUsuarioEditar').css("color", "rgba(33, 150, 243, 1)");
+                        $('#nomUsuarioEditar').removeClass('is-invalid');
+                        $('#btnEditar').removeAttr('disabled');
+                        break;
+                    case 'Usuario no Disponible':
+                        $('#mensajeUsuarioEditar').html('Nombre de Usuario no disponible');
+                        $('#nomUsuarioEditar').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
+                        $('#labelUsuarioEditar').css("color", "rgba(244, 67, 54, 1)");
+                        $('#nomUsuarioEditar').addClass('is-invalid');
+                        $('#btnEditar').attr('disabled', 'true');
+                        break;
+
+                    default:
+                        alert(data);
+                        break;
+                }
+            }
+        });
     });
 
 
@@ -330,7 +381,7 @@ $(document).ready(function() {
                             closeOnCancel: true
                         });
                         tablaUsuarios.ajax.reload();
-                        vaciarRegistrar();
+                        vaciarEditar();
                         setTimeout(function() {
                             $('tr td:last-child').addClass('text-right');
                             // $('tr td:last-child').addClass('text-center');
@@ -426,30 +477,6 @@ function Login() {
 }
 
 // Funcion para comprobar disponibilidad de nombre de usuario
-function compNomUsuario(nombre) {
-    var resultado = "";
-
-    $.ajax({
-        type: 'POST',
-        data: { nombre: nombre },
-        url: '?1=Usuario&2=compNomUsuario',
-        success: function(data) {
-            switch (data) {
-                case 'disponible':
-                    resultado = data;
-                    break;
-                case 'Usuario no Disponible':
-                    resultado = data;
-
-                default:
-                    resultado = "error";
-                    break;
-            }
-        }
-    });
-
-    return resultado;
-}
 
 function vaciarEditar() {
     $('#nomUsuarioEditar').val("");

@@ -136,10 +136,10 @@ create table partido(
     rutaBandera varchar(100),
     estado int
 );
-
+/*
 insert into partido values(null, 'Nuevas Ideas', '-', 1);
 insert into partido values(null, 'Arena', '-', 1);
-insert into partido values(null, 'FMLN', '-', 1);
+insert into partido values(null, 'FMLN', '-', 1);*/
 
 
 create table DetalleVoto(
@@ -199,6 +199,8 @@ alter table transacciones add constraint fk_tipoTransaccion foreign key (idTipo)
 
 
 # VISTAS
+
+
 
 
 # Vista con los datos de usuario
@@ -352,6 +354,8 @@ begin
     select * from v_Usuarios where nomUsuario = nom and pass = contra;
 end
  $$
+ 
+
  
 delimiter $$
 create procedure p_regPersona(

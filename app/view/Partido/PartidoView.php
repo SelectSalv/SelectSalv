@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-=======
-  <link rel="stylesheet" href="res/plugins/dataTableBootstrap/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="res/plugins/dataTableBootstrap/dataTables.bootstrap4.min.css">
 <script src="res/plugins/dataTableBootstrap/jquery.dataTables.min.js"></script>
 <script src="res/plugins/dataTableBootstrap/dataTables.bootstrap.min.js"></script>
 <script src="res/ajax/PartidoAjax.js"></script>
