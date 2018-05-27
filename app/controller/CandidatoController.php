@@ -1,6 +1,5 @@
 <?php
 
-
 class CandidatoController extends ControladorBase
 {
 
@@ -35,14 +34,15 @@ class CandidatoController extends ControladorBase
 	}
 
 	# Acciones Lógicas
-	// Método para obtener Datos de Candidato por id
+
+	// Método para obtener Datos de persona por id
 	public function getCandidato()
 	{
 		$datos = $_POST['idCandidato'];
 
 		$datos = json_decode($datos);
 
-		$resultado = $this->model->getIdCandidato($datos);
+		$resultado = $this->model->getCandidatoId($datos);
 
 		echo $resultado;
 	}

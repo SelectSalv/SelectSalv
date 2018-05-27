@@ -40,7 +40,7 @@ class PersonaController extends ControladorBase
 	// Método para Comprobar disponibilidad de DUI
 	public function compDui()
 	{
-		$this->model->setDui($_POST["ndui"]);
+		$this->model->setDui($_POST["dui"]);
 		$resultado = $this->model->compDUI();
 
 		echo $resultado;

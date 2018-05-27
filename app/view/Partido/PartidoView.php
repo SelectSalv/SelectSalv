@@ -1,3 +1,6 @@
+
+<link rel="stylesheet" href="res/plugins/dataTableBootstrap/dataTables.bootstrap4.min.css">
+
 <link rel="stylesheet" href="res/plugins/dataTableBootstrap/dataTables.bootstrap4.min.css">
 <script src="res/plugins/dataTableBootstrap/jquery.dataTables.min.js"></script>
 <script src="res/plugins/dataTableBootstrap/dataTables.bootstrap.min.js"></script>
@@ -49,6 +52,71 @@
 </div>
 </div>
 </div>
+
+<!--MODAL EDITAR PARTIDO-->
+
+<div id="contenedor-modal">
+    <div class="modal fade" id="modalModificarPartido" tabindex="-1" role="dialog" aria-labelledby="ModalFrm" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header" id="modal-header-frm">
+            <h5 class="modal-title" id="modal-title-frm">Modificar Partido</h5>
+          </div>    
+          <div id="modal-body-frm" class="modal-body">
+      <form id="frmPartido" enctype="multipart/form-data">
+        
+      <div class="form-row">
+            <div class="form-column col-md-12">
+                <div class="form-group bmd-form-group">
+                    <input type="hidden" name="idPartidoEditar" id="PartidoEditar">
+                    <label for="nomPartido" class="bmd-label-floating">Nombre del Partido</label>
+                    <input type="text" class="form-control" name="nomPartido" id="nomPartidoEditar" autofocus="autofocus">
+                </div>
+            </div>
+        </div>
+        
+        <br>
+        <div class="form-row">
+          <div class="form-column col-md-12">
+            <div class="form-group">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="banderaEditar" lang="es" name="bandera">
+                <label class="custom-file-label" for="customFileLang">Seleccionar Foto</label>
+              </div>
+            </div>
+          </div>
+        </div>
+          <br>
+         <div class="form-row">
+          <div class="form-column col-md-12">
+            <div class="form-group">
+              
+                <p>Bandera Actual</p>
+                <div id="viewBandera"></div>
+              
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+          <div class="form-column col-md-12">
+            <div class="form-group bmd-form-group">
+              <button type="button" id="btnCancelarFrm" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
+              <button type="button" id="btnPartidoEditar" name="btnPartidoEditar" class="waves-effect waves-light btn btn-raised btn-info">Editar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+
 
 
 <div class="contenedor">

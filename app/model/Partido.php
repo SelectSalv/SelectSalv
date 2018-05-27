@@ -109,4 +109,19 @@ class Partido extends ModeloBase
 
 
 	}
+
+	public function getInformation($idPartido){
+
+			$sql="SELECT `idPartido`, `nomPartido`,`ruta`,`estado` FROM `partido` WHERE idPartido=".$idPartido." ";
+			$respuesta=$this->con->conectar()->query($sql);
+
+			$datos=$respuesta->fetch_assoc();
+			return json_encode($datos);
+
+
+	}
+
+
+
+
 }
