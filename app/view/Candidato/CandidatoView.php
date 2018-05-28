@@ -31,21 +31,21 @@
           <div class="form-column col-md-6">
             <div class="form-group bmd-form-group is-filled">
               <label for="departamento" class="bmd-label-floating">Partido Político</label>
-              <select type="text" class="form-control" name="departamento" id="departamento">
+              <select type="text" class="form-control" name="partido" id="departamento">
                 <option value="-">Seleccione uno...</option>
-                <option value="Partido 1">Partido 1</option>
-                <option value="Partido 2">Partido 2</option>
-                <option value="Partido 3">Partido 3</option>      
+                <option value="1">Partido 1</option>
+                <option value="2">Partido 2</option>
+                <option value="6">Partido 3</option>      
               </select>
             </div>
           </div>
           <div class="form-column col-md-6">
             <div class="form-group bmd-form-group is-filled">
               <label for="municipio" class="bmd-label-floating">Tipo de Candidato</label>
-              <select type="text" class="form-control" name="municipio" id="municipio">
+              <select type="text" class="form-control" name="TipoCandidato" id="municipio">
                 <option value="-">Seleccione uno...</option>
-                <option value="Presidente">Presidente</option>
-                <option value="Vicepresidente">Vicepresidente</option>
+                <option value="1">Presidente</option>
+                <option value="2">Vicepresidente</option>
               </select>
             </div>
           </div>
@@ -212,7 +212,7 @@
                   <th class="text-light" >Apellidos</th>
                   <th class="text-light" >Nombres</th>
                   <th class="text-light" >Género</th>
-                  <th class="text-light" >Estado</th>
+                  
                   <th class="text-light" >Fecha de Nacimiento</th>
                   <th class="text-light" >Partido</th>
                   <th class="text-light" >Tipo de Candidato</th>

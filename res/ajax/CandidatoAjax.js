@@ -23,9 +23,7 @@ $(document).ready(function() {
             {
                 "data": "Genero"
             },
-            {
-                "data": "Estado"
-            },
+            
             {
                 "data": "Fecha"
             },
@@ -180,7 +178,7 @@ $(document).ready(function() {
     });
 
     // Método para Comprobar N° de DUI
-    $('#dui').change(function() {
+    /*$('#dui').change(function() {
         var ndui = $('#dui').val().toString();
 
         if ((ndui.length > 0) && (ndui.length < 10)) {
@@ -225,7 +223,7 @@ $(document).ready(function() {
 
 
         }
-    });
+    });*/
 
     // Método para Eliminar Candidato
     $(document).on('click', '.btnEliminar', function() {

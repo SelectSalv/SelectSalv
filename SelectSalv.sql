@@ -637,3 +637,9 @@ call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad'
 call p_RegUsuario('gM+rynjXl+Gl06fQ', '9e1b9d0da915a9aaafd7524b5d4b667ecbe7abb3', 'mMun', 0);
 
 call p_RegUsuario('d8ej1aDVddCg3qTU', 'a1d3288715911c7ea5b85627de62c4aabcf233c7', 'mMun', 0);
+
+
+create view v_getCandidatos as (
+	SELECT p.dui, p.nomPersona, b.nomPartido, t.descTipoCAndidato FROM candidato c INNER JOIN persona p ON p.idPersona=c.idPersona INNER JOIN partido b ON b.idPartido=c.idPartido INNER JOIN tipocandidato t ON t.idTipoCandidato=c.idTipoCandidato WHERE c.estado=1
+    order by c.idCandidato desc
+);

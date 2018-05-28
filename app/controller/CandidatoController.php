@@ -76,16 +76,13 @@ class CandidatoController extends ControladorBase
 
 		$datos = json_decode($datos);
 
-		$this->model->setDui($datos[0]->value);
-		$this->model->setNomCandidato($datos[1]->value);
-		$this->model->setApeCandidato($datos[2]->value);
-		$this->model->setGenero($datos[3]->value);
-		$this->model->setEstadoCivil($datos[4]->value);
-		$this->model->setFechaNac($datos[5]->value);
-		$this->model->setFechaVenc($datos[6]->value);
-		$this->model->setPartdio($datos[7]->value);
-		$this->model->setTipoCandidato($datos[8]->value);
-		$resultado =  $this->model->registrarCandidato();	
+		$this->model->setIdPersona($datos[0]->value);
+		$this->model->setIdPartido ($datos[1]->value);
+		$this->model->setIdTipoCandidato($datos[2]->value);
+
+
+		$resultado=$this->model->regCandidato(1);
+			
 
 		echo $resultado;
 	}
