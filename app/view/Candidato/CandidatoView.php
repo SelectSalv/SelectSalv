@@ -35,7 +35,7 @@
                 <option value="-">Seleccione uno...</option>
                 <option value="1">Partido 1</option>
                 <option value="2">Partido 2</option>
-                <option value="6">Partido 3</option>      
+                <option value="4">FMLN</option>      
               </select>
             </div>
           </div>
@@ -49,6 +49,18 @@
               </select>
             </div>
           </div>
+
+          <br>
+        <div class="form-row">
+          <div class="form-column col-md-12">
+            <div class="form-group">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFileLang" lang="es" name="candidato">
+                <label class="custom-file-label" for="customFileLang">Seleccionar Foto</label>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
 
               
@@ -213,6 +225,7 @@
                   <th class="text-light" >Nombres</th>
                   <th class="text-light" >Partido</th>
                   <th class="text-light" >Tipo de Candidato</th>
+                  <th class="text-light" >Foto</th>
                   <th class="text-light" >Acciones</th>
               </tr>
       </thead>

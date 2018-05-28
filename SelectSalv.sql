@@ -163,7 +163,8 @@ create table Candidato(
 	idCandidato int auto_increment unique not null primary key,
 	idPartido int not null,
     idTipoCandidato int not null,
-    idPersona int not null, 
+    idPersona int not null,
+    rutaCandidato varchar(100),
     estado int
 );
 
@@ -251,13 +252,10 @@ create view v_Boleta as (
 create view v_Voto as (
 	select v.idDetalleVoto, p.idPartido, p.nomPartido, j.idJrv, j.numJrv, per.idPersona,per.dui, per.nomPersona, per.apePersona,d.idDepartamento, d.nomDepartamento, m.idMunicipio, m.nomMunicipio
     from DetalleVoto v, partido p, persona per, padron pd, Jrv j, municipio m , departamento d
-    where v.idPartido = p.idPartido and v.idPadron = pd.id and pd.idPersona = per.idPersona and pd.idJrv = j.idJrv and  per.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento
-    order by v.idDetalleVoto desc
+    where v.idPartido = p.idPartido and pd.idPersona = per.idPersona and pd.idJrv = j.idJrv and per.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento
 );
 
 select * from v_Voto;
-
-select count(idDetalleVoto) from v_Voto where nomPartido = 'Arena'
 /*
 select p.idPartido, p.nomPartido, p.rutaBandera, p.estado as estadoPartido, 
 
@@ -353,13 +351,14 @@ create procedure p_RegCandidato(
 	in partido int,
     in tipo int,
     in ndui varchar(15),
+    in ruta varchar(100),
     in estado int
     
 )
 begin
 	declare persona int;
     set persona = (select idPersona from Persona where dui = ndui);
-    insert into Candidato values(null, partido, tipo, persona,estado);
+    insert into Candidato values(null, partido, tipo, persona, ruta, estado);
 end
 $$
 
@@ -628,12 +627,12 @@ call p_regPersona('67871989-9', 'Juan Carlos', 'Calleja Hakker', 1, '1977-06-24'
 call p_regPersona('98765432-1', 'Pablo Emilio', 'Escobar Gaviria', 1, '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 2, 1, 1);
 
 # Candidatos Nuevas Ideas
-insert into candidato values(null, 2, 1, 1, 1);
-insert into candidato values(null, 2, 2, 2, 1);
+insert into candidato values(null, 2, 1, 1,'hola',1);
+insert into candidato values(null, 2, 2, 2,'hola', 1);
 
 # Candidatos ARENA
-insert into candidato values(null, 3, 1, 3, 1);
-insert into candidato values(null, 3, 2, 4, 1);
+insert into candidato values(null, 3, 1, 3,'hola', 1);
+insert into candidato values(null, 3, 2, 4,'hola', 1);
 
 
 
@@ -645,10 +644,6 @@ call p_RegUsuario('d8ej1aDVddCg3qTU', 'a1d3288715911c7ea5b85627de62c4aabcf233c7'
 
 
 create view v_getCandidatos as (
-<<<<<<< HEAD
-	SELECT  c.IdCandidato ,p.dui, p.nomPersona,p.apePersona ,b.nomPartido, t.descTipoCAndidato FROM candidato c INNER JOIN persona p ON p.idPersona=c.idPersona INNER JOIN partido b ON b.idPartido=c.idPartido INNER JOIN tipocandidato t ON t.idTipoCandidato=c.idTipoCandidato WHERE c.estado=1
-=======
-	SELECT  c.IdCandidato ,p.dui, p.nomPersona,p.apePersona, b.nomPartido, t.descTipoCandidato FROM candidato c INNER JOIN persona p ON p.idPersona=c.idPersona INNER JOIN partido b ON b.idPartido=c.idPartido INNER JOIN tipocandidato t ON t.idTipoCandidato=c.idTipoCandidato WHERE c.estado=1
->>>>>>> 6f4fd94780e2321a8a396577998949aaa8aae300
+	SELECT  c.IdCandidato ,p.dui, p.nomPersona,p.apePersona ,b.nomPartido, t.descTipoCandidato, c.rutaCandidato FROM candidato c INNER JOIN persona p ON p.idPersona=c.idPersona INNER JOIN partido b ON b.idPartido=c.idPartido INNER JOIN tipocandidato t ON t.idTipoCandidato=c.idTipoCandidato WHERE c.estado=1
     order by c.idCandidato desc
 );

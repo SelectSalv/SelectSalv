@@ -28,10 +28,15 @@ $(document).ready(function() {
                 "data": "tipo"
             },
             {
+                "data": "ruta",
+                "render":function(data, type, row){
+                    var data_e=data.split("/");
+                    return '<center><img src="'+data_e[0]+"/"+data_e[1]+"/"+data_e[2]+"/"+data_e[3]+'" width="80"></center>';
+                }
+           },
+            {
                 "data": "acciones"
             }
-            
-
         ],
         "order": [
             [0, "desc"]
@@ -271,13 +276,13 @@ $(document).ready(function() {
 
     // Método para Registrar Candidato
     $('#btnDatos').click(function() {
-        var datos = JSON.stringify($('#frmCandidato :input').serializeArray());
+        var datos= new FormData($("#frmCandidato")[0])
 
         $.ajax({
             type: 'POST',
-            data: {
-                datos: datos
-            },
+            data:datos,
+            contentType:false,
+            processData: false,
             url: '?1=Candidato&2=registrarCandidato',
             success: function(r) {
                 switch (r) {
