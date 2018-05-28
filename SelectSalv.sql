@@ -349,12 +349,14 @@ delimiter $$
 create procedure p_RegCandidato(
 	in partido int,
     in tipo int,
-    in ndui varchar(15)
+    in ndui varchar(15),
+    in estado int
+    
 )
 begin
 	declare persona int;
     set persona = (select idPersona from Persona where dui = ndui);
-    insert into Candidato values(null, partido, tipo, persona);
+    insert into Candidato values(null, partido, tipo, persona,estado);
 end
 $$
 
@@ -640,6 +642,6 @@ call p_RegUsuario('d8ej1aDVddCg3qTU', 'a1d3288715911c7ea5b85627de62c4aabcf233c7'
 
 
 create view v_getCandidatos as (
-	SELECT  c.IdCandidato ,p.dui, p.nomPersona,p.apePersona b.nomPartido, t.descTipoCAndidato FROM candidato c INNER JOIN persona p ON p.idPersona=c.idPersona INNER JOIN partido b ON b.idPartido=c.idPartido INNER JOIN tipocandidato t ON t.idTipoCandidato=c.idTipoCandidato WHERE c.estado=1
+	SELECT  c.IdCandidato ,p.dui, p.nomPersona,p.apePersona ,b.nomPartido, t.descTipoCAndidato FROM candidato c INNER JOIN persona p ON p.idPersona=c.idPersona INNER JOIN partido b ON b.idPartido=c.idPartido INNER JOIN tipocandidato t ON t.idTipoCandidato=c.idTipoCandidato WHERE c.estado=1
     order by c.idCandidato desc
 );
