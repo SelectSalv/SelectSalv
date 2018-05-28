@@ -75,10 +75,10 @@ public function getCandidatoId($id)
 	
 
 	# MÉTODO PARA REGISTRAR CANDIDATO
-	public function regCandidato($estado)
+	public function regCandidato($estado, $destino)
 	{
 
-		$sql="call p_RegCandidato(".$this->idPartido.", ".$this->idTipoCandidato.", '".$this->idPersona."',".$estado.")";
+		$sql="call p_RegCandidato(".$this->idPartido.", ".$this->idTipoCandidato.", '".$this->idPersona."','".$destino."',".$estado.")";
 
 		
 		
@@ -148,7 +148,12 @@ public function getCandidatoId($id)
 								"nombre": "'.$fila["nomPersona"].'",
 								"apellido": "'.$fila["apePersona"].'",
 								"partido": "'.$fila["nomPartido"].'",
+<<<<<<< HEAD
+								"tipo": "'.$fila["descTipoCandidato"].'",
+								"ruta": "'.$fila["rutaCandidato"].'",
+=======
 								"tipo": "'.$fila["descTipoCa"].'",
+>>>>>>> 0ff3778cd388abcd6c6ad4609139bf80098d4a1a
 								"acciones": "'.$mas.$modificar.$eliminar.'"
 							},';
 

@@ -72,19 +72,47 @@ class CandidatoController extends ControladorBase
 	public function registrarCandidato()
 	{
 
-		$datos = $_POST["datos"];
-
-		$datos = json_decode($datos);
-
-		$this->model->setIdPersona($datos[0]->value);
-		$this->model->setIdPartido ($datos[1]->value);
-		$this->model->setIdTipoCandidato($datos[2]->value);
+		$idPersona=$_POST['dui'];
+		$idPartido=$_POST['partido'];
+		$idTipoCandidato=$_POST['TipoCandidato'];
+		$foto=$_FILES['candidato'];
+		$estado=1;
 
 
-		$resultado=$this->model->regCandidato(1);
-			
 
-		echo $resultado;
+				//validando que sea una imagen
+			if($foto["type"]=="image/jpg" || $foto["type"]=="image/jpeg" || $foto["type"]=="image/png")
+			{
+				//OBTENIENDO LA RUTA
+					$nombreFoto=$foto['name'];
+					$ruta=$foto['tmp_name'];
+					$destino="res/img/candidatos/".$nombreFoto;
+					//$rutaDesatino="../../res/img/";
+
+
+				$this->model->setIdPersona($idPersona);
+				$this->model->setIdPartido($idPartido);
+				$this->model->setIdTipoCandidato($idTipoCandidato);
+				$info =$this->model->regCandidato($estado, $destino);
+
+
+				if($info == "registrado")
+				{
+				 move_uploaded_file($foto["tmp_name"], $destino);
+				 echo "El Candidato con numero de DUI ".$idPersona." fue registrado Correctamente";
+				}
+				else
+				{
+
+					echo "Ocurrió un error al guardar el candidato";
+				}
+
+			}
+			else
+			{
+				echo "lamentablemente lo que usted intenta insertar no es una imagen";
+			}
+
 	}
 
 	// Método para editar datos de Candidato
