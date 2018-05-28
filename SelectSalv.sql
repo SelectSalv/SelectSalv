@@ -252,9 +252,12 @@ create view v_Voto as (
 	select v.idDetalleVoto, p.idPartido, p.nomPartido, j.idJrv, j.numJrv, per.idPersona,per.dui, per.nomPersona, per.apePersona,d.idDepartamento, d.nomDepartamento, m.idMunicipio, m.nomMunicipio
     from DetalleVoto v, partido p, persona per, padron pd, Jrv j, municipio m , departamento d
     where v.idPartido = p.idPartido and v.idPadron = pd.id and pd.idPersona = per.idPersona and pd.idJrv = j.idJrv and  per.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento
+    order by v.idDetalleVoto desc
 );
 
 select * from v_Voto;
+
+select count(idDetalleVoto) from v_Voto where nomPartido = 'Arena'
 /*
 select p.idPartido, p.nomPartido, p.rutaBandera, p.estado as estadoPartido, 
 
