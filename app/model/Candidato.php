@@ -119,9 +119,47 @@ public function getCandidatoId($id)
 	public function getCandidatos()
 	{
 
-		$sql="SELECT p.dui, p.nomPersona, b.nomPartido, t.descTipoCAndidato FROM candidato c INNER JOIN persona p ON p.idPersona=c.idPersona INNER JOIN partido b ON b.idPartido=c.idPartido INNER JOIN tipocandidato t ON t.idTipoCandidato=c.idTipoCandidato";
+		$sql="SELECT * FROM v_getcandidatos";
 
+		$resultado = $this->con->conectar()->query($sql);
+		$datos = "";
+		while ($fila = $resultado->fetch_assoc()) {
+		    
+		   
+			   	 //Inicializacion de botones
+			    $mas = null;
+			    $modificar = null;
+			    $eliminar = null;
+
+
+				$mas = '<button id=\"'.$fila["IdCandidato"].'\" class=\"btn btn-secondary btnDetalles btn-raised bmd-btn-icon\"><i class=\"material-icons\">more_horiz</i></button>';
+
+				if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
+				{
+					$modificar = '<button id=\"'.$fila["IdCandidato"].'\" class=\"btn btn-info btnModificar btn-raised bmd-btn-icon\"><i class=\"material-icons\">edit</i></button>';
+
+					$eliminar = '<button id=\"'.$fila["IdCandidato"].'\"  class=\"btn btn-danger btnEliminar btn-raised bmd-btn-icon\"><i class=\"material-icons\">clear</i></button>';
+				}
+				
+				
+
+				$datos .= ' {	"idCandidato": "'.$fila["IdCandidato"].'",
+								"dui": "'.$fila["dui"].'",
+								"nombre": "'.$fila["nomPersona"].'",
+								"apellido": "'.$fila["apePersona"].'",
+								"partido": "'.$fila["nomPartido"].'",
+								"tipo": "'.$fila["descTipoCAndidato"].'",
+								"acciones": "'.$mas.$modificar.$eliminar.'"
+							},';
+
+		   }
 		
+
+		$datos = substr($datos,0, strlen($datos) - 1);
+
+        return '{"data" : ['.$datos.']}';
+
+
 
 		
 	}
