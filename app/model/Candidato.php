@@ -13,17 +13,12 @@ class Candidato extends ModeloBase
 
     public function __construct()
     {
-		$partido = new Partido();
-    	$persona = new Persona();
+		
+    	
 
     	parent::__construct();
     }
 
-    public function Candidato()
-    {
-
-    	$this->con = new Conexion();
-    }
 
     // REFACTORIZACIÓN DE PROPIEDADES CLASE CANDIDATO
 
@@ -31,6 +26,10 @@ class Candidato extends ModeloBase
     public function getIdCandidato()
     {
     	return $this->idCandidato;
+    }
+    public function setIdCandidato($idCantidato)
+    {
+    	$this->idCantidato=$idCantidato;
     }
 
     # Métodos GET y SET para idPartido
@@ -76,8 +75,31 @@ public function getCandidatoId($id)
 	
 
 	# MÉTODO PARA REGISTRAR CANDIDATO
-	public function regCandidato()
+	public function regCandidato($estado)
 	{
+
+		$sql="call p_RegCandidato(".$this->idPartido.", ".$this->idTipoCandidato.", '".$this->idPersona."',".$estado.")";
+
+		
+		
+
+
+		$info=$this->con->conectar()->query($sql);
+
+		if($info)
+		{
+			$respuesta="registrado";
+		}
+		else
+		{
+			$respuesta="error al registrar";
+
+		}
+		
+		return $respuesta;
+		
+
+
 
 	}
 
@@ -94,8 +116,15 @@ public function getCandidatoId($id)
 	}
 
 	# MÉTODO PARA BUSCAR CANDIDATO
-	public function buscarCandidato()
+	public function getCandidatos()
 	{
+
+		$sql="SELECT p.dui, p.nomPersona, b.nomPartido, t.descTipoCAndidato FROM candidato c INNER JOIN persona p ON p.idPersona=c.idPersona INNER JOIN partido b ON b.idPartido=c.idPartido INNER JOIN tipocandidato t ON t.idTipoCandidato=c.idTipoCandidato";
+
+		
+
 		
 	}
+
 }
+
