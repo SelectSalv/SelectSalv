@@ -75,7 +75,7 @@ class Partido extends ModeloBase
 
 		while ($fila = $resultado->fetch_assoc()) {
 		    
-		   if($fila["estado"] == 1)
+		   if($fila["estado"] == 1 && $fila["nomPartido"] != "Voto Nulo")
 		   {
 			   	 //Inicializacion de botones
 			    $mas = null;
