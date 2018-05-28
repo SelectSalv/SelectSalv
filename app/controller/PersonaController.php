@@ -137,4 +137,14 @@ class PersonaController extends ControladorBase
 		echo $resultado;
 	}
 
+	// Método para Registrar Voto
+	public function votar()
+	{
+		$idPartido = $_POST["idPartido"];
+
+		$resultado = $this->model->votar($idPartido);
+
+		echo $resultado;
+	}
+
 }

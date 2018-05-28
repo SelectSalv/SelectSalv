@@ -12,6 +12,17 @@
 
 <script src="res/ajax/BoletaAjax.js"></script>
 
+<script>
+	$(document).ready(function() {
+		$('.cuadro-boleta').on('click', function () {
+	        // e.preventDefault();
+	        $('html, body').animate({
+	            scrollTop: 0
+	        }, 800);
+    	});
+	});
+</script>
+
 <!-- Modal Votar -->
 	<div id="contenedor-modal">
 		<div class="modal fade" id="modalVotar" tabindex="-1" role="dialog" aria-labelledby="modalregistrarPersona" aria-hidden="true">
@@ -59,6 +70,7 @@
 			<button style="display: block;" id="btnVotar" type="button" class="p2 btn btn-secondary" disabled="disabled">Votar</button>
 	</div>
 	<hr style="margin-top:0;">
+
 	<div class="boleta">
 		<div class="row">
 			

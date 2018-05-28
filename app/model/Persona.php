@@ -372,6 +372,24 @@ class Persona extends ModeloBase {
 		return $respuesta;
 	}
 
+	// Método para Registrar Voto
+	public function votar($partido)
+	{
+		$_query = "call p_Votar(".$partido.", '".$_SESSION["duiPersona"]."')";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		if($resultado)
+		{
+			$respuesta = "excelente";
+		}
+		else
+		{
+			$respuesta = "nel";
+		}
+
+		return $respuesta;
+	}
 	
 
 } // FIN CLASE PERSONA

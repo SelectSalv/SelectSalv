@@ -254,7 +254,7 @@ create view v_Voto as (
     where v.idPartido = p.idPartido and pd.idPersona = per.idPersona and pd.idJrv = j.idJrv and per.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento
 );
 
-select * from v_Voto
+select * from v_Voto;
 /*
 select p.idPartido, p.nomPartido, p.rutaBandera, p.estado as estadoPartido, 
 
@@ -302,7 +302,6 @@ begin
 end
 $$
 
-call p_Votar(2, '98765432-1');
 
 # Procedimiento almacenado para registrar Partidos
 delimiter $$
@@ -314,6 +313,8 @@ begin
 	insert into partido values(null, nom, ruta, 1);
 end
 $$
+
+select * from detalleVoto;
 
 # Procedimiento almacenado para modificar Partidos
 delimiter $$
