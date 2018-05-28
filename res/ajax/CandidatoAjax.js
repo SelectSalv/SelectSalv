@@ -4,35 +4,33 @@ $(document).ready(function() {
         
           var tabla = $('#tableCandidato').DataTable({
         "ajax": {
-            "url": "index.php?1=Candidato&2=getCandidato",
+            "url": "index.php?1=Candidato&2=getCandidatos",
             "type": "POST"
         },
         "columns": [{
                 "data": "idCandidato"
             },
             {
-                "data": "DUI"
+                "data": "dui"
             },
             {
-                "data": "Apellidos"
+                "data": "nombre"
             },
             {
-                "data": "Nombres"
+                "data": "apellido"
             },
 
             {
-                "data": "Genero"
+                "data": "partido"
             },
             
             {
-                "data": "Fecha"
+                "data": "tipo"
             },
             {
-                "data": "Partido"
-            },
-            {
-                "data": "TipoCandidato"
-            },
+                "data": "acciones"
+            }
+            
 
         ],
         "order": [

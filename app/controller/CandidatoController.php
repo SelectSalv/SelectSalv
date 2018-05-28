@@ -122,5 +122,15 @@ class CandidatoController extends ControladorBase
 		echo $resultado;
 	}
 
+
+	//METODO PARA LISTAR CANDIDATOS
+	public function getCandidatos()
+	{
+
+		$info=$this->model->getCandidatos();
+
+		echo $info;
+	}
+
 }
  
