@@ -148,7 +148,7 @@ public function getCandidatoId($id)
 								"nombre": "'.$fila["nomPersona"].'",
 								"apellido": "'.$fila["apePersona"].'",
 								"partido": "'.$fila["nomPartido"].'",
-								"tipo": "'.$fila["descTipoCandidato"].'",
+								"tipo": "'.$fila["descTipoCa"].'",
 								"acciones": "'.$mas.$modificar.$eliminar.'"
 							},';
 

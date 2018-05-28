@@ -24,7 +24,18 @@ if(isset($_SESSION["duiPersona"]))
 {
 	if(!empty($_SESSION["duiPersona"]))
 	{
+
+		$idUsuario = $_SESSION["idUsuario"];
+		$nomUsuario = $_SESSION["nomUsuario"];
+		$rol = $_SESSION["rol"];
+
 		session_destroy();
+		session_start();
+
+		$_SESSION["idUsuario"] = $idUsuario;
+		$_SESSION["nomUsuario"] = $nomUsuario;
+		$_SESSION["rol"] = $rol;
+
 
 		header("Location: ../../index.php");
 	} else{
