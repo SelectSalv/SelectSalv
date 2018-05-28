@@ -129,9 +129,9 @@
 
 .gj-textbox-md {
     border: none;
-    border-bottom: 1px solid rgba(0,0,0,.42);
+    border-bottom: 1px solid rgba(0,0,0,.26);
     display: block;
-    font-family: "Helvetica","Arial",sans-serif;
+    font-family: "Roboto";
     font-size: 16px;
     line-height: 16px;
     padding: 4px 0px;
@@ -139,12 +139,11 @@
     width: 100%;
     background: 0 0;
     text-align: left;
-    color: rgba(0,0,0,.87);
+    color: #495057;
 }
 
 .gj-textbox-md:focus,
 .gj-textbox-md:active {
-    border-bottom: 2px solid rgba(0,0,0,.42);
     outline: none;
 }
 
