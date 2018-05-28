@@ -8,12 +8,37 @@
 	
 
 	<!-- datePicker -->
-	
+	<link rel="stylesheet" href="res/plugins/datePicker/css/gijgo.css">
+	<script src="res/plugins/datePicker/js/gijgo.js"></script>
+	<script src="res/plugins/datePicker/js/messages/messages.es-es.js"></script>
 	
 
 	<!-- Ajax Persona -->
 	<script src="res/ajax/PersonaAjax.js"></script>
 	
+	<!-- Inicializacion DatePicker -->
+	<script>
+        $(document).ready(function () {
+        	 var datepicker, config;
+		        config = {
+		            locale: 'es-es',
+		            uiLibrary: 'materialdesign',
+		            format: 'dd/mm/yyyy'
+		        };
+
+            $('#fechaNacimiento').datepicker(config);
+            $('#fechaVencimiento').datepicker(config);
+        });
+    </script>
+    <script>
+    	$(document).ready(function() {
+    		$('#fechaNacimientoModificar').on("change", function() {
+    			var val = $(this).val();
+
+    			alert(val);
+    		});
+    	});
+    </script>
 	<!-- modal principal de Registro -->
 	<div id="contenedor-modal">
 		<div class="modal fade" id="modalFrmPersona" tabindex="-1" role="dialog" aria-labelledby="ModalFrm" aria-hidden="true">
@@ -79,13 +104,13 @@
 								<div class="form-column col-md-6">
 									<div class="form-group bmd-form-group is-filled">
 										<label for="fechaNacimiento" class="bmd-label-floating">Fecha de Nacimiento</label>
-										<input type="date" class="form-control requeridoRegistrar" name="fechaNacimiento" id="fechaNacimiento">
+										<input class="form-control fecha requeridoRegistrar" name="fechaNacimiento" id="fechaNacimiento">
 									</div>
 								</div>
 								<div class="form-column col-md-6">
 									<div class="form-group bmd-form-group is-filled">
 										<label for="fechaVencimiento" class="bmd-label-floating">Fecha de Vencimiento</label>
-										<input type="date" class="form-control requeridoRegistrar" name="fechaVencimiento" id="fechaVencimiento">
+										<input class="form-control fecha requeridoRegistrar" name="fechaVencimiento" id="fechaVencimiento">
 									</div>
 								</div>
 							</div>

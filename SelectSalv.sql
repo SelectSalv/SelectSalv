@@ -251,10 +251,13 @@ create view v_Boleta as (
 create view v_Voto as (
 	select v.idDetalleVoto, p.idPartido, p.nomPartido, j.idJrv, j.numJrv, per.idPersona,per.dui, per.nomPersona, per.apePersona,d.idDepartamento, d.nomDepartamento, m.idMunicipio, m.nomMunicipio
     from DetalleVoto v, partido p, persona per, padron pd, Jrv j, municipio m , departamento d
-    where v.idPartido = p.idPartido and pd.idPersona = per.idPersona and pd.idJrv = j.idJrv and per.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento
+    where v.idPartido = p.idPartido and v.idPadron = pd.id and pd.idPersona = per.idPersona and pd.idJrv = j.idJrv and  per.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento
+    order by v.idDetalleVoto desc
 );
 
 select * from v_Voto;
+
+select count(idDetalleVoto) from v_Voto where nomPartido = 'Arena'
 /*
 select p.idPartido, p.nomPartido, p.rutaBandera, p.estado as estadoPartido, 
 
@@ -642,6 +645,10 @@ call p_RegUsuario('d8ej1aDVddCg3qTU', 'a1d3288715911c7ea5b85627de62c4aabcf233c7'
 
 
 create view v_getCandidatos as (
+<<<<<<< HEAD
 	SELECT  c.IdCandidato ,p.dui, p.nomPersona,p.apePersona ,b.nomPartido, t.descTipoCAndidato FROM candidato c INNER JOIN persona p ON p.idPersona=c.idPersona INNER JOIN partido b ON b.idPartido=c.idPartido INNER JOIN tipocandidato t ON t.idTipoCandidato=c.idTipoCandidato WHERE c.estado=1
+=======
+	SELECT  c.IdCandidato ,p.dui, p.nomPersona,p.apePersona, b.nomPartido, t.descTipoCandidato FROM candidato c INNER JOIN persona p ON p.idPersona=c.idPersona INNER JOIN partido b ON b.idPartido=c.idPartido INNER JOIN tipocandidato t ON t.idTipoCandidato=c.idTipoCandidato WHERE c.estado=1
+>>>>>>> 6f4fd94780e2321a8a396577998949aaa8aae300
     order by c.idCandidato desc
 );
