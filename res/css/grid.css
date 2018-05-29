@@ -56,28 +56,37 @@ div.gráficos {
 }
 .info-porcentaje {
     float: right;
-    /*background-color: #444;*/
+    /*background-color: rgba(0, 0, 0, 0.2);*/
     width: 50%;
     height: 100%;
+    padding: 15px;
     -webkit-transition: all .3s ease;
     -o-transition: all .3s ease;
     transition: all .3s ease;
 }
 
 .info-porcentaje > .titulo-tarjeta-sec{
+    /*background-color: rgba(0, 0, 0, 0.2);*/
     font-size:28px;
     color: #333;
     text-shadow:1px 1px 1px rgba(0, 0, 0, 0.05), 2px 2px 1px rgba(0, 0, 0, 0.05);
 }
 .info-porcentaje > .porcentaje-partido
 {
-    width: 50%;
-    height: 50%;
-    margin:0 auto;
+    padding: 0px;
     /*background-color: rgba(0, 0, 0, 0.2);*/
     color: #333;
     font-family: 'bebas';
-    font-size: 96px;
+    font-size: 90px;
+    text-shadow:1px 1px 1px rgba(0, 0, 0, 0.05), 2px 2px 1px rgba(0, 0, 0, 0.05);
+}
+.info-porcentaje > .num-votos
+{
+    padding: 0px;
+    /*background-color: rgba(0, 0, 0, 0.2);*/
+    color: #333;
+    font-family: 'bebas';
+    font-size: 22px;
     text-shadow:1px 1px 1px rgba(0, 0, 0, 0.05), 2px 2px 1px rgba(0, 0, 0, 0.05);
 }
 .mapa {

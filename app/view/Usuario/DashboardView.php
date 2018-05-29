@@ -1,27 +1,35 @@
 <?php 
-	if($partidosPrincipales[0]["nomPartido"] == "Voto Nulo")
+
+	if(!empty($partidosPrincipales))
 	{
-		$nomPartido1 = $partidosPrincipales[1]["nomPartido"];
-		$rutaPartido1 =  $partidosPrincipales[1]["rutaBandera"];
-		$porcentajePartido1 = $partidosPrincipales[1]["votos"];
-	} else
-	{
-		$nomPartido1 = $partidosPrincipales[0]["nomPartido"];
-		$rutaPartido1 =  $partidosPrincipales[0]["rutaBandera"];
-		$porcentajePartido1 = $partidosPrincipales[0]["votos"];
+		if($partidosPrincipales[0]["nomPartido"] == "Voto Nulo")
+		{
+			$nomPartido1 = $partidosPrincipales[1]["nomPartido"];
+			$rutaPartido1 =  $partidosPrincipales[1]["rutaBandera"];
+			$porcentajePartido1 = $partidosPrincipales[1]["votos"];
+			$numVotos1 = $partidosPrincipales[1]["nVotos"];
+		} else
+		{
+			$nomPartido1 = $partidosPrincipales[0]["nomPartido"];
+			$rutaPartido1 =  $partidosPrincipales[0]["rutaBandera"];
+			$porcentajePartido1 = $partidosPrincipales[0]["votos"];
+			$numVotos1 = $partidosPrincipales[0]["nVotos"];
+		}
+		if($partidosPrincipales[1]["nomPartido"] == "Voto Nulo" || $partidosPrincipales[0]["nomPartido"] == "Voto Nulo")
+		{
+			$nomPartido2 = $partidosPrincipales[2]["nomPartido"];
+			$rutaPartido2 =  $partidosPrincipales[2]["rutaBandera"];
+			$porcentajePartido2 = $partidosPrincipales[2]["votos"];
+			$numVotos2 = $partidosPrincipales[2]["nVotos"];
+		} else
+		{
+			$nomPartido2 = $partidosPrincipales[1]["nomPartido"];
+			$rutaPartido2 =  $partidosPrincipales[1]["rutaBandera"];
+			$porcentajePartido2 = $partidosPrincipales[1]["votos"];
+			$numVotos2 = $partidosPrincipales[1]["nVotos"];
+		}
 	}
 
-	if($partidosPrincipales[1]["nomPartido"] == "Voto Nulo" || $partidosPrincipales[0]["nomPartido"] == "Voto Nulo")
-	{
-		$nomPartido2 = $partidosPrincipales[2]["nomPartido"];
-		$rutaPartido2 =  $partidosPrincipales[2]["rutaBandera"];
-		$porcentajePartido2 = $partidosPrincipales[2]["votos"];
-	} else
-	{
-		$nomPartido2 = $partidosPrincipales[1]["nomPartido"];
-		$rutaPartido2 =  $partidosPrincipales[1]["rutaBandera"];
-		$porcentajePartido2 = $partidosPrincipales[1]["votos"];
-	}
 ?>
 
 
@@ -109,30 +117,62 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div class="tarjeta tarjeta-xl">
-						<div class="tarjeta-bandera"  style="background-image: url(<?php echo $rutaPartido1 ?>)">
+						<div class="tarjeta-bandera"  style="background-image: url(<?php echo (isset($rutaPartido1)) ? $rutaPartido1 : 'res/img/partidos/gray.jpg'; ?>">
 							
 						</div>
-						<div class="info-porcentaje d-flex flex-column" style="padding: 15px;">
+						<div class="info-porcentaje">
 							<p class="titulo-tarjeta-sec">
-								<?php echo $nomPartido1 ?>
+								<?php echo (isset($nomPartido1)) ? $nomPartido1 : 'Partido 1'; ?>
 							</p>
-							<p class="porcentaje-partido p-2">
-								<?php echo $porcentajePartido1 ?>
+							<p class="porcentaje-partido">
+								<?php echo (isset($porcentajePartido1)) ? $porcentajePartido1 : ''; ?>
+							</p>
+							<p class="num-votos">
+								<?php
+								if(isset($numVotos1))
+								{
+									if($numVotos1 == 1 )
+									{
+										echo $numVotos1." Voto"; 
+									}
+									else
+									{
+										echo $numVotos1." Votos"; 
+									}
+								}
+									
+								?>
 							</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div class="tarjeta tarjeta-xl">
-						<div class="tarjeta-bandera"  style="background-image: url(<?php echo $rutaPartido2 ?>)">
+						<div class="tarjeta-bandera"  style="background-image: url(<?php echo (isset($rutaPartido2)) ? $rutaPartido2 : 'res/img/partidos/gray.jpg'; ?>">
 							
 						</div>
-						<div class="info-porcentaje d-flex flex-column" style="padding: 15px;">
+						<div class="info-porcentaje">
 							<p class="titulo-tarjeta-sec">
-								<?php echo $nomPartido2 ?>
+								<?php echo (isset($nomPartido2)) ? $nomPartido2 : 'Partido 2'; ?>
 							</p>
-							<p class="porcentaje-partido p-2">
-								<?php echo $porcentajePartido2 ?>
+							<p class="porcentaje-partido">
+								<?php echo (isset($porcentajePartido2)) ? $porcentajePartido2 : ''; ?>
+							</p>
+							<p class="num-votos">
+								<?php
+								if(isset($numVotos2))
+								{
+									if($numVotos2 == 1 )
+									{
+										echo $numVotos2." Voto"; 
+									}
+									else
+									{
+										echo $numVotos2." Votos"; 
+									}
+								}
+									
+								?>
 							</p>
 						</div>
 					</div>
