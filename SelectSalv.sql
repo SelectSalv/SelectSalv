@@ -97,8 +97,7 @@ create table Departamento(
     nomDepartamento varchar(150)
 );
 
-insert into Departamento(nomDepartamento) values('La Libertad');
-insert into Departamento(nomDepartamento) values('San Salvador');
+insert into departamento(idDepartamento, nomDepartamento)values(null,'La Libertad'),(null,'San salvador'),(null,'Santa Ana'),(null,'Sonsonate'),(null,'San Miguel'),(null,'Usulutan'),(null,'Ahuachapan'),(null,'La Paz'),(null,'La Union'),(null,'Cuscatlan'),(null,'Chalatenango'),(null,'Morazan'),(null,'San Vicente'),(null,'Cabañas');		
 
 create table Municipio(
 	idMunicipio int auto_increment unique not null primary key,
@@ -255,6 +254,12 @@ create view v_Voto as (
     where v.idPartido = p.idPartido and v.idPadron = pd.id and pd.idPersona = per.idPersona and pd.idJrv = j.idJrv and per.idMunicipio = m.idMunicipio and m.idDepartamento = d.idDepartamento
     order by v.idDetalleVoto desc
 );
+
+create view v_getCandidatos as (
+	SELECT  c.IdCandidato ,p.dui, p.nomPersona,p.apePersona ,b.nomPartido, t.descTipoCandidato, c.rutaCandidato FROM candidato c INNER JOIN persona p ON p.idPersona=c.idPersona INNER JOIN partido b ON b.idPartido=c.idPartido INNER JOIN tipocandidato t ON t.idTipoCandidato=c.idTipoCandidato WHERE c.estado=1
+    order by c.idCandidato desc
+);
+
 
 select * from v_Voto;
 
@@ -582,6 +587,16 @@ end
 $$
 
 
+delimiter $$
+create procedure p_EliminarCandidato(
+	in id int
+)
+begin
+	update candidato
+    set estado = 0
+    where idCandidato = id; 
+end
+$$
 /*
 call p_regPersona('98765432-1', 'Escobar Gaviria', 'Pablo Emilio', 1, '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 2, 1, 1);
 
@@ -646,6 +661,7 @@ insert into candidato values(null, 2, 2, 2,'hola', 1);
 insert into candidato values(null, 3, 1, 3,'hola', 1);
 insert into candidato values(null, 3, 2, 4,'hola', 1);
 
+select * from departamento;
 
 
 call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad', 'mMun', 0);
@@ -654,19 +670,5 @@ call p_RegUsuario('gM+rynjXl+Gl06fQ', '9e1b9d0da915a9aaafd7524b5d4b667ecbe7abb3'
 
 call p_RegUsuario('d8ej1aDVddCg3qTU', 'a1d3288715911c7ea5b85627de62c4aabcf233c7', 'mMun', 0);
 
-
-create view v_getCandidatos as (
-	SELECT  c.IdCandidato ,p.dui, p.nomPersona,p.apePersona ,b.nomPartido, t.descTipoCandidato, c.rutaCandidato FROM candidato c INNER JOIN persona p ON p.idPersona=c.idPersona INNER JOIN partido b ON b.idPartido=c.idPartido INNER JOIN tipocandidato t ON t.idTipoCandidato=c.idTipoCandidato WHERE c.estado=1
-    order by c.idCandidato desc
-);
-
-delimiter $$
-create procedure p_EliminarCandidato(
-	in id int
-)
-begin
-	update candidato
-    set estado = 0
-    where idCandidato = id; 
-end
-$$
+/*
+*/
