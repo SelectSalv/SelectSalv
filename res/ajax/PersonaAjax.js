@@ -109,13 +109,13 @@ $(document).ready(function() {
                         break;
                     case 'fechaNacimiento':
                         nombreCampo = 'Fecha de Nacimiento';
-                        var fecha = new Date(dato).toString('dd/MM/yyyy');
-                        dato = fecha;
+                       /* var fecha = new Date(dato).toString('dd/MM/yyyy');
+                        dato = fecha;*/
                         break;
                     case 'fechaVencimiento':
                         nombreCampo = 'Fecha de Vencimiento';
-                        var fecha = new Date(dato).toString('dd/MM/yyyy');
-                        dato = fecha;
+                        /*var fecha = new Date(dato).toString('dd/MM/yyyy');
+                        dato = fecha;*/
                         break;
                     case 'profesion':
                         nombreCampo = 'Profesión';
@@ -157,9 +157,7 @@ $(document).ready(function() {
                     backdrop: "static",
                     keyboard: false
                 });
-                $('#btnCancelarDatos').click(function() {
-                    $('#modalFrmPersona').modal('show');
-                });
+
             });
         } else {
             $('#modal-title-datos').html(``);
@@ -183,7 +181,6 @@ $(document).ready(function() {
     // Método para Comprobar N° de DUI
     $('#dui').change(function() {
         var ndui = $('#dui').val().toString();
-
         if ((ndui.length > 0) && (ndui.length < 10)) {
             $('#ayudaDui').html('');
             $('#mensajeDui').html('El N° de DUI debe tener 10 caracteres');
@@ -284,7 +281,7 @@ $(document).ready(function() {
     // Método para Registrar Persona
     $('#btnDatos').click(function() {
         var datos = JSON.stringify($('#frmPersona :input').serializeArray());
-
+        alert(datos);
         $.ajax({
             type: 'POST',
             data: {

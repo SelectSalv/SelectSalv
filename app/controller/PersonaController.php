@@ -40,7 +40,7 @@ class PersonaController extends ControladorBase
 	// Método para Comprobar disponibilidad de DUI
 	public function compDui()
 	{
-		$this->model->setDui($_POST["dui"]);
+		$this->model->setDui($_POST["ndui"]);
 		$resultado = $this->model->compDUI();
 
 		echo $resultado;
@@ -87,13 +87,20 @@ class PersonaController extends ControladorBase
 
 		$datos = json_decode($datos);
 
+		$fechaNac = date_create($datos[5]->value);
+		$fechaVenc = date_create($datos[6]->value);
+
+		$fechaNac = date_format($fechaNac, 'Y-m-d');
+
+		$fechaVenc = date_format($fechaVenc, 'Y-m-d');
+
 		$this->model->setDui($datos[0]->value);
 		$this->model->setNomPersona($datos[1]->value);
 		$this->model->setApePersona($datos[2]->value);
 		$this->model->setGenero($datos[3]->value);
 		$this->model->setEstadoCivil($datos[4]->value);
-		$this->model->setFechaNac($datos[5]->value);
-		$this->model->setFechaVenc($datos[6]->value);
+		$this->model->setFechaNac($fechaNac);
+		$this->model->setFechaVenc($fechaVenc);
 		$this->model->setProfesion($datos[7]->value);
 		$this->model->setIdMunicipio($datos[8]->value);
 		$this->model->setDireccion($datos[9]->value);
