@@ -175,11 +175,23 @@ class CandidatoController extends ControladorBase
 	// Método para eliminar Candidato
 	public function eliminarCandidato()
 	{
-		$id = $_POST["idCandidato"];
+		$datos=$_POST['idCandidato'];
+			$data= json_decode($datos);
 
-		$resultado = $this->model->eliminarCandidato($id);
+			$this->model->setIdCandidato($data);
+			$info=$this->model->eliminarCandidato();
+			if ($info=="ok") {
+			
+				$resp="Registro Eliminado Correctamente";
+			}
+			else
+			{
+				$resp="El registro no se pudo eliminar";
+			}
+			
+			echo $resp;
 
-		echo $resultado;
+
 	}
 
 
@@ -214,7 +226,15 @@ class CandidatoController extends ControladorBase
 	{
 
 		$datos=$this->model->getAllPartido();
-		
+		 echo $datos;
+
+	}
+
+	public function getAllTipo()
+	{
+
+		$datos=$this->model->getAllTipo();
+		echo $datos;
 	}
 
 }

@@ -659,3 +659,14 @@ create view v_getCandidatos as (
 	SELECT  c.IdCandidato ,p.dui, p.nomPersona,p.apePersona ,b.nomPartido, t.descTipoCandidato, c.rutaCandidato FROM candidato c INNER JOIN persona p ON p.idPersona=c.idPersona INNER JOIN partido b ON b.idPartido=c.idPartido INNER JOIN tipocandidato t ON t.idTipoCandidato=c.idTipoCandidato WHERE c.estado=1
     order by c.idCandidato desc
 );
+
+delimiter $$
+create procedure p_EliminarCandidato(
+	in id int
+)
+begin
+	update candidato
+    set estado = 0
+    where idCandidato = id; 
+end
+$$

@@ -149,6 +149,21 @@ public function getCandidatoId($id)
 	public function eliminarCandidato()
 	{
 
+			$sql="call p_EliminarCandidato(".$this->idCandidato.")";
+
+			$resp=$this->con->conectar()->query($sql);
+
+			if($resp)
+			{
+
+				$info="ok";
+			}
+			else
+			{
+				$info="no";
+			}
+
+			return $info;
 	}
 
 	# MÉTODO PARA BUSCAR CANDIDATO
@@ -226,10 +241,43 @@ public function getCandidatoId($id)
 
 		$resp=$this->con->conectar()->query($sql);
 
-		$datos=$resp->fetch_assoc();
-		return $datos;
+		$datos=array();
+		while($data=$resp->fetch_assoc())
+
+		{
+
+			$datos[$data['idPartido']]=$data['nomPartido'];
+
+		}
+
+		$info=json_encode($datos);
+		
+		return $info;
+
+        
 
 	}
+
+
+	public function getAllTipo()
+	{
+
+		$sql="SELECT idTipoCandidato, descTipoCandidato FROM tipocandidato";
+		$resp=$this->con->conectar()->query($sql);
+
+		$datos=array();
+		while ($data=$resp->fetch_assoc()) {
+			
+			$datos[$data['idTipoCandidato']]=$data['descTipoCandidato'];
+		}
+
+		$info=json_encode($datos);
+		return $info;
+
+
+	}
+
+
 
 }
 
