@@ -188,6 +188,7 @@ class CandidatoController extends ControladorBase
 			{
 				$resp="El registro no se pudo eliminar";
 			}
+			
 			echo $resp;
 
 
