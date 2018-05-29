@@ -149,7 +149,7 @@
 		      </div>
 		      <div class="modal-footer" id="modal-footer-frm">
 		      	<button type="button" id="btnCancelarFrm" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
-		        <button type="button" id="btnFrmRegistrar" class="btn btn-success material-ripple">Registrar</button>
+		        <button type="button" id="btnFrmRegistrar" class="btn btn-success material-ripple" data-dismiss="modal">Registrar</button>
 		      </div>
 		    </div>
 		  </div>

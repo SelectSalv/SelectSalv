@@ -266,6 +266,13 @@ $(document).ready(function() {
                 switch (data) {
                     case 'modificado':
                         tabla.ajax.reload();
+                        swal({
+                            title: "Éxito!",
+                            text: "Los cambios fueron guardados",
+                            timer: 1500,
+                            type: 'success',
+
+                        });
                         $('#modalFrmModificar').modal('toggle');
                         break;
                 }
