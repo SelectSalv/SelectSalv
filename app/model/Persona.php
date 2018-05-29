@@ -390,6 +390,22 @@ class Persona extends ModeloBase {
 
 		return $respuesta;
 	}
+
+	public function listaMunicipios()
+	{
+		$_query = "select * from municipio limit 4";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		$datosMunicipio = array();
+
+		while($fila = $resultado->fetch_assoc())
+		{
+			$datosMunicipio[] = array('value' => $fila["idMunicipio"], 'text' => $fila["nomMunicipio"]);
+		}
+
+		return json_encode($datosMunicipio);
+	}
 	
 
 } // FIN CLASE PERSONA

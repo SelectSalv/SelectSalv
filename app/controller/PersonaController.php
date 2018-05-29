@@ -154,4 +154,11 @@ class PersonaController extends ControladorBase
 		echo $resultado;
 	}
 
+	public function listaMunicipios()
+	{
+		$resultado = $this->model->listaMunicipios();
+
+		echo $resultado;
+	}
+
 }

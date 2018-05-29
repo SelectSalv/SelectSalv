@@ -128,11 +128,14 @@
 								<div class="form-column col-md-12">
 									<div class="form-group bmd-form-group is-filled">
 										<label for="municipio" class="bmd-label-floating">Municipio</label>
-										<select type="text" class="form-control requeridoRegistrar" name="municipio" id="municipio">
+										<select type="text" class="form-control autoMunicipio requeridoRegistrar"  name="municipio" id="municipio">
+											
+										</select>
+										<!-- <select type="text" class="form-control requeridoRegistrar" name="municipio" id="municipio">
 											<option value="-" data="">Seleccione uno...</option>
 											<option value="1" data="SanTa Tecla">Santa Tecla</option>
 											<option value="2" data="San Salvador">San Salvador</option>
-										</select>
+										</select> -->
 									</div>
 								</div>
 							</div>

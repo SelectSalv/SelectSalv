@@ -28,6 +28,7 @@
     <script src="res/js/botones.js"></script>
     <script src="res/js/barra-navegacion.js"></script>
     <script src="res/plugins/JQueryMask/jquery.mask.js"></script>
+    <script src="res/plugins/bootstrapAutocomplete/autocomplete.js"></script>
     <script type="text/javascript" src="res/plugins/sweetalert-master/dist/sweetalert.min.js"></script>	
     <script src="res/plugins/date.js"></script>
     <script src="res/js/mask-inputs.js"></script>
