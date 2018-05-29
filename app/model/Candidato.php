@@ -148,12 +148,9 @@ public function getCandidatoId($id)
 								"nombre": "'.$fila["nomPersona"].'",
 								"apellido": "'.$fila["apePersona"].'",
 								"partido": "'.$fila["nomPartido"].'",
-<<<<<<< HEAD
 								"tipo": "'.$fila["descTipoCandidato"].'",
 								"ruta": "'.$fila["rutaCandidato"].'",
-=======
 								"tipo": "'.$fila["descTipoCa"].'",
->>>>>>> 0ff3778cd388abcd6c6ad4609139bf80098d4a1a
 								"acciones": "'.$mas.$modificar.$eliminar.'"
 							},';
 
