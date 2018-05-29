@@ -585,7 +585,7 @@ begin
     declare mun int;
     set nomCv = concat("Centro de Votacion ", nom);
 	insert into Municipio values(null, nom, dep);
-    set mun = (select idMunicipio from Municipio where nomMunicipio = nom);
+    set mun = (select idMunicipio from Municipio where nomMunicipio = nom and idDepartamento = dep);
     insert into CentroVotacion values(null, nomCv, mun);
 end
 $$
@@ -966,7 +966,7 @@ insert into candidato values(null, 3, 2, 4,'hola', 1);
 
 select * from departamento;
 
-
+select * from municipio;
 call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad', 'mMun', 0);
 
 call p_RegUsuario('gM+rynjXl+Gl06fQ', '9e1b9d0da915a9aaafd7524b5d4b667ecbe7abb3', 'mMun', 0);
