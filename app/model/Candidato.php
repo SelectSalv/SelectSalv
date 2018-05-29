@@ -150,7 +150,6 @@ public function getCandidatoId($id)
 								"partido": "'.$fila["nomPartido"].'",
 								"tipo": "'.$fila["descTipoCandidato"].'",
 								"ruta": "'.$fila["rutaCandidato"].'",
-								"tipo": "'.$fila["descTipoCa"].'",
 								"acciones": "'.$mas.$modificar.$eliminar.'"
 							},';
 
