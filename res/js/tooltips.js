@@ -75,6 +75,7 @@ $(document).ready(function(){
              });
         });
 	});
+    
 
     // funciones para cambiar color de tooltip botones CRUD
     $(document).on("mouseover", ".btnModificar", function() {

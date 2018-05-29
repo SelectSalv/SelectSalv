@@ -27,8 +27,8 @@ div.gráficos {
 }
 
 .tarjeta-xl {
-    padding: 15px;
-    height: 425px;
+    padding: 0px;
+    height: 325px;
 }
 
 .tarjeta-md {
@@ -47,7 +47,39 @@ div.gráficos {
     color: rgba(39, 46, 64, 0.955);
     font-size: 20px;
 }
+.tarjeta-bandera {
+    width: 50%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    float:left;
+}
+.info-porcentaje {
+    float: right;
+    /*background-color: #444;*/
+    width: 50%;
+    height: 100%;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
 
+.info-porcentaje > .titulo-tarjeta-sec{
+    font-size:28px;
+    color: #333;
+    text-shadow:1px 1px 1px rgba(0, 0, 0, 0.05), 2px 2px 1px rgba(0, 0, 0, 0.05);
+}
+.info-porcentaje > .porcentaje-partido
+{
+    width: 50%;
+    height: 50%;
+    margin:0 auto;
+    /*background-color: rgba(0, 0, 0, 0.2);*/
+    color: #333;
+    font-family: 'bebas';
+    font-size: 96px;
+    text-shadow:1px 1px 1px rgba(0, 0, 0, 0.05), 2px 2px 1px rgba(0, 0, 0, 0.05);
+}
 .mapa {
     /*background: rgba(0,0,0,0.3);*/
     position: absolute;
