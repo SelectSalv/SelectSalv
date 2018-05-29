@@ -15,18 +15,30 @@
 			$porcentajePartido1 = $partidosPrincipales[0]["votos"];
 			$numVotos1 = $partidosPrincipales[0]["nVotos"];
 		}
-		if($partidosPrincipales[1]["nomPartido"] == "Voto Nulo" || $partidosPrincipales[0]["nomPartido"] == "Voto Nulo")
+		if(isset($partidosPrincipales[1]))
 		{
-			$nomPartido2 = $partidosPrincipales[2]["nomPartido"];
-			$rutaPartido2 =  $partidosPrincipales[2]["rutaBandera"];
-			$porcentajePartido2 = $partidosPrincipales[2]["votos"];
-			$numVotos2 = $partidosPrincipales[2]["nVotos"];
-		} else
-		{
-			$nomPartido2 = $partidosPrincipales[1]["nomPartido"];
-			$rutaPartido2 =  $partidosPrincipales[1]["rutaBandera"];
-			$porcentajePartido2 = $partidosPrincipales[1]["votos"];
-			$numVotos2 = $partidosPrincipales[1]["nVotos"];
+			if($partidosPrincipales[1]["nomPartido"] == "Voto Nulo" || $partidosPrincipales[0]["nomPartido"] == "Voto Nulo")
+			{
+				if(!isset($partidosPrincipales[2]))
+				{
+					$nomPartido2 = 'Partido 2';
+					$rutaPartido2 =  'res/img/partidos/gray.jpg';
+					$porcentajePartido2 = '';
+					$numVotos2 = '';
+				} else
+				{
+					$nomPartido2 = $partidosPrincipales[2]["nomPartido"];
+					$rutaPartido2 =  $partidosPrincipales[2]["rutaBandera"];
+					$porcentajePartido2 = $partidosPrincipales[2]["votos"];
+					$numVotos2 = $partidosPrincipales[2]["nVotos"];
+				}
+			} else
+			{
+				$nomPartido2 = $partidosPrincipales[1]["nomPartido"];
+				$rutaPartido2 =  $partidosPrincipales[1]["rutaBandera"];
+				$porcentajePartido2 = $partidosPrincipales[1]["votos"];
+				$numVotos2 = $partidosPrincipales[1]["nVotos"];
+			}
 		}
 	}
 
