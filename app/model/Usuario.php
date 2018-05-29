@@ -367,7 +367,12 @@ class Usuario extends ModeloBase {
 
 		while($fila = $resultado->fetch_assoc())
 		{
-			$datosPartido[] = array('nomPartido' => $fila['nomPartido'], 'rutaBandera' => $fila["rutaBandera"], 'votos' => $fila['numVotos']);
+
+			$porcentaje = (100 * $fila["numVotos"]) / $totalVotos;
+			$porcentaje = number_format($porcentaje, 1, '.', ',');
+			$porcentaje = $porcentaje."%";
+
+			$datosPartido[] = array('nomPartido' => $fila['nomPartido'], 'rutaBandera' => $fila["rutaBandera"], 'votos' => $porcentaje, 'nVotos' => $fila["numVotos"]);
 		}
 		
 
