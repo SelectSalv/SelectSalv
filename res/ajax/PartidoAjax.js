@@ -179,6 +179,7 @@ $(document).on("click", "#btnPartidoEditar", function(){
             keyboard: false
         });
 
+         $('#eliminado').html('');   
         var idPartido = $(this).attr("id");
 
         $(document).on("click", "#btnEliminar", function() {

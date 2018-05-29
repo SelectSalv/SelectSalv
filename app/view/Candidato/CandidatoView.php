@@ -31,21 +31,16 @@
           <div class="form-column col-md-6">
             <div class="form-group bmd-form-group is-filled">
               <label for="departamento" class="bmd-label-floating">Partido Político</label>
-              <select type="text" class="form-control" name="partido" id="departamento">
-                <option value="-">Seleccione uno...</option>
-                <option value="1">Partido 1</option>
-                <option value="2">Partido 2</option>
-                <option value="4">FMLN</option>      
+              <select type="text" class="form-control partido" name="partido" id="partido">
+                
               </select>
             </div>
           </div>
           <div class="form-column col-md-6">
             <div class="form-group bmd-form-group is-filled">
               <label for="municipio" class="bmd-label-floating">Tipo de Candidato</label>
-              <select type="text" class="form-control" name="TipoCandidato" id="municipio">
-                <option value="-">Seleccione uno...</option>
-                <option value="1">Presidente</option>
-                <option value="2">Vicepresidente</option>
+              <select type="text" class="form-control tipo" name="TipoCandidato" id="municipio">
+                
               </select>
             </div>
           </div>
@@ -119,7 +114,7 @@
               <div class="form-row">
                 <div class="form-column col-md-12">
                   <div class="form-group bmd-form-group">
-                    <input type="hidden" name="idCandidato">
+                    <input type="hidden" name="idCandidato" id="idCandidato">
                     <label for="dui" id="label-dui" class="bmd-label-floating">DUI</label>
                     <input type="text" class="form-control dui  requerido" name="dui" id="duiModificar" autofocus="autofocus">
                     <span id="ayudaDui" class="bmd-help">El guión será agregado automáticamente</span>
@@ -131,22 +126,16 @@
           <div class="form-column col-md-6">
             <div class="form-group bmd-form-group is-filled">
               <label for="departamento" class="bmd-label-floating">Partido Político</label>
-              <select type="text" class="form-control" name="partido" id="partido">
-                <option value="-">Seleccione uno...</option>
-                <option value="1">Partido 1</option>
-                <option value="2">Partido 2</option>
-                <option value="3">Partido 3</option>  
-                <option value="4">Partido 4</option>     
+              <select type="text" class="form-control partido" name="partido" id="partido">
+                
               </select>
             </div>
           </div>
           <div class="form-column col-md-6">
             <div class="form-group bmd-form-group is-filled">
               <label for="municipio" class="bmd-label-floating">Tipo de Candidato</label>
-              <select type="text" class="form-control" name="TipoCandidato" id="TipoCandidato">
-                <option value="-">Seleccione uno...</option>
-                <option value="1">Presidente</option>
-                <option value="2">Vicepresidente</option>
+              <select type="text" class="form-control tipo" name="TipoCandidato" id="TipoCandidato">
+                
               </select>
             </div>
           </div>
@@ -202,6 +191,27 @@
         </div>
       </div>
     </div>
+
+<!--CONFIRMACION DE ELIMINADO-->
+ <div id="contenedor-modal">
+    <div class="modal fade" id="modalConfirmacionEliminado" tabindex="-1" role="dialog" aria-labelledby="modalConfirmacionEliminado" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header" id="modal-header-eliminar">
+            <h5 class="modal-title" id="modal-title-eliminar">Confirmacion</h5>
+          </div>    
+          <div id="eliminado" class="modal-body">
+            
+          </div>
+          <div class="modal-footer" id="modal-footer-eliminar">
+           
+            <button type="button" id="btnEliminar" data-dismiss="modal" class="btn btn-danger material-ripple ">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   <!-- modal Detalles -->
   <div id="contenedor-modal">
     <div class="modal fade" id="modalDetalles" tabindex="-1" role="dialog" aria-labelledby="modalDetallesCandidato" aria-hidden="true">

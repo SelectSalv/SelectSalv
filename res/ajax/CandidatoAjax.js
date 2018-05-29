@@ -1,4 +1,48 @@
 $(document).ready(function() {
+
+    //METODO PARA LLENAR SELECT DESDE BASE DE DATOS
+    $.ajax({
+        url: '?1=Candidato&2=getAllPartido',
+        type: 'POST',
+        dataType: 'json',
+
+        success:function(data)
+        {
+         
+         console.log(JSON.stringify(data));
+            
+         $.each(data,function(key, value) {
+            $('.partido').append('<option value="'+key+'">'+value+'</option>');
+      }); 
+
+     
+        }
+    
+    });
+
+
+    //LLENANDO LOS SELECT DE TIPO CANDIDATO
+    $.ajax({
+        url: '?1=Candidato&2=getAllTipo',
+        type: 'POST',
+        dataType: 'json',
+
+        success:function(data)
+        {
+         
+         console.log(JSON.stringify(data));
+            
+         $.each(data,function(key, value) {
+            $('.tipo').append('<option value="'+key+'">'+value+'</option>');
+      }); 
+
+     
+        }
+    
+    });
+    
+
+
     // Método para configurar DataTable de Candidato
     if($('#tableCandidato').length) {
         
@@ -235,20 +279,27 @@ $(document).ready(function() {
             keyboard: false
         });
 
-        var idCandidato = $(this).attr("idCandidato");
+        $('#eliminado').html('');
+        var idCandidato = $(this).attr("id");
 
         $(document).on("click", "#btnEliminar", function() {
             $.ajax({
-                type: 'POST',
-                data: { idCandidato: idCandidato },
+                type:'POST',
+                data:{idCandidato:idCandidato},
                 url: '?1=Candidato&2=eliminarCandidato',
                 success: function(data) {
-                    switch (data) {
-                        case 'eliminado':
-                            tabla.ajax.reload();
 
-                            break;
-                    }
+                             $('#eliminado').append('<p>"'+data+'"</p>');
+                   
+                        $('#modalConfirmacionEliminado').modal({
+                        backdrop:"static",
+                        keyboard:false
+                    });
+
+                     tabla.ajax.reload();
+
+                   
+                    
                 }
             });
         });
@@ -388,12 +439,22 @@ $("#modalDatos").modal({
                 $('#viewFoto').append('<center><img src="'+data.rutaCandidato+'" height="120"></center>');
 
             }
+
         });
+
+
+        //LLENANDO SELECT
+
 
         $("#modalFrmModificar").modal({
             backdrop: "static",
             keyboard: false
         });
+
+
+
+
+        
     });
 
     // Funcion para recibir N° de DUI al votar
