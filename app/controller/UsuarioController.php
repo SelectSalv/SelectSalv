@@ -169,10 +169,16 @@ class UsuarioController extends ControladorBase
 		echo $resultado;
 	}
 
+	public function principales()
+	{
+		$resultado = $this->model->partidosPrincipales();
+
+		var_dump($resultado);
+	}
 	public function buildDashboard()
 	{
-		$graficoPrincipal = $this->model->buildDashboard();
-
+		$graficoPrincipal = $this->model->graficoPrincipal();
+		$partidosPrincipales = $this->model->partidosPrincipales();
 
 		require_once 'app/view/plantillas/header.php';
 		require_once 'app/view/plantillas/headerBarUsuario.php';

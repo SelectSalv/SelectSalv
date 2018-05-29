@@ -435,7 +435,7 @@ function Login() {
                     $('#btnLogin').removeClass('btn-info');
 
                     setTimeout(function() {
-                        location.href = "?1=Usuario&2=render&3=DashboardView&4=headerBarUsuario&5=1";
+                        location.href = "?1=Usuario&2=buildDashboard";
                     }, 1000);
 
                     break;

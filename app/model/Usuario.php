@@ -303,7 +303,7 @@ class Usuario extends ModeloBase {
 	}
 
 	// Funcion para construir Dashboard
-	public function buildDashboard()
+	public function graficoPrincipal()
 	{
 		$_query ="select count(idPartido) as numPartidos from partido";
 
@@ -325,7 +325,7 @@ class Usuario extends ModeloBase {
 
 			$fila = $resultado->fetch_assoc();
 
-			$datosPartido[]=array('nomPartido' => $fila['nomPartido'], 'votos' => $fila['numVotos']);
+			$datosPartido[] = array('nomPartido' => $fila['nomPartido'], 'votos' => $fila['numVotos']);
 		}
 
 		$datosGoogleChart = "";
@@ -341,5 +341,36 @@ class Usuario extends ModeloBase {
 		return $datosGoogleChart;
 
 
+	}
+
+	public function partidosPrincipales()
+	{
+
+		$_query = "select count(idDetalleVoto) as totalVotos from detalleVoto";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		$resultado = $resultado->fetch_assoc();
+
+		$totalVotos = $resultado["totalVotos"];
+
+		$_query = " select p.nomPartido, p.rutaBandera, count(v.idDetalleVoto) as numVotos
+					from partido p, detalleVoto v
+					where p.idPartido = v.idPartido
+					group by p.nomPartido
+					order by numVotos desc
+					limit 3";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		$datosPartido = array();
+
+		while($fila = $resultado->fetch_assoc())
+		{
+			$datosPartido[] = array('nomPartido' => $fila['nomPartido'], 'rutaBandera' => $fila["rutaBandera"], 'votos' => $fila['numVotos']);
+		}
+		
+
+		return $datosPartido;
 	}
 }

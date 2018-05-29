@@ -2,7 +2,7 @@
 		<ul class="list-menu">
 		<p class="titulo-menu text-purp">Menú</p>
 		<hr>
-			<a class="" href="?1=Usuario&2=dashboard">
+			<a class="" href="?1=Usuario&2=buildDashboard">
 				<li class="list-item align-middle waves-light">
 					<i class="menu-it-icon material-icons text-purp align-middle">home</i>
 					Inicio

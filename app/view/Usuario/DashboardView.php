@@ -1,3 +1,29 @@
+<?php 
+	if($partidosPrincipales[0]["nomPartido"] == "Voto Nulo")
+	{
+		$nomPartido1 = $partidosPrincipales[1]["nomPartido"];
+		$rutaPartido1 =  $partidosPrincipales[1]["rutaBandera"];
+		$porcentajePartido1 = $partidosPrincipales[1]["votos"];
+	} else
+	{
+		$nomPartido1 = $partidosPrincipales[0]["nomPartido"];
+		$rutaPartido1 =  $partidosPrincipales[0]["rutaBandera"];
+		$porcentajePartido1 = $partidosPrincipales[0]["votos"];
+	}
+
+	if($partidosPrincipales[1]["nomPartido"] == "Voto Nulo" || $partidosPrincipales[0]["nomPartido"] == "Voto Nulo")
+	{
+		$nomPartido2 = $partidosPrincipales[2]["nomPartido"];
+		$rutaPartido2 =  $partidosPrincipales[2]["rutaBandera"];
+		$porcentajePartido2 = $partidosPrincipales[2]["votos"];
+	} else
+	{
+		$nomPartido2 = $partidosPrincipales[1]["nomPartido"];
+		$rutaPartido2 =  $partidosPrincipales[1]["rutaBandera"];
+		$porcentajePartido2 = $partidosPrincipales[1]["votos"];
+	}
+?>
+
 
 <script type="text/javascript" src="res/plugins/googleCharts/google-charts.js"></script>
 
@@ -24,7 +50,8 @@
         var options = {
         				'legend': 'left',
                        'width':500,
-                       'height':325
+                       'height':325,
+                       'pieHole': 0.4,
                    	};
 
         // Instantiate and draw our chart, passing in some options.
@@ -82,30 +109,30 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div class="tarjeta tarjeta-xl">
-						<div class="tarjeta-bandera"  style="background-image: url(res/img/partidos/nuevasIdeas.jpg)">
+						<div class="tarjeta-bandera"  style="background-image: url(<?php echo $rutaPartido1 ?>)">
 							
 						</div>
 						<div class="info-porcentaje d-flex flex-column" style="padding: 15px;">
 							<p class="titulo-tarjeta-sec">
-								Nuevas Ideas
+								<?php echo $nomPartido1 ?>
 							</p>
 							<p class="porcentaje-partido p-2">
-								56%
+								<?php echo $porcentajePartido1 ?>
 							</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
 					<div class="tarjeta tarjeta-xl">
-						<div class="tarjeta-bandera" style="background-image: url(res/img/partidos/arena.jpg)">
+						<div class="tarjeta-bandera"  style="background-image: url(<?php echo $rutaPartido2 ?>)">
 							
 						</div>
 						<div class="info-porcentaje d-flex flex-column" style="padding: 15px;">
 							<p class="titulo-tarjeta-sec">
-								Arena
+								<?php echo $nomPartido2 ?>
 							</p>
-							<p class="porcentaje-partido">
-								38%
+							<p class="porcentaje-partido p-2">
+								<?php echo $porcentajePartido2 ?>
 							</p>
 						</div>
 					</div>
