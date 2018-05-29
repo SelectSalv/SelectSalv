@@ -1,5 +1,5 @@
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="res/plugins/googleCharts/google-charts.js"></script>
 
    <script type="text/javascript">
 
@@ -19,11 +19,9 @@
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Slices');
         data.addRows([
-          ['Mushrooms', 3],
-          ['Onions', 1],
-          ['Olives', 1],
-          ['Zucchini', 1],
-          ['Pepperoni', 2]
+          [<?php echo "'Nuevas Ideas'" ?>, 25],
+          [<?php echo "'Arena'" ?>, 17],
+          [<?php echo "'Fmln'" ?>, 9]
         ]);
 
         // Set chart options
@@ -65,23 +63,28 @@
 				Partidos Principales
 			</p>
 
-
 			<div class="row">
 				<div class="col-md-6 col-sm-12 col-xs-12">
-					<div class="tarjeta tarjeta-xl" style="background-image: url(res/img/partidos/nuevasIdeas.jpg)">
-						<div class="humo" style="padding: 15px;">
+					<div class="tarjeta tarjeta-xl">
+						<div class="tarjeta-bandera"  style="background-image: url(res/img/partidos/nuevasIdeas.jpg)">
+							
+						</div>
+						<div class="info-porcentaje d-flex flex-column" style="padding: 15px;">
 							<p class="titulo-tarjeta-sec">
 								Nuevas Ideas
 							</p>
-							<p class="porcentaje-partido">
+							<p class="porcentaje-partido p-2">
 								56%
 							</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
-					<div class="tarjeta tarjeta-xl" style="background-image: url(res/img/partidos/arena.jpg)">
-						<div class="humo" style="padding: 15px;">
+					<div class="tarjeta tarjeta-xl">
+						<div class="tarjeta-bandera" style="background-image: url(res/img/partidos/33103054_1908433292549972_2553274498883256320_n.jpg)">
+							
+						</div>
+						<div class="info-porcentaje d-flex flex-column" style="padding: 15px;">
 							<p class="titulo-tarjeta-sec">
 								Arena
 							</p>
