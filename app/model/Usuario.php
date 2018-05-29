@@ -301,4 +301,45 @@ class Usuario extends ModeloBase {
 
 		return $respuesta;
 	}
+
+	// Funcion para construir Dashboard
+	public function buildDashboard()
+	{
+		$_query ="select count(idPartido) as numPartidos from partido";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		$resultado = $resultado->fetch_assoc();
+
+		$numPartidos = $resultado["numPartidos"];
+
+		$datosPartido = array();
+
+		for ($i = 1; $i < ($numPartidos + 1); $i++) {
+			
+			$_query = "select nomPartido, count(idDetalleVoto) as numVotos
+						from v_Voto 
+						where idPartido = ".$i;
+
+			$resultado = $this->con->conectar()->query($_query);
+
+			$fila = $resultado->fetch_assoc();
+
+			$datosPartido[]=array('nomPartido' => $fila['nomPartido'], 'votos' => $fila['numVotos']);
+		}
+
+		$datosGoogleChart = "";
+
+		for ($i = 0; $i < count($datosPartido); $i++) {
+			
+			$datosGoogleChart .= "['".$datosPartido[$i]["nomPartido"]."', ".$datosPartido[$i]["votos"]."],";
+
+		}
+
+		$datosGoogleChart = substr($datosGoogleChart,0, strlen($datosGoogleChart) - 1);
+
+		return $datosGoogleChart;
+
+
+	}
 }

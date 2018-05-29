@@ -18,15 +18,11 @@
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Slices');
-        data.addRows([
-          [<?php echo "'Nuevas Ideas'" ?>, 25],
-          [<?php echo "'FMLN'" ?>, 17],
-          [<?php echo "'Arena'" ?>, 9]
-        ]);
+        data.addRows([<?php echo $graficoPrincipal ?>]);
 
         // Set chart options
         var options = {
-        				'legend': 'bottom',
+        				'legend': 'left',
                        'width':500,
                        'height':325
                    	};
