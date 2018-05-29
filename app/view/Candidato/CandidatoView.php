@@ -39,7 +39,7 @@
           <div class="form-column col-md-6">
             <div class="form-group bmd-form-group is-filled">
               <label for="municipio" class="bmd-label-floating">Tipo de Candidato</label>
-              <select type="text" class="form-control tipo" name="TipoCandidato" id="municipio">
+              <select type="text" class="form-control tipo" name="TipoCandidato" id="TipoCandidato">
                 
               </select>
             </div>
@@ -168,6 +168,28 @@
           <div class="modal-footer" id="modal-footer-modificar">
             <button type="button" id="btnCancelarModificar" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
             <button type="button" id="btnFrmModificar" class="btn btn-info material-ripple">Guardar Cambios</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+<!-- CONFIRMACION DE ACTUALIZADO-->
+
+ <div id="contenedor-modal">
+    <div class="modal fade" id="modalConfirmacionAgregado" tabindex="-1" role="dialog" aria-labelledby="modalConfirmacionAgregado" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header" id="modal-header-agregar">
+            <h5 class="modal-title" id="modal-title-agregar">Confirmacion</h5>
+          </div>    
+          <div id="agregado" class="modal-body">
+            
+          </div>
+          <div class="modal-footer" id="modal-footer-eliminar">
+           
+            <button type="button" id="btnModificar" data-dismiss="modal" class="btn btn-danger material-ripple ">Aceptar</button>
           </div>
         </div>
       </div>

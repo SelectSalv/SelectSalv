@@ -22,7 +22,7 @@
             <div class="form-column col-md-12">
                 <div class="form-group bmd-form-group">
                     <label for="nomPartido" class="bmd-label-floating">Nombre del Partido</label>
-                    <input type="text" class="form-control" name="nomPartido" id="nomPartido">
+                    <input type="text" class="form-control requeridoRegistrar" name="nomPartido" id="nomPartido">
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="form-group">
               <div class="custom-file">
                 <input type="file" class="custom-file-input" id="customFileLang" lang="es" name="bandera">
-                <label class="custom-file-label" for="customFileLang">Seleccionar Foto</label>
+                <label class="custom-file-label requeridoRegistrar" for="customFileLang">Seleccionar Foto</label>
               </div>
             </div>
           </div>

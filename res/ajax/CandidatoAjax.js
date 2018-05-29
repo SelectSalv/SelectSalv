@@ -352,6 +352,8 @@ $("#modalDatos").modal({
     $('#btnDatos').click(function() {
         var datos= new FormData($("#frmCandidato")[0])
 
+
+$('#agregado').html('');
         $.ajax({
             type: 'POST',
             data:datos,
@@ -359,40 +361,17 @@ $("#modalDatos").modal({
             processData: false,
             url: '?1=Candidato&2=registrarCandidato',
             success: function(r) {
-                switch (r) {
-                    case 'registrado':
-                        $('#modal-title-datos').html(``);
-                        $('#modal-body-datos').html(`Candidato Registrada Exitosamente`);
-                        $('#btnDatos').hide();
-                        $('#btnCancelarDatos').html('Aceptar');
-                        $('#btnCancelarDatos').addClass('btn-success');
-                        $('#btnCancelarDatos').click(function() {
-                            $('#btnCancelarFrm').click();
-                            tabla.ajax.reload();
-                            $('#modalFrmCandidato').modal('hide');
-                        });
-                        break;
+              
+                     $('#agregado').append('<p>"'+r+'"</p>');
+                   
+                        $('#modalConfirmacionAgregado').modal({
+                        backdrop:"static",
+                        keyboard:false
+                    });
 
-                    case 'error al registrar':
-                        $('#modal-title-datos').html(``);
-                        $('#modal-body-datos').html(`Ocurrió un error al registrar`);
-                        $('#btnDatos').hide();
-                        $('#btnCancelar').html('Aceptar');
-                        $('#btnCancelar').addClass('btn-danger');
-                        break;
-
-                    case 'dui registrado':
-                        $('#modal-title-datos').html(``);
-                        $('#modal-body-sec').html(`Ya existe una Candidato registrada con este N° de DUI`);
-                        $('#btnDatos').hide();
-                        $('#btnCancelarDatos').html('Aceptar');
-                        $('#btnCancelarDatos').addClass('btn-danger');
-                        break;
-
-                    default:
-                        alert(r);
-                        break;
-                }
+                    $('#modalDatos').modal('hide');
+                    
+                
             }
         });
     });
@@ -457,53 +436,8 @@ $("#modalDatos").modal({
         
     });
 
-    // Funcion para recibir N° de DUI al votar
-    $('#btnDUI').click(function() {
-        var val = validar('.requeridoDui');
+    
 
-        if(val == 0)
-        {
-            var duiVotar = $('#duiVotar').val();
-
-            $.ajax({
-                type: 'POST',
-                data: 'duiVotar=' + duiVotar,
-                url: '?1=Candidato&2=ingresarDui',
-                success: function(r)
-                {
-                    switch(r)
-                    {
-                        case 'ok': 
-                            location.href = "?1=Candidato&2=boletaView";
-                            break;
-
-                        case 'no registrado':
-                                $('#mensajeDui').html('DUI no registrado');
-                                $('#ayudaDui').html('');
-                                $('#duiVotar').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
-                                $('#label-dui').css("color", "rgba(244, 67, 54, 1)");
-                                $('#duiVotar').addClass('is-invalid');
-                            break;
-                        default:
-                            alert(r);
-                            break;
-                    }
-                }
-            });
-        }
-        else
-        {
-            $('#mensajeDui').html('Ingrese un N° de DUI');
-            $('#ayudaDui').html('');
-            $('#duiVotar').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
-            $('#label-dui').css("color", "rgba(244, 67, 54, 1)");
-            $('#duiVotar').addClass('is-invalid');
-        }
-    }); 
-
-});
-
-// Función para vaciar campos de formulario de Registro
 
 // Función para validar campos requeridos
 function validar(parametro) {

@@ -380,6 +380,21 @@ end
 $$
 
 
+#procedimiento para buscar registro candidato
+delimiter $$
+create procedure p_buscarCandidato(
+	in ndui int
+   
+    
+)
+begin
+	declare id int;
+    set id= (select idPersona from Persona where dui = ndui);
+    select idCandidato from candidato where idPersona=id and estado=1;
+end
+$$
+
+
 # Procedimiento almacenado para Modificar Candidatos
 /*delimiter $$
 create procedure p_EditarCandidato(
