@@ -436,8 +436,12 @@ $('#agregado').html('');
         
     });
 
-    
 
+
+
+});
+
+// Función para vaciar campos de formulario de Registro
 
 // Función para validar campos requeridos
 function validar(parametro) {
