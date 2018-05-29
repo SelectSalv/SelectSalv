@@ -38,15 +38,11 @@
             </div>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-column col-md-12">
-            <div class="form-group bmd-form-group">
-              <button type="button" id="btnCancelarFrm" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
-              <button type="button" id="btnPartido" name="btnPartido" class="waves-effect waves-light btn btn-raised btn-info">Registrar</button>
-            </div>
-          </div>
-        </div>
       </form>
+    </div>
+    <div class="modal-footer">
+              <button type="button" id="btnCancelarFrm" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
+              <button type="button" id="btnPartido" name="btnPartido" class="waves-effect waves-light btn btn-success">Registrar</button>
     </div>
   </div>
 </div>
@@ -97,16 +93,11 @@
             </div>
           </div>
         </div>
-        <br>
-        <div class="form-row">
-          <div class="form-column col-md-12">
-            <div class="form-group bmd-form-group">
-              <button type="button" id="btnCancelarFrm" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
-              <button type="button" id="btnPartidoEditar" name="btnPartidoEditar" class="waves-effect waves-light btn btn-raised btn-info">Editar</button>
-            </div>
-          </div>
-        </div>
       </form>
+    </div>
+    <div class="modal-footer" id="modal-footer-frm">
+              <button type="button" id="btnCancelarFrm" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
+              <button type="button" id="btnPartidoEditar" name="btnPartidoEditar" class="waves-effect waves-light btn btn-info">Guardar Cambios</button>
     </div>
   </div>
 </div>
@@ -150,19 +141,6 @@
         </div>
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <div class="contenedor">
