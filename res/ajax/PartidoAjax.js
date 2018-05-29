@@ -91,7 +91,7 @@ $("#btnRegistrarPartido").click(function(){
 $("#btnPartido").click(function(){
 	
 	var data= new FormData($("#frmPartido")[0])
-
+var val = validar('.requeridoRegistrar');
 	var url="?1=Partido&2=registrarPartido";
 	$.ajax({
 		url: url,
@@ -200,6 +200,18 @@ $(document).on("click", "#btnPartidoEditar", function(){
         });
     });
   
+// Función para validar campos requeridos
+function validar(parametro) {
+    var num = 0;
+    $(parametro).each(function() {
+        var valor = $(this).val();
 
+        if ((valor == "") || (valor == "-")) {
+            num++;
+        }
+
+    });
+    return num;
+}
 
 });

@@ -101,10 +101,13 @@ class CandidatoController extends ControladorBase
 				 move_uploaded_file($foto["tmp_name"], $destino);
 				 echo "El Candidato con numero de DUI ".$idPersona." fue registrado Correctamente";
 				}
-				else
+				else if($info=="dui")
 				{
 
-					echo "Ocurrió un error al guardar el candidato";
+					echo "AL PARECER YA SE REGISTRÓ UN CANDIDATO CON ESTE NUMERO DE DUI";
+				}
+				else if ($info=="tipo") {
+					echo "YA SE ENCUENTRA ALGUIEN REGISTRADO COMO CANDIDATO CON ESTE PARTIDO Y/O TIPO ";
 				}
 
 			}

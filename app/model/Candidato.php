@@ -78,13 +78,37 @@ public function getCandidatoId($id)
 	public function regCandidato($estado, $destino)
 	{
 
+
+		//query para obtener el numero de candidatos registrado con el dui que se intenta ingresar
+		$query_1="call p_buscarCandidato('".$this->idPersona."')";
+
+		$numCandidato=$this->con->conectar()->query($query_1);
+		//fin de query
+
+		//query para obtener el numero de candidados registrado con el mismo ártiso y el mismo tipo de candidato
+		$query_2="SELECT idCandidato FROM candidato WHERE idPartido=".$this->idPartido." AND idTipoCandidato=".$this->idTipoCandidato." AND estado=1";
+		$validacionPartido=$this->con->conectar()->query($query_2);
+		//fin de la query
+
+
+		//query para registrar candidato
 		$sql="call p_RegCandidato(".$this->idPartido.", ".$this->idTipoCandidato.", '".$this->idPersona."','".$destino."',".$estado.")";
 
-		
-		
 
 
-		$info=$this->con->conectar()->query($sql);
+
+		if($numCandidato->num_rows>0)
+		{
+			$respuesta="dui";
+		}
+		else{
+			if($validacionPartido->num_rows>0)
+			{
+				$respuesta="tipo";
+			}
+			else{
+
+				$info=$this->con->conectar()->query($sql);
 
 		if($info)
 		{
@@ -93,6 +117,14 @@ public function getCandidatoId($id)
 		else
 		{
 			$respuesta="error al registrar";
+
+		}
+
+
+			}
+
+		
+		
 
 		}
 		
