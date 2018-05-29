@@ -118,26 +118,58 @@ class CandidatoController extends ControladorBase
 	// Método para editar datos de Candidato
 	public function editarCandidato()
 	{
-		$datos = $_POST["datos"];
+		$idCandidato=$_POST['idCandidato'];
+		$idPersona=$_POST['dui'];
+		$idPartido=$_POST['partido'];
+		$idTipoCandidato=$_POST['TipoCandidato'];
+		$foto=$_FILES['candidato'];
 
-		$datos = json_decode($datos);
+		
+		
+		$nomFoto=$foto['name'];
 
-		$this->model->setDui($datos[0]->value);
-		$this->model->setNomCandidato($datos[1]->value);
-		$this->model->setApeCandidato($datos[2]->value);
-		$this->model->setGenero($datos[3]->value);
-		$this->model->setEstadoCivil($datos[4]->value);
-		$this->model->setFechaNac($datos[5]->value);
-		$this->model->setFechaVenc($datos[6]->value);
-		$this->model->setProfesion($datos[7]->value);
-		$this->model->setIdMunicipio($datos[8]->value);
-		$this->model->setDireccion($datos[9]->value);
 
-		$id = $datos[10]->value;
+            if($foto['name']==""){
 
-		$resultado = $this->model->editarCandidato($id);
+			$destino=null;
+			 $this->model->setIdCandidato($idCandidato);
+			 $this->model->setIdPersona($idPersona);
+			 $this->model->setIdPartido($idPartido);
+			 $this->model->setIdTipoCandidato($idTipoCandidato);
 
-		echo $resultado;
+			$resp= $this->model->modCandidato($destino);
+
+			
+		}
+		else if(!empty($foto))
+		{
+			$destino="res/img/candidatos/".$nomFoto;
+			    $this->model->setIdCandidato($idCandidato);
+			    $this->model->setIdPersona($idPersona);
+				$this->model->setIdPartido($idPartido);
+				$this->model->setIdTipoCandidato($idTipoCandidato);
+
+			$resp=$this->model->modCandidato($destino);
+			
+			
+			if($resp=="Excelente")
+			{
+				move_uploaded_file($foto['tmp_name'], $destino);
+
+				echo "Candidato Modificado Correctamente";
+			}
+			else if($resp=="error")
+			{
+				echo "Error al modificar";
+			}
+
+			
+
+
+		}
+			
+
+
 	}
 
 	// Método para eliminar Candidato
@@ -158,6 +190,31 @@ class CandidatoController extends ControladorBase
 		$info=$this->model->getCandidatos();
 
 		echo $info;
+	}
+
+	//FUNCION PARA OBTENER LOS DATOS DEL CANDIDATO
+	public function getInformation()
+	{
+
+			$datos=$_POST['idCandidato'];
+			$data=json_encode($datos);
+
+			$resp=$this->model->getInformation($data);
+		
+			
+			echo $resp;
+
+
+
+
+	}
+
+
+	public function getAllPartido()
+	{
+
+		$datos=$this->model->getAllPartido();
+		
 	}
 
 }

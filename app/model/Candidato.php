@@ -29,7 +29,7 @@ class Candidato extends ModeloBase
     }
     public function setIdCandidato($idCantidato)
     {
-    	$this->idCantidato=$idCantidato;
+    	$this->idCandidato=$idCantidato;
     }
 
     # Métodos GET y SET para idPartido
@@ -104,8 +104,44 @@ public function getCandidatoId($id)
 	}
 
 	# MÉTODO PARA MODIFICAR CANDIDATO
-	public function modCandidato()
+	public function modCandidato($destino)
 	{
+		$_query="SELECT idPersona FROM persona WHERE dui='".$this->idPersona."' ";
+
+		$resp=$this->con->conectar()->query($_query);
+		$id=$resp->fetch_assoc();
+
+
+
+		if($destino==null){
+			$sql="UPDATE candidato SET idPersona='".$id['idPersona']."', idPartido=".$this->idPartido.", idTipoCandidato=".$this->idTipoCandidato." WHERE IdCandidato=".$this->idCandidato."";
+
+			
+
+			
+		}
+		else if($destino!=null)
+		{
+			$sql="UPDATE candidato SET idPersona='".$id['idPersona']."', idPartido=".$this->idPartido.", idTipoCandidato=".$this->idTipoCandidato.", rutaCandidato='".$destino."' WHERE IdCandidato=".$this->idCandidato."";
+			
+		}
+
+		$resp=$this->con->conectar()->query($sql);
+
+		if($resp)
+		{
+
+			$info="Excelente";
+			
+
+		}
+		else
+		{
+			$info="error";
+			
+		}
+
+		return $info;
 
 	}
 
@@ -163,6 +199,36 @@ public function getCandidatoId($id)
 
 
 		
+	}
+
+
+	public function getInformation($idCandidato)
+	{
+
+		$sql="SELECT p.dui,c.idPartido, c.idTipoCandidato, c.rutaCandidato FROM candidato c INNER JOIN persona p ON p.idPersona=c.idPersona WHERE p.idPersona=".$idCandidato;
+
+		$info=$this->con->conectar()->query($sql);
+
+		$data=$info->fetch_assoc();
+
+		
+	
+
+		return json_encode($data);
+
+	}
+
+
+	public function getAllPartido()
+	{
+
+		$sql="SELECT idPartido, nomPartido FROM partido";
+
+		$resp=$this->con->conectar()->query($sql);
+
+		$datos=$resp->fetch_assoc();
+		return $datos;
+
 	}
 
 }

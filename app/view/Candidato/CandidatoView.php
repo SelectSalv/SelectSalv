@@ -119,8 +119,9 @@
               <div class="form-row">
                 <div class="form-column col-md-12">
                   <div class="form-group bmd-form-group">
+                    <input type="hidden" name="idCandidato">
                     <label for="dui" id="label-dui" class="bmd-label-floating">DUI</label>
-                    <input type="text" class="form-control dui  requerido" name="dui" id="duiModificar">
+                    <input type="text" class="form-control dui  requerido" name="dui" id="duiModificar" autofocus="autofocus">
                     <span id="ayudaDui" class="bmd-help">El guión será agregado automáticamente</span>
                     <div id="mensajeDui" class="invalid-feedback">Ya se registró este N° de DUI</div>
                   </div>
@@ -130,25 +131,49 @@
           <div class="form-column col-md-6">
             <div class="form-group bmd-form-group is-filled">
               <label for="departamento" class="bmd-label-floating">Partido Político</label>
-              <select type="text" class="form-control" name="departamento" id="departamento">
+              <select type="text" class="form-control" name="partido" id="partido">
                 <option value="-">Seleccione uno...</option>
-                <option value="Partido 1">Partido 1</option>
-                <option value="Partido 2">Partido 2</option>
-                <option value="Partido 3">Partido 3</option>      
+                <option value="1">Partido 1</option>
+                <option value="2">Partido 2</option>
+                <option value="3">Partido 3</option>  
+                <option value="4">Partido 4</option>     
               </select>
             </div>
           </div>
           <div class="form-column col-md-6">
             <div class="form-group bmd-form-group is-filled">
               <label for="municipio" class="bmd-label-floating">Tipo de Candidato</label>
-              <select type="text" class="form-control" name="municipio" id="municipio">
+              <select type="text" class="form-control" name="TipoCandidato" id="TipoCandidato">
                 <option value="-">Seleccione uno...</option>
-                <option value="Presidente">Presidente</option>
-                <option value="Vicepresidente">Vicepresidente</option>
+                <option value="1">Presidente</option>
+                <option value="2">Vicepresidente</option>
               </select>
             </div>
           </div>
         </div>
+
+          <br>
+        <div class="form-row">
+          <div class="form-column col-md-12">
+            <div class="form-group">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFileLang" lang="es" name="candidato">
+                <label class="custom-file-label" for="customFileLang">Seleccionar Foto</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<br>
+        <div class="form-row">
+                <div class="form-column col-md-12">
+                  <div class="form-group bmd-form-group">
+
+                   <div id="viewFoto"><p>Imagen Actual del Candidato</p></div> 
+                  </div>
+                </div>
+              </div>
+              <br>
           </form>
           </div>
           <div class="modal-footer" id="modal-footer-modificar">
