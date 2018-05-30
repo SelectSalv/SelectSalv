@@ -320,7 +320,7 @@ begin
     update persona set estadoVotacion = 1 where idPersona = persona;
 end
 $$
-
+select * from detallevoto;
 
 # Procedimiento almacenado para registrar Partidos
 delimiter $$
@@ -353,16 +353,18 @@ $$
 # Procedimiento almacenado para eliminar Partido
 delimiter $$
 create procedure p_EliminarPartido(
-	in id int
+	in id int,
+    in usuario int
 )
 begin
 	update partido
     set estado = 0
     where idPartido = id; 
+    call p_RegTransaccion(usuario, 8);
 end
 $$
 
-
+select * from tipoTransaccion
 # Procedimiento Almacenado para registrar Candidatos
 
 delimiter $$
@@ -959,6 +961,7 @@ call p_regPersona('67836689-8', 'Jose', 'Barahona Rais', 1, '1981-06-24', '2019-
 call p_regPersona('67871989-9', 'Juan Carlos', 'Calleja Hakker', 1, '1977-06-24', '2019-05-05', 'Empresario', 'Colonia Escalon', 2, 'San Salvador', 1);
 call p_regPersona('98765432-1', 'Pablo Emilio', 'Escobar Gaviria', 1, '1976-05-05', '2019-05-05', 'Traficante', 'Blvd. Orden de Malta, Santa Elena', 2, 'Santa Tecla', 1);
 call p_regPersona('39645432-6', 'Hugo Roger', 'Martinez Bonilla', 1, '1968-01-02', '2025-05-05', 'Traficante', 'La Escalón', 2, 'ConcepciÃ³n de Oriente', 1);
+call p_regPersona('54323964-3', 'Juan Antonio', 'Perez Regalado', 1, '1973-07-08', '2025-05-05', 'Maestro', 'La Escalón', 2, 'Antiguo CuscatlÃ¡n', 1);
 
 # Candidatos Nuevas Ideas
 insert into candidato values(null, 2, 1, 1,'hola',1);
@@ -970,6 +973,7 @@ insert into candidato values(null, 3, 2, 4,'hola', 1);
 
 # Candidatos FMLN
 insert into candidato values(null, 4, 1, 5,'hola', 1);
+insert into candidato values(null, 4, 2, 6,'hola', 1);
 
 call p_RegUsuario('ftWj0Ja1m9Oa3Q==', 'cd8420c9a4ff19ed893cd97155b9c0c18350d0ad', 'mMun', 0);
 

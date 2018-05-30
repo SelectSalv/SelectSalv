@@ -45,7 +45,6 @@ class PartidoController extends ControladorBase
 
 
 				$this->model->setNombrePartido($nombre);
-				$this->model->setEstado(1);
 				$info =$this->model->registrarPartido($destino);
 
 
@@ -141,7 +140,7 @@ class PartidoController extends ControladorBase
 			$datos=$_POST['idPartido'];
 			$data= json_decode($datos);
 
-			$info=$this->model->eliminarPartido($data, 0);
+			$info=$this->model->eliminarPartido($data);
 			echo $info;
 
 	}

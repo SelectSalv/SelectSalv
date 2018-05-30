@@ -72,6 +72,12 @@
                        'width':500,
                        'height':325,
                        'pieHole': 0.4,
+                        slices: {
+				            0: { color: '#78909C' },
+				            1: { color: '#1AB5F1' },
+				            2: { color: '#5363BD' },
+				            3: { color: '#E84D4A' }
+          }
                    	};
 
         // Instantiate and draw our chart, passing in some options.

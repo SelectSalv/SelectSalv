@@ -136,7 +136,7 @@
           </div>
           <div class="modal-footer" id="modal-footer-eliminar">
            
-            <button type="button" id="btnEliminar" data-dismiss="modal" class="btn btn-danger material-ripple ">Aceptar</button>
+            <button type="button" id="btnEliminarConf" data-dismiss="modal" class="btn btn-danger material-ripple ">Aceptar</button>
           </div>
         </div>
       </div>

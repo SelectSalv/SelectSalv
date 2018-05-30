@@ -44,8 +44,7 @@ class Partido extends ModeloBase
 	public function registrarPartido($url)
 	{
 
-		$sql="INSERT INTO partido values(null,'".$this->nomPartido."', '".$url."', ".$this->estado.")";
-
+		$sql = "call p_RegPartido('".$this->nomPartido."', '".$url."', ".$_SESSION["idUsuario"].")";
 
 		$info = $this->con->conectar()->query($sql);
 
@@ -152,9 +151,11 @@ class Partido extends ModeloBase
 	}
 
 //ELIMINANDO PARTIDO
-	public function eliminarPartido($id, $estado)
+	public function eliminarPartido($id)
 	{
-			$sql="UPDATE partido SET estado=".$estado." WHERE idPartido=".$id."";
+
+
+			$sql = "call p_EliminarPartido(".$id.", ".$_SESSION["idUsuario"].")";
 			$info=$this->con->conectar()->query($sql);
 			if($info)
 			{
