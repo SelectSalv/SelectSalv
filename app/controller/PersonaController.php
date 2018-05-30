@@ -13,6 +13,8 @@ class PersonaController extends ControladorBase
 
 	public function padron()
 	{
+		$municipios= $this->model->listaMunicipios();
+
 		require_once 'app/view/plantillas/header.php';
 		require_once 'app/view/plantillas/headerBarUsuario.php';
 		if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))

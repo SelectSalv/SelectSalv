@@ -14,13 +14,13 @@ call p_regMunicipio('Quezaltepeque',1);
 call p_regMunicipio('Sacacoyo',1);
 call p_regMunicipio('San JosÃ© Villanueva',1);
 call p_regMunicipio('San Juan Opico',1);
-call p_regMunicipio('San MatÃ­-as',1);
+call p_regMunicipio('San MatÃ­as',1);
 call p_regMunicipio('San Pablo Tacachico',1);
 call p_regMunicipio('Tamanique',1);
 call p_regMunicipio('Talnique',1);
 call p_regMunicipio('Teotepeque',1);
 call p_regMunicipio('Tepecoyo',1);
-call p_regMunicipio('Zaragoza',1)
+call p_regMunicipio('Zaragoza',1);
 
     /*SAN SALVADOR*/
 call p_regMunicipio('San Salvador',2);
@@ -41,7 +41,7 @@ call p_regMunicipio('San Martin',2);
 call p_regMunicipio('Santiago Texacuangos',2);
 call p_regMunicipio('Santo Tomas',2);
 call p_regMunicipio('Soyapango',2);
-call p_regMunicipio('Tonacatepeque',2)
+call p_regMunicipio('Tonacatepeque',2);
 
 /*/*SANTA ANA*/
 
@@ -55,7 +55,7 @@ call p_regMunicipio('MetapÃ¡n', 3);
 call p_regMunicipio('San Antonio Pajonal', 3);
 call p_regMunicipio('San SebastiÃ¡n Salitrillo', 3);
 call p_regMunicipio('Santa Ana', 3);
-call p_regMunicipio('Santa Rosa GuachipilÃ­-n', 3);
+call p_regMunicipio('Santa Rosa GuachipilÃ­n', 3);
 call p_regMunicipio('Santiago de la Frontera', 3);
 call p_regMunicipio('Texistepeque', 3);
 
@@ -101,27 +101,27 @@ call p_regMunicipio('Sesori', 5);
 call p_regMunicipio('Uluazapa', 5);
 
 /*USULUTAN*/
-call p_regMunicipio('AlegrÃ­-a', 6);
-call p_regMunicipio('BerlÃ­-n', 6);
+call p_regMunicipio('AlegrÃ­a', 6);
+call p_regMunicipio('BerlÃ­n', 6);
 call p_regMunicipio('California', 6);
 call p_regMunicipio('ConcepciÃ³n Batres', 6);
 call p_regMunicipio('El Triunfo', 6);
-call p_regMunicipio('EreguayquÃ­-n', 6);
+call p_regMunicipio('EreguayquÃ­n', 6);
 call p_regMunicipio('Estanzuelas', 6);
 call p_regMunicipio('Jiquilisco', 6);
 call p_regMunicipio('Jucuapa', 6);
 call p_regMunicipio('JucuarÃ¡n', 6);
-call p_regMunicipio('Mercedes Umaña', 6);
+call p_regMunicipio('Mercedes UmaÃ±a', 6);
 call p_regMunicipio('Nueva Granada', 6);
 call p_regMunicipio('OzatlÃ¡n', 6);
 call p_regMunicipio('Puerto El Triunfo', 6);
-call p_regMunicipio('San AgustÃ­-n', 6);
+call p_regMunicipio('San AgustÃ­n', 6);
 call p_regMunicipio('San Buenaventura', 6);
 call p_regMunicipio('San Dionisio', 6);
 call p_regMunicipio('San Francisco Javier', 6);
 call p_regMunicipio('Santa Elena', 6);
-call p_regMunicipio('Santa MarÃ­-a', 6);
-call p_regMunicipio('Santiago de MarÃ­-a', 6);
+call p_regMunicipio('Santa MarÃ­a', 6);
+call p_regMunicipio('Santiago de MarÃ­a', 6);
  call p_regMunicipio('TecapÃ¡n', 6);
   call p_regMunicipio('UsulutÃ¡n', 6);
 
@@ -137,7 +137,7 @@ call p_regMunicipio('San Francisco MenÃ©ndez', 7);
 call p_regMunicipio('San Lorenzo', 7);
 call p_regMunicipio('San Pedro Puxtla', 7);
 call p_regMunicipio('Tacuba', 7);
-call p_regMunicipio('TurÃ­-n', 7);
+call p_regMunicipio('TurÃ­n', 7);
 
 /*LA PAZ*/
 call p_regMunicipio('Zacatecoluca', 8);
@@ -146,7 +146,7 @@ call p_regMunicipio('El Rosario (La Paz)', 8);
 call p_regMunicipio('JerusalÃ©n', 8);
 call p_regMunicipio('Mercedes La Ceiba', 8);
 call p_regMunicipio('Olocuilta', 8);
-call p_regMunicipio('ParaÃ­-so de Osorio', 8);
+call p_regMunicipio('ParaÃ­so de Osorio', 8);
 call p_regMunicipio('San Antonio Masahuat', 8);
 call p_regMunicipio('San Emigdio', 8);
 call p_regMunicipio('San Francisco Chinameca', 8);
@@ -159,20 +159,20 @@ call p_regMunicipio('San Luis Talpa', 8);
 call p_regMunicipio('San Miguel Tepezontes', 8);
 call p_regMunicipio('San Pedro Nonualco', 8);
 call p_regMunicipio('San Rafael Obrajuelo', 8);
-call p_regMunicipio('Santa MarÃ­-a Ostuma', 8);
+call p_regMunicipio('Santa MarÃ­a Ostuma', 8);
 call p_regMunicipio('Santiago Nonualco', 8);
  call p_regMunicipio('Tapalhuaca', 8);
 
 /*LA UNION*/
 call p_regMunicipio('La UniÃ³n', 9);
 call p_regMunicipio('San Alejo', 9);
-call p_regMunicipio('YucuaiquÃ­-n', 9);
+call p_regMunicipio('YucuaiquÃ­n', 9);
 call p_regMunicipio('Conchagua', 9);
 call p_regMunicipio('IntipucÃ¡', 9);
 call p_regMunicipio('San JosÃ©', 9);
 call p_regMunicipio('El Carmen (La UniÃ³n)', 9);
 call p_regMunicipio('Yayantique', 9);
-call p_regMunicipio('BolÃ­-var', 9);
+call p_regMunicipio('BolÃ­var', 9);
 call p_regMunicipio('Meanguera del Golfo', 9);
 call p_regMunicipio('Santa Rosa de Lima', 9);
 call p_regMunicipio('Pasaquina', 9);
@@ -190,7 +190,7 @@ call p_regMunicipio('El Carmen (CuscatlÃ¡n)', 10);
 call p_regMunicipio('El Rosario (CuscatlÃ¡n)', 10);
 call p_regMunicipio('Monte San Juan', 10);
 call p_regMunicipio('Oratorio de ConcepciÃ³n', 10);
-call p_regMunicipio('San BartolomÃ© PerulapÃ­-a', 10);
+call p_regMunicipio('San BartolomÃ© PerulapÃ­a', 10);
 call p_regMunicipio('San CristÃ³bal', 10);
 call p_regMunicipio('San JosÃ© Guayabal', 10);
 call p_regMunicipio('San Pedro PerulapÃ¡n', 10);
@@ -210,9 +210,9 @@ call p_regMunicipio('Chalatenango', 11);
 call p_regMunicipio('CitalÃ¡', 11);
 call p_regMunicipio('Comapala', 11);
 call p_regMunicipio('ConcepciÃ³n Quezaltepeque', 11);
-call p_regMunicipio('Dulce Nombre de MarÃ­-a', 11);
+call p_regMunicipio('Dulce Nombre de MarÃ­a', 11);
 call p_regMunicipio('El Carrizal', 11);
-call p_regMunicipio('El ParaÃ­-so', 11);
+call p_regMunicipio('El ParaÃ­so', 11);
 call p_regMunicipio('La Laguna', 11);
 call p_regMunicipio('La Palma', 11);
 call p_regMunicipio('La Reina', 11);
@@ -252,7 +252,7 @@ call p_regMunicipio('Jocoro', 12);
 call p_regMunicipio('Lolotiquillo', 12);
 call p_regMunicipio('Meanguera', 12);
 call p_regMunicipio('Osicala', 12);
-call p_regMunicipio('PerquÃ­-n', 12);
+call p_regMunicipio('PerquÃ­n', 12);
 call p_regMunicipio('San Carlos', 12);
 call p_regMunicipio('San Fernando (MorazÃ¡n)', 12);
 call p_regMunicipio('San Francisco Gotera', 12);
@@ -262,7 +262,7 @@ call p_regMunicipio('San SimÃ³n', 12);
   call p_regMunicipio('Sociedad', 12);
    call p_regMunicipio('Torola', 12);
     call p_regMunicipio('Yamabal', 12);
-    call p_regMunicipio('YoloaiquÃ­-n', 12);
+    call p_regMunicipio('YoloaiquÃ­n', 12);
 
 /*SAN VICENTE*/
 call p_regMunicipio('Apastepeque', 13);
@@ -279,13 +279,13 @@ call p_regMunicipio('Tecoluca', 13);
 call p_regMunicipio('TepetitÃ¡n', 13);
 call p_regMunicipio('Verapaz', 13);
 
-/*CABAÑAS*/
+/*CABAÃ±AS*/
 call p_regMunicipio('Cinquera', 14);
 call p_regMunicipio('Dolores', 14);
 call p_regMunicipio('Guacotecti', 14);
 call p_regMunicipio('Ilobasco', 14);
 call p_regMunicipio('Jutiapa', 14);
-call p_regMunicipio('San Isidro (Cabañas)', 14);
+call p_regMunicipio('San Isidro (CabaÃ±as)', 14);
 call p_regMunicipio('Sensuntepeque', 14);
 call p_regMunicipio('Tejutepeque', 14);
 call p_regMunicipio('Victoria', 14);

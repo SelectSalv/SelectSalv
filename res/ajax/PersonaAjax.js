@@ -122,8 +122,6 @@ $(document).ready(function() {
                         break;
                     case 'municipio':
                         nombreCampo = 'Municipio';
-
-                        dato = $("#municipio option:selected").text();;
                         break;
                     case 'direccion':
                         nombreCampo = 'Dirección';

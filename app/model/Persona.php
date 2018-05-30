@@ -315,7 +315,7 @@ class Persona extends ModeloBase {
 
 		if($resultado->num_rows == 0)
 		{
-			$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', ".$this->genero.", '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', ".$this->estadoCivil.", ".$this->idMunicipio.", ".$_SESSION["idUsuario"].")";
+			$_query = "call p_regPersona('".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', ".$this->genero.", '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', ".$this->estadoCivil.", '".$this->idMunicipio."', ".$_SESSION["idUsuario"].")";
 				$resultado = $this->con->conectar()->query($_query);
 
 				if($resultado)
@@ -393,7 +393,7 @@ class Persona extends ModeloBase {
 
 	public function listaMunicipios()
 	{
-		$_query = "select * from municipio limit 4";
+		$_query = "select * from municipio";
 
 		$resultado = $this->con->conectar()->query($_query);
 
@@ -401,7 +401,7 @@ class Persona extends ModeloBase {
 
 		while($fila = $resultado->fetch_assoc())
 		{
-			$datosMunicipio[] = array('value' => $fila["idMunicipio"], 'text' => $fila["nomMunicipio"]);
+			$datosMunicipio[] = array('data' => $fila["idMunicipio"], 'value' => $fila["nomMunicipio"]);
 		}
 
 		return json_encode($datosMunicipio);

@@ -12,7 +12,14 @@
 	<script src="res/plugins/datePicker/js/gijgo.js"></script>
 	<script src="res/plugins/datePicker/js/messages/messages.es-es.js"></script>
 	
-
+	<style>
+		.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+	</style>
 	<!-- Ajax Persona -->
 	<script src="res/ajax/PersonaAjax.js"></script>
 	
@@ -38,6 +45,25 @@
     			alert(val);
     		});
     	});
+    </script>
+    <script>
+    	$(document).ready(function() {
+    		var municipios = <?php echo $municipios.";" ?>
+    		var options = {
+					// serviceUrl: "?1=Persona&2=listaMunicipios",
+					lookup: municipios
+				};
+				$('.autoMunicipio').autocomplete({
+					lookup: municipios
+				}); 
+    	});	
+    </script>
+     <script>
+    	$(document).ready(function() {
+    		$('#municipio').on("change", function() {
+    			alert($(this).val());
+    		})
+    	});	
     </script>
 	<!-- modal principal de Registro -->
 	<div id="contenedor-modal">
@@ -128,9 +154,10 @@
 								<div class="form-column col-md-12">
 									<div class="form-group bmd-form-group is-filled">
 										<label for="municipio" class="bmd-label-floating">Municipio</label>
-										<select type="text" class="form-control autoMunicipio requeridoRegistrar"  name="municipio" id="municipio">
+										<input class="form-control autoMunicipio requeridoRegistrar" name="municipio" id="municipio">
+										<!-- <select type="text" class="form-control autoMunicipio requeridoRegistrar" name="municipio" id="municipio">
 											
-										</select>
+										</select> -->
 										<!-- <select type="text" class="form-control requeridoRegistrar" name="municipio" id="municipio">
 											<option value="-" data="">Seleccione uno...</option>
 											<option value="1" data="SanTa Tecla">Santa Tecla</option>
