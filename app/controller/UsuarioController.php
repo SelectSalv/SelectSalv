@@ -191,4 +191,13 @@ class UsuarioController extends ControladorBase
 		require_once 'app/view/plantillas/footer.php';
 		$this->model->graficosDepartamento();
 	}
+
+	public function documento()
+	{
+		
+
+		$datos = $this->model->documento();
+
+		require_once 'app/view/Usuario/Documento.php';
+	}
 }
