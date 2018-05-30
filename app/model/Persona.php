@@ -365,7 +365,7 @@ class Persona extends ModeloBase {
 		}
 		else 
 		{
-			$respuesta = "error al modificar el registro";
+			$respuesta = "error al modificar el registro ".$this->con->conectar;
 		}
 
 		return $respuesta;
