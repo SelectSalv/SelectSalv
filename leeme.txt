@@ -1,0 +1,6 @@
+Instalar:
+
+- Situar la carpeta en el directorio del servidor local
+- Abrir el Script 'SelectSalv.sql'
+- Ejecutarlo en su totalidad 
+- Disfrute 

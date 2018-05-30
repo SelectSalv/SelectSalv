@@ -283,7 +283,7 @@ $(document).ready(function() {
     // Método para Registrar Persona
     $('#btnDatos').click(function() {
         var datos = JSON.stringify($('#frmPersona :input').serializeArray());
-        alert(datos);
+
         $.ajax({
             type: 'POST',
             data: {
