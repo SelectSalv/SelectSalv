@@ -22,6 +22,11 @@
     	});
 	});
 </script>
+<script>
+	$(document).ready(function() {
+		$('title').html('SelectSalv');
+	});
+</script>
 
 <!-- Modal Votar -->
 	<div id="contenedor-modal">

@@ -346,6 +346,78 @@ class Usuario extends ModeloBase {
 
 
 	}
+	public function graficosDepartamento()
+	{
+		$_query ="select count(idPartido) as numPartidos from partido";
+
+		$resultado = $this->con->conectar()->query($_query);
+
+		$resultado = $resultado->fetch_assoc();
+
+		$numPartidos = $resultado["numPartidos"];
+
+		for ($j = 1; $j <= 14; $j++) {
+			$datosPartido = array();
+			for ($i = 1; $i < ($numPartidos + 1); $i++) {
+			
+				$_query = "select nomPartido, count(idDetalleVoto) as numVotos
+							from v_Voto 
+							where idPartido =".$i." and idDepartamento = ".$j;
+
+				$resultado = $this->con->conectar()->query($_query);
+
+				$fila = $resultado->fetch_assoc();
+
+				$datosPartido[] = array('nomPartido' => $fila['nomPartido'], 'votos' => $fila['numVotos']);
+			}
+
+			$datosGoogleChart = "";
+
+			for ($i = 0; $i < count($datosPartido); $i++) {
+				
+				$datosGoogleChart .= "['".$datosPartido[$i]["nomPartido"]."', ".$datosPartido[$i]["votos"]."],";
+
+			}
+
+			$datosGoogleChart = substr($datosGoogleChart,0, strlen($datosGoogleChart) - 1);
+
+			echo "<script>
+
+      
+				      google.charts.load('current', {'packages':['corechart']});
+
+				      
+				      google.charts.setOnLoadCallback(drawChart);
+
+				      function drawChart() {
+
+				        
+				        var data = new google.visualization.DataTable();
+				        data.addColumn('string', 'Partido');
+				        data.addColumn('number', 'Voto');
+				        data.addRows([".$datosGoogleChart."]);
+
+				        
+				        var options = {
+				        				'legend': 'left',
+				                       'width':325,
+				                       'height':275,
+				                       'pieHole': 0.4,
+				                        slices: {
+								            0: { color: '#78909C' },
+								            1: { color: '#1AB5F1' },
+								            2: { color: '#5363BD' },
+								            3: { color: '#E84D4A' }
+								          }
+								                   	};
+
+								        
+								        var chart = new google.visualization.PieChart(document.getElementById('".$j."-graf'));
+								        chart.draw(data, options);
+								      }
+								    </script>";
+		}
+	}
 
 	public function partidosPrincipales()
 	{

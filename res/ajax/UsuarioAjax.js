@@ -156,6 +156,7 @@ $(document).ready(function() {
                             closeOnConfirm: true,
                             closeOnCancel: true
                         });
+                        $('#modalRegistrar').modal('hide');
                         tablaUsuarios.ajax.reload();
                         vaciarRegistrar();
                         setTimeout(function() {
@@ -166,19 +167,14 @@ $(document).ready(function() {
                 }
             });
         } else {
-            $('#modal-body-datos').html(`Complete todos los campos`);
-            $('#btnDatos').hide();
-            $('#btnCancelarDatos').html('Aceptar');
-            $('#btnCancelarDatos').addClass('btn-danger');
-            $('#btnCancelarDatos').addClass('waves-red')
-            $("#modalDatos").modal({
-                backdrop: "static",
-                keyboard: false
-            });;
-            $('#modalRegistrar').modal('hide');
-            $('#btnCancelarDatos').click(function() {
-                $('#modalRegistrar').modal('show');
-            });
+            swal({
+                            title: "Error",
+                            text: "Complete todos los Campos",
+                            timer: 1500,
+                            type: 'warning',
+                            closeOnConfirm: true,
+                            closeOnCancel: true
+                        });
         }
 
     });
@@ -343,7 +339,7 @@ $(document).ready(function() {
                         $('#passAntiguaEditar').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
                         $('#labelContra').css("color", "rgba(244, 67, 54, 1)");
                         $('#passAntiguaEditar').addClass('is-invalid');
-
+                        $('#btnEditar').attr('disabled', 'disabled');
                         break;
                     case 'Contra Correcta':
 
@@ -351,6 +347,7 @@ $(document).ready(function() {
                         $('#passAntiguaEditar').css("background-image", "linear-gradient(to top, rgba(33, 150, 243, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
                         $('#labelContra').css("color", "rgba(33, 150, 243, 1)");
                         $('#passAntiguaEditar').removeClass('is-invalid');
+                        $('#btnEditar').removeAttr('disabled');
                         break;
                     default:
                         alert(data);
@@ -364,8 +361,11 @@ $(document).ready(function() {
     $('#btnEditar').click(function() {
 
         var datos = JSON.stringify($('#frmEditar :input').serializeArray());
+        var val = validar('.requeridoEditar');
 
-        $.ajax({
+        if(val == 0)
+        {
+            $.ajax({
             type: 'POST',
             data: { datos: datos },
             url: '?1=Usuario&2=editarUsuario',
@@ -381,11 +381,22 @@ $(document).ready(function() {
                             closeOnCancel: true
                         });
                         tablaUsuarios.ajax.reload();
+                        $('#modalEditar').modal('hide');
                         vaciarEditar();
                         setTimeout(function() {
                             $('tr td:last-child').addClass('text-right');
                             // $('tr td:last-child').addClass('text-center');
                         }, 800);
+                        break;
+                    case 'Contra Incorrecta':
+                         swal({
+                            title: "Error",
+                            text: "Complete los Campos",
+                            timer: 1500,
+                            type: 'warning',
+                            closeOnConfirm: true,
+                            closeOnCancel: true
+                        });
                         break;
                     default:
                         alert(data);
@@ -393,6 +404,18 @@ $(document).ready(function() {
                 }
             }
         });
+        }
+        else
+        {
+            swal({
+                            title: "Error",
+                            text: "Complete los Campos",
+                            timer: 1500,
+                            type: 'warning',
+                            closeOnConfirm: true,
+                            closeOnCancel: true
+                        });
+        }
 
     });
 

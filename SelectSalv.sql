@@ -1,8 +1,6 @@
-drop database if exists SelectSalv;
-create database if not exists SelectSalv;
 
-use SelectSalv;
 
+use id6002201_selectsalv;
 create table Usuario(
 	idUsuario int auto_increment unique not null primary key,
     nomUsuario text,
@@ -97,7 +95,7 @@ create table Departamento(
     nomDepartamento varchar(150)
 );
 
-insert into departamento(idDepartamento, nomDepartamento)values(null,'La Libertad'),(null,'San salvador'),(null,'Santa Ana'),(null,'Sonsonate'),(null,'San Miguel'),(null,'Usulutan'),(null,'Ahuachapan'),(null,'La Paz'),(null,'La Union'),(null,'Cuscatlan'),(null,'Chalatenango'),(null,'Morazan'),(null,'San Vicente'),(null,'Cabañas');		
+insert into Departamento(idDepartamento, nomDepartamento)values(null,'La Libertad'),(null,'San salvador'),(null,'Santa Ana'),(null,'Sonsonate'),(null,'San Miguel'),(null,'Usulutan'),(null,'Ahuachapan'),(null,'La Paz'),(null,'La Union'),(null,'Cuscatlan'),(null,'Chalatenango'),(null,'Morazan'),(null,'San Vicente'),(null,'Cabañas');		
 
 create table Municipio(
 	idMunicipio int auto_increment unique not null primary key,
@@ -155,8 +153,8 @@ create table TipoCandidato(
     descTipoCandidato varchar(100)
 );
 
-insert into tipoCandidato values(null, 'pNiW3A==', 'Presidente');
-insert into tipoCandidato values(null, 'qs+Uzg==', 'Vicepresidente');
+insert into TipoCandidato values(null, 'pNiW3A==', 'Presidente');
+insert into TipoCandidato values(null, 'qs+Uzg==', 'Vicepresidente');
 
 create table Candidato(
 	idCandidato int auto_increment unique not null primary key,
@@ -184,7 +182,7 @@ alter table Persona add constraint fk_idMunicipio_Municipio foreign key(idMunici
 alter table Persona add constraint fk_idGenero_Persona foreign key (idGenero) references genero(idGenero);
 alter table Persona add constraint fk_idEstadoCivil_Persona foreign key (idEstadoCivil) references estadoCivil(idEstadoCivil);
 alter table Municipio add constraint fk_idDepartamento_Municipio foreign key (idDepartamento) references Departamento(idDepartamento);
-alter table centroVotacion add constraint fk_idMunicipio_CV foreign key (idMunicipio) references Municipio(idMunicipio);
+alter table CentroVotacion add constraint fk_idMunicipio_CV foreign key (idMunicipio) references Municipio(idMunicipio);
 alter table Jrv add constraint fk_idCentro_Jrv foreign key (idCentro) references CentroVotacion(idCentro);
 alter table DetalleVoto add constraint fk_idPartido_DetalleVoto foreign key (idPartido) references Partido(idPartido);
 alter table DetalleVoto add constraint fk_idPadron_DetalleVoto foreign key (idPadron) references padron(id);
@@ -260,6 +258,9 @@ create view v_getCandidatos as (
     order by c.idCandidato desc
 );
 
+select nomPartido, count(idDetalleVoto) as numVotos 
+from v_Voto 
+where idPartido = 2 and nomDepartamento = 'La Libertad';
 
 select * from v_Voto;
 
@@ -270,9 +271,9 @@ from v_Voto
 where idPartido = 2;
 
 select p.nomPartido
-from partido p, detalleVoto v
-where p.idPartido = p.detalleVoto
-select * from detalleVoto 
+from partido p, detalleVoto v   			
+where p.idPartido = p.detalleVoto;
+select * from detalleVoto; 
 /*
 select p.idPartido, p.nomPartido, p.rutaBandera, p.estado as estadoPartido, 
 

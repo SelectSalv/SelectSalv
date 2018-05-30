@@ -178,7 +178,6 @@ class UsuarioController extends ControladorBase
 	{
 		$graficoPrincipal = $this->model->graficoPrincipal();
 		$partidosPrincipales = $this->model->partidosPrincipales();
-
 		require_once 'app/view/plantillas/header.php';
 		require_once 'app/view/plantillas/headerBarUsuario.php';
 		if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
@@ -190,5 +189,6 @@ class UsuarioController extends ControladorBase
 			}
 		require_once 'app/view/Usuario/DashboardView.php';
 		require_once 'app/view/plantillas/footer.php';
+		$this->model->graficosDepartamento();
 	}
 }

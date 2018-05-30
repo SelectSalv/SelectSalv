@@ -424,7 +424,7 @@ $(document).ready(function() {
                                 $('#duiVotar').addClass('is-invalid');
                             break;
                         case 'ya voto':
-                            $('#mensajeDui').html('La Persona Con este N° de DUI ya votó');
+                            $('#mensajeDui').html('La Persona con este N° de DUI ya votó');
                                 $('#ayudaDui').html('');
                                 $('#duiVotar').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
                                 $('#label-dui').css("color", "rgba(244, 67, 54, 1)");

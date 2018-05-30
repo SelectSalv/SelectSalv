@@ -44,7 +44,7 @@
 		      </div>
 		      <div class="modal-footer" id="modal-footer-registrar">
 		       <button type="button" id="btnCancelarRegistrar" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
-		        <button type="button" id="btnRegistrar" data-dismiss="modal" class="btn btn-success">Registrar</button>
+		        <button type="button" id="btnRegistrar" class="btn btn-success">Registrar</button>
 		      </div>
 		    </div>
 		  </div>
@@ -96,7 +96,7 @@
 		      </div>
 		      <div class="modal-footer" id="modal-footer-editar">
 		       <button type="button" id="btnCancelarEditar" class="btn btn-secondary material-ripple" data-dismiss="modal">Cancelar</button>
-		        <button type="button" id="btnEditar" data-dismiss="modal" class="btn btn-info">Guardar Cambios</button>
+		        <button type="button" id="btnEditar" class="btn btn-info">Guardar Cambios</button>
 		      </div>
 		    </div>
 		  </div>

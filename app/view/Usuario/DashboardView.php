@@ -49,24 +49,21 @@
 
    <script type="text/javascript">
 
-      // Load the Visualization API and the corechart package.
+      
       google.charts.load('current', {'packages':['corechart']});
 
-      // Set a callback to run when the Google Visualization API is loaded.
+      
       google.charts.setOnLoadCallback(drawChart);
 
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
       function drawChart() {
 
-        // Create the data table.
+        
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
+        data.addColumn('string', 'Partido');
+        data.addColumn('number', 'Voto');
         data.addRows([<?php echo $graficoPrincipal ?>]);
 
-        // Set chart options
+        
         var options = {
         				'legend': 'left',
                        'width':500,
@@ -80,7 +77,7 @@
           }
                    	};
 
-        // Instantiate and draw our chart, passing in some options.
+        
         var chart = new google.visualization.PieChart(document.getElementById('graf-global'));
         chart.draw(data, options);
       }
@@ -207,6 +204,7 @@
 						<p class="titulo-tarjeta-sec">
 							Ahuachapán
 						</p>
+						<div class="grafico-dep" id="7-graf"></div>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -214,6 +212,7 @@
 						<p class="titulo-tarjeta-sec">
 							Santa ana
 						</p>
+						<div class="grafico-dep" id="3-graf"></div>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -221,6 +220,7 @@
 						<p class="titulo-tarjeta-sec">
 							Sonsonate
 						</p>
+						<div class="grafico-dep" id="4-graf"></div>
 					</div>
 				</div>
 			</div>
@@ -230,6 +230,7 @@
 						<p class="titulo-tarjeta-sec">
 							Chalatenango
 						</p>
+						<div class="grafico-dep" id="11-graf"></div>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -237,6 +238,7 @@
 						<p class="titulo-tarjeta-sec">
 							La Libertad
 						</p>
+						<div class="grafico-dep" id="1-graf"></div>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -244,6 +246,7 @@
 						<p class="titulo-tarjeta-sec">
 							San Salvador
 						</p>
+						<div class="grafico-dep" id="2-graf"></div>
 					</div>
 				</div>
 			</div>
@@ -253,6 +256,7 @@
 						<p class="titulo-tarjeta-sec">
 							Cuscatlán
 						</p>
+						<div class="grafico-dep" id="10-graf"></div>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -260,6 +264,7 @@
 						<p class="titulo-tarjeta-sec">
 							La Paz
 						</p>
+						<div class="grafico-dep" id="8-graf"></div>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -267,6 +272,7 @@
 						<p class="titulo-tarjeta-sec">
 							Cabañas
 						</p>
+						<div class="grafico-dep" id="14-graf"></div>
 					</div>
 				</div>
 			</div>
@@ -276,6 +282,7 @@
 						<p class="titulo-tarjeta-sec">
 							San Vicente
 						</p>
+						<div class="grafico-dep" id="13-graf"></div>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -283,6 +290,7 @@
 						<p class="titulo-tarjeta-sec">
 							Usulután
 						</p>
+						<div class="grafico-dep" id="6-graf"></div>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -290,6 +298,7 @@
 						<p class="titulo-tarjeta-sec">
 							San Miguel
 						</p>
+						<div class="grafico-dep" id="5-graf"></div>
 					</div>
 				</div>
 			</div>
@@ -299,6 +308,7 @@
 						<p class="titulo-tarjeta-sec">
 							Morazán
 						</p>
+						<div class="grafico-dep" id="12-graf"></div>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -306,6 +316,7 @@
 						<p class="titulo-tarjeta-sec">
 							La Unión
 						</p>
+						<div class="grafico-dep" id="9-graf"></div>
 					</div>
 				</div>
 			</div>

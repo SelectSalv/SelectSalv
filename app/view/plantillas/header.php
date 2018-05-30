@@ -44,7 +44,7 @@
     			{
     				echo " | ".$_SESSION["nomUsuario"];
     			}
-    		}
+    		}            
     	?>
     </title>
 </head>
