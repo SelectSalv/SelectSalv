@@ -364,7 +364,6 @@ begin
 end
 $$
 
-select * from tipoTransaccion
 # Procedimiento Almacenado para registrar Candidatos
 
 delimiter $$
@@ -397,8 +396,14 @@ begin
     select idCandidato from candidato where idPersona=id and estado=1;
 end
 $$
+select * from v_Usuarios;
 
+select v.idDetalleVoto, p.idPersona, p.dui
+from detalleVoto v, persona p, padron pd
+where v.idPadron = pd.id and pd.idPersona = p.idPersona and p.dui = '98765432-1'
 
+select * from v_Voto;
+select * from detalleVoto
 # Procedimiento almacenado para Modificar Candidatos
 /*delimiter $$
 create procedure p_EditarCandidato(
@@ -434,6 +439,37 @@ begin
     call p_RegTransaccion(iduser,4);
 end
 $$
+
+
+delimiter $$
+create procedure p_EditarUsuario(
+	in nid int, 
+    in nom text,
+    in contra text,
+    in erol text,
+    in usuario int
+)
+begin
+	declare ideRol int;
+    set ideRol = (select idRol from Rol where codRol = erol);
+    update usuario
+    set nomUsuario = nom, pass = contra, idRol = ideRol
+    where idUsuario = nid;
+    call p_RegTransaccion(usuario, 6);
+end
+$$
+
+delimiter $$
+create procedure p_EliminarUsuario(
+	in nid int,
+    in usuario int
+)
+begin
+	update Usuario set estado = 0 where idUsuario = nid;
+    call p_RegTransaccion(usuario, 5);
+end
+$$
+
 
 # Procedimiento almacenado para obtener datos de usuario por id
 delimiter $$

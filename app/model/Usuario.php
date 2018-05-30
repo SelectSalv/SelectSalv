@@ -290,7 +290,7 @@ class Usuario extends ModeloBase {
 	// Método para eliminar Usuario
 	public function eliminarUsuario($id)
 	{
-		$_query = "update Usuario set estado = 0 where idUsuario = ".$id;
+		$_query = "call p_EliminarUsuario(".$id.", ".$_SESSION["idUsuario"].")";
 
 		$resultado = $this->con->conectar()->query($_query);
 
