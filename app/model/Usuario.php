@@ -143,7 +143,11 @@ class Usuario extends ModeloBase {
 
 				$eliminar = '<button id=\"'.$fila["idUsuario"].'\"  class=\"btn btn-danger btnEliminar btn-raised bmd-btn-icon\"><i class=\"material-icons\">clear</i></button>';
 			}
-			
+			if($fila["descRol"] == "Desarrollador")
+			{
+				$modificar = "";
+				$eliminar = "";
+			}
 			if($fila["estado"] == 1)
 			{
 				$datos .= ' {

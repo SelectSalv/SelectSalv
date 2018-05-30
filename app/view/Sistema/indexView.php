@@ -46,8 +46,6 @@
           </p>
           <ul class="">
             <li><a class="footer-list" href="?1=Usuario&2=render&3=loginView&4=headerBar">Iniciar Sesión</a></li>
-            <li><a class="footer-list" href="">Preguntas Frecuentes</a></li>
-            <li><a class="footer-list" href="">ola ke ase</a></li>
           </ul>
         </div>
       </div>
