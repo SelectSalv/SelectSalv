@@ -178,15 +178,33 @@ class Persona extends ModeloBase {
 		{
 			if($resultado->num_rows == 1)
 			{
-				$fila = $resultado->fetch_assoc();
 
-				$_SESSION["duiPersona"] = $this->dui;
-				$_SESSION["apePersona"] = $fila["apePersona"];
-				$_SESSION["nomPersona"] = $fila["nomPersona"];
-				$_SESSION["municipioPersona"] = $fila["nomMunicipio"];
-				$_SESSION["departamentoPersona"] = $fila["nomDepartamento"];
+				$_query = "
+							select v.idDetalleVoto, p.idPersona, p.dui
+							from detalleVoto v, persona p, padron pd
+							where v.idPadron = pd.id and pd.idPersona = p.idPersona and p.dui = '".$this->dui."'";
+
+				$resultado = $this->con->conectar()->query($_query);
+
+				if($resultado->num_rows >= 1)
+				{
+					$respuesta = "ya voto";
+				}
+				else
+				{
+					$_query = "call p_obtenerPersona('".$this->dui."')";
+
+					$resultado = $this->con->conectar()->query($_query);
+					$fila = $resultado->fetch_assoc();
+
+					$_SESSION["duiPersona"] = $this->dui;
+					$_SESSION["apePersona"] = $fila["apePersona"];
+					$_SESSION["nomPersona"] = $fila["nomPersona"];
+					$_SESSION["municipioPersona"] = $fila["nomMunicipio"];
+					$_SESSION["departamentoPersona"] = $fila["nomDepartamento"];
 
 				$respuesta = "ok";
+				}
 			}
 			else {
 				$respuesta = "no registrado";

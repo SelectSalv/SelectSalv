@@ -185,12 +185,14 @@ $(document).ready(function() {
             $('#dui').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
             $('#label-dui').css("color", "rgba(244, 67, 54, 1)");
             $('#dui').addClass('is-invalid');
+            $('#btnFrmRegistrar').attr('disabled', 'disabled');
         } else if (ndui.length == 0) {
             $('#ayudaDui').html('');
             $('#mensajeDui').html('Introduzca un N° de DUI');
             $('#dui').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
             $('#label-dui').css("color", "rgba(244, 67, 54, 1)");
             $('#dui').addClass('is-invalid');
+            $('#btnFrmRegistrar').attr('disabled', 'disabled');
         } else {
             $.ajax({
                 type: 'POST',
@@ -206,6 +208,7 @@ $(document).ready(function() {
                             $('#dui').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
                             $('#label-dui').css("color", "rgba(244, 67, 54, 1)");
                             $('#dui').addClass('is-invalid');
+                            $('#btnFrmRegistrar').attr('disabled', 'disabled');
                             break;
 
                         case 'disponible':
@@ -214,6 +217,7 @@ $(document).ready(function() {
                             $('#dui').css("background-image", "linear-gradient(to top, rgba(33, 150, 243, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
                             $('#label-dui').css("color", "rgba(33, 150, 243, 1)");
                             $('#dui').removeClass('is-invalid');
+                            $('#btnFrmRegistrar').removeAttr('disabled');
                             break;
                     }
                 }
@@ -414,6 +418,13 @@ $(document).ready(function() {
 
                         case 'no registrado':
                                 $('#mensajeDui').html('DUI no registrado');
+                                $('#ayudaDui').html('');
+                                $('#duiVotar').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
+                                $('#label-dui').css("color", "rgba(244, 67, 54, 1)");
+                                $('#duiVotar').addClass('is-invalid');
+                            break;
+                        case 'ya voto':
+                            $('#mensajeDui').html('La Persona Con este N° de DUI ya votó');
                                 $('#ayudaDui').html('');
                                 $('#duiVotar').css("background-image", "linear-gradient(to top, rgba(244, 67, 54, 1) 2px, rgba(0, 150, 136, 0) 2px), linear-gradient(to top, rgba(0, 0, 0, 0.26) 1px, transparent 1px)");
                                 $('#label-dui').css("color", "rgba(244, 67, 54, 1)");
