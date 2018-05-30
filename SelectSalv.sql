@@ -1,6 +1,8 @@
+drop database if exists SelectSalv;
+create database if not exists SelectSalv;
 
+use SelectSalv;
 
-use id6002201_selectsalv;
 create table Usuario(
 	idUsuario int auto_increment unique not null primary key,
     nomUsuario text,
@@ -258,9 +260,11 @@ create view v_getCandidatos as (
     order by c.idCandidato desc
 );
 
+select * from departamento;
+
 select nomPartido, count(idDetalleVoto) as numVotos 
 from v_Voto 
-where idPartido = 2 and nomDepartamento = 'La Libertad';
+where idPartido = 4 and idDepartamento = 10;
 
 select * from v_Voto;
 
@@ -270,10 +274,7 @@ select nomPartido, count(idDetalleVoto) as numVotos
 from v_Voto 
 where idPartido = 2;
 
-select p.nomPartido
-from partido p, detalleVoto v   			
-where p.idPartido = p.detalleVoto;
-select * from detalleVoto; 
+
 /*
 select p.idPartido, p.nomPartido, p.rutaBandera, p.estado as estadoPartido, 
 
@@ -568,12 +569,14 @@ create procedure p_EditarPersona(
     in prof varchar(100),
     in direc varchar(250),
     in estadoCiv int,
-    in municipio int,
+    in municipio varchar(50),
     in iduser int
 )
 begin
+    declare codMunicipio int;
+	set codMunicipio = (select idMunicipio from municipio where nomMunicipio = municipio); 
 	update persona 
-    set dui = ndui, nomPersona = nom, apePersona = ape, idgenero = gen, fechaNac = edfechanac, profesion = prof, direccion = direc, idEstadoCivil = estadoCiv, idMunicipio = municipio
+    set dui = ndui, nomPersona = nom, apePersona = ape, idgenero = gen, fechaNac = edfechanac, profesion = prof, direccion = direc, idEstadoCivil = estadoCiv, idMunicipio = codMunicipio
     where idPersona = id;
     call p_RegTransaccion(iduser,3);
 end
@@ -592,7 +595,6 @@ begin
     call p_RegTransaccion(iduser,2);
 end
 $$
-
 
 delimiter $$
 create procedure prueba()

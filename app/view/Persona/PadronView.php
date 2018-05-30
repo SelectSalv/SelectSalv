@@ -39,15 +39,6 @@
     </script>
     <script>
     	$(document).ready(function() {
-    		$('#fechaNacimientoModificar').on("change", function() {
-    			var val = $(this).val();
-
-    			alert(val);
-    		});
-    	});
-    </script>
-    <script>
-    	$(document).ready(function() {
     		var municipios = <?php echo $municipios.";" ?>
     		var options = {
 					// serviceUrl: "?1=Persona&2=listaMunicipios",
@@ -58,11 +49,16 @@
 				}); 
     	});	
     </script>
-     <script>
+        <script>
     	$(document).ready(function() {
-    		$('#municipio').on("change", function() {
-    			alert($(this).val());
-    		})
+    		var municipios = <?php echo $municipios.";" ?>
+    		var options = {
+					// serviceUrl: "?1=Persona&2=listaMunicipios",
+					lookup: municipios
+				};
+				$('.autoMunicipio').autocomplete({
+					lookup: municipios
+				}); 
     	});	
     </script>
 	<!-- modal principal de Registro -->
@@ -306,11 +302,12 @@
 								<div class="form-column col-md-12">
 									<div class="form-group bmd-form-group is-filled">
 										<label for="municipio" class="bmd-label-floating">Municipio</label>
-										<select type="text" class="form-control requerido" name="municipio" id="municipioModificar">
+										<input class="form-control autoMunicipio requerido" name="municipio" id="municipioModificar">
+										<!-- <select type="text" class="form-control requerido" name="municipio" id="municipioModificar">
 											<option value="-">Seleccione uno...</option>
 											<option value="1">Santa Tecla</option>
 											<option value="2">San Salvador</option>
-										</select>
+										</select> -->
 									</div>
 								</div>
 							</div>

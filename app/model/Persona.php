@@ -254,7 +254,7 @@ class Persona extends ModeloBase {
 			    $eliminar = null;
 
 
-				$mas = '<button id=\"'.$fila["idPersona"].'\" class=\"btn btn-secondary btnDetalles btn-raised bmd-btn-icon\"><i class=\"material-icons\">more_horiz</i></button>';
+				$mas = '';
 
 				if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
 				{
@@ -356,7 +356,7 @@ class Persona extends ModeloBase {
 	// MÉTODO PARA EDITAR PERSONA
 	public function editarPersona($id)
 	{
-		$_query = "call p_EditarPersona(".$id.", '".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', ".$this->genero.", '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', ".$this->estadoCivil.", ".$this->idMunicipio.", ".$_SESSION["idUsuario"].")";
+		$_query = "call p_EditarPersona(".$id.", '".$this->dui."', '".$this->nomPersona."', '".$this->apePersona."', ".$this->genero.", '".$this->fechaNac."', '".$this->fechaVenc."', '".$this->profesion."', '".$this->direccion."', ".$this->estadoCivil.", '".$this->idMunicipio."', ".$_SESSION["idUsuario"].")";
 		$resultado = $this->con->conectar()->query($_query);
 
 		if($resultado)

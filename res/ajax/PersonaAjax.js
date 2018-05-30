@@ -382,7 +382,7 @@ $(document).ready(function() {
                 $('#profesionModificar').val(data.profesion);
                 $('#profesionModificar').parent().addClass('is-filled');
 
-                $('#municipioModificar').val(data.idMunicipio);
+                $('#municipioModificar').val(data.nomMunicipio);
 
                 $('#direccionModificar').val(data.direccion);
                 $('#direccionModificar').parent().addClass('is-filled');

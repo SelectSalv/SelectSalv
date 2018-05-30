@@ -101,7 +101,28 @@ var val = validar('.requeridoRegistrar');
 		processData: false,
 
 		success: function(data){
-			alert(data);
+
+            if(data == "Imagen subida Correctamente")
+            {
+                $('#modalFrmPartido').modal('hide');
+                 swal({
+                            title: "Éxito!",
+                            text: "El partido ha sido Registrado",
+                            timer: 1500,
+                            type: 'success',
+
+                        });
+            }
+            else if(data == "lamentablemente lo que usted intenta insertar no es una imagen")
+            {
+                swal({
+                            title: "Error",
+                            text: data,
+                            timer: 1500,
+                            type: 'warning',
+
+                        });
+            }
             tabla.ajax.reload();
 		}
 
