@@ -82,7 +82,7 @@ class Partido extends ModeloBase
 			    $eliminar = null;
 
 
-				$mas = '<button id=\"'.$fila["idPartido"].'\" class=\"btn btn-secondary btnDetalles btn-raised bmd-btn-icon\"><i class=\"material-icons\">more_horiz</i></button>';
+				$mas = '';
 
 				if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
 				{

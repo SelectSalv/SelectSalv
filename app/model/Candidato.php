@@ -215,7 +215,7 @@ public function getCandidatoId($id)
 			    $eliminar = null;
 
 
-				$mas = '<button id=\"'.$fila["IdCandidato"].'\" class=\"btn btn-secondary btnDetalles btn-raised bmd-btn-icon\"><i class=\"material-icons\">more_horiz</i></button>';
+				$mas = '';
 
 				if(($_SESSION["rol"] == "Desarrollador") || ($_SESSION["rol"] == "Administrador"))
 				{
@@ -277,8 +277,10 @@ public function getCandidatoId($id)
 		while($data=$resp->fetch_assoc())
 
 		{
-
-			$datos[$data['idPartido']]=$data['nomPartido'];
+			if($data['nomPartido'] != 'Voto Nulo')
+			{
+				$datos[$data['idPartido']]=$data['nomPartido'];
+			}
 
 		}
 

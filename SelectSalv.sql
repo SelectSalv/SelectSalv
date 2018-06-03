@@ -556,7 +556,7 @@ begin
 end
 $$
 
-
+select * from candidato;
 delimiter $$
 create procedure p_EditarPersona(
 	in id int,
